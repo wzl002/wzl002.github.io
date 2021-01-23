@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>名词解释 - Wesley的轨迹</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Wesley的轨迹</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">首页</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../Framebuffer%20Object/" class="nav-link">OpenGL(ES)</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Vulkan <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Vulkan/0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/" class="dropdown-item">0.1. Vulkan 扩展</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link">名词解释</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#1-objects" class="nav-link">1. Objects 对象</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#11-buffer" class="nav-link">1.1. Buffer</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#12-shader" class="nav-link">1.2. Shader</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#13-program" class="nav-link">1.3. Program</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#14-program-pipeline" class="nav-link">1.4. Program Pipeline</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#15-uniform-variables" class="nav-link">1.5. Uniform Variables</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#16-texture-sampler" class="nav-link">1.6. Texture &amp; Sampler</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#17-renderbuffer" class="nav-link">1.7. Renderbuffer</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#18-framebuffer" class="nav-link">1.8. Framebuffer</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#19-vertex-array" class="nav-link">1.9. Vertex Array</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#110-transform-feedback" class="nav-link">1.10. Transform Feedback</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#111-query" class="nav-link">1.11. Query</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#112-sync" class="nav-link">1.12. Sync</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#2-operation" class="nav-link">2. Operation 操作</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#21-vertex-post-processing" class="nav-link">2.1. Vertex Post-Processing</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#22-rasterization" class="nav-link">2.2. Rasterization</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#23-whole-framebuffer-operations" class="nav-link">2.3. Whole Framebuffer Operations</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#24-per-fragment-operations" class="nav-link">2.4. Per-Fragment Operations</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#25-reading-and-copying-pixels-and-images" class="nav-link">2.5. Reading and Copying Pixels and Images</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="_1">名词解释</h1>
+<p>FBOs</p>
+<p>Fence</p>
+<p>Semephere</p>
+<p>Sampler</p>
+<p>Vertex Attribute Divisors</p>
+<h1 id="1-objects">1. Objects 对象</h1>
+<h2 id="11-buffer">1.1. Buffer</h2>
+<p>void <strong>GenBuffers</strong>(sizei n, uint <em>buffers);
+void </em><em>DeleteBuffers</em><em>(sizei n,const uint </em>buffers);
+boolean <strong>IsBuffer</strong>(uint buffer);</p>
+<h3 id="111-create-and-bind-buffer-objects-61">1.1.1. Create and Bind Buffer Objects [6.1]</h3>
+<p>void <strong>BindBuffer</strong></p>
+<p>void <strong>BindBufferRange</strong></p>
+<p>void <strong>BindBufferBase</strong></p>
+<h3 id="112-buffer-object-data-stores-62">1.1.2. Buffer Object Data Stores [6.2]</h3>
+<p>void <strong>BufferData</strong></p>
+<p>void <strong>BufferSubData</strong></p>
+<h3 id="113-mapunmap-buffer-data-63">1.1.3. Map/Unmap Buffer Data [6.3]</h3>
+<p>void <strong>*MapBufferRange</strong></p>
+<p>void <strong>FlushMappedBufferRange</strong></p>
+<h3 id="114-copy-between-buffers-65">1.1.4. Copy Between Buffers [6.5]</h3>
+<p>void <strong>CopyBufferSubData</strong></p>
+<h3 id="115-buffer-object-queries-66">1.1.5. Buffer Object Queries [6.6]</h3>
+<p>void <strong>GetBufferParameteri</strong>
+void <strong>GetBufferPointerv</strong></p>
+<h2 id="12-shader">1.2. Shader</h2>
+<p>uint <strong>CreateShader</strong>
+void <strong>ShaderSource</strong>
+void <strong>CompileShader</strong>
+void <strong>ReleaseShaderCompiler</strong>
+void <strong>DeleteShader</strong>
+boolean <strong>IsShader</strong>
+void <strong>ShaderBinary</strong></p>
+<h3 id="121-shader-memory-access">1.2.1. Shader Memory Access</h3>
+<h2 id="13-program">1.3. Program</h2>
+<h3 id="131-program-interfaces">1.3.1. Program Interfaces</h3>
+<h3 id="132-program-binaries">1.3.2. Program Binaries</h3>
+<h2 id="14-program-pipeline">1.4. Program Pipeline</h2>
+<h2 id="15-uniform-variables">1.5. Uniform Variables</h2>
+<h2 id="16-texture-sampler">1.6. Texture &amp; Sampler</h2>
+<h3 id="161-texture">1.6.1. Texture</h3>
+<h3 id="162-sampler">1.6.2. Sampler</h3>
+<h3 id="163-pixel-storage-modes-and-pixel-buffer-objects">1.6.3. Pixel Storage Modes and Pixel Buffer Objects</h3>
+<h3 id="164-texture-image">1.6.4. Texture Image</h3>
+<p><strong>TexImage3D</strong></p>
+<p><strong>TexImage2D</strong></p>
+<h3 id="165-alternate-texture-image">1.6.5. Alternate Texture Image</h3>
+<p><strong>CopyTexImage2D</strong></p>
+<p><strong>TexSubImage3D</strong></p>
+<p><strong>TexSubImage2D</strong></p>
+<p><strong>CopyTexSubImage3D</strong></p>
+<p><strong>CopyTexSubImage2D</strong></p>
+<h3 id="166-compressed-texture-images">1.6.6. Compressed Texture Images</h3>
+<h3 id="167-multisample-textures">1.6.7. Multisample Textures</h3>
+<p>TexStorage2DMultisample</p>
+<p>TexStorage3DMultisample</p>
+<h3 id="168-buffer-textures">1.6.8. Buffer Textures</h3>
+<p>void TexBufferRange</p>
+<p>void TexBuffer</p>
+<h3 id="169-manual-mipmap-generation">1.6.9. Manual Mipmap Generation</h3>
+<p>void GenerateMipmap</p>
+<h3 id="1610-immutable-format-tex-images">1.6.10. Immutable-Format Tex. Images</h3>
+<p>void TexStorage2D</p>
+<p>void TexStorage3D</p>
+<h3 id="1611-texture-image-loadsstores">1.6.11. Texture Image Loads/Stores</h3>
+<p>void BindImageTexture</p>
+<h2 id="17-renderbuffer">1.7. Renderbuffer</h2>
+<h2 id="18-framebuffer">1.8. Framebuffer</h2>
+<h2 id="19-vertex-array">1.9. Vertex Array</h2>
+<h3 id="191-generic-vertex-attributes">1.9.1. Generic Vertex Attributes</h3>
+<h3 id="192-vertex-attribute-divisors">1.9.2. Vertex Attribute Divisors</h3>
+<h3 id="193-drawing-commands">1.9.3. Drawing Commands</h3>
+<p>For all the functions in this section:</p>
+<ul>
+<li>mode:</li>
+<li>LINE_LOOP, </li>
+<li>LINE_[STRIP_]ADJACENCY,</li>
+<li>LINES, </li>
+<li>LINES_ADJACENCY,</li>
+<li>PATCHES TRIANGLE_FAN,</li>
+<li>POINTS[<em>TRIANGLES_ADJACENCY],</em></li>
+<li>TRIANGLES, </li>
+<li>TRIANGLE_STRIP[<em>ADJACENCY]</em></li>
+<li>type: UNSIGNED_{BYTE, SHORT, INT}</li>
+<li>void DrawArrays                            (enum mode, int first, sizei count);</li>
+<li>void DrawArraysInstanced          (enum mode, int first, sizei count, sizei instancecount);</li>
+<li>void DrawArraysIndirect              (enum mode, const void *indirect);</li>
+<li>void DrawElements                       (enum mode, sizei count, enum type, const void *indices);</li>
+<li>void DrawElementsInstanced     (enum mode, sizei count, enum type, const void *indices, sizei instancecount);</li>
+<li>void DrawRangeElements            (enum mode, uint start, uint end, sizei count, enum type, const void *indices);</li>
+<li>void DrawElementsBaseVertex   (enum mode, sizei count, enum type, const void *indices, int basevertex);</li>
+<li>void DrawRangeElementsBaseVertex (enum mode, uint start, uint end, sizei count, enum type, const void *indices, int basevertex);</li>
+<li>void DrawElementsInstancedBaseVertex(enum mode, sizei count,enum type, const void *indices, sizei instancecount, int basevertex);</li>
+<li>void DrawElementsIndirect          (enum mode,enum type, const void *indirect);</li>
+</ul>
+<h3 id="194-vertex-attributes">1.9.4. Vertex Attributes</h3>
+<h2 id="110-transform-feedback">1.10. Transform Feedback</h2>
+<h2 id="111-query">1.11. Query</h2>
+<h2 id="112-sync">1.12. Sync</h2>
+<h1 id="2-operation">2. Operation 操作</h1>
+<h2 id="21-vertex-post-processing">2.1. Vertex Post-Processing</h2>
+<h3 id="211-transform-feedback-121">2.1.1. Transform Feedback [12.1]</h3>
+<p>void GenTransformFeedbacks
+void DeleteTransformFeedbacks
+boolean IsTransformFeedback
+void BindTransformFeedback
+void BeginTransformFeedback
+void EndTransformFeedback
+void PauseTransformFeedback
+void ResumeTransformFeedback</p>
+<h3 id="212-controlling-viewport-1251">2.1.2. Controlling Viewport [12.5.1]</h3>
+<p>void DepthRangef(float n, float f);
+void Viewport(int x, int y, sizei w, sizei h);</p>
+<h2 id="22-rasterization">2.2. Rasterization</h2>
+<h3 id="221-primitive-bounding-box-132">2.2.1. Primitive Bounding Box [13.2]</h3>
+<p>void PrimitiveBoundingBox(float minX,
+float minY, float minZ, float minW,
+float maxX, float maxY, float maxZ,
+float maxW);</p>
+<h3 id="222-multisampling-134">2.2.2. Multisampling [13.4]</h3>
+<p>Use to antialias points and lines.
+void GetMultisamplefv(enum pname,
+uint index, float *val);
+pname: SAMPLE_POSITION</p>
+<h3 id="223-sample-shading-1341">2.2.3. Sample Shading [13.4.1]</h3>
+<p>void MinSampleShading(float value);</p>
+<h3 id="224-points-135">2.2.4. Points [13.5]</h3>
+<p>Point size is taken from the shader built-in
+gl_PointSize and clamped to the
+implementation-dependent point size range.</p>
+<h3 id="225-line-segments-136">2.2.5. Line Segments [13.6]</h3>
+<p>void LineWidth(float width);</p>
+<h3 id="226-polygons-137">2.2.6. Polygons [13.7]</h3>
+<p>void FrontFace(enum dir);
+Enable(CULL_FACE)
+Disable(CULL_FACE)
+IsEnabled(CULL_FACE)
+void CullFace(enum mode);
+Enable(POLYGON_OFFSET_FILL)
+Disable(POLYGON_OFFSET_FILL)
+IsEnabled(POLYGON_OFFSET_FILL)
+void PolygonOffset(float factor, float units);</p>
+<h2 id="23-whole-framebuffer-operations">2.3. Whole Framebuffer Operations</h2>
+<p>Whole Framebuffer Operations</p>
+<h3 id="selecting-buffers-for-writing-1521">Selecting Buffers for Writing [15.2.1]</h3>
+<p>void DrawBuffers(sizei n, const enum *bufs);</p>
+<h3 id="fine-control-of-buffer-updates-1522">Fine Control of Buffer Updates [15.2.2]</h3>
+<p>void ColorMask(boolean r, boolean g,
+boolean b, boolean a);
+void ColorMaski(uint buf, boolean r, boolean g,
+boolean b, boolean a);
+void DepthMask(boolean mask);
+void StencilMask(uint mask);
+void StencilMaskSeparate(enum face,
+uint mask);
+face: FRONT, BACK, FRONT_AND_BACK</p>
+<h3 id="clearing-the-buffers-1523">Clearing the Buffers [15.2.3]</h3>
+<p>void Clear(bitfield buf);
+buf: Zero or Bitwise OR of
+{COLOR, DEPTH, STENCIL}_BUFFER_BIT
+void ClearColor(float r, float g, float b, float a);
+void ClearDepthf(float d);
+void ClearStencil(int s);
+void ClearBuffer{i f ui}v(enum buffer,
+int drawbuffer, const T *value);
+buffer: COLOR, DEPTH, STENCIL
+void ClearBufferfi(enum buffer, int drawbuffer,
+float depth, int stencil);
+buffer: DEPTH_STENCIL
+drawbuffer: 0</p>
+<h3 id="invalidating-framebuffer-contents-1524">Invalidating Framebuffer Contents [15.2.4]</h3>
+<p>void InvalidateSubFramebuffer(enum target,
+sizei numAttachments,
+const enum *attachments, int x, int y,
+sizei width, sizei height);
+target: [DRAW_, READ_]FRAMEBUFFER
+attachments: points to an array of
+COLOR, STENCIL,
+{COLOR, DEPTH, STENCIL}_ATTACHMENT
+void InvalidateFramebuffer(</p>
+<h2 id="24-per-fragment-operations">2.4. Per-Fragment Operations</h2>
+<h3 id="scissor-test-1382">Scissor Test [13.8.2]</h3>
+<p>Enable/Disable(SCISSOR_TEST);
+void Scissor(int left, int bottom,
+sizei width, sizei height);</p>
+<h3 id="multisample-fragment-ops-1383">Multisample Fragment Ops. [13.8.3]</h3>
+<p>Enable/Disable(cap);
+cap:
+SAMPLE_ALPHA_TO_COVERAGE,
+SAMPLE_COVERAGE
+void SampleCoverage(float value,
+boolean invert);
+void SampleMaski(uint maskNumber,
+bitfield mask);</p>
+<h3 id="stencil-test-1512">Stencil Test [15.1.2]</h3>
+<p><strong>Enable/Disable(STENCIL_TEST);</strong>
+void <strong>StencilFunc</strong>(enum func, int ref,
+uint mask);
+func:
+ALWAYS, EQUAL, GEQUAL, GREATER,
+LEQUAL, LESS, NEVER, NOTEQUAL
+void <strong>StencilFuncSeparate</strong>(enum face,
+enum func, int ref, uint mask);
+func: See StencilFunc
+face: BACK, FRONT, FRONT_AND_BACK
+void <strong>StencilOp</strong>(enum sfail, enum dpfail,
+enum dppass);
+void <strong>StencilOpSeparate</strong>(enum face,
+enum sfail, enum dpfail, enum dppass);
+face: BACK, FRONT, FRONT_AND_BACK
+sfail, dpfail, dppass:
+DECR, DECR_WRAP, INCR, INCR_WRAP,
+INVERT, KEEP, REPLACE, ZERO</p>
+<h3 id="depth-buffer-test-1513">Depth Buffer Test [15.1.3]</h3>
+<p><strong>Enable/Disable(DEPTH_TEST);</strong>
+void <strong>DepthFunc</strong>(enum func);
+func: See StencilFunc</p>
+<h3 id="blending-1515">Blending [15.1.5]</h3>
+<p>void <strong>Enablei</strong>(enum target, uint index);
+void <strong>Disablei</strong>(enum target, uint index);
+target: must be BLEND
+<strong>Enable/Disable/IsEnabled(BLEND);</strong>
+void <strong>BlendColor</strong>(float red, float green,
+float blue, float alpha);
+void <strong>BlendEquation</strong>(enum mode);
+void <strong>BlendEquationSeparate</strong>(enum modeRGB,
+enum modeAlpha);
+mode, modeRGB, modeAlpha:
+FUNC_{ADD, SUBTRACT, REVERSE_SUBTRACT},
+MAX, MIN
+void <strong>BlendEquationi</strong>(uint buf, enum mode);
+void <strong>BlendEquationSeparatei</strong>(uint buf,
+enum modeRGB, enum modeAlpha );
+modeRGB, modeAlpha: See BlendEquationSeparate
+void BlendFunc(enum src, enum dst);
+src, dst: See BlendFuncSeparate
+void <strong>BlendFuncSeparate</strong>(enum srcRGB,
+enum dstRGB, enum srcAlpha,
+enum dstAlpha);
+src, dst, srcRGB, dstRGB, srcAlpha, dstAlpha:
+{CONSTANT, DST, SRC}<em>COLOR,
+{CONSTANT, DST, SRC}_ALPHA,
+ONE, ONE_MINUS_SRC</em>{ALPHA, COLOR},
+ONE_MINUS_{CONSTANT, DST}<em>ALPHA ,
+ONE_MINUS</em>{CONSTANT, DST}_COLOR,
+SRC_ALPHA_SATURATE, ZERO
+void <strong>BlendFunci</strong>(uint buf, enum src,
+enum dst);
+void <strong>BlendFuncSeparatei</strong>(uint buf,
+enum srcRGB, enum dstRGB,
+enum srcAlpha, enum dstAlpha);
+modeRGB, modeAlpha: See BlendFuncSeparate
+void BlendBarrier(void);</p>
+<h3 id="dithering-1517">Dithering [15.1.7]</h3>
+<p><strong>Enable/Disable/IsEnabled(DITHER);</strong></p>
+<h2 id="25-reading-and-copying-pixels-and-images">2.5. Reading and Copying Pixels and Images</h2></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

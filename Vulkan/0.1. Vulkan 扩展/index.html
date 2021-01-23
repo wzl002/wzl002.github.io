@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>0.1. Vulkan 扩展 - Wesley的轨迹</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Wesley的轨迹</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">首页</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../GLES/Framebuffer%20Object/" class="nav-link">OpenGL(ES)</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Vulkan <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active">0.1. Vulkan 扩展</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../../GLES/Framebuffer%20Object/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#vulkan" class="nav-link">Vulkan 扩展</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#vulkan_1" class="nav-link">Vulkan 初始化流程</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#extensions" class="nav-link">Extensions: 扩展</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#features" class="nav-link">Features: 功能</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#limitations" class="nav-link">Limitations</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#formats" class="nav-link">Formats</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#39-extending-vulkan" class="nav-link">39. Extending Vulkan</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#40-features" class="nav-link">40. Features</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#41-limits" class="nav-link">41. Limits</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#42-formats" class="nav-link">42. Formats</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#43-additional-capabilities" class="nav-link">43. Additional Capabilities</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="vulkan">Vulkan 扩展</h1>
+<p>(本章文本内容的更多细节, 参见 <a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html">Vulkan Specification 1.1</a>,  代码为示例用伪码)</p>
+<p>对于不同的平台, 驱动, 操作系统等,  当Vulkan的底层实现不同时, Vulkan 可用的功能集也有很多区别.  本章描述了 Vulkan 如何定义和扩展功能集, 主要介绍了四个概念:  Extension, Feature, Limitation, 和 Format. </p>
+<h2 id="vulkan_1">Vulkan 初始化流程</h2>
+<p>在开发应用程序时, 需要启用的 Vulkan 功能集需要在初始化 Device 前确定下来. </p>
+<p>对应 vk 初始化的前三步: Instance --&gt; Physical Device --&gt; Device</p>
+<p>以下是初始化过程中与功能相关的过程: </p>
+<p>枚举 vk 支持的 Instance-level Extensions </p>
+<p>创建 Instance</p>
+<p>枚举 物理设备, 选择 GPU, </p>
+<p>枚举 GPU 支持的 Device Extensions, 从中选择要启用的 </p>
+<p>​   查询支持的 Extensions 的 Features 结构体, 从中选择要启用的</p>
+<p>​    查询支持的 Extensions 的 Properties 结构体</p>
+<p>查询 GPU 支持的 Feature, 从中选择要启用的</p>
+<p>查询 GPU 的 Properties </p>
+<p>将启用的 Extensions 和 Features 列表放入 CreateInfo 结构体, 创建逻辑设备 Device,  </p>
+<ul>
+<li>
+<p>Extension: 功能集的抽象概念, 用来为 Vulkan 添加新的 Commands，Structures 和 Enumerants. 同时可能新增 Features, Limitations, 和 Format.</p>
+</li>
+<li>
+<p>Feature:  bool 值集合, 可选功能的开关. 可以用来查询设备支持的功能, </p>
+</li>
+<li>Limitation 和 Format 是两个只读参数集, Limitation 又称做 Properties, 表示设备特征值; Format 表示支持的格式.</li>
+</ul>
+<p>本章后面各章节对此流程各步骤进行解释, 并包含示例代码.</p>
+<h2 id="extensions">Extensions: 扩展</h2>
+<ul>
+<li>扩展 (Extensions) 可用来为 Vk 添加新功能.   Vk 核心的新版本 (如: VK_VERSION_1_1) 也可以视为一个扩展.</li>
+<li>
+<p>扩展可以定义新的 命令, 枚举, 和结构. ( Commands，Structures 和 Enumerants)</p>
+</li>
+<li>
+<p>扩展分为实例级和设备级 (Instance-level 和  Device-level)</p>
+</li>
+<li>当 Commands 用来枚举实例属性 (instance properties), 或接受 VkInstance 对象作为参数, 则被视为实例级功能。 </li>
+<li>当 Commands 用来枚举物理设备属性 (physical device properties), 或接受 VkDevice 及其子类对象作为参数，则被视为设备级功能。</li>
+</ul>
+<p>为了方便编译，在 Khronos 提供的 <code>vulkan_core.h</code> 中除了核心API, 还定义了已注册 Extensions 定义的接口，包括新 结构, 枚举, 和命令的函数指针类型。扩展的实现通过 Layers 和 Vulkan实现来提供。</p>
+<h3 id="vk-extensions">启用 Vk Extensions</h3>
+<ul>
+<li>Vk Extensions 需要在初始化阶段显式启用.  </li>
+<li>启用 instance extension, 要在创建 <code>VKInstance</code> 时, 将扩展名添加到 <code>VkInstanceCreateInfo</code> 的成员 <code>ppEnabledExtensionNames</code> 中.</li>
+<li>启用 device extension, 要在 创建 <code>VkDevice</code>时, 将扩展名添加到 <code>VkDeviceCreateInfo</code>的成员 <code>ppEnabledExtensionNames</code> 中.</li>
+<li>Physical-Device-Level 功能没有启用机制，只要 <code>VkPhysicalDevice</code> 的功能对应的 Extensions 在枚举函数 <code>vkEnumerateDeviceExtensionProperties</code> 中被列出. </li>
+</ul>
+<p>仅 <strong>启用</strong> 扩展操作而言, 除了 启用 该扩展自身定义的命令, 枚举, 和结构外, 不会更改核心Vulkan API 或其他扩展的功能。</p>
+<p>示例: 创建 VkInstance 时, 启用 Extensions: </p>
+<pre><code class="language-c++">// add Target Extension Names
+std::vector&lt;const char*&gt; extensions();
+extensions.push_back(VK_KHR_WIN32_SURFACE_EXTENSION_NAME);
+
+VkInstanceCreateInfo inst_info = {};
+inst_info.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
+...
+
+// Enable Instance Extensions
+inst_info.enabledExtensionCount = extensions.size();
+inst_info.ppEnabledExtensionNames = extensions.data();
+
+VkInstance instance;
+VkResult res = vkCreateInstance(&amp;inst_info, NULL, &amp;instance);
+</code></pre>
+<p>对 VkPhysicalDevice,  枚举其支持的 Extensions:</p>
+<pre><code class="language-c++">// 枚举设备
+uint32_t deviceCount = 0;
+vkEnumeratePhysicalDevices(instance, &amp;deviceCount, nullptr);
+
+std::vector&lt;VkPhysicalDevice&gt; devices(deviceCount);
+vkEnumeratePhysicalDevices(instance, &amp;deviceCount, devices.data());
+// 选择设备
+VkPhysicalDevice physicalDevice = devices[0]; // 仅示例,正确代码应选择对应 GPU 设备
+
+// 枚举 Extensions
+uint32_t extensionCount;
+vkEnumerateDeviceExtensionProperties(physicalDevice, nullptr, &amp;extensionCount, nullptr);
+
+std::vector&lt;VkExtensionProperties&gt; availableExtensions(extensionCount);
+vkEnumerateDeviceExtensionProperties(physicalDevice, nullptr, &amp;extensionCount, availableExtensions.data());
+
+</code></pre>
+<p>创建 VkDevice 时, 启用 Extensions: </p>
+<pre><code class="language-c++">// add Target Extension Names
+std::vector&lt;const char*&gt; device_extension_names();
+// check if physicalDevice support extension:
+for (const auto&amp; extension : availableExtensions) {
+    if(strcmp(extension.extensionName, VK_KHR_SWAPCHAIN_EXTENSION_NAME) == 0)
+            device_extension_names.push_back(extension.extensionName);
+    }
+}
+
+VkDeviceCreateInfo device_info = {};
+device_info.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
+device_info.pNext = NULL;
+...
+
+// Enable Device Extensions
+device_info.enabledExtensionCount = device_extension_names.size();
+device_info.ppEnabledExtensionNames = enabledExtensionCount ? device_extension_names.data() : NULL;
+
+VkDevice device;
+res = vkCreateDevice(physicalDevice, &amp;device_info, NULL, &amp;device);
+
+</code></pre>
+<h2 id="features">Features: 功能</h2>
+<p>Features 用来设置或查询 非所有实现都支持 的功能。 Feature 均为 bool 值.</p>
+<ul>
+<li>
+<p>Features 是物理设备的属性。(physical device properties)</p>
+</li>
+<li>
+<p>这些功能是“可选”的，并且必须在使用前明确启用。 </p>
+</li>
+</ul>
+<h3 id="features_1">核心 Features</h3>
+<p>Vk 核心中定义的 Features, 可以通过 <strong><code>vkGetPhysicalDeviceFeatures</code></strong> 查询.</p>
+<pre><code>VkPhysicalDeviceFeatures mPhysicalDeviceFeatures;
+vkGetPhysicalDeviceFeatures(mPhysicalDevice, &amp;mPhysicalDeviceFeatures);
+</code></pre>
+<p>查询结果 <code>VkPhysicalDeviceFeatures</code> 的结构体定义如下:</p>
+<pre><code>// Provided by VK_VERSION_1_0
+typedef struct VkPhysicalDeviceFeatures {
+    VkBool32    robustBufferAccess;
+    VkBool32    fullDrawIndexUint32;
+    VkBool32    imageCubeArray;
+    VkBool32    independentBlend;
+    VkBool32    geometryShader;
+    VkBool32    tessellationShader;
+    VkBool32    sampleRateShading;
+    .... // 总计50+个 Bool 值
+ } VkPhysicalDeviceFeatures
+</code></pre>
+<p>其中每个 Feature 的含义 在  <a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#features">Vulkan Specification 1.1/Features</a> 中都有解释.</p>
+<p>例如: </p>
+<p><code>IndependentBlend</code> 指定: 是否每个 attachments 的  <code>VkPipelineColorBlendAttachmentState</code> 设置互相独立。</p>
+<ul>
+<li>未启用此 Feature，则所有 color attachments 的 <code>VkPipelineColorBlendAttachmentState</code> 设置必须相同。 </li>
+<li>若启用此 Feature，则可以为每个绑定的 color attachment 提供不同的<code>VkPipelineColorBlendAttachmentState</code>。</li>
+</ul>
+<h3 id="features_2">扩展提供的Features</h3>
+<p>查询函数:  vkGetPhysicalDeviceFeatures2</p>
+<pre><code class="language-c++">VkPhysicalDeviceFeatures2 physicalDeviceFeatures2;
+vkGetPhysicalDeviceFeatures2(mPhysicalDevice, &amp;physicalDeviceFeatures2);
+</code></pre>
+<p>查询结果:  <code>VkPhysicalDeviceFeatures2</code>  结构:</p>
+<pre><code>// Provided by VK_VERSION_1_1
+typedef struct VkPhysicalDeviceFeatures2 {
+    VkStructureType             sType;
+    void*                       pNext;
+    VkPhysicalDeviceFeatures    features;
+} VkPhysicalDeviceFeatures2;
+</code></pre>
+<ul>
+<li>
+<p>sType:  VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2</p>
+</li>
+<li>
+<p>pNext:  指针链.</p>
+</li>
+<li>
+<p>VkPhysicalDeviceFeatures:  Vulkan 1.0 提供的核心 Features </p>
+</li>
+</ul>
+<p>注: VkPhysicalDeviceFeatures2 等价 VkPhysicalDeviceFeatures2KHR, vkGetPhysicalDeviceFeatures2 等价 vkGetPhysicalDeviceFeatures2KHR</p>
+<p>通过 <code>pNext</code>, 可以获得扩展所定义的 Features 结构体, 有的由 Vulkan 核心新版本提供, 有的由其他 Extension提供. </p>
+<p>例如: </p>
+<p>Vulkan 1.1 提供的 samplerYcbcrConversion.</p>
+<pre><code>// Provided by VK_VERSION_1_1: VK_KHR_sampler_ycbcr_conversion
+typedef struct VkPhysicalDeviceSamplerYcbcrConversionFeatures {
+    VkStructureType    sType;
+    void*              pNext;
+    VkBool32           samplerYcbcrConversion;
+} VkPhysicalDeviceSamplerYcbcrConversionFeatures;
+</code></pre>
+<p>VK_EXT_transform_feedback 提供的 transformFeedback 和 geometryStreams.</p>
+<pre><code>// Provided by VK_EXT_transform_feedback
+typedef struct VkPhysicalDeviceTransformFeedbackFeaturesEXT {
+    VkStructureType    sType;
+    void*              pNext;
+    VkBool32           transformFeedback;
+    VkBool32           geometryStreams;
+} VkPhysicalDeviceTransformFeedbackFeaturesEXT;
+</code></pre>
+<p>查询示例:</p>
+<pre><code class="language-c++">// 扩展的 Feature 结构体
+VkPhysicalDeviceSamplerYcbcrConversionFeatures mSamplerYcbcrConversionFeatures = {};
+mSamplerYcbcrConversionFeatures.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_YCBCR_CONVERSION_FEATURES;
+
+// vk1.1 的 VkPhysicalDeviceFeatures2
+VkPhysicalDeviceFeatures2 deviceFeatures = {};
+deviceFeatures.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2;
+deviceFeatures.pNext = mVertexAttributeDivisorFeatures
+// 查询
+vkGetPhysicalDeviceFeatures2(mPhysicalDevice, &amp;deviceFeatures);
+// 使用
+if (mVertexAttributeDivisorFeatures.vertexAttributeInstanceRateDivisor)
+{
+...
+}
+</code></pre>
+<h3 id="features_3">启用 Features</h3>
+<p>Features 默认皆为不启用状态. 必须在 <code>VkDevice</code> 创建时显式启用。如果启用了物理设备不支持的功能，则 <code>VkDevice</code> 创建将失败，并返回VK_ERROR_FEATURE_NOT_PRESENT。</p>
+<p>启用方法: </p>
+<ol>
+<li>创建 VkPhysicalDeviceFeatures 结构的指针 (或1.1的 VkPhysicalDeviceFeatures2结构) </li>
+<li>将成员设置为 VK_TRUE 或 VK_FALSE,  eg:  physicalDeviceFeatures.independentBlend = VK_TRUE </li>
+<li>通过传递给 vkCreateDevice 用的 VkDeviceCreateInfo结构的 pEnabledFeatures 成员.</li>
+</ol>
+<p>要启动所有设备的功能 (慎用)，则只需传入查询函数<code>vkGetPhysicalDeviceFeatures</code> 返回的<code>VkPhysicalDeviceFeatures</code>结构即可。要禁用单个功能，应用程序可以在相同结构中将所需成员设置为VK_FALSE。</p>
+<p>用过给 pNext链添加 Extensions 提供的 Features 结构体, 来启用扩展的 Features.</p>
+<pre><code class="language-c++">// 查询核心 Features 是否支持
+VkPhysicalDeviceFeatures mPhysicalDeviceFeatures;
+vkGetPhysicalDeviceFeatures(mPhysicalDevice, &amp;mPhysicalDeviceFeatures);
+
+// 设置启用 Features
+VkPhysicalDeviceFeatures2KHR enabledFeatures = {};
+enabledFeatures.sType                        = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2;
+enabledFeatures.features.imageCubeArray = mPhysicalDeviceFeatures.imageCubeArray; 
+enabledFeatures.features.independentBlend = mPhysicalDeviceFeatures.independentBlend;
+
+// Create Device
+VkDeviceCreateInfo device_info = {};
+device_info.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
+
+// 指向 Features 结构体以设置 Extensions 提供的 Features
+// mSamplerYcbcrConversionFeatures : 前面查询示例中的结构体. 
+device_info.pNext = mSamplerYcbcrConversionFeatures; 
+
+// Enable Physical Device Features
+device_info.pEnabledFeatures = &amp;enabledFeatures.features;
+...
+
+VkDevice device;
+res = vkCreateDevice(physicalDevice, &amp;device_info, NULL, &amp;device);
+</code></pre>
+<h2 id="limitations">Limitations</h2>
+<p><em>Limits</em>  提供开发应用程序可能需要明确的一些设备特征值, 这些特征的最小值，最大值等会随底层实现的不同而异.</p>
+<p>通过 <code>VkPhysicalDeviceLimits</code> 结构体获取核心1.0的 Limits, 或利用 vk1.1 中加入的 <code>VkPhysicalDeviceProperties2</code> 的 pNext 链 获取各 Extension 新增的 <code>Limits</code>.</p>
+<p>结构体 <code>VkPhysicalDeviceLimits</code> 定义如下:</p>
+<pre><code>// Provided by VK_VERSION_1_0
+typedef struct VkPhysicalDeviceLimits {
+    uint32_t              maxImageDimension1D;
+    uint32_t              maxImageDimension2D;
+    uint32_t              maxImageDimension3D;
+    uint32_t              maxImageDimensionCube;
+    uint32_t              maxImageArrayLayers;
+    uint32_t              maxTexelBufferElements;
+    uint32_t              maxUniformBufferRange;
+    uint32_t              maxStorageBufferRange;
+    uint32_t              maxPushConstantsSize;
+    uint32_t              maxMemoryAllocationCount;
+    uint32_t              maxSamplerAllocationCount;
+    VkDeviceSize          bufferImageGranularity;
+    VkDeviceSize          sparseAddressSpaceSize;
+    ... // 省略约 100+ 个值
+} VkPhysicalDeviceLimits;
+</code></pre>
+<p>specs 文档对每个值都有介绍:</p>
+<p>例如: </p>
+<p><code>maxUniformBufferRange</code> :   当将结构体 <code>VkDescriptorBufferInfo</code>  作为参数调用 <code>vkUpdateDescriptorSets</code> , 并且 descriptors 类型为<code>VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER</code> 或 <code>VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC</code> 时, 其结构体成员 <code>range</code> 可设的最大值.</p>
+<h3 id="limits">查询扩展提供的Limits</h3>
+<p>查询扩展提供的结构体均以 Properties 而非 Limits 结尾,  其查询方法与查询 <a href="#扩展提供的Features">扩展提供的 Feature</a> 一样. </p>
+<p>查询函数和结果结构体如下:</p>
+<pre><code class="language-c++">VkPhysicalDeviceProperties2 deviceProperties;
+vkGetPhysicalDeviceProperties2KHR(mPhysicalDevice, &amp;deviceProperties);
+</code></pre>
+<p>查询结果示例: </p>
+<p>结构体<code>VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT</code> 包含了扩展 VK_EXT_vertex_attribute_divisor 提供的 limits 值 <code>maxVertexAttribDivisor</code>:</p>
+<pre><code>// Provided by VK_EXT_vertex_attribute_divisor
+typedef struct VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT {
+    VkStructureType    sType;
+    void*              pNext;
+    uint32_t           maxVertexAttribDivisor;
+} VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT;
+</code></pre>
+<h2 id="formats">Formats</h2>
+<p>对于不同的 vk 实现, 其支持的缓冲区和图像格式可能会不同。虽然 Vulkan 规定了一组必须支持的 Format 的最小集，但在使用除此以外的 Format功能之前, 必须显式的查询，以确保实现支持这些格式。</p>
+<p>查询命令: <code>vkGetPhysicalDeviceFormatProperties</code>, 查询返回的<code>VkFormat</code> 结构体的包含了当前实现所支持的格式功能。</p>
+<p><code>VkFormat</code> 结构体示例: </p>
+<pre><code>// Provided by VK_VERSION_1_0
+typedef enum VkFormat {
+    VK_FORMAT_UNDEFINED = 0,
+    VK_FORMAT_R4G4_UNORM_PACK8 = 1,
+    VK_FORMAT_R4G4B4A4_UNORM_PACK16 = 2,
+    VK_FORMAT_B4G4R4A4_UNORM_PACK16 = 3,
+    VK_FORMAT_R5G6B5_UNORM_PACK16 = 4,
+    VK_FORMAT_B5G6R5_UNORM_PACK16 = 5,
+    VK_FORMAT_R5G5B5A1_UNORM_PACK16 = 6,
+    VK_FORMAT_B5G5R5A1_UNORM_PACK16 = 7,
+    VK_FORMAT_A1R5G5B5_UNORM_PACK16 = 8,
+    ... // 约 300+, 其中
+</code></pre>
+<p>关于 Format 相关的内容比较复杂, 本章节以及后续章节都不进行深入.  如果需要考虑再单独进行研究. </p>
+<h2 id="39-extending-vulkan">39. Extending Vulkan</h2>
+<p>New functionality <strong>may</strong> be added to Vulkan via either new extensions or new versions of the core, or new versions of an extension in some cases.</p>
+<p>This chapter describes how Vulkan is versioned, how compatibility is affected between different versions, and compatibility rules that are followed by the Vulkan Working Group.</p>
+<h3 id="391-instance-and-device-functionality">39.1. Instance and Device Functionality</h3>
+<p>Commands that enumerate instance properties, or that accept a <a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#VkInstance">VkInstance</a> object as a parameter, are considered instance-level functionality. Commands that enumerate physical device properties, or that accept a <a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#VkDevice">VkDevice</a> object or any of a device’s child objects as a parameter, are considered device-level functionality.</p>
+<h3 id="394-extensions">39.4. Extensions</h3>
+<p>Extensions <strong>may</strong> define new Vulkan commands, structures, and enumerants. For compilation purposes, the interfaces defined by registered extensions, including new structures and enumerants as well as function pointer types for new commands, are defined in the Khronos-supplied <code>vulkan_core.h</code> together with the core API. However, commands defined by extensions <strong>may</strong> not be available for static linking - in which case function pointers to these commands <strong>should</strong> be queried at runtime as described in <a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#initialization-functionpointers">Command Function Pointers</a>. Extensions <strong>may</strong> be provided by layers as well as by a Vulkan implementation.</p>
+<p>Because extensions <strong>may</strong> extend or change the behavior of the Vulkan API, extension authors <strong>should</strong> add support for their extensions to the Khronos validation layers. This is especially important for new commands whose parameters have been wrapped by the validation layers. See the <a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#LoaderAndLayerInterface">“Vulkan Loader Specification and Architecture Overview”</a> document for additional information.</p>
+<h4 id="3941-instance-extensions">39.4.1. Instance Extensions</h4>
+<p>Instance extensions add new <a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#extendingvulkan-instanceanddevicefunctionality">instance-level functionality</a> to the API, outside of the core specification.</p>
+<p>To query the available instance extensions, call:</p>
+<pre><code>// Provided by VK_VERSION_1_0
+VkResult vkEnumerateInstanceExtensionProperties(
+    const char*                                 pLayerName,
+    uint32_t*                                   pPropertyCount,
+    VkExtensionProperties*                      pProperties);
+</code></pre>
+<ul>
+<li><code>pLayerName</code> is either <code>NULL</code> or a pointer to a null-terminated UTF-8 string naming the layer to retrieve extensions from.</li>
+<li><code>pPropertyCount</code> is a pointer to an integer related to the number of extension properties available or queried, as described below.</li>
+<li><code>pProperties</code> is either <code>NULL</code> or a pointer to an array of <a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#VkExtensionProperties">VkExtensionProperties</a> structures.</li>
+</ul>
+<p>When <code>pLayerName</code> parameter is <code>NULL</code>, only extensions provided by the Vulkan implementation or by implicitly enabled layers are returned. When <code>pLayerName</code> is the name of a layer, the instance extensions provided by that layer are returned.</p>
+<p>If <code>pProperties</code> is <code>NULL</code>, then the number of extensions properties available is returned in <code>pPropertyCount</code>. Otherwise, <code>pPropertyCount</code> <strong>must</strong> point to a variable set by the user to the number of elements in the <code>pProperties</code> array, and on return the variable is overwritten with the number of structures actually written to <code>pProperties</code>. If <code>pPropertyCount</code> is less than the number of extension properties available, at most <code>pPropertyCount</code> structures will be written. If <code>pPropertyCount</code> is smaller than the number of extensions available, <code>VK_INCOMPLETE</code> will be returned instead of <code>VK_SUCCESS</code>, to indicate that not all the available properties were returned.</p>
+<p>Because the list of available layers may change externally between calls to <a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#vkEnumerateInstanceExtensionProperties">vkEnumerateInstanceExtensionProperties</a>, two calls may retrieve different results if a <code>pLayerName</code> is available in one call but not in another. The extensions supported by a layer may also change between two calls, e.g. if the layer implementation is replaced by a different version between those calls.</p>
+<p>Implementations <strong>must</strong> not advertise any pair of extensions that cannot be enabled together due to behavioral differences, or any extension that cannot be enabled against the advertised version.</p>
+<h4 id="3942-device-extensions">39.4.2. Device Extensions</h4>
+<p>Device extensions add new <a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#extendingvulkan-instanceanddevicefunctionality">device-level functionality</a> to the API, outside of the core specification.</p>
+<p>To query the extensions available to a given physical device, call:</p>
+<pre><code>// Provided by VK_VERSION_1_0
+VkResult vkEnumerateDeviceExtensionProperties(
+    VkPhysicalDevice                            physicalDevice,
+    const char*                                 pLayerName,
+    uint32_t*                                   pPropertyCount,
+    VkExtensionProperties*                      pProperties);
+</code></pre>
+<ul>
+<li><code>physicalDevice</code> is the physical device that will be queried.</li>
+<li><code>pLayerName</code> is either <code>NULL</code> or a pointer to a null-terminated UTF-8 string naming the layer to retrieve extensions from.</li>
+<li><code>pPropertyCount</code> is a pointer to an integer related to the number of extension properties available or queried, and is treated in the same fashion as the <a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#vkEnumerateInstanceExtensionProperties">vkEnumerateInstanceExtensionProperties</a>::<code>pPropertyCount</code> parameter.</li>
+<li><code>pProperties</code> is either <code>NULL</code> or a pointer to an array of <a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#VkExtensionProperties">VkExtensionProperties</a> structures.</li>
+</ul>
+<p>When <code>pLayerName</code> parameter is <code>NULL</code>, only extensions provided by the Vulkan implementation or by implicitly enabled layers are returned. When <code>pLayerName</code> is the name of a layer, the device extensions provided by that layer are returned.</p>
+<p>Implementations <strong>must</strong> not advertise any pair of extensions that cannot be enabled together due to behavioral differences, or any extension that cannot be enabled against the advertised version.</p>
+<h2 id="40-features">40. Features</h2>
+<p><em>Features</em> describe functionality which is not supported on all implementations. Features are properties of the physical device. Features are <strong>optional</strong>, and <strong>must</strong> be explicitly enabled before use. Support for features is reported and enabled on a per-feature basis.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>NoteFeatures are reported via the basic <a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#VkPhysicalDeviceFeatures">VkPhysicalDeviceFeatures</a> structure, as well as the extensible structure <code>VkPhysicalDeviceFeatures2</code>, which was added in the <code>VK_KHR_get_physical_device_properties2</code> extension and included in Vulkan 1.1. When new features are added in future Vulkan versions or extensions, each extension <strong>should</strong> introduce one new feature structure, if needed. This structure <strong>can</strong> be added to the <code>pNext</code> chain of the <code>VkPhysicalDeviceFeatures2</code> structure.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>For convenience, new core versions of Vulkan <strong>may</strong> introduce new unified features structures for features promoted from extensions. At the same time, the extension’s original features structure (if any) is also promoted to the core API, and is an alias of the extension’s structure. This results in multiple names for the same feature: in the original extension’s feature structure and the promoted structure alias, in the unified feature structure. When a feature was implicitly supported and enabled in the extension, but an explicit name was added during promotion, then the extension itself acts as an alias for the feature as listed in the table below.</p>
+<p>All aliases of the same feature in the core API <strong>must</strong> be reported consistently: either all <strong>must</strong> be reported as supported, or none of them. When a promoted extension is available, any corresponding feature aliases <strong>must</strong> be supported.</p>
+<pre><code>// Provided by VK_VERSION_1_1
+typedef struct VkPhysicalDeviceFeatures2 {
+    VkStructureType             sType;
+    void*                       pNext;
+    VkPhysicalDeviceFeatures    features;
+} VkPhysicalDeviceFeatures2;
+</code></pre>
+<p>The <code>pNext</code> chain of this structure is used to extend the structure with features defined by extensions. </p>
+<p>Fine-grained features used by a logical device <strong>must</strong> be enabled at <code>VkDevice</code> creation time. If a feature is enabled that the physical device does not support, <code>VkDevice</code> creation will fail and return <code>VK_ERROR_FEATURE_NOT_PRESENT</code>.</p>
+<p>The fine-grained features are enabled by passing a pointer to the <code>VkPhysicalDeviceFeatures</code> structure via the <code>pEnabledFeatures</code> member of the <a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#VkDeviceCreateInfo">VkDeviceCreateInfo</a> structure that is passed into the <code>vkCreateDevice</code> call. If a member of <code>pEnabledFeatures</code> is set to <code>VK_TRUE</code> or <code>VK_FALSE</code>, then the device will be created with the indicated feature enabled or disabled, respectively. Features <strong>can</strong> also be enabled by using the <a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#VkPhysicalDeviceFeatures2">VkPhysicalDeviceFeatures2</a> structure.</p>
+<p>If an application wishes to enable all features supported by a device, it <strong>can</strong> simply pass in the <code>VkPhysicalDeviceFeatures</code> structure that was previously returned by <code>vkGetPhysicalDeviceFeatures</code>. To disable an individual feature, the application <strong>can</strong> set the desired member to <code>VK_FALSE</code> in the same structure. Setting <code>pEnabledFeatures</code> to <code>NULL</code> and not including a <a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#VkPhysicalDeviceFeatures2">VkPhysicalDeviceFeatures2</a> in the <code>pNext</code> chain of <a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#VkDeviceCreateInfo">VkDeviceCreateInfo</a> is equivalent to setting all members of the structure to <code>VK_FALSE</code>.</p>
+<p>To query support for atomic operations on floating-point numbers, call <a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#vkGetPhysicalDeviceFeatures2">vkGetPhysicalDeviceFeatures2</a> with a <a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#VkPhysicalDeviceShaderAtomicFloatFeaturesEXT">VkPhysicalDeviceShaderAtomicFloatFeaturesEXT</a> structure included in the <code>pNext</code> chain of its <code>pFeatures</code> parameter.</p>
+<p>The <a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#VkPhysicalDeviceShaderAtomicFloatFeaturesEXT">VkPhysicalDeviceShaderAtomicFloatFeaturesEXT</a> structure is defined as:</p>
+<pre><code>// Provided by VK_EXT_shader_atomic_float
+typedef struct VkPhysicalDeviceShaderAtomicFloatFeaturesEXT {
+    VkStructureType    sType;
+    void*              pNext;
+    VkBool32           shaderBufferFloat32Atomics;
+    VkBool32           shaderBufferFloat32AtomicAdd;
+    VkBool32           shaderBufferFloat64Atomics;
+    VkBool32           shaderBufferFloat64AtomicAdd;
+    VkBool32           shaderSharedFloat32Atomics;
+    VkBool32           shaderSharedFloat32AtomicAdd;
+    VkBool32           shaderSharedFloat64Atomics;
+    VkBool32           shaderSharedFloat64AtomicAdd;
+    VkBool32           shaderImageFloat32Atomics;
+    VkBool32           shaderImageFloat32AtomicAdd;
+    VkBool32           sparseImageFloat32Atomics;
+    VkBool32           sparseImageFloat32AtomicAdd;
+} VkPhysicalDeviceShaderAtomicFloatFeaturesEXT;
+</code></pre>
+<h2 id="41-limits">41. Limits</h2>
+<p><em>Limits</em> are implementation-dependent minimums, maximums, and other device characteristics that an application <strong>may</strong> need to be aware of.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>NoteLimits are reported via the basic <a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#VkPhysicalDeviceLimits">VkPhysicalDeviceLimits</a> structure, as well as the extensible structure <code>VkPhysicalDeviceProperties2</code>, which was added in <code>VK_KHR_get_physical_device_properties2</code> and included in Vulkan 1.1. When limits are added in future Vulkan versions or extensions, each extension <strong>should</strong> introduce one new limit structure, if needed. This structure <strong>can</strong> be added to the <code>pNext</code> chain of the <code>VkPhysicalDeviceProperties2</code> structure.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The <code>VkPhysicalDeviceLimits</code> structure is defined as:</p>
+<pre><code>// Provided by VK_VERSION_1_0
+typedef struct VkPhysicalDeviceLimits {
+    uint32_t              maxImageDimension1D;
+    uint32_t              maxImageDimension2D;
+    uint32_t              maxImageDimension3D;
+    uint32_t              maxImageDimensionCube;
+    uint32_t              maxImageArrayLayers;
+    uint32_t              maxTexelBufferElements;
+    uint32_t              maxUniformBufferRange;
+    uint32_t              maxStorageBufferRange;
+    uint32_t              maxPushConstantsSize;
+    uint32_t              maxMemoryAllocationCount;
+    uint32_t              maxSamplerAllocationCount;
+    VkDeviceSize          bufferImageGranularity;
+    VkDeviceSize          sparseAddressSpaceSize;
+    ... // 约 100+ 个值
+} VkPhysicalDeviceLimits;
+</code></pre>
+<p>specs 文档对每个值都有介绍</p>
+<p>The <code>VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT</code> structure is defined as:</p>
+<pre><code>// Provided by VK_EXT_vertex_attribute_divisor
+typedef struct VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT {
+    VkStructureType    sType;
+    void*              pNext;
+    uint32_t           maxVertexAttribDivisor;
+} VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT;
+</code></pre>
+<h2 id="42-formats">42. Formats</h2>
+<p>Supported buffer and image formats <strong>may</strong> vary across implementations. A minimum set of format features are guaranteed, but others <strong>must</strong> be explicitly queried before use to ensure they are supported by the implementation.</p>
+<p>The features for the set of formats (<a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#VkFormat">VkFormat</a>) supported by the implementation are queried individually using the <a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#vkGetPhysicalDeviceFormatProperties">vkGetPhysicalDeviceFormatProperties</a> command.</p>
+<h3 id="421-format-definition">42.1. Format Definition</h3>
+<p>The following image formats <strong>can</strong> be passed to, and <strong>may</strong> be returned from Vulkan commands. The memory required to store each format is discussed with that format, and also summarized in the <a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#texel-block-size">Representation and Texel Block Size</a> section and the <a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#formats-compatibility">Compatible formats</a> table.</p>
+<pre><code>// Provided by VK_VERSION_1_0
+typedef enum VkFormat {
+    VK_FORMAT_UNDEFINED = 0,
+    VK_FORMAT_R4G4_UNORM_PACK8 = 1,
+    VK_FORMAT_R4G4B4A4_UNORM_PACK16 = 2,
+    VK_FORMAT_B4G4R4A4_UNORM_PACK16 = 3,
+    VK_FORMAT_R5G6B5_UNORM_PACK16 = 4,
+    VK_FORMAT_B5G6R5_UNORM_PACK16 = 5,
+    VK_FORMAT_R5G5B5A1_UNORM_PACK16 = 6,
+    VK_FORMAT_B5G5R5A1_UNORM_PACK16 = 7,
+    VK_FORMAT_A1R5G5B5_UNORM_PACK16 = 8,
+    ... // 约 300+, 其中
+</code></pre>
+<h2 id="43-additional-capabilities">43. Additional Capabilities</h2>
+<p>This chapter describes additional capabilities beyond the minimum capabilities described in the (<a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#limits">Limits</a> and <a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#formats">Formats</a> chapters, including:</p>
+<ul>
+<li><a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#capabilities-image">Additional Image Capabilities</a></li>
+<li><a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#capabilities-buffer">Additional Buffer Capabilities</a></li>
+<li><a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#capabilities-semaphore">Optional Semaphore Capabilities</a></li>
+<li><a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#capabilities-fence">Optional Fence Capabilities</a></li>
+<li><a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#features-timestamp-calibration">Timestamp Calibration Capabilities</a></li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

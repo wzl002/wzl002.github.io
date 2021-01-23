@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>OpenGL(ES) - Wesley的轨迹</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Wesley的轨迹</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">首页</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">OpenGL(ES)</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Vulkan <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Vulkan/0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/" class="dropdown-item">0.1. Vulkan 扩展</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../.." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../../Vulkan/0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#gles-framebuffers" class="nav-link">GLES Framebuffers</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#_1" class="nav-link">定义</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_3" class="nav-link">相关定义</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_4" class="nav-link">使用流程</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_5" class="nav-link">创建帧缓冲</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_6" class="nav-link">纹理附着</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#renderbuffer" class="nav-link">Renderbuffer 附着</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#texture-vs-renderbuffer" class="nav-link">Texture VS. Renderbuffer</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_7" class="nav-link">示例: 场景滤镜</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#msaa" class="nav-link">离屏MSAA</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#framebuffer-api" class="nav-link">Framebuffer 相关 API 汇总</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#gl2" class="nav-link">gl2</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#gl3" class="nav-link">gl3</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#gl31" class="nav-link">gl31</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#gl32" class="nav-link">gl32</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#ext" class="nav-link">EXT</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#glexth" class="nav-link">glext.h</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#gl2ext" class="nav-link">gl2Ext</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#gl2ext_angle" class="nav-link">gl2Ext_ANGLE</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#summary" class="nav-link">Summary</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#bind-points" class="nav-link">Bind points</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#colorspace" class="nav-link">Colorspace:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#read" class="nav-link">Read</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#draw" class="nav-link">Draw</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#framebuffer" class="nav-link">Framebuffer</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#bind-points_1" class="nav-link">Bind points</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#colorspace_1" class="nav-link">Colorspace</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#read-color-buffer" class="nav-link">Read color buffer</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#draw-color-buffers" class="nav-link">Draw color buffers</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#buffer-clearing" class="nav-link">Buffer clearing</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#buffer-reading" class="nav-link">Buffer reading</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#invalidation" class="nav-link">Invalidation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#blitting" class="nav-link">Blitting</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="gles-framebuffers">GLES Framebuffers</h1>
+<p><a href="https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/05%20Framebuffers/">learnopengl</a></p>
+<p>更多用例: </p>
+<p><a href="https://learnopengl-cn.readthedocs.io/zh/latest/05%20Advanced%20Lighting/07%20Bloom/">泛光</a></p>
+<p><a href="https://cloud.tencent.com/developer/article/1713617">多渲染目标(Multiple Render Targets)</a>与 <a href="https://learnopengl-cn.readthedocs.io/zh/latest/05%20Advanced%20Lighting/08%20Deferred%20Shading/"><strong>延迟着色法</strong></a></p>
+<h2 id="_1">定义</h2>
+<p>通常我们的操作都是在 默认<strong>帧缓冲</strong> (Default Framebuffer ) 的渲染缓冲上进行的。默认的帧缓冲是在你创建窗口的时候生成和配置的（EGL）。</p>
+<p>在GL中会使用几种不同类型的屏幕缓冲：用于写入颜色值的<strong>颜色缓冲</strong>，用于写入深度信息的<strong>深度缓冲</strong>，以及允许我们基于一些条件丢弃指定片段的<strong>模板缓冲</strong>。把这几种缓冲结合起来叫做帧缓冲(Framebuffer)。</p>
+<p>而使用 <strong>帧缓冲对象</strong> (Framebuffer Object) 允许用户<strong>自定义帧缓冲</strong>，Framebuffer 实际是一个可添加<strong>缓冲的容器</strong>.</p>
+<p>用户可以为其添加<strong>纹理</strong> (Textures ) 或 <strong>渲染缓冲区</strong> 对象（Renderbuffer), 来定义自己的颜色缓冲，深度缓冲, 和模板缓冲。</p>
+<h3 id="_2">应用</h3>
+<p>渲染到一个非默认的帧缓冲被叫做<strong>离屏渲染</strong>(Off-screen Rendering) 或 <strong>渲染到纹理</strong> (Render to Texture)。</p>
+<p>通过自定义帧缓冲可以将你的场景渲染到一个不同的帧缓冲中, 可以使我们能够在当前场景中创建<strong>镜子, 倒影</strong>这样的效果. 还有很多常见特效需要用到帧缓冲, </p>
+<ul>
+<li>例如: 阴影贴图, 动态反射和环境贴图, 多道景深技术, 动态模糊, 和后期处理特效等.</li>
+</ul>
+<h2 id="_3">相关定义</h2>
+<ul>
+<li><strong>默认帧缓冲</strong> Default Framebuffers</li>
+<li>在进行GLES指令操作前, 需要创建一个 Context 和 绘图表面 (默认 Framebuffer), 这通常由原生窗口系统通过 EGL 等完成.  </li>
+<li>创建 EGL 绘制表面的调用时, 以像素形式指定 宽度,高度, 是否使用  颜色缓冲, 深度缓冲, 模板缓冲, 及这些缓冲区的位深. </li>
+<li>不能对其进行修改或查询状态操作</li>
+<li><code>glViewport</code> 控制帧缓冲的大小, 以及控制阴影深度贴图大小等等</li>
+<li><strong>帧缓冲对象</strong> Framebuffers Objects (FBOs)</li>
+<li><strong>附着</strong> Attachment  <ul>
+<li>FBO 仅被视为缓存的容器, 因此使用 FBO 作为渲染目标时，首先需要为 FBO 的附着连接对象，</li>
+<li>附着是一个内存位置，它能够作为帧缓冲的一个缓冲，可以将它想象为一个图像。</li>
+<li>创建一个附件方式有两种：<strong>纹理</strong>或<strong>渲染缓冲</strong>对象(Renderbuffer)。</li>
+<li>帧缓冲的3个附着</li>
+<li><strong>颜色附着</strong>  Color Attachment </li>
+<li><strong>深度附着</strong>  Depth Attachment </li>
+<li><strong>模板附着</strong>  Stencil Attachment </li>
+</ul>
+</li>
+<li><strong>纹理附件</strong> Textures </li>
+<li>即普通的 Texture, 根据 Format的不同, 可以分别用作 FBO 中的颜色、深度或者模板附着。</li>
+<li><strong>渲染缓冲对象</strong> Renderbuffer Objects </li>
+<li>是一个由应用程序分配的 2D 图像缓冲区。</li>
+<li>渲染缓冲区可以用于分配和存储 颜色、深度或者模板值，可以用作 FBO 中的颜色、深度或者模板附着。</li>
+</ul>
+<p>使用 纹理 和 Renderbuffer 对象, 都支持为 FBO 分别添加三种附着. 但通常使用 Texture 添加颜色附着, 用 Renderbuffer 来添加深度和模板附着. 原因在后面讨论. </p>
+<p><img alt="image-20210104102525032" src="../img/FBOs-1.png" /></p>
+<p>(OpenGL ES 3.0 编程指南)</p>
+<h2 id="_4">使用流程</h2>
+<p>APP --&gt; GLES : glGenFramebuffers(1, &amp;fbo);</p>
+<p>glBindFramebuffer(GL_FRAMEBUFFER, fbo);</p>
+<p>glBindFramebuffer(GL_FRAMEBUFFER, 0);</p>
+<h2 id="_5">创建帧缓冲</h2>
+<ul>
+<li>创建一个帧缓冲对象</li>
+</ul>
+<pre><code class="language-C++">glGenFramebuffers(1, &amp;fbo);
+</code></pre>
+<ul>
+<li>绑定为激活的(Active)帧缓冲</li>
+</ul>
+<pre><code class="language-C++">glBindFramebuffer(GL_FRAMEBUFFER, fbo);
+</code></pre>
+<p>在绑定到GL_FRAMEBUFFER目标之后，所有的<strong>读取</strong>和<strong>写入</strong>帧缓冲的操作将会影响当前绑定的帧缓冲。</p>
+<ul>
+<li>我们也可以使用<code>GL_READ_FRAMEBUFFER</code>或<code>GL_DRAW_FRAMEBUFFER</code>，将一个帧缓冲分别绑定到读取目标或写入目标。</li>
+<li>绑定到<code>GL_READ_FRAMEBUFFER</code>的帧缓冲将会使用在所有像是<code>glReadPixels</code>的读取操作中，</li>
+<li>绑定到<code>GL_DRAW_FRAMEBUFFER</code>的帧缓冲将会被用作渲染、清除等写入操作的目标。</li>
+<li>通常都<strong>不需要区分</strong>它们，使用<code>GL_FRAMEBUFFER</code>，绑定到两个上。</li>
+</ul>
+<p>&nbsp;</p>
+<pre><code>添加附着: 在这一阶段, 使用Texture或Renderbuffer对FBO添加附着, 代码在下两节种展示.
+</code></pre>
+<ul>
+<li>添加附着后, 检查帧缓冲的完整性</li>
+</ul>
+<pre><code class="language-C++">if( glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE)
+</code></pre>
+<p>一个完整的帧缓冲需要满足以下的条件：</p>
+<ul>
+<li>附加至少一个附着（颜色、深度或模板附着）。</li>
+<li>至少有一个颜色附件(Attachment)。TODO: check angle</li>
+<li>所有的附件都必须是完整的（保留了内存）。</li>
+<li>每个缓冲都应该有相同的高度和宽度。</li>
+<li>如果存在深度和模板附着, 它们必须是相同的图像. </li>
+<li>所有附着的 GL_RENDERBUFFER_SAMPLES 样本值相同.  若附着对象是纹理, 则此值为0. </li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>解绑FBO / 激活默认帧缓冲</li>
+</ul>
+<pre><code class="language-C++">glBindFramebuffer(GL_FRAMEBUFFER, 0);
+</code></pre>
+<p>渲染到一个不同的帧缓冲被叫做<strong>离屏渲染</strong>(Off-screen Rendering)。要保证所有的渲染操作在主窗口中有视觉效果，我们需要再次激活默认帧缓冲，将它绑定到<code>0</code>。</p>
+<h2 id="_6">纹理附着</h2>
+<ul>
+<li>普通的创建纹理的方式</li>
+</ul>
+<pre><code class="language-c++">unsigned int texture;
+glGenTextures(1, &amp;texture);
+glBindTexture(GL_TEXTURE_2D, texture);
+glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 800, 600, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+</code></pre>
+<p>如果你想将你的屏幕渲染到一个更小或更大的纹理上，你需要（在渲染到你的帧缓冲之前）再次调用glViewport，使用纹理的新维度作为参数，否则只有一小部分的纹理或屏幕会被渲染到这个纹理上。</p>
+<p>TODO: 什么意思?</p>
+<p>&nbsp;</p>
+<ul>
+<li>将纹理附加在帧缓冲上</li>
+</ul>
+<pre><code class="language-C++">glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texture, 0);
+</code></pre>
+<ul>
+<li><code>target</code>：帧缓冲的目标（绘制、读取或者两者皆有）</li>
+<li><code>attachment</code>：我们想要附加的附件类型。当前我们正在附加一个<strong>颜色附件</strong>。注意最后的<code>0</code>意味着可以附加多个颜色附件。</li>
+<li><code>GL_COLOR_ATTACHMENT</code><em>i</em>, <code>GL_DEPTH_ATTACHMENT</code>, <code>GL_STENCIL_ATTACHMENT</code> or <code>GL_DEPTH_STENCIL_ATTACHMENT</code>.</li>
+<li><code>textarget</code>：你希望附加的纹理类型</li>
+<li><code>texture</code>：要附加的纹理本身</li>
+<li><code>level</code>：多级渐远纹理的级别。我们将它保留为0</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>
+<p>纹理对象允许附加一个深度或模板缓冲纹理到帧缓冲对象中。</p>
+</li>
+<li>
+<p>要附加深度缓冲的话，将附件类型<code>attachment</code>设置为<code>GL_DEPTH_ATTACHMENT</code>。并将纹理的格式(Format)和内部格式(Internalformat)类型变为<code>GL_DEPTH_COMPONENT</code>，来反映深度缓冲的储存格式。</p>
+</li>
+<li>
+<p>要附加模板缓冲的话，将附件类型<code>attachment</code>设置为<code>GL_STENCIL_ATTACHMENT</code>，并将纹理的格式设定为<code>GL_STENCIL_INDEX</code>。</p>
+</li>
+<li>
+<p>也可以将深度缓冲和模板缓冲合并附加为一个纹理。纹理的每32位数值将包含24位的深度信息和8位的模板信息。将附件类型<code>attachment</code>设置<code>GL_DEPTH_STENCIL_ATTACHMENT</code>类型，并配置纹理的格式，让它包含合并的深度和模板值。</p>
+</li>
+<li>
+<p>```
+    glTexImage2D(
+      GL_TEXTURE_2D, 0, GL_DEPTH24_STENCIL8, 800, 600, 0, 
+      GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8, NULL
+    );</p>
+<p>glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, texture, 0);
+```</p>
+</li>
+</ul>
+<p>&nbsp;</p>
+<h2 id="renderbuffer">Renderbuffer 附着</h2>
+<ul>
+<li>创建一个渲染缓冲对象的代码</li>
+</ul>
+<pre><code>glGenRenderbuffers(1, &amp;rbo);
+</code></pre>
+<ul>
+<li>绑定这个渲染缓冲对象，让之后所有的渲染缓冲操作影响当前的 RBO：</li>
+</ul>
+<pre><code>glBindRenderbuffer(GL_RENDERBUFFER, rbo);
+</code></pre>
+<ul>
+<li>创建一个深度和模板渲染缓冲对象</li>
+</ul>
+<pre><code>glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, 800, 600);
+</code></pre>
+<p>创建一个渲染缓冲对象和纹理对象类似，不同的是这个对象是专门被设计作为图像使用的，而不是纹理那样的通用数据缓冲(General Purpose Data Buffer)。</p>
+<p>这里我们选择<code>GL_DEPTH24_STENCIL8</code>作为内部格式，它封装了24位的深度和8位的模板缓冲。</p>
+<ul>
+<li>附加这个渲染缓冲对象到 FBO：</li>
+</ul>
+<pre><code>glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo);
+</code></pre>
+<p>使用<code>GL_DEPTH_STENCIL_ATTACHMENT</code>表示同时包含深度和模板附着</p>
+<p>&nbsp;</p>
+<h2 id="texture-vs-renderbuffer">Texture VS. Renderbuffer</h2>
+<p>渲染缓冲对象(Renderbuffer Object) 是在纹理之后引入到OpenGL中，作为一个可用的帧缓冲附件类型的，所以在过去纹理是唯一可用的附件。</p>
+<p><strong>Renderbuffer</strong>: </p>
+<ul>
+<li>
+<p>和纹理图像一样，渲染缓冲对象是一个真正的缓冲，即一系列的字节、整数、像素等。</p>
+</li>
+<li>
+<p>优点: Renderbuffer 会将数据储存为OpenGL原生的渲染格式，它是为离屏渲染到帧缓冲优化过的。</p>
+</li>
+<li>
+<p>Renderbuffer 直接将所有的渲染数据储存到它的缓冲中，不会做任何针对纹理格式的转换，让它变为一个更快的可写储存介质。</p>
+</li>
+<li>
+<p>缺点: Renderbuffer 不能做纹理: 渲染缓冲对象通常都是<strong>只写</strong>的，所以你不能读取它们, 比如使用纹理访问。</p>
+</li>
+<li>当然你仍然还是能够使用<code>glReadPixels</code>来读取它，这会从当前绑定的帧缓冲(而不是附件本身)中返回特定区域的像素。</li>
+</ul>
+<p>&nbsp;</p>
+<p>因此通常的规则是:</p>
+<ul>
+<li>
+<p>如果你<strong>不需要从一个缓冲中采样</strong>数据，那么对这个缓冲使用<strong>渲染缓冲</strong>对象会是明智的选择。</p>
+</li>
+<li>
+<p>而如果你<strong>需要从缓冲中采样颜色或深度</strong>值等数据，那么你应该选择<strong>纹理</strong>附件。性能方面它不会产生非常大的影响的。</p>
+</li>
+</ul>
+<p>因此 Renderbuffer 对象通常用于<strong>深度和模板</strong>附件，因为大部分时间我们都不需要从深度和模板缓冲中读取值，只关心深度和模板测试, 但不需要对它们进行采样. </p>
+<p>&nbsp;</p>
+<p>对应到场景中:</p>
+<ul>
+<li>选择 Texture</li>
+<li>渲染到一个用作颜色纹理的颜色缓冲区</li>
+<li>渲染到一个用作阴影的深度纹理的深度缓冲区</li>
+<li>选择 Renderbuffer</li>
+<li>多重采样</li>
+<li>如果图像不被作为纹理,  则 Renderbuffer 可能带来性能优势:<ul>
+<li>GLES 可能以更高效的格式存储 Renderbuffer, 比纹理更适合渲染</li>
+<li>例如: 利用其写入或者复制到其它缓冲快的特点。<strong>交换缓冲</strong>这样的操作在使用渲染缓冲对象时会非常快。</li>
+<li>在每个渲染迭代最后使用的<code>glfwSwapBuffers</code>，也可以通过渲染缓冲对象实现：只需要写入一个渲染缓冲图像，并在最后交换到另外一个渲染缓冲就可以了。</li>
+</ul>
+</li>
+</ul>
+<h2 id="_7">示例: 场景滤镜</h2>
+<h3 id="_8">创建阶段</h3>
+<pre><code class="language-c++">// 创建一个帧缓冲对象，并绑定
+unsigned int framebuffer;
+glGenFramebuffers(1, &amp;framebuffer);
+glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
+
+// 使用 Texture 添加颜色附着
+// 生成纹理
+unsigned int texColorBuffer;
+glGenTextures(1, &amp;texColorBuffer);
+glBindTexture(GL_TEXTURE_2D, texColorBuffer);
+glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 800, 600, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+glBindTexture(GL_TEXTURE_2D, 0);
+
+// 将纹理对象, 附加到当前绑定的帧缓冲对象颜色(color)附件上
+glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texColorBuffer, 0);  
+
+// 使用 Renderbuffer 添加深度和模板附着
+// 深度（和模板）测试
+// 添加一个深度（和模板）附件到帧缓冲中
+unsigned int rbo;
+glGenRenderbuffers(1, &amp;rbo);
+glBindRenderbuffer(GL_RENDERBUFFER, rbo); 
+glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, 800, 600);  // GL_DEPTH24_STENCIL8
+glBindRenderbuffer(GL_RENDERBUFFER, 0);
+
+// 将渲染缓冲对象, 附加到到当前绑定的帧缓冲的 depth 和 stencil 附件上
+glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo);
+
+// 检查帧缓冲是否是完整的
+if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+    std::cout &lt;&lt; &quot;ERROR::FRAMEBUFFER:: Framebuffer is not complete!&quot; &lt;&lt; std::endl;
+
+// 解绑帧缓冲/绑定回默认
+glBindFramebuffer(GL_FRAMEBUFFER, 0);
+</code></pre>
+<p>&nbsp;</p>
+<h3 id="_9">绘制阶段</h3>
+<p>要想绘制场景到一个纹理上，我们需要采取以下的步骤：</p>
+<ol>
+<li>将新的帧缓冲绑定为激活的帧缓冲</li>
+<li>和往常一样渲染场景</li>
+<li>此时场景会渲染到绑定的帧缓冲, 而不是默认的帧缓冲。</li>
+<li>所有的深度和模板操作都会从当前绑定的帧缓冲的深度和模板附件中（如果有的话）读取。</li>
+<li>绑定回默认的帧缓冲</li>
+<li>绘制一个整屏幕的四边形，然后将帧缓冲的颜色缓冲作为四边形的纹理。</li>
+</ol>
+<pre><code class="language-c++">// 第一处理阶段: 绘制到FBO
+glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
+glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // 我们现在不使用模板缓冲
+glEnable(GL_DEPTH_TEST);
+DrawScene();    // 绘制原始 3D 场景 // Load VAO, bind Textures, uniform data, call glDrawArrays or glDrawElements
+
+// 第二处理阶段: 绘制到屏幕
+glBindFramebuffer(GL_FRAMEBUFFER, 0); // 返回默认
+glClearColor(1.0f, 1.0f, 1.0f, 1.0f); 
+glClear(GL_COLOR_BUFFER_BIT);
+
+screenShader.use();  // 使用另一套 shader
+glBindVertexArray(quadVAO); // 绘制一个四边形
+glDisable(GL_DEPTH_TEST);
+glBindTexture(GL_TEXTURE_2D, textureColorbuffer); // 将 Color Buffer 作为纹理绘制到四边形上
+glDrawArrays(GL_TRIANGLES, 0, 6);  
+</code></pre>
+<p>如果<code>screenShader</code>不做特殊处理, 此时画面会和<code>DrawScene</code>绘制的原始3D场景一致. 此时绘制的四边形类似一个显示屏幕, 利用贴图显示原始场景. </p>
+<p>&nbsp;</p>
+<p>但如果对 <code>screenShader</code> 中纹理的color进行修改, 就可用实现滤镜效果.</p>
+<pre><code class="language-c++">void main()
+{
+    // 反白特效
+    FragColor = vec4(vec3(1.0 - texture(screenTexture, TexCoords)), 1.0);
+}
+</code></pre>
+<p>画面效果和更多特效处理, 参见 <a href="https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/05%20Framebuffers/#_6">LearnOpenGL</a></p>
+<p>(English version: <a href="https://learnopengl.com/Advanced-OpenGL/Framebuffers">LearnOpenGL</a>)</p>
+<p>&nbsp;</p>
+<h2 id="msaa">离屏MSAA</h2>
+<p><a href="https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/11%20Anti%20Aliasing/#msaa">离屏MSAA</a></p>
+<p>在默认帧缓冲中启用MASS, 只需要<code>glEnable(GL_MULTISAMPLE);</code>启用即可. 但对于离屏渲染, 需要手动创建多重采样的附着. </p>
+<p><strong>Texture:</strong></p>
+<ul>
+<li>创建MS Texture: 使用<code>glTexImage2DMultisample</code>来替代<code>glTexImage2D</code></li>
+</ul>
+<pre><code>glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, tex);
+glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, samples, GL_RGB, width, height, GL_TRUE);
+glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, 0);
+</code></pre>
+<ul>
+<li>附加到帧缓冲: 使用<code>glFramebufferTexture2D</code>将多重采样纹理上，但这里纹理类型使用的是<code>GL_TEXTURE_2D_MULTISAMPLE</code>。</li>
+</ul>
+<pre><code>glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D_MULTISAMPLE, tex, 0);
+</code></pre>
+<p><strong>Renderbuffer</strong>:</p>
+<ul>
+<li>创建过程不变</li>
+<li>附加到帧缓冲: 将<code>glRenderbufferStorage</code>的调用改为<code>glRenderbufferStorageMultisample</code>就可以了</li>
+</ul>
+<pre><code>glRenderbufferStorageMultisample(GL_RENDERBUFFER, 4, GL_DEPTH24_STENCIL8, width, height);
+</code></pre>
+<p>第二参数<code>4</code>为采样次数</p>
+<p><strong>绘制:</strong></p>
+<pre><code>void glBlitFramebuffer (GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+</code></pre>
+<ul>
+<li>将一个矩形区域的像素值, 从一个帧缓冲复制到另一个帧缓冲.</li>
+</ul>
+<p>通过<code>glBlitFramebuffer</code>将多重采样的帧缓冲, 复制到一个中介帧缓冲的颜色附着的纹理, 实现多重采样.</p>
+<pre><code class="language-c++">    glBindFramebuffer(multisampledFBO);
+    ClearFrameBuffer();
+    DrawScene();
+    // 将多重采样缓冲还原到中介FBO上
+    glBindFramebuffer(GL_READ_FRAMEBUFFER, multisampledFBO);
+    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, intermediateFBO);
+    glBlitFramebuffer(0, 0, width, height, 0, 0, width, height, GL_COLOR_BUFFER_BIT, GL_NEAREST);
+    // 现在场景是一个2D纹理缓冲，可以将这个图像用来后期处理
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    ClearFramebuffer();
+    glBindTexture(GL_TEXTURE_2D, screenTexture);
+    DrawPostProcessingQuad();  
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="framebuffer-api">Framebuffer 相关 API 汇总</h2>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>ES Ver.</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>void <strong>glGenFramebuffers</strong>( sizei n, uint *framebuffers );</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>void <strong>glBindFramebuffer</strong>( enum target, uint framebuffer );</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>void <strong>glGenRenderbuffers</strong>( sizei n, uint *renderbuffers );</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>void <strong>glBindRenderbuffer</strong>( enum target, uint renderbuffer );</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>void <strong>glRenderbufferStorage</strong> <br />(GLenum target, <br />GLenum internalformat, <br />GLsizei width, GLsizei height);</td>
+<td>2</td>
+<td>创建一个 Renderbuffer<br /><strong>internalformat</strong>: 指定缓冲格式: depth 和 stencil <br />GL_DEPTH24_STENCIL8;<br/>GL_DEPTH32F_STENCIL8<br />GL_DEPTH_COMPONENT16<br />GL_DEPTH_COMPONENT24<br />GL_DEPTH_COMPONENT32F<br />GL_STENCIL_INDEX8</td>
+</tr>
+<tr>
+<td>void <strong>glRenderbufferStorageMultisample</strong> (<br />GLenum target, <br />GLsizei samples, GLenum internalformat, <br />GLsizei width, GLsizei height);</td>
+<td>3.0</td>
+<td>创建一个多重采样 Renderbuffer, <br />与glRenderbufferStorage的区别仅为后者samples=0</td>
+</tr>
+<tr>
+<td>GLenum <strong>glCheckFramebufferStatus</strong> (GLenum target);</td>
+<td></td>
+<td>检查fbo完整性</td>
+</tr>
+<tr>
+<td>void <strong>glBlitFramebuffer</strong> (GLint srcX0, <br />GLint srcY0, GLint srcX1, GLint srcY1, <br />GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, <br />GLbitfield mask, GLenum filter);</td>
+<td></td>
+<td>将一个矩形区域的像素值, 从一个fb复制到另一个fb. <br />应用举例: 1. 复制多个纹理到屏幕<br />2. 将多重采样渲染解析为一个纹理</td>
+</tr>
+<tr>
+<td><strong>绑定</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>void <strong>glFramebufferRenderbuffer</strong> (<br />GLenum target, GLenum attachment, <br />GLenum renderbuffertarget, GLuint renderbuffer);</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>void <strong>glFramebufferTexture</strong> (<br />GLenum target, <br />GLenum attachment, GLuint texture, <br />GLint level);</td>
+<td>3.2</td>
+<td></td>
+</tr>
+<tr>
+<td>void <strong>glFramebufferTexture2D</strong>( <br />enum target, <br />enum attachment, <br />enum textarget, uint texture, int level );</td>
+<td>2.0</td>
+<td></td>
+</tr>
+<tr>
+<td>void <strong>glFramebufferTextureLayer</strong>( <br />enum target, <br />enum attachment, <br />uint texture, int level, int layer );</td>
+<td>3.0</td>
+<td>绑定 3D Texture</td>
+</tr>
+<tr>
+<td><strong>无效化/删除</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>void <strong>glInvalidateFramebuffer</strong> (GLenum target, <br />GLsizei numAttachments, <br />const GLenum *attachments);</td>
+<td>3.0</td>
+<td>通知驱动不再需要fb内容. 使驱动可用进行优化:<br />如跳过TBR架构中不必要的图块内容恢复<br />跳过实现中为改进性能而做的缓存刷新</td>
+</tr>
+<tr>
+<td>void <strong>glInvalidateSubFramebuffer</strong> (GLenum target, <br />GLsizei numAttachments, <br />const GLenum *attachments, <br />GLint x, GLint y, GLsizei width, GLsizei height);</td>
+<td>3.0</td>
+<td></td>
+</tr>
+<tr>
+<td>void <strong>glDeleteRenderbuffers</strong> (GLsizei n, <br />const GLuint *renderbuffers);</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>void <strong>glDeleteFramebuffers</strong> (GLsizei n, <br />const GLuint *framebuffers);</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>其他</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>void <strong>glFramebufferParameteri</strong> (GLenum target, <br />GLenum pname, GLint param);<br/>void <strong>glGetFramebufferParameteriv</strong> (GLenum target, <br />GLenum pname, GLint *params);</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>boolean <strong>IsRenderbuffer</strong>( uint renderbuffer );</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>boolean <strong>IsFramebuffer</strong>( uint framebuffer );</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>其他针对读帧缓冲的命令: ReadPixels, CopyTexImage<em>, and CopyTexSubImage</em>,</p>
+<h2 id="gl2">gl2</h2>
+<p>void glBindFramebuffer (GLenum target, GLuint framebuffer);
+GLenum glCheckFramebufferStatus (GLenum target);
+void glDeleteFramebuffers (GLsizei n, const GLuint <em>framebuffers);
+void glFramebufferRenderbuffer (GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
+void glFramebufferTexture2D (GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
+void glGenFramebuffers (GLsizei n, GLuint </em>framebuffers);
+void glGetFramebufferAttachmentParameteriv (GLenum target, GLenum attachment, GLenum pname, GLint *params);
+GLboolean glIsFramebuffer (GLuint framebuffer);</p>
+<p>void glBindRenderbuffer (GLenum target, GLuint renderbuffer);
+void glDeleteRenderbuffers (GLsizei n, const GLuint <em>renderbuffers);
+void glFramebufferRenderbuffer (GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
+void glGenRenderbuffers (GLsizei n, GLuint </em>renderbuffers);
+void glGetRenderbufferParameteriv (GLenum target, GLenum pname, GLint *params);
+GLboolean glIsRenderbuffer (GLuint renderbuffer);
+void glRenderbufferStorage (GLenum target, GLenum internalformat, GLsizei width, GLsizei height);</p>
+<h2 id="gl3">gl3</h2>
+<p>void glBlitFramebuffer (GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+void glFramebufferTextureLayer (GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer);
+void glInvalidateFramebuffer (GLenum target, GLsizei numAttachments, const GLenum <em>attachments);
+void glInvalidateSubFramebuffer (GLenum target, GLsizei numAttachments, const GLenum </em>attachments, GLint x, GLint y, GLsizei width, GLsizei height);</p>
+<p>void glRenderbufferStorageMultisample (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);</p>
+<h2 id="gl31">gl31</h2>
+<p>void glFramebufferParameteri (GLenum target, GLenum pname, GLint param);
+void glGetFramebufferParameteriv (GLenum target, GLenum pname, GLint *params);</p>
+<h2 id="gl32">gl32</h2>
+<p>void glFramebufferTexture (GLenum target, GLenum attachment, GLuint texture, GLint level);</p>
+<h2 id="ext">EXT</h2>
+<h2 id="glexth">glext.h</h2>
+<p>void glResolveMultisampleFramebufferAPPLE (void);
+void glDiscardFramebufferEXT (GLenum target, GLsizei numAttachments, const GLenum <em>attachments);
+void glFramebufferTexture2DMultisampleEXT (GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLsizei samples);
+void glFramebufferTexture2DMultisampleIMG (GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLsizei samples);
+void glExtGetFramebuffersQCOM (GLuint </em>framebuffers, GLint maxFramebuffers, GLint *numFramebuffers);</p>
+<h3 id="renderbuffer_1">Renderbuffer</h3>
+<p>void glEGLImageTargetRenderbufferStorageOES (GLenum target, GLeglImageOES image);
+void glRenderbufferStorageMultisampleAPPLE (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+void glRenderbufferStorageMultisampleEXT (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+void glRenderbufferStorageMultisampleIMG (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+void glExtGetRenderbuffersQCOM (GLuint <em>renderbuffers, GLint maxRenderbuffers, GLint </em>numRenderbuffers);</p>
+<h2 id="gl2ext">gl2Ext</h2>
+<p>void glFramebufferTextureOES (GLenum target, GLenum attachment, GLuint texture, GLint level);
+void glFramebufferTexture3DOES (GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset);</p>
+<p>void glResolveMultisampleFramebufferAPPLE (void);
+void glDiscardFramebufferEXT (GLenum target, GLsizei numAttachments, const GLenum <em>attachments);
+void glFramebufferTextureEXT (GLenum target, GLenum attachment, GLuint texture, GLint level);
+void glFramebufferTexture2DMultisampleEXT (GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLsizei samples);
+void glFramebufferFetchBarrierEXT (void);
+void glFramebufferPixelLocalStorageSizeEXT (GLuint target, GLsizei size);
+GLsizei glGetFramebufferPixelLocalStorageSizeEXT (GLuint target);
+void glFramebufferTexture2DDownsampleIMG (GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint xscale, GLint yscale);
+void glFramebufferTextureLayerDownsampleIMG (GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer, GLint xscale, GLint yscale);
+void glFramebufferTexture2DMultisampleIMG (GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLsizei samples);
+void glApplyFramebufferAttachmentCMAAINTEL (void);
+void glFramebufferParameteriMESA (GLenum target, GLenum pname, GLint param);
+void glGetFramebufferParameterivMESA (GLenum target, GLenum pname, GLint </em>params);
+void glBlitFramebufferNV (GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+void glFramebufferSampleLocationsfvNV (GLenum target, GLuint start, GLsizei count, const GLfloat <em>v);
+void glNamedFramebufferSampleLocationsfvNV (GLuint framebuffer, GLuint start, GLsizei count, const GLfloat </em>v);
+void glFramebufferTextureMultiviewOVR (GLenum target, GLenum attachment, GLuint texture, GLint level, GLint baseViewIndex, GLsizei numViews);
+void glFramebufferTextureMultisampleMultiviewOVR (GLenum target, GLenum attachment, GLuint texture, GLint level, GLsizei samples, GLint baseViewIndex, GLsizei numViews);
+void glFramebufferFoveationConfigQCOM (GLuint framebuffer, GLuint numLayers, GLuint focalPointsPerLayer, GLuint requestedFeatures, GLuint *providedFeatures);
+void glFramebufferFoveationParametersQCOM (GLuint framebuffer, GLuint layer, GLuint focalPoint, GLfloat focalX, GLfloat focalY, GLfloat gainX, GLfloat gainY, GLfloat foveaArea);
+void glFramebufferFetchBarrierQCOM (void);</p>
+<h3 id="renderbuffer_2">Renderbuffer</h3>
+<p>void glEGLImageTargetRenderbufferStorageOES (GLenum target, GLeglImageOES image);
+void glRenderbufferStorageMultisampleAdvancedAMD (GLenum target, GLsizei samples, GLsizei storageSamples, GLenum internalformat, GLsizei width, GLsizei height);
+void glNamedRenderbufferStorageMultisampleAdvancedAMD (GLuint renderbuffer, GLsizei samples, GLsizei storageSamples, GLenum internalformat, GLsizei width, GLsizei height);
+void glRenderbufferStorageMultisampleANGLE (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+void glRenderbufferStorageMultisampleAPPLE (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+void glRenderbufferStorageMultisampleEXT (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+void glRenderbufferStorageMultisampleIMG (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+void glRenderbufferStorageMultisampleNV (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+void glExtGetRenderbuffersQCOM (GLuint <em>renderbuffers, GLint maxRenderbuffers, GLint </em>numRenderbuffers);
+gl2ext_angle.h
+void glGetRenderbufferParameterivRobustANGLE (GLenum target, GLenum pname, GLsizei bufSize, GLsizei <em>length, GLint </em>params);
+void glGetRenderbufferImageANGLE (GLenum target, GLenum format, GLenum type, void *pixels);</p>
+<h2 id="gl2ext_angle">gl2Ext_ANGLE</h2>
+<p>void glGetFramebufferAttachmentParameterivRobustANGLE (GLenum target, GLenum attachment, GLenum pname, GLsizei bufSize, GLsizei <em>length, GLint </em>params);
+void glGetFramebufferParameterivRobustANGLE (GLenum target, GLenum pname, GLsizei bufSize, GLsizei <em>length, GLint </em>params);</p>
+<h1 id="summary">Summary</h1>
+<ul>
+<li>Framebuffer 分默认 fb 和 用户定义 fb, 后者被称为 Framebuffer Objects (FBOs)</li>
+<li>OpenGL 会在 Context中创建 Default Framebuffer<ul>
+<li>用来表示一个 窗口 或 显示设备.</li>
+<li>不能修改其 attachments</li>
+</ul>
+</li>
+<li>FBOs 关联 Textures 或 Renderbuffers, 不会直接可见<ul>
+<li>FBOs中缓存(Buffers)又称作 "attachment points"</li>
+</ul>
+</li>
+</ul>
+<h2 id="bind-points">Bind points</h2>
+<pre><code class="language-c++">void glBindFramebuffer(GL_FRAMEBUFFER, mFramebuffer)
+</code></pre>
+<ul>
+<li>bind framebuffers to the context</li>
+<li>两种类型: <code>GL_DRAW_FRAMEBUFFER</code> 和 <code>GL_READ_FRAMEBUFFER</code>,  而 <code>GL_FRAMEBUFFER</code> 表示二者都有.</li>
+</ul>
+<h2 id="colorspace">Colorspace:</h2>
+<ul>
+<li>
+<p>两种: linear RGB 和 sRGB</p>
+</li>
+<li>
+<p>启用 / 禁用 <code>GL_FRAMEBUFFER_SRGB</code>  来控制是否进行转换</p>
+</li>
+</ul>
+<p>### Blending</p>
+<p>blending 作用于目标图像的 sRGB colorspace, 因此若 <code>GL_FRAMEBUFFER_SRGB</code>  未启用, 无法正常工作.</p>
+<h2 id="read">Read</h2>
+<p>void <a href="https://www.khronos.org/opengl/wiki/GLAPI/glReadBuffer">glReadBuffer</a>(GLenum <em>mode</em>);</p>
+<h2 id="draw">Draw</h2>
+<pre><code class="language-c++">void glDrawBuffersEXT(attachmentCount, drawBuffers[GL_COLOR_ATTACHMENT0_EXT, ...]); 
+</code></pre>
+<ul>
+<li><em>attachmentCount</em> can only be as large as GL_MAX_DRAW_BUFFERS  ( Windows ANGLE上约为 34852)</li>
+<li>Draw 操作会对 fb 设置一种 state, 因此可用只 draw 一次.</li>
+</ul>
+<h1 id="framebuffer">Framebuffer</h1>
+<p><a href="https://www.khronos.org/opengl/wiki/Framebuffer#mw-head">Jump to navigation</a><a href="https://www.khronos.org/opengl/wiki/Framebuffer#searchInput">Jump to search</a></p>
+<p>A <strong>Framebuffer</strong> is a collection of buffers that can be used as the destination for rendering. OpenGL has two kinds of framebuffers: the <a href="https://www.khronos.org/opengl/wiki/Default_Framebuffer">Default Framebuffer</a>, which is provided by the <a href="https://www.khronos.org/opengl/wiki/OpenGL_Context">OpenGL Context</a>; and user-created framebuffers called <a href="https://www.khronos.org/opengl/wiki/Framebuffer_Object">Framebuffer Objects</a> (FBOs). The buffers for default framebuffers are part of the context and usually represent a window or display device. The buffers for FBOs reference images from either <a href="https://www.khronos.org/opengl/wiki/Texture">Textures</a> or <a href="https://www.khronos.org/opengl/wiki/Renderbuffer">Renderbuffers</a>; they are never directly visible.</p>
+<p>Note that the term "buffer" here refers to a specific location in the framebuffer. An image may <em>or may not</em> be associated with a particular buffer in a framebuffer. Buffers in FBOs are also called "attachment points"; they're the locations where images can be attached.</p>
+<p>Default framebuffers cannot change their buffer attachments, but a particular default framebuffer may not have images associated with certain buffers. For example the GL_BACK_RIGHT buffer will only have an image if the default framebuffer is double-buffered and uses stereoscopic 3D.</p>
+<p>The <a href="https://www.khronos.org/opengl/wiki/Default_Framebuffer#Color_buffers">default framebuffer's buffer names</a> are separate from <a href="https://www.khronos.org/opengl/wiki/Framebuffer_Object_Structure">framebuffer object buffer names</a>.</p>
+<h2 id="bind-points_1">Bind points</h2>
+<p><a href="https://www.khronos.org/opengl/wiki/GLAPI/glBindFramebuffer">glBindFramebuffer</a> is used to bind framebuffers to the context. They can be bound to one of two targets: GL_DRAW_FRAMEBUFFER and GL_READ_FRAMEBUFFER. The draw framebuffer is used as the destination for rendering, <a href="https://www.khronos.org/opengl/wiki/Framebuffer#Clearing">clearing</a>, and other writing operations. The read framebuffer is used as the source for reading operations.</p>
+<p>Binding to the GL_FRAMEBUFFER target is equivalent to binding that framebuffer to <em>both</em> GL_DRAW_FRAMEBUFFER and GL_READ_FRAMEBUFFER. Note that most other uses of GL_FRAMEBUFFER mean the draw framebuffer; this is the case when it means both.</p>
+<h2 id="colorspace_1">Colorspace</h2>
+<p>Color <a href="https://www.khronos.org/opengl/wiki/Image_Format">Image Formats</a> can be in a linear or <a href="https://www.khronos.org/opengl/wiki/SRGB_Image_Format">sRGB colorspace</a>. Normally, sRGB images perform color correction, such that texture reads from them will always convert them to linear RGB. However, when writing values from a <a href="https://www.khronos.org/opengl/wiki/Fragment_Shader">Fragment Shader</a> to the image, a question arises: in what colorspace are the values written by the shader?</p>
+<p>When the output buffer is linear RGB, the answer is assumed to be linear. But if we are writing to an sRGB image, it is entirely reasonable for a shader to want to write linear values which will be automatically converted to sRGB for storage. However, at other times, it is entirely reasonable for a shader to want to write sRGB values directly, and therefore want to store the written provided <em>without</em> any conversion.</p>
+<p>The fragment shader is not given the power to control this, as the controls for it depend partially on state external to the fragment shader (namely, the colorspace of the image buffer being written to). Instead, this is made a global state value.</p>
+<p>When GL_FRAMEBUFFER_SRGB is <a href="https://www.khronos.org/opengl/wiki/GLAPI/glEnable">disabled</a>, the system assumes that the color written by the fragment shader is in whatever colorspace the image it is being written to is. Therefore, no colorspace correction is performed.</p>
+<p>If GL_FRAMEBUFFER_SRGB is enabled however, then if the destination image is in the sRGB colorspace (as queried through <a href="https://www.khronos.org/opengl/wiki/GLAPI/glGetFramebufferAttachmentParameter">glGetFramebufferAttachmentParameter(GL_FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING)</a>), then it will assume the shader's output is in the linear RGB colorspace. It will therefore convert the output from linear RGB to sRGB.</p>
+<p>Note that <a href="https://www.khronos.org/opengl/wiki/Logical_Operation">Logical Operations</a> are disabled for any sRGB buffer when GL_FRAMEBUFFER_SRGB is enabled.</p>
+<h3 id="blending">Blending</h3>
+<p><a href="https://www.khronos.org/opengl/wiki/Blending">Blending</a> interacts with sRGB colorspace in destination images. The sRGB colorspace is non-linear, and thus linearly interpolating between non-linear colorspaces generally leads to colors that are not accurate. The correct operation is to linearize the destination color, do the blending in linear RGB space, and then convert back to sRGB.</p>
+<p>If GL_FRAMEBUFFER_SRGB is <em>enabled</em>, then the appropriate correction will be done for sRGB destination images. That is, if a particular destination image is sRGB, the destination value will be converted to linear RGB, blended with the linear source value via the current blend functions, and the result will be converted back to sRGB for writing to the destination image.</p>
+<p>If GL_FRAMEBUFFER_SRGB is not enabled, then it is assumed that the user knows what they are doing. Therefore, blending against an sRGB image when GL_FRAMEBUFFER_SRGB is not enabled will not perform any of the above correction. This is generally not a good idea, even if you are writing sRGB color values from the <a href="https://www.khronos.org/opengl/wiki/Fragment_Shader">Fragment Shader</a>.</p>
+<h2 id="read-color-buffer">Read color buffer</h2>
+<p>Certain OpenGL operations can read pixel data from the color buffer. These operations are:</p>
+<ul>
+<li><a href="https://www.khronos.org/opengl/wiki/Framebuffer#Buffer_reading">Direct pixel reads</a>.</li>
+<li><a href="https://www.khronos.org/opengl/wiki/Framebuffer#Blitting">Framebuffer blits</a>.</li>
+<li><a href="https://www.khronos.org/opengl/wiki/Copy_Texture">Copies from the framebuffer to textures</a>, which could also be during <a href="https://www.khronos.org/opengl/wiki/Copy_Texture_Creation">mutable storage specification</a>.</li>
+</ul>
+<p>All of these operations read from the framebuffer bound to GL_READ_FRAMEBUFFER. However, because framebuffers often have multiple color images that could be read from, there is a selector in the framebuffer object that defines which color buffer these operations read from.</p>
+<p>The framebuffer's read buffer is specified by:</p>
+<p>void <a href="https://www.khronos.org/opengl/wiki/GLAPI/glReadBuffer">glReadBuffer</a>(GLenum <em>mode</em>);</p>
+<p><strong>Warning:</strong> This sets the read buffer for the framebuffer currently bound to GL_READ_FRAMEBUFFER. So make sure that the framebuffer you want is bound to that buffer.</p>
+<p>The read buffer is part of the framebuffer's state, so each framebuffer will remember its previously set read buffer.</p>
+<p>If the GL_READ_FRAMEBUFFER is the default framebuffer, then <em>mode</em> must be the name of a <a href="https://www.khronos.org/opengl/wiki/Default_Framebuffer#Color_buffers">color buffer name</a>. It may be <a href="https://www.khronos.org/opengl/wiki/Default_Framebuffer#Multiple_buffer_aliases">one of the multiple buffer aliases</a>, which degrades as specified. If the read framebuffer is an FBO, then <em>mode</em> must be GL_COLOR_ATTACHMENT<em>i</em>, for one of the legal values of <em>i</em>.</p>
+<p><em>mode</em> may also be GL_NONE, which indicates that no reading can be performed from color buffers on this framebuffer. Any attempt to perform read operations will fail with <a href="https://www.khronos.org/opengl/wiki/OpenGL_Error">an error</a> (GL_INVALID_OPERATION).</p>
+<h2 id="draw-color-buffers">Draw color buffers</h2>
+<p>Much as with the read buffer, framebuffers have a set of draw buffers where writing operations write to. Unlike the read buffer, there are multiple draw buffers, which allow writing operations to write values to different buffers in the framebuffer at the same time. <a href="https://www.khronos.org/opengl/wiki/Fragment_Shader_Output_Buffer">Fragment shader color outputs</a> allow a fragment shader to define fragment color outputs, for example.</p>
+<p>The framebuffer therefore has a table of draw buffers, which are indexed on the half-open range [0, GL_MAX_DRAW_BUFFERS). The framebuffer's table maps from these indices to named color buffers in the framebuffer. To set this mapping table (on the framebuffer bound to GL_DRAW_FRAMEBUFFER), use this function:</p>
+<pre><code>  void glDrawBuffers( GLsizei n, const GLenum *bufs );
+</code></pre>
+<p>This function sets the first <em>n</em> entries of the mapping table. The indices of the enumerators correspond to the output fragment colors from the fragment shader. Thus, <em>n</em> can only be as large as GL_MAX_DRAW_BUFFERS. The entries in the <em>bufs</em> array are enumerators referring to buffer names in the framebuffer. All entries after <em>n</em> are set to GL_NONE.</p>
+<p>The values in <em>bufs</em> must name specific color buffers in the framebuffer. For the default framebuffer, buffer names cannot be the <a href="https://www.khronos.org/opengl/wiki/Default_Framebuffer#Multiple_buffer_aliases">one of the multiple buffer aliases</a>; you must use GL_BACK_LEFT rather than GL_BACK. <a href="https://www.khronos.org/opengl/wiki/Framebuffer_Objects">Framebuffer Objects</a> use GL_COLOR_ATTACHMENT<em>i</em> buffer names. An entry in the list can be GL_NONE, which means that the output (if the shader outputs a value for it at all) is discarded.</p>
+<p>If you are only setting up one draw buffer, you may use <a href="https://www.khronos.org/opengl/wiki/GLAPI/glDrawBuffer">glDrawBuffer</a>. It takes one enumeration value and sets the fragment color 0 to draw to that buffer. All other draw buffer indices are set to GL_NONE. For the default framebuffer, the <a href="https://www.khronos.org/opengl/wiki/Default_Framebuffer#Multiple_buffer_aliases">multiple buffer aliases</a> can be used (though it is not advised to do so). They will cause drawing operations to write to all of the specified buffers.</p>
+<p>The state set by <a href="https://www.khronos.org/opengl/wiki/GLAPI/glDrawBuffers">glDrawBuffers</a> is part of the state of the framebuffer. So you can generally set this up once and leave it set.</p>
+<h2 id="buffer-clearing">Buffer clearing</h2>
+<p>Images in a framebuffer may be cleared to a particular value. Clearing is affected by the following state:</p>
+<ul>
+<li>The <a href="https://www.khronos.org/opengl/wiki/Write_Mask">Write Mask</a>. Only unmasked components will be changed by a clear call.</li>
+<li>The <a href="https://www.khronos.org/opengl/wiki/Pixel_Ownership_Test">Pixel Ownership Test</a>, which matters only for the <a href="https://www.khronos.org/opengl/wiki/Default_Framebuffer">Default Framebuffer</a>. Pixels that are not owned will have undefined values.</li>
+<li>The <a href="https://www.khronos.org/opengl/wiki/Scissor_Test">Scissor Test</a>. If the scissor test is enabled, then the clear region is bounded by the scissor rectangle.</li>
+<li>The <a href="https://www.khronos.org/opengl/wiki/Rasterizer_Discard">Rasterizer Discard</a> state. If discarding is enabled, all clearing commands are ignored.</li>
+</ul>
+<p>Framebuffer image clearing commands are <a href="https://www.khronos.org/opengl/wiki/Rendering_Command">Rendering Commands</a>. Therefore, they are affected by <a href="https://www.khronos.org/opengl/wiki/Conditional_Rendering">Conditional Rendering</a>.</p>
+<p>Clearing can be done in one of two ways. The old way can clear multiple buffers in a single call:</p>
+<p>void <a href="https://www.khronos.org/opengl/wiki/GLAPI/glClear">glClear</a>(GLbitfield <em>mask</em>);</p>
+<p>This will clear the current GL_DRAW_FRAMEBUFFER. The <em>mask</em> field is a bitmask that defines which kinds of buffers to clear. It can be a combination of GL_COLOR_BUFFER_BIT, GL_DEPTH_BUFFER_BIT, GL_STENCIL_BUFFER_BIT. When GL_COLOR_BUFFER_BIT is cleared, all of the active <a href="https://www.khronos.org/opengl/wiki/Framebuffer#Draw_color_buffers">draw buffers</a> are cleared.</p>
+<p>The values that the given buffers are cleared to are set beforehand via OpenGL state functions:</p>
+<p>void <a href="https://www.khronos.org/opengl/wiki/GLAPI/glClearColor">glClearColor</a>(GLfloat <em>red</em>, GLfloat <em>green</em>, GLfloat <em>blue</em>, GLfloat <em>alpha</em>);</p>
+<p>void <a href="https://www.khronos.org/opengl/wiki/GLAPI/glClearDepth">glClearDepth</a>(GLdouble <em>depth</em>);</p>
+<p>void <a href="https://www.khronos.org/opengl/wiki/GLAPI/glClearStencil">glClearStencil</a>(GLint <em>s</em>);</p>
+<p>These functions set the values that will be used to clear the appropriate buffers. Note that you must call these <em>before</em> calling <a href="https://www.khronos.org/opengl/wiki/GLAPI/glClear">glClear</a>. <em>depth</em> will be clamped to the range [0, 1]. <em>s</em>, the stencil index, will be clamped to the valid integer range for the stencil buffer's image format.</p>
+<p>Note that <a href="https://www.khronos.org/opengl/wiki/GLAPI/glClearColor">glClearColor</a> takes floating-point values. Yet it is perfectly legal to use integer <a href="https://www.khronos.org/opengl/wiki/Image_Format">Image Formats</a> for images in framebuffers. Attempting to clear integer buffers with floating-point data will not work.</p>
+<p>Instead, you must clear each buffer individually with this suite of functions:</p>
+<p>void <a href="https://www.khronos.org/opengl/wiki/GLAPI/glClearBuffer">glClearBufferiv</a>(GLenum <em>buffer</em>, GLint <em>drawBuffer</em>, const GLint * <em>value</em>);</p>
+<p>void <a href="https://www.khronos.org/opengl/wiki/GLAPI/glClearBuffer">glClearBufferuiv</a>(GLenum <em>buffer</em>, GLint <em>drawBuffer</em>, const GLuint * <em>value</em>);</p>
+<p>void <a href="https://www.khronos.org/opengl/wiki/GLAPI/glClearBuffer">glClearBufferfv</a>(GLenum <em>buffer</em>, GLint <em>drawBuffer</em>, const GLfloat * <em>value</em>);</p>
+<p>void <a href="https://www.khronos.org/opengl/wiki/GLAPI/glClearBuffer">glClearBufferfi</a>(GLenum <em>buffer</em>, GLint <em>drawBuffer</em>, GLfloat <em>depth</em>, GLint <em>stencil</em>);</p>
+<p>This will clear a buffer in the current GL_DRAW_FRAMEBUFFER. <em>buffer</em> is either GL_COLOR, GL_DEPTH, GL_DEPTH_STENCIL, or GL_STENCIL.</p>
+<p>When clearing the GL_DEPTH buffer, you must use <a href="https://www.khronos.org/opengl/wiki/GLAPI/glClearBuffer">glClearBufferfv</a>, and the depth value (a single float) will be clamped to [0, 1]. When using GL_STENCIL, you must use <a href="https://www.khronos.org/opengl/wiki/GLAPI/glClearBuffer">glClearBufferiv</a>, and the stencil value (a single integer) will be clamped to the range of the stencil image format's precision. When using GL_DEPTH_STENCIL, you must use <a href="https://www.khronos.org/opengl/wiki/GLAPI/glClearBuffer">glClearBufferfi</a>, and <em>depth</em> and <em>stencil</em> will each be clamped as appropriate for their value.</p>
+<p>The <em>drawbuffer</em> specifies the draw buffer index for the buffer to clear. This is only relevant if the <em>buffer</em> is GL_COLOR; in all other cases it must be 0. Note that this is the <em>draw buffer index</em>, not one of the GL_COLOR_ATTACHMENT<em>i</em> values. So 0 represents whatever the first buffer named by <a href="https://www.khronos.org/opengl/wiki/GLAPI/glDrawBuffers">glDrawBuffers</a> is.</p>
+<p><strong>Note:</strong> Confusingly, <em>buffer</em> may also be <a href="https://www.khronos.org/opengl/wiki/Default_Framebuffer#Multiple_buffer_aliases">one of the default framebuffer's multiple buffer aliases</a>. In this case, <em>drawbuffer</em> specifies an additional draw buffer to clear, and all of the buffers will be cleared. You should probably avoid using them.</p>
+<p><strong>Warning:</strong> Buffer clearing, of <em>all forms</em>, will respect the current state of the <a href="https://www.khronos.org/opengl/wiki/Scissor_Test">Scissor Test</a>. If you wish to clear the entire buffer, you must make sure the scissor test is disabled.</p>
+<h2 id="buffer-reading">Buffer reading</h2>
+<p>Pixel data can be read from a framebuffer and stored into CPU memory (or a <a href="https://www.khronos.org/opengl/wiki/Pixel_Buffer_Object">buffer object</a>). The framebuffer being read from is the framebuffer bound to GL_READ_FRAMEBUFFER; remember that binding to GL_FRAMEBUFFER binds to both the read and the draw.</p>
+<p>To begin reading pixels, use this command:</p>
+<p>void <a href="https://www.khronos.org/opengl/wiki/GLAPI/glReadPixels">glReadPixels</a>(GLint <em>x</em>, GLint <em>y</em>, GLsizei <em>width</em>, GLsizei <em>height</em>, GLenum <em>format</em>, GLenum <em>type</em>, GLvoid * <em>data</em>)</p>
+<p>This performs a <a href="https://www.khronos.org/opengl/wiki/Pixel_Transfer">Pixel Transfer</a> read operation; as such, the destination <em>data</em> can be an offset into a <a href="https://www.khronos.org/opengl/wiki/Pixel_Buffer_Object">Pixel Buffer Object</a> if you so desire.</p>
+<p>Framebuffers have many buffers to read from. Which buffer is read from depends in part on the <em>format</em> parameter. If <em>format</em> is GL_DEPTH_COMPONENT, then the depth buffer is read from. If it is GL_STENCIL_INDEX, then the stencil buffer is read from. If it is GL_DEPTH_STENCIL then both the depth and stencil buffers are read from.</p>
+<p>If <em>format</em> is a color format, then the current <a href="https://www.khronos.org/opengl/wiki/Framebuffer#Read_color_buffer">read color buffer</a> is used. If the current read buffer is GL_NONE, then a GL_INVALID_OPERATION error will occur.</p>
+<h3 id="read-color-clamping">Read color clamping</h3>
+<p>The color values read via <a href="https://www.khronos.org/opengl/wiki/GLAPI/glReadPixels">glReadPixels</a> may be clamped to the [0, 1] range. This is controlled via this function:</p>
+<p>void <a href="https://www.khronos.org/opengl/wiki/GLAPI/glClampColor">glClampColor</a>(GLenum <em>target</em>, GLenum <em>clamp</em>);</p>
+<p>The <em>target</em> must be GL_CLAMP_READ_COLOR. The <em>clamp</em> can be set to one of the following:</p>
+<ul>
+<li>GL_TRUE: Clamping is always on, no matter what the <em>format</em> or <em>type</em> parameters of the read pixels call.</li>
+<li>GL_FALSE: Clamping is always off, no matter what the <em>format</em> or <em>type</em> parameters of the read pixels call.</li>
+<li>GL_FIXED_ONLY: Clamping is only on if the type of the image being read is a normalized signed or unsigned value.</li>
+</ul>
+<p>Note that the clamping behavior is <em>not</em> framebuffer object state. It will not be stored with the current framebuffer.</p>
+<h2 id="invalidation">Invalidation</h2>
+<p>The contents of a framebuffer can be invalidated. This means that the application is no longer interested in whatever pixel data happens to be stored in any images in that part of the framebuffer. Invalidation is useful, as it allows the implementation to allocate new memory if asynchronous commands are working with the previously invalidated framebuffer images. In particular, invalidation after <a href="https://www.khronos.org/opengl/wiki/Pixel_Buffer_Object">asynchronous pixel reads</a> are quite useful.</p>
+<p>To invalidate the framebuffer as a whole, the following function is used:</p>
+<p><a href="https://www.khronos.org/opengl/wiki/GLAPI/glInvalidateFramebuffer">glInvalidateFramebuffer</a>(GLenum <em>target</em>, GLsizei <em>numAttachments</em>, const GLenum * <em>attachments</em>)</p>
+<p>The framebuffer bound to <em>target</em> will be invalidated. The specific images in the framebuffer to be invalidated are specified by the array <em>attachments</em>, which must have <em>numAttachments</em> entries in it. The entries in the array must be names of specific images in the framebuffer. For user-created Framebuffer Objects, these must be <a href="https://www.khronos.org/opengl/wiki/Framebuffer_Object_Structure">the names of one of the available attachment points.</a></p>
+<p>For the default framebuffer, the names can be <a href="https://www.khronos.org/opengl/wiki/Default_Framebuffer">one of the images in the default framebuffer</a>; none of the color buffer's aliases work here. The default framebuffer can also use the names <em>GL_COLOR</em> (which means <em>GL_BACK_LEFT</em> if double-buffered and <em>GL_FRONT_LEFT</em> if single-bufferred.</p>
+<p>Instead of invalidating whole sets of images in the framebuffer, a portion of the framebuffer can be invalidated instead:</p>
+<p><a href="https://www.khronos.org/opengl/wiki/GLAPI/glInvalidateSubFramebuffer">glInvalidateSubFramebuffer</a>(GLenum <em>target</em>, GLsizei <em>numAttachments</em>, const GLenum * <em>attachments</em>, GLint <em>x</em>, GLint <em>y</em>, GLint <em>width</em>, GLint <em>height</em>)</p>
+<p>The <em>x</em>, <em>y</em>, <em>width</em>, and <em>height</em> parameters specify a rectangular region of the specified images to invalidate.</p>
+<p>After invalidation, the contents of pixels stored in those areas are undefined. You can <a href="https://www.khronos.org/opengl/wiki/Framebuffer#Buffer_clearing">clear them to a set value</a> after invalidation.</p>
+<h2 id="blitting">Blitting</h2>
+<p>Framebuffers can be bound to two separate targets with <a href="https://www.khronos.org/opengl/wiki/GLAPI/glBindFramebuffer">glBindFramebuffer</a>: GL_DRAW_FRAMEBUFFER and GL_READ_FRAMEBUFFER. Binding to GL_FRAMEBUFFER is equivalent to binding the framebuffer to both.</p>
+<p>The reason for the separation of these targets is to allow data in one framebuffer to be blitted to another framebuffer.</p>
+<p>A blit operation is a special form of copy operation; it copies a rectangular area of pixels from one framebuffer to another. This function also has some very specific properties with regard to <a href="https://www.khronos.org/opengl/wiki/Multisampling">multisampling</a>.</p>
+<p>Framebuffer blitting commands are considered <a href="https://www.khronos.org/opengl/wiki/Rendering_Command">Rendering Commands</a>. Therefore, they are affected by <a href="https://www.khronos.org/opengl/wiki/Conditional_Rendering">Conditional Rendering</a>. However, they do not invoke most parts of the <a href="https://www.khronos.org/opengl/wiki/Rendering_Pipeline">Rendering Pipeline</a>. Blits are affected by the <a href="https://www.khronos.org/opengl/wiki/Scissor_Test">Scissor Test</a> (they always use viewport index 0) as well as the <a href="https://www.khronos.org/opengl/wiki/Pixel_Ownership_Test">Pixel Ownership Test</a>, but are not affected by the <a href="https://www.khronos.org/opengl/wiki/Write_Mask">Write Mask</a>, <a href="https://www.khronos.org/opengl/wiki/Depth_Test">Depth Test</a> or any other parts of the rendering pipeline.</p>
+<p>You bind the source framebuffer to GL_READ_FRAMEBUFFER, then bind the destination framebuffer to GL_DRAW_FRAMEBUFFER. The read framebuffer is the source of the blit, and the draw framebuffer is the destination. The read and draw framebuffers can be the same.</p>
+<p>After binding the framebuffers, you call this function:</p>
+<pre><code>void glBlitFramebuffer(
+     GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1,
+     GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1,
+     GLbitfield mask, GLenum filter);
+</code></pre>
+<p>The pixels in the rectangular area specified by the <em>src</em> values are copied to the rectangular area specified by the <em>dst</em> values. The <em>mask</em> parameter is a bitfield that specifies which kinds of buffers you want copied: GL_COLOR_BUFFER_BIT, GL_DEPTH_BUFFER_BIT, GL_STENCIL_BUFFER_BIT, or some combination. The <em>filter</em> parameter specifies how you want filtering performed if the two rectangles are not the same size.</p>
+<p>One thing to keep in mind is this: when using GL_COLOR_BUFFER_BIT, the only colors read will come from the <a href="https://www.khronos.org/opengl/wiki/Framebuffer#Read_color_buffer">read color buffer</a> in the read FBO, specified by <a href="https://www.khronos.org/opengl/wiki/GLAPI/glReadBuffer">glReadBuffer</a>. The colors written will only go to the <a href="https://www.khronos.org/opengl/wiki/Framebuffer#Draw_color_buffers">draw color buffers</a> in the write FBO, specified by <a href="https://www.khronos.org/opengl/wiki/GLAPI/glDrawBuffers">glDrawBuffers</a>. If multiple draw buffers are specified, then multiple color buffers are updated with the same data.</p>
+<p>The depth and stencil buffers of the source framebuffers are blitted to the depth and stencil buffers of the destination if the <em>mask</em> specifies them.</p>
+<p>Note that it is perfectly valid to blit from or to the <a href="https://www.khronos.org/opengl/wiki/Default_Framebuffer">Default Framebuffer</a>.</p>
+<p>If one (or both) of the framebuffers is a <a href="https://www.khronos.org/opengl/wiki/Layered_Framebuffer">layered framebuffer</a> (blitting fails if the framebuffers are incomplete. So they will be either all layered or all not layered), then blitting happens rather oddly. Only layer 0 will be read and only layer 0 will be <em>written</em>. This is true <em>even if</em> both the read and draw FBOs are layered and have the same number of layers. If you want to blit other layers, you will have to bind those layers to some other FBO and blit from/to that new FBO.</p>
+<h3 id="format-considerations">Format Considerations</h3>
+<p>Blitting is not the same as performing a <a href="https://www.khronos.org/opengl/wiki/Pixel_Transfer">pixel transfer</a> or a <a href="https://www.khronos.org/opengl/wiki/Copy_Texture">texture copy</a>. The conversion between source and destination format is more limited. Blitting depth and stencil buffers works as expected: values are converted from one bitdepth to the other as needed. Conversion between color formats is different.</p>
+<p>A blit operation can only convert between formats within 3 groups. Signed integral and unsigned integral formats make up two groups, with all normalized and floating-point formats making up the third. Thus, it is legal to blit from an GL_RGB8 buffer to a GL_RGB32F and vice versa. But it is not legal to blit a GL_RGB8 from or to a GL_RGBI8 format image.</p>
+<p>The data during blitting is converted according to simple rules. Blitting from a floating-point format to a normalized integer format will cause clamping, either to [0, 1] for unsigned normalized or [-1, 1] for signed normalized.</p>
+<h3 id="multisampling-considerations">Multisampling Considerations</h3>
+<p>Multisampling is supported with the <a href="https://www.khronos.org/opengl/wiki/Default_Framebuffer">Default Framebuffer</a> (through WGL/GLX_multisample) and/or <a href="https://www.khronos.org/opengl/wiki/Framebuffer_Object">Framebuffer Objects</a> (through multisampled <a href="https://www.khronos.org/opengl/wiki/Renderbuffer_Objects">renderbuffers</a> or <a href="https://www.khronos.org/opengl/wiki/Multisample_Textures">textures</a>, where supported).</p>
+<p>As explained in the article on <a href="https://www.khronos.org/opengl/wiki/Multisampling">Multisampling</a>, a multisampled buffer must be resolved into a single sample before it can be displayed. When the default framebuffer uses multisampling, this resolving operation is automatic, occurring during framebuffer swapping (though reading from the framebuffer can cause it to happen anyway).</p>
+<p>Each framebuffer has a specific number of samples; for <a href="https://www.khronos.org/opengl/wiki/Framebuffer_Object">Framebuffer Objects</a>, they cannot be framebuffer-complete if all of the attached images do not have the same number of samples. A sample count of zero represents a framebuffer that is not multisampled.</p>
+<p>If you perform a blit operation and and at least one of the framebuffers is multisampled, then the source and destination sizes must be the same. That is, you cannot do multisampled blits <em>and</em> rescaling at the same time.</p>
+<p>If you blit between two framebuffers with the same number of samples, the copy is done directly; the destination buffer gets the same information the source had.</p>
+<p>It is an error to blit between framebuffers with different numbers of samples, <em>unless</em> one of the framebuffers has zero samples.</p>
+<p>Blitting from a non-multisampled framebuffer to a multisampled framebuffer causes all of samples in a pixel of the draw framebuffer to get the same value from the corresponding pixel in the read framebuffer.</p>
+<p>Blitting from a multisampled framebuffer to a non-multisampled framebuffer performs a multisample resolve operation, computing the value of a draw framebuffer's pixel from all of the samples in the corresponding pixel of the read framebuffer. This explicit resolve operation is very useful when wanting to display multisampled buffers.</p>
+<p>As with all multisample behavior, none of this works at all unless <a href="https://www.khronos.org/opengl/wiki/GLAPI/glEnable">glEnable(GL_MULTISAMPLE)</a> is in effect (which is the default).</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
