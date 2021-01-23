@@ -34,7 +34,7 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href="../../index.md" class="nav-link">首页</a>
+                                <a href="../.." class="nav-link">首页</a>
                             </li>
                             <li class="navitem active">
                                 <a href="./" class="nav-link">OpenGL(ES)</a>
@@ -57,7 +57,7 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" class="nav-link disabled">
+                                <a rel="prev" href="../.." class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
@@ -227,7 +227,7 @@
 <p><a href="https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/05%20Framebuffers/">learnopengl</a></p>
 <p>更多用例: </p>
 <p><a href="https://learnopengl-cn.readthedocs.io/zh/latest/05%20Advanced%20Lighting/07%20Bloom/">泛光</a></p>
-<p><a href="https://cloud.tencent.com/developer/article/1713617">多渲染目标(Multiple Render Targets)</a>与 <a href="https://learnopengl-cn.readthedocs.io/zh/latest/05%20Advanced%20Lighting/08%20Deferred%20Shading/"><strong>延迟着色法</strong></a></p>
+<p><a href="https://cloud.tencent.com/developer/article/1713617">多渲染目标(Multiple Render Targets)</a> 与 <a href="https://learnopengl-cn.readthedocs.io/zh/latest/05%20Advanced%20Lighting/08%20Deferred%20Shading/"><strong>延迟着色法</strong></a></p>
 <h2 id="_1">定义</h2>
 <p>通常我们的操作都是在 默认<strong>帧缓冲</strong> (Default Framebuffer ) 的渲染缓冲上进行的。默认的帧缓冲是在你创建窗口的时候生成和配置的（EGL）。</p>
 <p>在GL中会使用几种不同类型的屏幕缓冲：用于写入颜色值的<strong>颜色缓冲</strong>，用于写入深度信息的<strong>深度缓冲</strong>，以及允许我们基于一些条件丢弃指定片段的<strong>模板缓冲</strong>。把这几种缓冲结合起来叫做帧缓冲(Framebuffer)。</p>
