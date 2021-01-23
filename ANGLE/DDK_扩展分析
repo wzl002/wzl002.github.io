@@ -1,0 +1,134 @@
+mali_gles_draw_internal_lx.c
+
+static INLINE mali_bool gles_drawp_convert_index_type(gles_context *ctx, const GLenum type,
+    gles_draw_index_type *output)
+{
+    CDBG_CHECK_POINTER(ctx);
+    CDBG_CHECK_POINTER(output);
+
+    switch (type) {
+        case GL_UNSIGNED_BYTE:
+            *output = GLES_DRAW_INDEX_TYPE_U8;
+            break;
+        case GL_UNSIGNED_SHORT:
+            *output = GLES_DRAW_INDEX_TYPE_U16;
+            break;
+        case GL_UNSIGNED_INT:
+            *output = GLES_DRAW_INDEX_TYPE_U32;
+
+
+​            
+
+            if (gles2_state_is_primitive_restart_enabled(ctx)) {
+        *output |= GLES_DRAW_INDEX_TYPE_RESTART_BIT;
+    }
+    
+        GLES_DRAW_INDEX_TYPE_NONE = (u32)GPU_VERTEX_INDEX_ARRAY_NONE,
+    
+    GLES_DRAW_INDEX_TYPE_U8 = (u32)GPU_VERTEX_INDEX_ARRAY_U8,
+
+#if OSU_CONFIG_CPU_LITTLE_ENDIAN
+    GLES_DRAW_INDEX_TYPE_U16 = (u32)GPU_VERTEX_INDEX_ARRAY_U16_LE,
+    GLES_DRAW_INDEX_TYPE_U32 = (u32)GPU_VERTEX_INDEX_ARRAY_U32_LE,
+    
+    
+    
+
+    gles_vertexp_prepare_client_indices
+    switch (index_type) {
+        case GLES_DRAW_INDEX_TYPE_U8:
+        case GLES_DRAW_INDEX_TYPE_U8_RESTART:
+            size = index_count * sizeof(u8);
+            break;
+
+
+​            
+​            
+
+mali_vulkan_command_buffer.cpp
+
+vkCmdBindIndexBuffer
+
+CommandBuffer : BindIndexBuffer(buff, offset, indexType);
+
+```
+switch (index_type) {
+    case VK_INDEX_TYPE_UINT8_EXT:
+        index_size = sizeof(u8);
+        break;
+    case VK_INDEX_TYPE_UINT16:
+        index_size = sizeof(u16);
+        break;
+    case VK_INDEX_TYPE_UINT32:
+        index_size = sizeof(u32);
+        break;
+    default:
+        CDBG_CHECK_MSG(MALI_FALSE, "invalid index type");
+}
+```
+
+至此 index_type 结束, 后面使用 index_size 
+
+
+
+
+
+
+
+
+
+
+
+-----
+
+Bresenham
+
+
+
+**结论:** 无需扩展. 保持现有的对参数 aalineEnable  设值逻辑, 注意 GLES 和 Vulkan 的参数设值的区别.
+
+##### RSD.aalineEnable  
+
+aaline: anti aliasing line drawing algorithm  抗锯齿线算法. 有别于针对单Sample的 Bresenham line算法, 较慢但效果更好的算法.
+
+在各自的 Specification中, OpenGLES  表示基础的线段算法为 Bresenham line算法,  多重采样时再修改算法.
+
+而 Vulkan 表示基础算法为四边形线段算法, 而针对 非 antialiased 且非 strict 的线段, 建议 Bresenham line 算法. Vulkan中对所有算法的具体实现都只是建议(may), 并提出EXT可以自行选择算法.
+
+
+
+DDK: 
+
+> This bit field is mainly used to distinguish aaline, as Vulkan line rule is different than OES. This field is ignored for `POINT` and `TRIANGLE` [primitive](#RSD_primitiveType).
+
+```
+The default value of this field is `0`.
+```
+
+When [primitive](#RSD_primitiveType) is `LINE`, 
+
+1. OpenGLES: 
+   1. If [msaaMode](#RSD_msaaMode) is `4X`, or `LINE_SMOOTH` is enabled by app author, [RSD.aalineEnable](#RSD_aalineEnable) shall be configured as `1`. 
+   2. Otherwise, it’s `0`. 
+2. Vulkan: 
+   1. When strictLines is `VK_TRUE`, [RSD.aalineEnable](#RSD_aalineEnable) shall be configured as `1`. 
+   2. Otherwise, it’s `0`.
+
+
+
+因此, 对于GPU的默认线段算法 B, 可能是  Bresenham line 算法
+
+OpenGLES 默认使用B, 对  MSAA 或 LINE_SMOOTH 时使用 aaline
+
+Vulkan 默认使用B, 对 strictLines  使用 aaline
+
+基本与 Specification 中描述一致.
+
+
+
+设置参数在 cstate, cframe 和 hal 均有调用.  Vulkan Descriptor 中没有此字段.
+
+```
+gpu_hivoyager_rsd_set_aaline_enable(rsd_pso, GPU_RSD_aalineEnable_TRUE);
+```
+

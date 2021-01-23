@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>SRC RendererVK - Wesley的轨迹</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Wesley的轨迹</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../index.md" class="nav-link">首页</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../GLES/Framebuffer%20Object/" class="nav-link">OpenGL(ES)</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Vulkan <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Vulkan/0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/" class="dropdown-item">0.1. Vulkan 扩展</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#extensions-features" class="nav-link">Extensions &amp; Features</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#initialize" class="nav-link">initialize</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#initializedevice" class="nav-link">initializeDevice</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#querydeviceextensionfeatures" class="nav-link">queryDeviceExtensionFeatures</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#initfeatures" class="nav-link">initFeatures</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#format" class="nav-link">Format</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#api" class="nav-link">API</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<p>RendererVK</p>
+<ul>
+<li>initialize</li>
+<li>
+<p>initializeDevice</p>
+<ul>
+<li>queryDeviceExtensionFeatures(deviceExtensionNames);</li>
+<li>// Initialize features and workarounds.</li>
+<li>initFeatures(displayVk, deviceExtensionNames);</li>
+<li>​    </li>
+</ul>
+</li>
+</ul>
+<p>getNativeExtensions</p>
+<p>ensureCapsInitialized</p>
+<h1 id="extensions-features">Extensions &amp; Features</h1>
+<h2 id="initialize">initialize</h2>
+<pre><code>mEnableDebugUtils = mEnableValidationLayers &amp;&amp;
+                        ExtensionFound(VK_EXT_DEBUG_UTILS_EXTENSION_NAME, instanceExtensionNames);
+
+bool enableDebugReport =
+    mEnableValidationLayers &amp;&amp; !mEnableDebugUtils &amp;&amp;
+    ExtensionFound(VK_EXT_DEBUG_REPORT_EXTENSION_NAME, instanceExtensionNames);
+
+if (mEnableDebugUtils)
+{
+    enabledInstanceExtensions.push_back(VK_EXT_DEBUG_UTILS_EXTENSION_NAME);
+}
+else if (enableDebugReport)
+{
+    enabledInstanceExtensions.push_back(VK_EXT_DEBUG_REPORT_EXTENSION_NAME);
+}
+
+if (ExtensionFound(VK_EXT_SWAPCHAIN_COLOR_SPACE_EXTENSION_NAME, instanceExtensionNames))
+{
+    enabledInstanceExtensions.push_back(VK_EXT_SWAPCHAIN_COLOR_SPACE_EXTENSION_NAME);
+    ANGLE_FEATURE_CONDITION(&amp;mFeatures, supportsSwapchainColorspace, true);
+}
+</code></pre>
+<h2 id="initializedevice">initializeDevice</h2>
+<h2 id="querydeviceextensionfeatures">queryDeviceExtensionFeatures</h2>
+<h2 id="initfeatures">initFeatures</h2>
+<table>
+<thead>
+<tr>
+<th>Features</th>
+<th>Extension</th>
+<th>Platform</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bresenhamLineRasterization</td>
+<td>mLineRasterizationFeatures</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>basicGLLineRasterization</td>
+<td>--</td>
+<td>!IsAndroid() &amp;&amp; !isPowerVR</td>
+<td>Use OpenGL line rasterization rules if extension mLineRasterizationFeatures not available by default.</td>
+</tr>
+<tr>
+<td>provokingVertex</td>
+<td>mProvokingVertexFeatures</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>extraCopyBufferRegion</td>
+<td>--</td>
+<td>IsWindows() &amp;&amp; isIntel</td>
+<td></td>
+</tr>
+<tr>
+<td>forceCPUPathForCubeMapCopy</td>
+<td>--</td>
+<td>IsWindows() &amp;&amp; isIntel</td>
+<td></td>
+</tr>
+<tr>
+<td>clampPointSize</td>
+<td>--</td>
+<td>isNvidia</td>
+<td>nvidia Version &lt; 421</td>
+</tr>
+<tr>
+<td>depthClamping</td>
+<td>VK_EXT_depth_clip_enable</td>
+<td>isNvidia</td>
+<td></td>
+</tr>
+<tr>
+<td>flushAfterVertexConversion</td>
+<td></td>
+<td>IsAndroid() &amp;&amp; IsNexus5X</td>
+<td>Work around ineffective compute-graphics barriers on Nexus 5X.<br />Testing other vendors and driver versions are affected</td>
+</tr>
+<tr>
+<td>supportsRenderpass2</td>
+<td>VK_KHR_CREATE_RENDERPASS_2_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsIncrementalPresent</td>
+<td>VK_KHR_INCREMENTAL_PRESENT_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsAndroidHardwareBuffer</td>
+<td>VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_EXTENSION_NAME<br />VK_EXT_QUEUE_FAMILY_FOREIGN_EXTENSION_NAME</td>
+<td>ANDROID</td>
+<td></td>
+</tr>
+<tr>
+<td>supportsExternalMemoryFd</td>
+<td>VK_KHR_EXTERNAL_MEMORY_FD_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsExternalMemoryFuchsia</td>
+<td>VK_FUCHSIA_EXTERNAL_MEMORY_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsFilteringPrecision</td>
+<td>VK_GOOGLE_SAMPLER_FILTERING_PRECISION_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsExternalFenceCapabilities</td>
+<td>VK_KHR_EXTERNAL_FENCE_CAPABILITIES_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsExternalSemaphoreCapabilities</td>
+<td>VK_KHR_EXTERNAL_SEMAPHORE_CAPABILITIES_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsExternalSemaphoreFd</td>
+<td>VK_KHR_EXTERNAL_SEMAPHORE_FD_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsExternalSemaphoreFuchsia</td>
+<td>VK_FUCHSIA_EXTERNAL_SEMAPHORE_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsExternalFenceFd</td>
+<td>VK_KHR_EXTERNAL_FENCE_FD_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsAndroidNativeFenceSync</td>
+<td>VK_KHR_EXTERNAL_FENCE_CAPABILITIES_EXTENSION_NAME<br />VK_KHR_EXTERNAL_SEMAPHORE_CAPABILITIES_EXTENSION_NAME</td>
+<td>ANDROID</td>
+<td></td>
+</tr>
+<tr>
+<td>supportsShaderStencilExport</td>
+<td>VK_EXT_SHADER_STENCIL_EXPORT_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsRenderPassStoreOpNoneQCOM</td>
+<td>VK_QCOM_render_pass_store_ops_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsTransformFeedbackExtension</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsIndexTypeUint8</td>
+<td>mIndexTypeUint8Features</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsDepthStencilResolve</td>
+<td>VK_KHR_CREATE_RENDERPASS_2_EXTENSION_NAME<br />mDepthStencilResolveProperties</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>emulateTransformFeedback</td>
+<td>mTransformFeedbackFeatures<br />PhysicalDeviceFeatures.vertexPipelineStoresAndAtomics = true</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>disableFifoPresentMode</td>
+<td></td>
+<td>Linux() &amp;&amp; isIntel</td>
+<td></td>
+</tr>
+<tr>
+<td>bindEmptyForUnusedDescriptorSets</td>
+<td></td>
+<td>IsAndroid() &amp;&amp; isQualcomm</td>
+<td></td>
+</tr>
+<tr>
+<td>forceOldRewriteStructSamplers</td>
+<td>mPhysicalDeviceFeatures.shaderSampledImageArrayDynamicIndexing = false</td>
+<td>isQualcomm</td>
+<td></td>
+</tr>
+<tr>
+<td>perFrameWindowSizeQuery</td>
+<td></td>
+<td>isIntel || (IsWindows() &amp;&amp; isAMD) || IsFuchsia()</td>
+<td></td>
+</tr>
+<tr>
+<td>disallowSeamfulCubeMapEmulation</td>
+<td></td>
+<td>IsWindows() &amp;&amp; isAMD</td>
+<td></td>
+</tr>
+<tr>
+<td>padBuffersToMaxVertexAttribStride</td>
+<td></td>
+<td>isAMD</td>
+<td></td>
+</tr>
+<tr>
+<td>forceD16TexFilter</td>
+<td></td>
+<td>IsAndroid() &amp;&amp; isQualcomm</td>
+<td></td>
+</tr>
+<tr>
+<td>disableFlippingBlitWithCommand</td>
+<td></td>
+<td>IsAndroid() &amp;&amp; isQualcomm</td>
+<td></td>
+</tr>
+<tr>
+<td>shadowBuffers</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>persistentlyMappedBuffers</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>allocateNonZeroMemory</td>
+<td>Disable</td>
+<td>Allocation sanitization disabled by default because of a heaveyweight implementation<br/>that can cause OOM and timeouts.</td>
+<td></td>
+</tr>
+<tr>
+<td>supportsExternalMemoryHost</td>
+<td>VK_EXT_EXTERNAL_MEMORY_HOST_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>enablePreRotateSurfaces</td>
+<td></td>
+<td>IsAndroid</td>
+<td></td>
+</tr>
+<tr>
+<td>enableFramebufferVkCache</td>
+<td>Disable on apple</td>
+<td>!IsApple()</td>
+<td>Currently disable FramebufferVk cache on Apple</td>
+</tr>
+<tr>
+<td>enablePrecisionQualifiers</td>
+<td>Disabled by default</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>preferAggregateBarrierCalls</td>
+<td></td>
+<td>isNvidia || isAMD || isIntel</td>
+<td></td>
+</tr>
+<tr>
+<td>asyncCommandQueue</td>
+<td>Disabled</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsYUVSamplerConversion</td>
+<td>mSamplerYcbcrConversionFeatures</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsShaderFloat16</td>
+<td>mShaderFloat16Int8Features</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>forceMaxUniformBufferSize16KB</td>
+<td></td>
+<td>isQualcomm &amp;&amp; isAdreno540</td>
+<td></td>
+</tr>
+<tr>
+<td>supportsImageFormatList</td>
+<td>VK_KHR_IMAGE_FORMAT_LIST_EXTENSION_NAME</td>
+<td>isAMD</td>
+<td></td>
+</tr>
+<tr>
+<td>enableMultisampledRenderToTexture</td>
+<td>Disabled</td>
+<td>IsWindows() &amp;&amp; (isIntel || isAMD)</td>
+<td></td>
+</tr>
+<tr>
+<td>supportsImageCubeArray</td>
+<td>mPhysicalDeviceFeatures.imageCubeArray == VK_TRUE</td>
+<td>!isSwiftShader &amp;&amp; !isQualcomm</td>
+<td></td>
+</tr>
+<tr>
+<td>preferredLargeHeapBlockSize4MB</td>
+<td></td>
+<td>!isQualcomm</td>
+<td></td>
+</tr>
+<tr>
+<td>deferFlushUntilEndRenderPass</td>
+<td></td>
+<td>!isQualcomm</td>
+<td>Defer glFLush call causes manhattan 3.0 perf regression. Let Qualcomm driver opt out from<br/>// this optimization.</td>
+</tr>
+<tr>
+<td>waitIdleBeforeSwapchainRecreation</td>
+<td></td>
+<td>IsAndroid() &amp;&amp; isARM</td>
+<td>Android mistakenly destroys the old swapchain when creating a new one.</td>
+</tr>
+<tr>
+<td>preferDrawClearOverVkCmdClearAttachments</td>
+<td></td>
+<td>IsPixel2</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="format">Format</h1>
+<p>// These functions look at the <strong>mandatory</strong> format for support, and fallback to querying the device (if
+// necessary) to test the availability of the bits.
+bool RendererVk::hasLinearImageFormatFeatureBits(VkFormat format,
+                                                 const VkFormatFeatureFlags featureBits) const
+{
+    return hasFormatFeatureBits&lt;&amp;VkFormatProperties::linearTilingFeatures&gt;(format, featureBits);
+}</p>
+<p>VkFormatFeatureFlags RendererVk::getLinearImageFormatFeatureBits(
+    VkFormat format,
+    const VkFormatFeatureFlags featureBits) const
+{
+    return getFormatFeatureBits&lt;&amp;VkFormatProperties::linearTilingFeatures&gt;(format, featureBits);
+}</p>
+<p>VkFormatFeatureFlags RendererVk::getImageFormatFeatureBits(
+    VkFormat format,
+    const VkFormatFeatureFlags featureBits) const
+{
+    return getFormatFeatureBits&lt;&amp;VkFormatProperties::optimalTilingFeatures&gt;(format, featureBits);
+}</p>
+<p>bool RendererVk::hasImageFormatFeatureBits(VkFormat format,
+                                           const VkFormatFeatureFlags featureBits) const
+{
+    return hasFormatFeatureBits&lt;&amp;VkFormatProperties::optimalTilingFeatures&gt;(format, featureBits);
+}</p>
+<p>bool RendererVk::hasBufferFormatFeatureBits(VkFormat format,
+                                            const VkFormatFeatureFlags featureBits) const
+{
+    return hasFormatFeatureBits&lt;&amp;VkFormatProperties::bufferFeatures&gt;(format, featureBits);
+}</p>
+<h1 id="api">API</h1>
+<h4 id="initialize_1">initialize</h4>
+<ul>
+<li>vkEnumerateInstanceLayerProperties</li>
+<li>vkEnumerateInstanceExtensionProperties</li>
+<li>VkApplicationInfo</li>
+<li>VkInstanceCreateInfo</li>
+<li>VkValidationFeatureEnableEXT</li>
+<li>vkCreateInstance</li>
+<li><code>volkLoadInstance(mInstance);</code> 注册 API.   </li>
+<li>ANGLE_SHARED_LIBVULKAN ???</li>
+<li>InitGetPhysicalDeviceProperties2KHRFunctions</li>
+<li>vkEnumeratePhysicalDevices</li>
+<li>vkGetPhysicalDeviceFeatures</li>
+<li>vkGetPhysicalDeviceQueueFamilyProperties</li>
+</ul>
+<h4 id="initializedevice_1">initializeDevice</h4>
+<ul>
+<li>
+<p>vkEnumerateDeviceLayerProperties</p>
+</li>
+<li>
+<p>vkEnumerateDeviceExtensionProperties</p>
+</li>
+<li>
+<p>VkDeviceQueueCreateInfo</p>
+</li>
+</ul>
+<p>call <strong>queryDeviceExtensionFeatures</strong></p>
+<p>填充 <strong>deviceFeatures</strong>,  <strong>deviceProperties</strong></p>
+<ul>
+<li>vkGetPhysicalDeviceExternalFencePropertiesKHR</li>
+<li>vkGetPhysicalDeviceExternalSemaphorePropertiesKHR</li>
+</ul>
+<p>call <strong>initFeatures</strong></p>
+<p>vkCreateDevice</p>
+<p>vkGetDeviceQueue</p>
+<p>call <strong>initPipelineCache</strong></p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

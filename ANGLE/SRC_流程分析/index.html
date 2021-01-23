@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Context - Wesley的轨迹</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Wesley的轨迹</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../index.md" class="nav-link">首页</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../GLES/Framebuffer%20Object/" class="nav-link">OpenGL(ES)</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Vulkan <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Vulkan/0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/" class="dropdown-item">0.1. Vulkan 扩展</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#context" class="nav-link">Context</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#context-relationship" class="nav-link">Context Relationship</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#front-end" class="nav-link">Front-end</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#back-end-interface" class="nav-link">Back-end Interface</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#vulkan" class="nav-link">Vulkan</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#api" class="nav-link">API 分析</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#_1" class="nav-link">三角形</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="context">Context</h1>
+<pre><code class="language-mermaid">classDiagram
+      class Context {
+    State mState;
+    bool mShared;
+    bool mSkipValidation;
+    bool mDisplayTextureShareGroup;
+    bool mDisplaySemaphoreShareGroup;
+
+    ErrorSet mErrors;     // Recorded errors
+
+    angle::PackedEnumBitSet&lt;BufferBinding&gt; mValidBufferBindings;
+
+    std::unique_ptr&lt;rx::ContextImpl&gt; mImplementation;
+
+    EGLLabelKHR mLabel;
+
+    Extensions mSupportedExtensions;
+
+    mutable BindingPointer&lt;Compiler&gt; mCompiler;     // Shader compiler. Lazily initialized hence the mutable value.
+
+    const egl::Config *mConfig;
+
+    TextureMap mZeroTextures;
+
+    ResourceMap&lt;FenceNV, FenceNVID&gt; mFenceNVMap;
+    HandleAllocator mFenceNVHandleAllocator;
+
+    QueryMap mQueryMap;
+    HandleAllocator mQueryHandleAllocator;
+
+    VertexArrayMap mVertexArrayMap;
+    HandleAllocator mVertexArrayHandleAllocator;
+
+    TransformFeedbackMap mTransformFeedbackMap;
+    HandleAllocator mTransformFeedbackHandleAllocator;
+
+    const char *mVersionString;
+    const char *mShadingLanguageString;
+    const char *mRendererString;
+    const char *mExtensionString;
+    std::vector&lt;const char *&gt; mExtensionStrings;
+    const char *mRequestableExtensionString;
+    std::vector&lt;const char *&gt; mRequestableExtensionStrings;
+
+    std::unique_ptr&lt;GLES1Renderer&gt; mGLES1Renderer;     // GLES1 renderer state
+
+    bool mHasBeenCurrent;     // Current/lost context flags
+    bool mContextLost;  // Set with setContextLost so that we also set mSkipValidation=false.
+    GraphicsResetStatus mResetStatus;
+    bool mContextLostForced;
+    GLenum mResetStrategy;
+    const bool mRobustAccess;
+    const bool mSurfacelessSupported;
+    const bool mExplicitContextAvailable;
+    egl::Surface *mCurrentDrawSurface;
+    egl::Surface *mCurrentReadSurface;
+    egl::Display *mDisplay;
+    const bool mWebGLContext;
+    bool mBufferAccessValidationEnabled;
+    const bool mExtensionsEnabled;
+    MemoryProgramCache *mMemoryProgramCache;
+
+    State::DirtyObjects mDrawDirtyObjects;
+
+    StateCache mStateCache;
+
+    State::DirtyBits mAllDirtyBits;
+    State::DirtyBits mTexImageDirtyBits;
+    State::DirtyObjects mTexImageDirtyObjects;
+    State::DirtyBits mReadPixelsDirtyBits;
+    State::DirtyObjects mReadPixelsDirtyObjects;
+    State::DirtyBits mClearDirtyBits;
+    State::DirtyObjects mClearDirtyObjects;
+    State::DirtyBits mBlitDirtyBits;
+    State::DirtyObjects mBlitDirtyObjects;
+    State::DirtyBits mComputeDirtyBits;
+    State::DirtyObjects mComputeDirtyObjects;
+    State::DirtyBits mCopyImageDirtyBits;
+    State::DirtyObjects mCopyImageDirtyObjects;
+
+    angle::ObserverBinding mVertexArrayObserverBinding;
+    angle::ObserverBinding mDrawFramebufferObserverBinding;
+    angle::ObserverBinding mReadFramebufferObserverBinding;
+    std::vector&lt;angle::ObserverBinding&gt; mUniformBufferObserverBindings;
+    std::vector&lt;angle::ObserverBinding&gt; mSamplerObserverBindings;
+    std::vector&lt;angle::ObserverBinding&gt; mImageObserverBindings;
+
+
+    mutable Optional&lt;angle::ScratchBuffer&gt; mScratchBuffer;
+    mutable Optional&lt;angle::ScratchBuffer&gt; mZeroFilledBuffer;
+
+    std::shared_ptr&lt;angle::WorkerThreadPool&gt; mThreadPool;
+}
+</code></pre>
+<h1 id="context-relationship">Context Relationship</h1>
+<pre><code class="language-mermaid">classDiagram
+class State
+class ErrorSet
+class PackedEnumBitSet__BufferBinding
+class ContextImpl
+class EGLLabelKHR
+class Extensions
+class BindingPointer__Compiler
+class egl_Config
+      class Context {
+          State mState;
+
+    TextureMap mZeroTextures;
+
+    ResourceMap&lt;FenceNV, FenceNVID&gt; mFenceNVMap;
+    HandleAllocator mFenceNVHandleAllocator;
+
+    QueryMap mQueryMap;
+    HandleAllocator mQueryHandleAllocator;
+
+    VertexArrayMap mVertexArrayMap;
+    HandleAllocator mVertexArrayHandleAllocator;
+
+    TransformFeedbackMap mTransformFeedbackMap;
+    HandleAllocator mTransformFeedbackHandleAllocator;
+
+    const char *mVersionString;
+    const char *mShadingLanguageString;
+    const char *mRendererString;
+    const char *mExtensionString;
+    std::vector&lt;const char *&gt; mExtensionStrings;
+    const char *mRequestableExtensionString;
+    std::vector&lt;const char *&gt; mRequestableExtensionStrings;
+
+    // GLES1 renderer state
+    std::unique_ptr&lt;GLES1Renderer&gt; mGLES1Renderer;
+
+    // Current/lost context flags
+    bool mHasBeenCurrent;
+    bool mContextLost;  // Set with setContextLost so that we also set mSkipValidation=false.
+    GraphicsResetStatus mResetStatus;
+    bool mContextLostForced;
+    GLenum mResetStrategy;
+    const bool mRobustAccess;
+    const bool mSurfacelessSupported;
+    const bool mExplicitContextAvailable;
+    egl::Surface *mCurrentDrawSurface;
+    egl::Surface *mCurrentReadSurface;
+    egl::Display *mDisplay;
+    const bool mWebGLContext;
+    bool mBufferAccessValidationEnabled;
+    const bool mExtensionsEnabled;
+    MemoryProgramCache *mMemoryProgramCache;
+
+    State::DirtyObjects mDrawDirtyObjects;
+
+    StateCache mStateCache;
+
+    State::DirtyBits mAllDirtyBits;
+    State::DirtyBits mTexImageDirtyBits;
+    State::DirtyObjects mTexImageDirtyObjects;
+    State::DirtyBits mReadPixelsDirtyBits;
+    State::DirtyObjects mReadPixelsDirtyObjects;
+    State::DirtyBits mClearDirtyBits;
+    State::DirtyObjects mClearDirtyObjects;
+    State::DirtyBits mBlitDirtyBits;
+    State::DirtyObjects mBlitDirtyObjects;
+    State::DirtyBits mComputeDirtyBits;
+    State::DirtyObjects mComputeDirtyObjects;
+    State::DirtyBits mCopyImageDirtyBits;
+    State::DirtyObjects mCopyImageDirtyObjects;
+
+    // Binding to container objects that use dependent state updates.
+    angle::ObserverBinding mVertexArrayObserverBinding;
+    angle::ObserverBinding mDrawFramebufferObserverBinding;
+    angle::ObserverBinding mReadFramebufferObserverBinding;
+    std::vector&lt;angle::ObserverBinding&gt; mUniformBufferObserverBindings;
+    std::vector&lt;angle::ObserverBinding&gt; mSamplerObserverBindings;
+    std::vector&lt;angle::ObserverBinding&gt; mImageObserverBindings;
+
+    // Not really a property of context state. The size and contexts change per-api-call.
+    mutable Optional&lt;angle::ScratchBuffer&gt; mScratchBuffer;
+    mutable Optional&lt;angle::ScratchBuffer&gt; mZeroFilledBuffer;
+
+    std::shared_ptr&lt;angle::WorkerThreadPool&gt; mThreadPool;
+      }
+</code></pre>
+<pre><code class="language-plantuml">@startuml
+hide circle
+hide member
+
+class Buffer
+class Compiler
+class FenceNV
+class Framebuffer
+class GLES1Renderer
+class MemoryProgramCache
+class MemoryObject
+class Program
+class ProgramPipeline
+class Query
+class Renderbuffer
+class Sampler
+class Semaphore
+class Shader
+class Sync
+class Texture
+class TransformFeedback
+class VertexArray
+class VertexAttribute
+class Context
+@enduml
+</code></pre>
+<pre><code class="language-C++">
+    class Buffer;
+    class Compiler;
+    class FenceNV;
+    class Framebuffer;
+    class GLES1Renderer;
+    class MemoryProgramCache;
+    class MemoryObject;
+    class Program;
+    class ProgramPipeline;
+    class Query;
+    class Renderbuffer;
+    class Sampler;
+    class Semaphore;
+    class Shader;
+    class Sync;
+    class Texture;
+    class TransformFeedback;
+    class VertexArray;
+    struct VertexAttribute;
+    class Context
+</code></pre>
+<h1 id="front-end">Front-end</h1>
+<ol>
+<li>AttributeMap</li>
+<li>BinaryStrea</li>
+<li>BlobCache</li>
+<li>Buffer</li>
+<li>Caps</li>
+<li>Compiler</li>
+<li>Config</li>
+<li>Constants</li>
+<li>Context</li>
+<li>Debug</li>
+<li>Device</li>
+<li>Display</li>
+<li>EGLSync</li>
+<li>Error</li>
+<li>Error.inc</li>
+<li>ErrorString</li>
+<li>Fence</li>
+<li>Framebuffer</li>
+<li>FramebufferAttachment</li>
+<li>FrameCapture</li>
+<li>GLES1Renderer</li>
+<li>GLES1Shaders.inc</li>
+<li>GLES1State</li>
+<li>HandleAllocator</li>
+<li>Image</li>
+<li>ImageIndex</li>
+<li>IndexRangeCache</li>
+<li>InfoLog</li>
+<li>LoggingAnnotator</li>
+<li>MemoryObject</li>
+<li>MemoryProgramCache</li>
+<li>Observer</li>
+<li>Overlay</li>
+<li>OverlayWidgets</li>
+<li>Platform.cpp</li>
+<li>Program</li>
+<li>ProgramExecutable</li>
+<li>ProgramLinkedResources</li>
+<li>ProgramPipeline</li>
+<li>Query</li>
+<li>RefCountObject
+    Renderbuffer</li>
+<li>ResourceManager</li>
+<li>ResourceMap</li>
+<li>Sampler</li>
+<li>Semaphore</li>
+<li>Shader</li>
+<li>SizedMRUCache</li>
+<li>State</li>
+<li>Stream</li>
+<li>Surface</li>
+<li>Texture</li>
+<li>Thread</li>
+<li>TransformFeedback</li>
+<li>Uniform</li>
+<li>VaryingPacking</li>
+<li>Version</li>
+<li>VertexArray</li>
+<li>VertexAttribute</li>
+<li>WorkerThread</li>
+</ol>
+<h1 id="back-end-interface">Back-end Interface</h1>
+<ol>
+<li>BufferImpl</li>
+<li>CompilerImpl</li>
+<li>ContextImpl</li>
+<li>DeviceImpl</li>
+<li>DisplayImpl</li>
+<li>EGLImplFactory</li>
+<li>EGLReusableSync</li>
+<li>EGLSyncImpl</li>
+<li>FenceNVImpl</li>
+<li>Format</li>
+<li>FramebufferAttachmentObjectImpl</li>
+<li>FramebufferImpl</li>
+<li>GLImplFactory</li>
+<li>ImageImpl</li>
+<li>MemoryObjectImpl</li>
+<li>OverlayImpl</li>
+<li>ProgramImpl</li>
+<li>ProgramPipelineImpl</li>
+<li>QueryImpl</li>
+<li>RenderbufferImpl</li>
+<li>RenderTargetCache</li>
+<li>SamplerImpl</li>
+<li>SemaphoreImpl</li>
+<li>ShaderImpl</li>
+<li>StreamProducerImpl</li>
+<li>SurfaceImpl</li>
+<li>SyncImpl</li>
+<li>TextureImpl</li>
+<li>TransformFeedbackImpl</li>
+<li>VertexArrayImpl</li>
+</ol>
+<h1 id="vulkan">Vulkan</h1>
+<ol>
+<li>BufferVk</li>
+<li>CommandProcessor</li>
+<li>CompilerVk</li>
+<li>ContextVk</li>
+<li>DebugAnnotatorVk</li>
+<li>DeviceVk</li>
+<li>DisplayVk</li>
+<li>FenceNVVk</li>
+<li>FramebufferVk</li>
+<li>GlslangWrapperVk</li>
+<li>ImageVk</li>
+<li>MemoryObjectVk</li>
+<li>OverlayVk</li>
+<li>PersistentCommandPool</li>
+<li>ProgramExecutableVk</li>
+<li>ProgramPipelineVk</li>
+<li>ProgramVk</li>
+<li>QueryVk</li>
+<li>RenderbufferVk</li>
+<li>RendererVk</li>
+<li>RenderTargetVk</li>
+<li>ResourceVk</li>
+<li>SamplerVk</li>
+<li>SecondaryCommandBuffer</li>
+<li>SemaphoreVk</li>
+<li>ShaderVk</li>
+<li>SurfaceVk</li>
+<li>SyncVk</li>
+<li>TextureVk</li>
+<li>TransformFeedbackVk</li>
+<li>UtilsVk</li>
+<li>VertexArrayVk</li>
+</ol>
+<pre><code class="language-C++">BufferVk
+CommandProcessor
+CompilerVk
+ContextVk
+DebugAnnotatorVk
+DeviceVk
+DisplayVk
+FenceNVVk
+FramebufferVk
+GlslangWrapperVk
+ImageVk
+MemoryObjectVk
+OverlayVk
+PersistentCommandPool
+ProgramExecutableVk
+ProgramPipelineVk
+ProgramVk
+QueryVk
+RenderbufferVk
+RendererVk
+RenderTargetVk
+ResourceVk
+SamplerVk
+SecondaryCommandBuffer
+SemaphoreVk
+ShaderVk
+SurfaceVk
+SyncVk
+TextureVk
+TransformFeedbackVk
+UtilsVk
+VertexArrayVk
+</code></pre>
+<h1 id="api">API 分析</h1>
+<p>以 <a href="https://learnopengl-cn.github.io/">Learn OpenGL</a> 的使用顺序</p>
+<h2 id="_1">三角形</h2>
+<h3 id="shader-program">Shader &amp; Program</h3>
+<p>glCreateShader(GL_VERTEX_SHADER | GL_FRAGMENT_SHADER)</p>
+<p>glShaderSource</p>
+<p>glCompileShader</p>
+<p>glGetShaderiv</p>
+<p>glCreateProgram</p>
+<p>glAttachShader</p>
+<p>glLinkProgram</p>
+<p>glGetProgramiv</p>
+<p>glDeleteShader</p>
+<pre><code class="language-C++">// build and compile our shader program
+    // ------------------------------------
+    // vertex shader
+    unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
+    glShaderSource(vertexShader, 1, &amp;vertexShaderSource, NULL);
+    glCompileShader(vertexShader);
+    // check for shader compile errors
+    int success;
+    char infoLog[512];
+    glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &amp;success);
+    if (!success)
+    {
+        glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
+        std::cout &lt;&lt; &quot;ERROR::SHADER::VERTEX::COMPILATION_FAILED\n&quot; &lt;&lt; infoLog &lt;&lt; std::endl;
+    }
+    // fragment shader
+    unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+    glShaderSource(fragmentShader, 1, &amp;fragmentShaderSource, NULL);
+    glCompileShader(fragmentShader);
+    // check for shader compile errors
+    glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &amp;success);
+    if (!success)
+    {
+        glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
+        std::cout &lt;&lt; &quot;ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n&quot; &lt;&lt; infoLog &lt;&lt; std::endl;
+    }
+    // link shaders
+    unsigned int shaderProgram = glCreateProgram();
+    glAttachShader(shaderProgram, vertexShader);
+    glAttachShader(shaderProgram, fragmentShader);
+    glLinkProgram(shaderProgram);
+    // check for linking errors
+    glGetProgramiv(shaderProgram, GL_LINK_STATUS, &amp;success);
+    if (!success) {
+        glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
+        std::cout &lt;&lt; &quot;ERROR::SHADER::PROGRAM::LINKING_FAILED\n&quot; &lt;&lt; infoLog &lt;&lt; std::endl;
+    }
+    glDeleteShader(vertexShader);
+    glDeleteShader(fragmentShader);
+</code></pre>
+<h3 id="vertex-array">Vertex Array</h3>
+<p>glGenVertexArrays</p>
+<p>glBindVertexArray</p>
+<p>glGenBuffers</p>
+<p>glBindBuffer(GL_ARRAY_BUFFER | GL_ELEMENT_ARRAY_BUFFER )</p>
+<p>glBufferData(GL_ARRAY_BUFFER | GL_ELEMENT_ARRAY_BUFFER , size, data,  GL_STATIC_DRAW)</p>
+<p>glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+glEnableVertexAttribArray(0);</p>
+<p>// unbind</p>
+<p>glBindBuffer(GL_ARRAY_BUFFER, 0); 
+// glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+glBindVertexArray(0); </p>
+<pre><code class="language-C++">    // set up vertex data (and buffer(s)) and configure vertex attributes
+    // ------------------------------------------------------------------
+    float vertices[] = {
+         0.5f,  0.5f, 0.0f,  // top right
+         0.5f, -0.5f, 0.0f,  // bottom right
+        -0.5f, -0.5f, 0.0f,  // bottom left
+        -0.5f,  0.5f, 0.0f   // top left 
+    };
+    unsigned int indices[] = {  // note that we start from 0!
+        0, 1, 3,  // first Triangle
+        1, 2, 3   // second Triangle
+    };
+    unsigned int VBO, VAO, EBO;
+    glGenVertexArrays(1, &amp;VAO);
+    glGenBuffers(1, &amp;VBO);
+    glGenBuffers(1, &amp;EBO);
+    // bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attributes(s).
+    glBindVertexArray(VAO);
+
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+
+    // note that this is allowed, the call to glVertexAttribPointer registered VBO as the vertex attribute's bound vertex buffer object so afterwards we can safely unbind
+    glBindBuffer(GL_ARRAY_BUFFER, 0); 
+
+    // remember: do NOT unbind the EBO while a VAO is active as the bound element buffer object IS stored in the VAO; keep the EBO bound.
+    //glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+
+    // You can unbind the VAO afterwards so other VAO calls won't accidentally modify this VAO, but this rarely happens. Modifying other
+    // VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
+    glBindVertexArray(0); 
+</code></pre>
+<h3 id="draw">Draw</h3>
+<p>glClearColor</p>
+<p>glClear</p>
+<p>glUseProgram(shaderProgram);</p>
+<p>glBindVertexArray(VAO);</p>
+<p>glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0); / glDrawArrays(GL_TRIANGLES, 0, 6);</p>
+<p>egl:</p>
+<p>glfwSwapBuffers(window);
+glfwPollEvents();</p>
+<pre><code class="language-c++">    // uncomment this call to draw in wireframe polygons.
+    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+    // render loop
+    // -----------
+    while (!glfwWindowShouldClose(window))
+    {
+        // input
+        // -----
+        processInput(window);
+
+        // render
+        // ------
+        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        // draw our first triangle
+        glUseProgram(shaderProgram);
+        glBindVertexArray(VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
+        //glDrawArrays(GL_TRIANGLES, 0, 6);
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+        // glBindVertexArray(0); // no need to unbind it every time 
+
+        // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
+        // -------------------------------------------------------------------------------
+        glfwSwapBuffers(window);
+        glfwPollEvents();
+    }
+
+    // optional: de-allocate all resources once they've outlived their purpose:
+    // ------------------------------------------------------------------------
+    glDeleteVertexArrays(1, &amp;VAO);
+    glDeleteBuffers(1, &amp;VBO);
+    glDeleteBuffers(1, &amp;EBO);
+    glDeleteProgram(shaderProgram);
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

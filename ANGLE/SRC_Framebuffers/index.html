@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>SRC Framebuffers - Wesley的轨迹</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Wesley的轨迹</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../index.md" class="nav-link">首页</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../GLES/Framebuffer%20Object/" class="nav-link">OpenGL(ES)</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Vulkan <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Vulkan/0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/" class="dropdown-item">0.1. Vulkan 扩展</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#framebuffer" class="nav-link">前端 Framebuffer</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#framebuffervk" class="nav-link">后端 FramebufferVk</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#api" class="nav-link">API 实现</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#resourcemanager" class="nav-link">ResourceManager</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#angle-api" class="nav-link">ANGLE 中 API 统计</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#gl2" class="nav-link">gl2</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#gl3" class="nav-link">gl3</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#gl31" class="nav-link">gl31</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#gl32" class="nav-link">gl32</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#syncstate" class="nav-link">syncState</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#framebuffers" class="nav-link">Framebuffers</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#renderbuffers" class="nav-link">Renderbuffers</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#texture" class="nav-link">Texture</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#dynamicbuffer" class="nav-link">DynamicBuffer</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="framebuffer">前端 Framebuffer</h2>
+<pre><code class="language-plantuml">@startuml
+hide method
+
+class State {
+    Framebuffer *mReadFramebuffer;
+    Framebuffer *mDrawFramebuffer;
+    BindingPointer&lt;Renderbuffer&gt; mRenderbuffer;
+}
+
+class Framebuffer {
+      FramebufferImpl *mImpl; //FramebufferVk
+    mutable Optional&lt;GLenum&gt; mCachedStatus;
+    vector&lt;ObserverBinding&gt; mDirtyColorAttachmentBindings;
+    ObserverBinding mDirtyDepthAttachmentBinding;
+    ObserverBinding mDirtyStencilAttachmentBinding;
+}
+
+class FramebufferState {
+    vector&lt;FramebufferAttachment&gt; mColorAttachments;
+    FramebufferAttachment mDepthAttachment;
+    FramebufferAttachment mStencilAttachment;
+    DrawBufferMask mColorAttachmentsMask;
+}
+
+Context *-- State
+State --&gt; Framebuffer
+FramebufferState --* Framebuffer
+FramebufferAttachment --* FramebufferState
+FramebufferAttachmentObject --* FramebufferAttachment
+@enduml
+</code></pre>
+<h2 id="framebuffervk">后端 FramebufferVk</h2>
+<pre><code class="language-plantuml">@startuml
+
+skinparam classAttributeIconSize 0
+
+class ContextVk {
+FramebufferVk *mDrawFramebuffer
+}
+
+class FramebufferVk {
+- WindowSurfaceVk *mBackbuffer
+  syncState()
+  startNewRenderPass()
+  &amp;getRenderPassDesc()
+  getFramebuffer()
+  }
+
+class RenderPassDesc {
+    -DrawBufferMask mColorResolveAttachmentMask;
+    -DrawBufferMask mColorUnresolveAttachmentMask;
+    -FramebufferNonResolveAttachmentArray mAttachmentFormats;
+}
+
+
+class RenderTargetVk {
+  ImageHelper *mImage;
+  ImageViewHelper *mImageViews;
+}
+
+class FramebufferDesc {
+    updateColor()
+    updateDepthStencil()
+    attachmentCount()
+}
+
+ContextVk --&gt; RenderPassCache
+ContextVk ..&gt; FramebufferVk
+
+FramebufferVk *-- RenderPassDesc
+FramebufferVk *-- RenderTargetCache
+
+RenderTargetVk ..&gt; RenderTargetCache
+
+FramebufferVk *--  FramebufferDesc
+
+RenderPassCache ..&gt; RenderPassDesc
+
+@enduml
+</code></pre>
+<h2 id="api">API 实现</h2>
+<h3 id="_1">创建阶段</h3>
+<ul>
+<li>创建默认 Framebuffer</li>
+</ul>
+<pre><code class="language-plantuml">@startuml
+
+APP -&gt; EGLWindow : initializeContext()
+EGLWindow -&gt; Display : makeCurrent()
+Display -&gt; Context : makeCurrent()
+Context -&gt; Context : setDefaultFramebuffer(\ndrawSurface = readSurface)
+Context -&gt; Surface : createDefaultFramebuffer()
+Surface -&gt; Framebuffer : Framebuffer()
+Framebuffer -&gt; SurfaceVk : createDefaultFramebuffer()
+SurfaceVk -&gt; FramebufferVk : CreateDefaultFBO()
+
+@enduml
+</code></pre>
+<p><strong>CreateDefaultFBO vs. CreateUserFBO</strong></p>
+<p>创建时, 二者区别仅为默认FBO会包含一个WindowSurfaceVk</p>
+<pre><code>// static
+FramebufferVk *FramebufferVk::CreateUserFBO(RendererVk *renderer, const gl::FramebufferState &amp;state)
+
+// static
+FramebufferVk *FramebufferVk::CreateDefaultFBO(RendererVk *renderer,
+                                               const gl::FramebufferState &amp;state,
+                                               WindowSurfaceVk *backbuffer)
+
+</code></pre>
+<ul>
+<li>创建一个帧缓冲对象</li>
+</ul>
+<pre><code class="language-C++">glGenFramebuffers(1, &amp;fbo);
+</code></pre>
+<pre><code class="language-plantuml">@startuml
+
+APP -&gt; Context :createFramebuffer()
+Context -&gt; FramebufferManager : createFramebuffer()
+Context -&gt; FramebufferManager : AllocateEmptyObject()
+
+@startuml
+</code></pre>
+<h2 id="resourcemanager">ResourceManager</h2>
+<p>ANGLE 的 gles 前端中, 使用一系列 ResourceManager 来关联注册的 id 与类的对应情况.其有两个功能: 创建新对象, 并用一个hash表把 id与对象存储起来以供查询.</p>
+<pre><code class="language-plantuml">@startuml
+
+hide method
+
+class ResourceManagerBase {
+HandleAllocator mHandleAllocator;
+}
+
+class TypedResourceManager {
+ResourceMap&lt;ResourceType, IDType&gt; mObjectMap;
+}
+
+class ShaderProgramManager {
+ResourceMap&lt;Shader, ShaderProgramID&gt; mShaders;
+ResourceMap&lt;Program, ShaderProgramID&gt; mPrograms;
+}
+
+TypedResourceManager --|&gt; ResourceManagerBase
+ShaderProgramManager --|&gt; ResourceManagerBase
+
+@enduml
+</code></pre>
+<p>TypedResourceManager 的子类: </p>
+<ul>
+<li>
+<p>BufferManager </p>
+</li>
+<li>
+<p>ShaderProgramManager </p>
+</li>
+<li>
+<p>TextureManager </p>
+</li>
+<li>
+<p>RenderbufferManager </p>
+</li>
+<li>
+<p>SamplerManager </p>
+</li>
+<li>
+<p>SyncManager </p>
+</li>
+<li>
+<p>FramebufferManager </p>
+</li>
+<li>
+<p>ProgramPipelineManager </p>
+</li>
+<li>
+<p>MemoryObjectManager </p>
+</li>
+<li>
+<p>SemaphoreManager </p>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>绑定为激活的(Active)帧缓冲</li>
+</ul>
+<pre><code class="language-C++">glBindFramebuffer(GL_FRAMEBUFFER, fbo);
+</code></pre>
+<p>GL_READ_FRAMEBUFFER 和 GL_DRAW_FRAMEBUFFER 分开处理, 若为GL_FRAMEBUFFER则两个分支都走一遍.</p>
+<p>先去FramebufferManager的Hash中查找, 无则创建.</p>
+<ul>
+<li>GL_READ_FRAMEBUFFER</li>
+</ul>
+<pre><code class="language-plantuml">@startuml
+EntryPoint -&gt; Context : bindReadFramebuffer
+box &quot;if(query(fbID) == null)&quot;
+Context -&gt; FramebufferManager : checkFramebufferAllocation (ShareGroup)
+
+FramebufferManager -&gt; FramebufferManager :  AllocateNewObject
+
+FramebufferManager -&gt; Framebuffer : new Framebuffer
+
+Framebuffer -&gt; FramebufferVk : CreateUserFBO
+end box
+Context -&gt; State : setReadFramebufferBinding(framebuffer)
+
+Context -&gt; ObserverBinding : bind(framebuffer)
+@enduml
+</code></pre>
+<p>Context 中 mDrawFramebufferObserverBinding: ObserverBinding.bind 为观察者绑定单一观察对象.</p>
+<ul>
+<li>GL_DRAW_FRAMEBUFFER</li>
+</ul>
+<pre><code class="language-plantuml">@startuml
+EntryPoint -&gt; Context: bindDrawFramebuffer
+
+Context -&gt; FramebufferManager : checkFramebufferAllocation (ShareGroup)
+
+Context -&gt; FramebufferManager : if(query(ID) == null) AllocateNewObject
+
+FramebufferManager -&gt; Framebuffer : new Framebuffer
+
+Framebuffer -&gt; FramebufferVk : CreateUserFBO
+
+Context -&gt; State : setDrawFramebufferBinding
+Context -&gt; ObserverBinding : bind(framebuffer)
+Context -&gt; StateCache : onDrawFramebufferChange( context ) \n 错误校验用
+
+@enduml
+</code></pre>
+<p>&nbsp;</p>
+<ul>
+<li>解绑FBO / 激活默认帧缓冲</li>
+</ul>
+<pre><code class="language-C++">glBindFramebuffer(GL_FRAMEBUFFER, 0);
+</code></pre>
+<p>同绑定FBO</p>
+<h4 id="_2">纹理附着</h4>
+<p>&nbsp;</p>
+<ul>
+<li>将纹理附加在帧缓冲上</li>
+</ul>
+<pre><code class="language-C++">glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texture, 0);
+</code></pre>
+<pre><code class="language-plantuml">@startuml
+EntryPoint -&gt; Context: framebufferTexture2D
+
+Context -&gt; State : getTargetFramebuffer (ShareGroup)
+
+Context -&gt; Framebuffer : setAttachment
+
+Framebuffer -&gt; FramebufferAttachment : attachment(FBAObject)
+
+Context -&gt; State : setObjectDirty()
+
+@enduml
+</code></pre>
+<p>绑定后, 会设置如下 dirty状态
+ - State : setObjectDirty()
+    - framebuffer.mDirtyBits.set(DIRTY_BIT_COLOR_ATTACHMENT_0) </p>
+<pre><code>- state.mDirtyObjects.set(DIRTY_OBJECT_READ_FRAMEBUFFER);
+
+- state.mDirtyObjects.set(DIRTY_OBJECT_DRAW_FRAMEBUFFER);
+
+- state.mDirtyObjects.set(DIRTY_OBJECT_DRAW_ATTACHMENTS);
+</code></pre>
+<p>&nbsp;</p>
+<h4 id="renderbuffer">Renderbuffer 附着</h4>
+<p>创建和绑定 Renderbuffer 对象的实现与 Framebuffer 类似</p>
+<pre><code>glGenRenderbuffers(1, &amp;rbo);
+
+glBindRenderbuffer(GL_RENDERBUFFER, rbo);
+</code></pre>
+<p>参考 <code>GenFramebuffer</code>, <code>BindFramebuffer</code></p>
+<ul>
+<li>创建一个深度和模板渲染缓冲对象</li>
+</ul>
+<pre><code>void glRenderbufferStorage (GLenum target, GLenum internalformat, GLsizei width, GLsizei height);
+
+void glRenderbufferStorageMultisample (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+</code></pre>
+<p>两个方法同一个实现, 前者<code>samples=0</code></p>
+<p>完成对 <code>RenderBufferVk</code> 对象内各参数的初始化, 及设置 <code>RenderTargetVk</code> </p>
+<pre><code class="language-plantuml">@startuml
+
+Context -&gt; Renderbuffer : setStorage()
+Renderbuffer -&gt; RenderbufferVk : setStorageImpl()
+RenderbufferVk -&gt; ImageHelper : init()
+RenderbufferVk -&gt; ImageViewHelper : init()
+RenderbufferVk -&gt; RenderTargetVk : init()
+@enduml
+</code></pre>
+<ul>
+<li>附加这个渲染缓冲对象到 FBO：</li>
+</ul>
+<pre><code>glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo);
+</code></pre>
+<pre><code class="language-plantuml">@startuml
+
+Context -&gt; RenderbufferManager : getRenderbuffer()
+Context -&gt; Framebuffer : setAttachmentMultisample(renderbuffer)
+
+@enduml
+</code></pre>
+<p>framebuffer.mDirtyBits.set(DIRTY_BIT_DEPTH_ATTACHMENT);</p>
+<p>state.mDirtyObjects.set(DIRTY_OBJECT_READ_FRAMEBUFFER);</p>
+<p>state.mDirtyObjects.set(DIRTY_OBJECT_DRAW_FRAMEBUFFER);</p>
+<p>state.mDirtyObjects.set(DIRTY_OBJECT_DRAW_ATTACHMENTS);</p>
+<p>&nbsp;</p>
+<h3 id="multisample">Multisample</h3>
+<p>glTexture2DMultisample</p>
+<p>glRenderbufferStorageMultisample</p>
+<h3 id="_3">绘制</h3>
+<ul>
+<li>更新 Viewpoint</li>
+</ul>
+<p>DIRTY_BIT_VIEWPORT</p>
+<ul>
+<li>
+<p>Vertex</p>
+</li>
+<li>
+<p>绘制</p>
+</li>
+</ul>
+<pre><code>Draw
+</code></pre>
+<p>&nbsp;</p>
+<ul>
+<li>使用离屏纹理</li>
+</ul>
+<pre><code>BindTexture
+</code></pre>
+<h3 id="_4">读取</h3>
+<ul>
+<li>拷贝</li>
+</ul>
+<pre><code>  glBlitFramebuffer
+</code></pre>
+<ul>
+<li>读取</li>
+</ul>
+<p>ReadPixel</p>
+<h3 id="_5">状态同步</h3>
+<p>ANGLE 的前后端在执行可能会触发Flush的操作时, 会进行状态同步.</p>
+<p>常见的操作例如 Clear, Draw, CopyImage 等.</p>
+<p>例如在绑定一个FBO并执行 Clear的时候, 会进行如下同步:</p>
+<pre><code class="language-plantuml">@startuml
+
+Context -&gt; Context : syncState()
+
+Context -&gt; State : syncDirtyObjects()
+State -&gt; FramebufferVk : syncState()
+Context -&gt; ContextVk : syncDirtyBits()
+ContextVk -&gt; ContextVk : syncState() \n  case: DIRTY_BIT_DRAW_FRAMEBUFFER_BINDING
+
+ContextVk -&gt; GraphicsPipelineDesc : updatePipelineXXXX()
+
+@enduml
+</code></pre>
+<ul>
+<li>其中State : syncDirtyObjects 会依次调用注册的 dirty 对象的 syncState方法.</li>
+<li>ContextVk : syncState 的 DirtyBits 中, 包含一个 DRAW_FRAMEBUFFER_BINDING 表示发生过 Framebuffer 的重绑定, 需要更新</li>
+</ul>
+<h4 id="framebuffervksyncstate">FramebufferVk.syncState()</h4>
+<ul>
+<li>syncState</li>
+<li>updateDepthStencilAttachment<ul>
+<li>RenderTargetCache.updateDepthStencilRenderTarget()</li>
+<li>FramebufferDesc.updateDepthStencil</li>
+<li>FramebufferDesc.updateColorResolve</li>
+<li>renderTarget-&gt;flushStagedUpdates</li>
+</ul>
+</li>
+<li>RenderTargetCache.update</li>
+<li>updateColorAttachment<ul>
+<li>TargetCache.updateColorRenderTarget()</li>
+<li>RenderTargetCache.getColors()</li>
+<li>updateActiveColorMasks()</li>
+<li>contextVk-&gt;updateColorMasks()</li>
+<li>renderTarget-&gt;flushStagedUpdates()</li>
+<li>FramebufferDesc.updateColor()</li>
+<li>index++</li>
+<li>FramebufferDesc::updateColorResolve()</li>
+<li>index++</li>
+</ul>
+</li>
+<li>contextVk-&gt;updateColorMasks() // 又</li>
+<li>contextVk-&gt;flushCommandsAndEndRenderPass() // ??? 为什么 sync 要 flush?</li>
+<li>updateRenderPassDesc();</li>
+<li>contextVk-&gt;onFramebufferChange(this);</li>
+</ul>
+<h4 id="clear">Clear</h4>
+<p>// Remove clear bits that are ineffective. An effective clear changes at least one fragment. If</p>
+<p>// color/depth/stencil masks make the clear ineffective we skip it altogether.</p>
+<pre><code>// If all color channels in all draw buffers are masked, don't attempt to clear color.
+</code></pre>
+<p>// If depth write is disabled, don't attempt to clear depth.</p>
+<p>// If all stencil bits are masked, don't attempt to clear stencil.</p>
+<p>// Sync the draw framebuffer manually after the clear attachments.</p>
+<p>流程2</p>
+<pre><code class="language-plantuml">@startuml
+
+
+@enduml
+</code></pre>
+<p>流程3</p>
+<pre><code class="language-plantuml">@startuml
+
+@enduml
+</code></pre>
+<p>流程4</p>
+<pre><code class="language-plantuml">@startuml
+
+
+@enduml
+</code></pre>
+<h2 id="angle-api">ANGLE 中 API 统计</h2>
+<p>本节列出 ANGLE 中各版本GLES 中与 Framebuffer 和 Renderbuffer 直接相关的内容.  此外 ANGLE 中还有大量的相关 EXT API, 数量较多, 暂不在此列出</p>
+<h2 id="gl2">gl2</h2>
+<pre><code class="language-C++">void glBindFramebuffer (GLenum target, GLuint framebuffer);
+GLenum glCheckFramebufferStatus (GLenum target);
+void glDeleteFramebuffers (GLsizei n, const GLuint *framebuffers);
+void glFramebufferRenderbuffer (GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
+void glFramebufferTexture2D (GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
+void glGenFramebuffers (GLsizei n, GLuint *framebuffers);
+void glGetFramebufferAttachmentParameteriv (GLenum target, GLenum attachment, GLenum pname, GLint *params);
+GLboolean glIsFramebuffer (GLuint framebuffer);
+// renderbuffer
+void glBindRenderbuffer (GLenum target, GLuint renderbuffer);
+void glDeleteRenderbuffers (GLsizei n, const GLuint *renderbuffers);
+void glFramebufferRenderbuffer (GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
+void glGenRenderbuffers (GLsizei n, GLuint *renderbuffers);
+void glGetRenderbufferParameteriv (GLenum target, GLenum pname, GLint *params);
+GLboolean glIsRenderbuffer (GLuint renderbuffer);
+void glRenderbufferStorage (GLenum target, GLenum internalformat, GLsizei width, GLsizei height);
+</code></pre>
+<h2 id="gl3">gl3</h2>
+<pre><code class="language-C++">void glBlitFramebuffer (GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+void glFramebufferTextureLayer (GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer);
+void glInvalidateFramebuffer (GLenum target, GLsizei numAttachments, const GLenum *attachments);
+void glInvalidateSubFramebuffer (GLenum target, GLsizei numAttachments, const GLenum *attachments, GLint x, GLint y, GLsizei width, GLsizei height);
+// renderbuffer
+void glRenderbufferStorageMultisample (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+</code></pre>
+<h2 id="gl31">gl31</h2>
+<pre><code class="language-C++">void glFramebufferParameteri (GLenum target, GLenum pname, GLint param);
+void glGetFramebufferParameteriv (GLenum target, GLenum pname, GLint *params);
+</code></pre>
+<h2 id="gl32">gl32</h2>
+<pre><code class="language-C++">void glFramebufferTexture (GLenum target, GLenum attachment, GLuint texture, GLint level);
+</code></pre>
+<ul>
+<li></li>
+</ul>
+<h2 id="syncstate">syncState</h2>
+<p>// FramebufferVk::syncState signals that we should start a new command buffer.
+// But changing the binding can skip FramebufferVk::syncState if the Framebuffer
+// has no dirty bits. Thus we need to explicitly clear the current command
+// buffer to ensure we start a new one. We don't actually close the render pass here
+// as some optimizations in non-draw commands require the render pass to remain
+// open, such as invalidate or blit. Note that we always start a new command buffer
+// because we currently can only support one open RenderPass at a time.</p>
+<ul>
+<li>onRenderPassFinished();</li>
+<li>
+<p>mRenderPassCommandBuffer = nullptr;</p>
+</li>
+<li>
+<p>mDrawFramebuffer-&gt;setReadOnlyDepthFeedbackLoopMode(false);</p>
+</li>
+<li>Framebuffer -&gt; mReadOnlyDepthFeedbackLoopMode = false</li>
+<li>updateFlipViewportDrawFramebuffer(glState);</li>
+<li>mFlipViewportForDrawFramebuffer  = drawFramebuffer-&gt;isDefault(); </li>
+<li>updateSurfaceRotationDrawFramebuffer(glState);</li>
+<li>updateGraphicsPipelineDescWithSpecConstUsageBits()<ul>
+<li><strong>mGraphicsPipelineDesc</strong>-&gt;<strong>updateSurfaceRotation</strong>(&amp;mGraphicsPipelineTransition, rotationAndFlip);</li>
+<li><strong>mGraphicsPipelineDesc</strong>-&gt;<strong>updateDrawableSize</strong>(&amp;mGraphicsPipelineTransition, dimensions.width,  dimensions.height);</li>
+</ul>
+</li>
+<li>updateViewport(mDrawFramebuffer, glState.getViewport(), glState.getNearPlane(), glState.getFarPlane(), isViewportFlipEnabledForDrawFBO());</li>
+<li><strong>mGraphicsPipelineDesc-&gt;updateViewport()</strong></li>
+<li>updateColorMasks(glState.getBlendStateExt());</li>
+<li><strong>mGraphicsPipelineDesc-&gt;updateColorWriteMasks()</strong></li>
+<li>updateRasterizationSamples(mDrawFramebuffer-&gt;getSamples());</li>
+<li><strong>mGraphicsPipelineDesc-&gt;updateRasterizationSamples</strong>(&amp;mGraphicsPipelineTransition, rasterizationSamples);</li>
+<li><strong>updateSampleShadingWithRasterizationSamples</strong>(rasterizationSamples);</li>
+<li><strong>updateSampleMaskWithRasterizationSamples</strong>(rasterizationSamples);</li>
+<li><strong>mGraphicsPipelineDesc-&gt;updateFrontFace</strong>(&amp;mGraphicsPipelineTransition,     glState.getRasterizerState(),   isViewportFlipEnabledForDrawFBO());</li>
+<li>updateScissor(glState);</li>
+<li><strong>mGraphicsPipelineDesc-&gt;updateScissor</strong>()</li>
+<li>const gl::DepthStencilState depthStencilState = glState.getDepthStencilState();</li>
+<li><strong>mGraphicsPipelineDesc</strong>-&gt;updateDepthTestEnabled(&amp;mGraphicsPipelineTransition,  depthStencilState, drawFramebuffer);</li>
+<li><strong>mGraphicsPipelineDesc</strong>-&gt;updateDepthWriteEnabled(&amp;mGraphicsPipelineTransition, depthStencilState, drawFramebuffer);</li>
+<li><strong>mGraphicsPipelineDesc</strong>-&gt;updateStencilTestEnabled(&amp;mGraphicsPipelineTransition, depthStencilState, drawFramebuffer);</li>
+<li><strong>mGraphicsPipelineDesc</strong>-&gt;updateStencilFrontWriteMask(&amp;mGraphicsPipelineTransition, depthStencilState, drawFramebuffer);</li>
+<li><strong>mGraphicsPipelineDesc</strong>-&gt;updateStencilBackWriteMask(&amp;mGraphicsPipelineTransition, depthStencilState, drawFramebuffer);</li>
+<li>onDrawFramebufferRenderPassDescChange(mDrawFramebuffer);</li>
+<li>invalidateCurrentGraphicsPipeline();<ul>
+<li>mGraphicsPipelineDesc. set Dirty</li>
+</ul>
+</li>
+<li><strong>mGraphicsPipelineDesc</strong>-&gt;updateRenderPassDesc(&amp;mGraphicsPipelineTransition,  framebufferVk-&gt;getRenderPassDesc());</li>
+<li>
+<p><strong>mGraphicsPipelineDesc</strong>-&gt;updateDrawableSize(&amp;mGraphicsPipelineTransition, framebufferVk-&gt;getState().getDimensions().width,
+                                                  framebufferVk-&gt;getState().getDimensions().height);</p>
+</li>
+<li>
+<p><strong>mGraphicsPipelineDesc</strong>-&gt;<strong>updateSurfaceRotation</strong>(&amp;mGraphicsPipelineTransition, rotationAndFlip);</p>
+</li>
+<li><strong>mGraphicsPipelineDesc</strong>-&gt;<strong>updateDrawableSize</strong>(&amp;mGraphicsPipelineTransition, dimensions.width,  dimensions.height);</li>
+<li><strong>mGraphicsPipelineDesc-&gt;updateViewport()</strong></li>
+<li><strong>mGraphicsPipelineDesc-&gt;updateColorWriteMasks()</strong></li>
+<li><strong>mGraphicsPipelineDesc-&gt;updateRasterizationSamples</strong>(&amp;mGraphicsPipelineTransition, rasterizationSamples);</li>
+<li>updateSampleShadingWithRasterizationSamples(rasterizationSamples);</li>
+<li>mGraphicsPipelineDesc-&gt;<strong>updateSampleShading</strong></li>
+<li>updateSampleMaskWithRasterizationSamples(rasterizationSamples);</li>
+<li>mGraphicsPipelineDesc-&gt;<strong>updateSampleMask</strong></li>
+<li><strong>mGraphicsPipelineDesc-&gt;updateFrontFace</strong>(&amp;mGraphicsPipelineTransition,     glState.getRasterizerState(),   isViewportFlipEnabledForDrawFBO());</li>
+<li><strong>mGraphicsPipelineDesc-&gt;updateScissor</strong>()</li>
+<li><strong>mGraphicsPipelineDesc</strong>-&gt;<strong>updateDepthTestEnabled</strong>(&amp;mGraphicsPipelineTransition,  depthStencilState, drawFramebuffer);</li>
+<li><strong>mGraphicsPipelineDesc</strong>-&gt;<strong>updateDepthWriteEnabled</strong>(&amp;mGraphicsPipelineTransition, depthStencilState, drawFramebuffer);</li>
+<li><strong>mGraphicsPipelineDesc</strong>-&gt;<strong>updateStencilTestEnabled</strong>(&amp;mGraphicsPipelineTransition, depthStencilState, drawFramebuffer);</li>
+<li><strong>mGraphicsPipelineDesc</strong>-&gt;<strong>updateStencilFrontWriteMask</strong>(&amp;mGraphicsPipelineTransition, depthStencilState, drawFramebuffer);</li>
+<li><strong>mGraphicsPipelineDesc</strong>-&gt;<strong>updateStencilBackWriteMask</strong>(&amp;mGraphicsPipelineTransition, depthStencilState, drawFramebuffer);</li>
+<li><strong>mGraphicsPipelineDesc</strong>-&gt;<strong>updateRenderPassDesc</strong>(&amp;mGraphicsPipelineTransition,  framebufferVk-&gt;getRenderPassDesc());</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>cache property</th>
+<th>Field</th>
+<th>Pipeline State</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>updateSurfaceRotation</td>
+<td>mDepthStencilStateInfo.</td>
+<td>depthCompareOpAndSurface-Rotation.surfaceRotation</td>
+<td>无?</td>
+</tr>
+<tr>
+<td>updateDrawableSize</td>
+<td>mDrawableSize.</td>
+<td>width<br />height</td>
+<td>无?</td>
+</tr>
+<tr>
+<td>updateViewport</td>
+<td>mViewport</td>
+<td>ALL</td>
+<td>viewportState.pScissors</td>
+</tr>
+<tr>
+<td>updateColorMasks</td>
+<td>mInputAssemblyAndColorBlendStateInfo</td>
+<td>colorWriteMaskBits,</td>
+<td>blendState</td>
+</tr>
+<tr>
+<td>updateRasterizationSamples</td>
+<td>mRasterizationAndMultisampleStateInfo</td>
+<td>bits.rasterizationSamples</td>
+<td></td>
+</tr>
+<tr>
+<td>updateSampleShading</td>
+<td>mRasterizationAndMultisampleStateInfo</td>
+<td>bits.sampleShadingEnable<br />minSampleShading</td>
+<td>multisampleState</td>
+</tr>
+<tr>
+<td>updateSampleMask</td>
+<td>mRasterizationAndMultisampleStateInfo</td>
+<td>sampleMask</td>
+<td>multisampleState</td>
+</tr>
+<tr>
+<td>updateFrontFace</td>
+<td>mRasterizationAndMultisampleStateInfo</td>
+<td>bits.frontFace</td>
+<td>rasterState.frontFace</td>
+</tr>
+<tr>
+<td>updateScissor</td>
+<td>mScissor</td>
+<td><strong>ALL</strong></td>
+<td>viewportState.pScissors</td>
+</tr>
+<tr>
+<td>updateDepthTestEnabled</td>
+<td>mDepthStencilStateInfo.</td>
+<td>enable.depthTest</td>
+<td></td>
+</tr>
+<tr>
+<td>updateDepthWriteEnabled</td>
+<td>--</td>
+<td>enable.depthWrite</td>
+<td></td>
+</tr>
+<tr>
+<td>updateStencilTestEnabled</td>
+<td>--</td>
+<td>enable.stencilTest</td>
+<td></td>
+</tr>
+<tr>
+<td>updateStencilFrontWriteMask</td>
+<td>--</td>
+<td>front.writeMask</td>
+<td></td>
+</tr>
+<tr>
+<td>updateStencilBackWriteMask</td>
+<td>--</td>
+<td>back.writeMask</td>
+<td></td>
+</tr>
+<tr>
+<td>updateRenderPassDesc</td>
+<td>mRenderPassDesc</td>
+<td><strong>ALL</strong></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>(ContextVk::syncState)</p>
+<h3 id="framebuffer-pipeline">切换 Framebuffer时, 修改 Pipeline</h3>
+<p>由于在 gles 切换 Framebuffer时, 一些与之绑定的设置也相应被切换. 例如 颜色附着的数量等.</p>
+<p>而在 vk 中, 除了要切换对应 RenderPass 和 Framebuffer, 部分设置还会反应到 Pipeline 上, </p>
+<p>本节列出在 angle 的 vk::ContextVk 进行状态同步(<code>syncState</code>) 的过程中, 对 Draw Framebuffer 绑定更新时涉及到的 Pipeline 属性的更新:</p>
+<ul>
+<li>
+<p><strong>VkPipelineViewportStateCreateInfo</strong></p>
+</li>
+<li>
+<p><strong>pViewports</strong>    </p>
+</li>
+<li>
+<p><strong>pScissors</strong></p>
+</li>
+<li>
+<p>来源: 由绘制过程中, glViewpoint 修改</p>
+</li>
+<li>
+<p><strong>VkPipelineRasterizationStateCreateInfo</strong></p>
+</li>
+<li>
+<p>光栅, 设置: 深度测试, 背面剔除, 裁剪测试, 例如: cullMode 表明剔除类型: 背面 / 正面 / 双面</p>
+</li>
+<li><strong>frontFace</strong>    =VK_FRONT_FACE_CLOCKWISE / VK_FRONT_FACE_COUNTER_CLOCKWISE  </li>
+<li>
+<p>指定顺时针顶点序是正面, 还是逆时针顶点序是正面</p>
+</li>
+<li>
+<p>来源: ANGLE 在绘制 默认FB和自定义FB时, 会对画面进行旋转, 按不同的顺序进行绘制.</p>
+</li>
+<li>
+<p>离屏: VK_FRONT_FACE_COUNTER_CLOCKWISE</p>
+</li>
+<li>
+<p>ANGLE 说明:</p>
+<ul>
+<li>由于Vulkan和GLES坐标系的不同，默认的帧缓冲区（源自交换链）呈上下颠倒显示。颠倒渲染具有与OpenGL相同的渲染方式。随后启用KHR_MAINTENANCE_1 扩展程序以允许否定视口。我们通过反转视口的高度并将Y增加高度来反转渲染到后缓冲区。因此，如果视口为（0，0，width，height），则视口变为（0，height，width，-height）。不幸的是，当我们开始这样做时，由于渲染现在是上下颠倒的，所以我们还需要调整一些位置。到目前为止受影响的地方：</li>
+<li>readPixels</li>
+<li>copyTexImage</li>
+<li>framebuffer blit</li>
+<li>generating mipmaps</li>
+<li>Point sprites tests</li>
+<li>texStorage</li>
+</ul>
+</li>
+<li>
+<p><strong>VkPipelineMultisampleStateCreateInfo</strong> </p>
+</li>
+<li>
+<p>多重采样: 组合多个不同多边形产生的片段的颜色, 来决定最终颜色的技术. (抗锯齿) </p>
+</li>
+<li>
+<p><strong>rasterizationSamples</strong>  : 采样数, 等于 VkImage.sample</p>
+</li>
+<li><strong>sampleShadingEnable</strong> : rasterizationSamples  &gt; 1</li>
+<li><strong>minSampleShading</strong>  : sampleShadingEnable 为 false 时, 值为1</li>
+<li>
+<p><strong>pSampleMask</strong>  : rasterizationSamples  &gt; 1 且 SamplerMaskEnable 时才会启用</p>
+</li>
+<li>
+<p>来源:  与 VkImage 中 samples 数发生变化时, 上述值对应改变. </p>
+</li>
+<li>
+<p><strong>VkPipelineDepthStencilStateCreateInfo</strong> </p>
+</li>
+<li>
+<p>深度测试, 模板测试</p>
+</li>
+<li><strong>depthTestEnable</strong> = static_cast<VkBool32>(mDepthStencilStateInfo.enable.<strong>depthTest</strong>);</li>
+<li><strong>depthWriteEnable</strong> = static_cast<VkBool32>(mDepthStencilStateInfo.enable.<strong>depthWrite</strong>);</li>
+<li><strong>stencilTestEnable</strong> =  static_cast<VkBool32>(mDepthStencilStateInfo.enable.<strong>stencilTest</strong>);</li>
+<li><strong>front.writeMask</strong></li>
+<li>
+<p><strong>back.writeMask</strong></p>
+</li>
+<li>
+<p>来源: gLEnable 启用 depth test等</p>
+</li>
+<li>
+<p><strong>VkPipelineColorBlendStateCreateInfo</strong></p>
+</li>
+<li>颜色混合: </li>
+<li>blendState.<strong>pAttachments</strong>  [</li>
+<li>​   VkPipelineColorBlendAttachmentState.  <strong>colorWriteMask</strong></li>
+<li>]</li>
+<li>来源:  Color Attachment 数量变动时, 需对应增删</li>
+</ul>
+<p>对应 API:</p>
+<pre><code>
+void ContextVk::updateFlipViewportDrawFramebuffer(const gl::State &amp;glState)
+{
+    // The default framebuffer (originating from the swapchain) is rendered upside-down due to the
+    // difference in the coordinate systems of Vulkan and GLES.  Rendering upside-down has the
+    // effect that rendering is done the same way as OpenGL.  The KHR_MAINTENANCE_1 extension is
+    // subsequently enabled to allow negative viewports.  We inverse rendering to the backbuffer by
+    // reversing the height of the viewport and increasing Y by the height.  So if the viewport was
+    // (0, 0, width, height), it becomes (0, height, width, -height).  Unfortunately, when we start
+    // doing this, we also need to adjust a number of places since the rendering now happens
+    // upside-down.  Affected places so far:
+    //
+    // - readPixels
+    // - copyTexImage
+    // - framebuffer blit
+    // - generating mipmaps
+    // - Point sprites tests
+    // - texStorage
+    gl::Framebuffer *drawFramebuffer = glState.getDrawFramebuffer();
+    mFlipViewportForDrawFramebuffer  = drawFramebuffer-&gt;isDefault();
+}
+</code></pre>
+<h2 id="framebuffers">Framebuffers</h2>
+<p>void GenFramebuffers( sizei n, uint *framebuffers );</p>
+<pre><code>void BindFramebuffer( enum target, uint framebuffer );
+</code></pre>
+<p>void DeleteFramebuffers( sizei n, const uint *framebuffers );</p>
+<p>boolean IsFramebuffer( uint framebuffer );</p>
+<p>void FramebufferParameteri( enum target, enum pname, int param );</p>
+<p>TexStorage2DMultisample</p>
+<p>void GetFramebufferParameteriv( enum target, enum pname, int *params );</p>
+<p>void GetFramebufferAttachmentParameteriv( enum target, enum attachment, enum pname, int *params );</p>
+<p>enum CheckFramebufferStatus( enum target );</p>
+<h2 id="renderbuffers">Renderbuffers</h2>
+<p>void GenRenderbuffers( sizei n, uint *renderbuffers );</p>
+<p>void BindRenderbuffer( enum target, uint renderbuffer );</p>
+<p>boolean IsRenderbuffer( uint renderbuffer );</p>
+<p>void RenderbufferStorageMultisample( enum target, sizei samples, enum internalformat, sizei width, sizei height );</p>
+<p>void GetRenderbufferParameteriv( enum target, enum pname, int *params );</p>
+<p>void FramebufferRenderbuffer( enum target, enum attachment, enum renderbuffertarget, uint renderbuffer );</p>
+<h2 id="texture">Texture</h2>
+<p>void FramebufferTexture( enum target, enum attachment, uint texture, int level );</p>
+<p>void FramebufferTexture2D( enum target, enum attachment, enum textarget, uint texture, int level );</p>
+<p>void FramebufferTextureLayer( enum target, enum attachment, uint texture, int level, int layer );</p>
+<h1 id="dynamicbuffer">DynamicBuffer</h1>
+<pre><code class="language-C++">
+
+// A dynamic buffer is conceptually an infinitely long buffer. Each time you write to the buffer,
+// you will always write to a previously unused portion. After a series of writes, you must flush
+// the buffer data to the device. Buffer lifetime currently assumes that each new allocation will
+// last as long or longer than each prior allocation.
+//
+// Dynamic buffers are used to implement a variety of data streaming operations in Vulkan, such
+// as for immediate vertex array and element array data, uniform updates, and other dynamic data.
+//
+// Internally dynamic buffers keep a collection of VkBuffers. When we write past the end of a
+// currently active VkBuffer we keep it until it is no longer in use. We then mark it available
+// for future allocations in a free list.
+class BufferHelper;
+using BufferHelperPointerVector = std::vector&lt;std::unique_ptr&lt;BufferHelper&gt;&gt;;
+
+class DynamicBuffer : angle::NonCopyable
+{
+  public:
+    DynamicBuffer();
+    DynamicBuffer(DynamicBuffer &amp;&amp;other);
+    ~DynamicBuffer();
+
+    // Init is called after the buffer creation so that the alignment can be specified later.
+    void init(RendererVk *renderer,
+              VkBufferUsageFlags usage,
+              size_t alignment,
+              size_t initialSize,
+              bool hostVisible);
+
+    // Init that gives the ability to pass in specified memory property flags for the buffer.
+    void initWithFlags(RendererVk *renderer,
+                       VkBufferUsageFlags usage,
+                       size_t alignment,
+                       size_t initialSize,
+                       VkMemoryPropertyFlags memoryProperty);
+
+    // This call will allocate a new region at the end of the current buffer. If it can't find
+    // enough space in the current buffer, it returns false. This gives caller a chance to deal with
+    // buffer switch that may occur with allocate call.
+    bool allocateFromCurrentBuffer(size_t sizeInBytes, uint8_t **ptrOut, VkDeviceSize *offsetOut);
+
+    // This call will allocate a new region at the end of the buffer. It internally may trigger
+    // a new buffer to be created (which is returned in the optional parameter
+    // `newBufferAllocatedOut`).  The new region will be in the returned buffer at given offset. If
+    // a memory pointer is given, the buffer will be automatically map()ed.
+    angle::Result allocateWithAlignment(ContextVk *contextVk,
+                                        size_t sizeInBytes,
+                                        size_t alignment,
+                                        uint8_t **ptrOut,
+                                        VkBuffer *bufferOut,
+                                        VkDeviceSize *offsetOut,
+                                        bool *newBufferAllocatedOut);
+
+    // Allocate with default alignment
+    angle::Result allocate(ContextVk *contextVk,
+                           size_t sizeInBytes,
+                           uint8_t **ptrOut,
+                           VkBuffer *bufferOut,
+                           VkDeviceSize *offsetOut,
+                           bool *newBufferAllocatedOut)
+    {
+        return allocateWithAlignment(contextVk, sizeInBytes, mAlignment, ptrOut, bufferOut,
+                                     offsetOut, newBufferAllocatedOut);
+    }
+
+    // After a sequence of writes, call flush to ensure the data is visible to the device.
+    angle::Result flush(ContextVk *contextVk);
+
+    // After a sequence of writes, call invalidate to ensure the data is visible to the host.
+    angle::Result invalidate(ContextVk *contextVk);
+
+    // This releases resources when they might currently be in use.
+    void release(RendererVk *renderer);
+
+    // This releases all the buffers that have been allocated since this was last called.
+    void releaseInFlightBuffers(ContextVk *contextVk);
+
+    // This adds inflight buffers to the context's mResourceUseList and then releases them
+    void releaseInFlightBuffersToResourceUseList(ContextVk *contextVk);
+
+    // This frees resources immediately.
+    void destroy(RendererVk *renderer);
+
+    BufferHelper *getCurrentBuffer() const { return mBuffer.get(); }
+
+    // **Accumulate** an alignment requirement.  A dynamic buffer is used as the staging buffer for
+    // image uploads, which can contain updates to unrelated mips, possibly with different formats.
+    // The staging buffer should have an alignment that can satisfy all those formats, i.e. it's the
+    // lcm of all alignments set in its lifetime.
+    void requireAlignment(RendererVk *renderer, size_t alignment);
+    size_t getAlignment() const { return mAlignment; }
+
+    // For testing only!
+    void setMinimumSizeForTesting(size_t minSize);
+
+    bool isCoherent() const
+    {
+        return (mMemoryPropertyFlags &amp; VK_MEMORY_PROPERTY_HOST_COHERENT_BIT) != 0;
+    }
+
+  private:
+    void reset();
+    angle::Result allocateNewBuffer(ContextVk *contextVk);
+
+    VkBufferUsageFlags mUsage;
+    bool mHostVisible;
+    size_t mInitialSize;
+    std::unique_ptr&lt;BufferHelper&gt; mBuffer;
+    uint32_t mNextAllocationOffset;
+    uint32_t mLastFlushOrInvalidateOffset;
+    size_t mSize;
+    size_t mAlignment;
+    VkMemoryPropertyFlags mMemoryPropertyFlags;
+
+    BufferHelperPointerVector mInFlightBuffers;
+    BufferHelperPointerVector mBufferFreeList;
+};
+
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

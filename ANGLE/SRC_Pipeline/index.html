@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>ANGLE Pipeline - Wesley的轨迹</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Wesley的轨迹</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../index.md" class="nav-link">首页</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../GLES/Framebuffer%20Object/" class="nav-link">OpenGL(ES)</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Vulkan <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Vulkan/0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/" class="dropdown-item">0.1. Vulkan 扩展</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#angle-pipeline" class="nav-link">ANGLE Pipeline</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="angle-pipeline">ANGLE Pipeline</h1>
+<pre><code class="language-plantuml">@startuml
+
+APP -&gt; Context : glDrawElements()
+Context -&gt; ContextVk : drawElements()
+ContextVk -&gt; ContextVk : handleDirtyGraphicsPipeline() \nif pipeline null or dirty
+ContextVk -&gt; ProgramExecutableVk : getGraphicsPipeline( renderPassCache )
+ProgramExecutableVk -&gt; GraphicsPipelineCache : getGraphicsPipeline( pipeLineLayout )
+GraphicsPipelineCache -&gt; ShaderProgramHelper : getPipeline( compatibleRenderPass )
+ShaderProgramHelper -&gt; GraphicsPipelineDesc:initializePipeline()
+
+@enduml
+</code></pre>
+<p>pipelineDesc.setRenderPassDesc(framebuffer-&gt;getRenderPassDesc());</p>
+<p>pipelineDesc.getRenderPassDesc(framebuffer-&gt;getRenderPassDesc());</p>
+<pre><code class="language-C++">1
+    angle::FixedVector&lt;VkPipelineShaderStageCreateInfo, 3&gt; shaderStages;
+    2
+    VkPipelineVertexInputStateCreateInfo vertexInputState     = {};
+    3
+    VkPipelineInputAssemblyStateCreateInfo inputAssemblyState = {};
+   5
+    VkPipelineViewportStateCreateInfo viewportState           = {};
+
+    6 VkPipelineRasterizationStateCreateInfo rasterState        = {};
+    7 VkPipelineMultisampleStateCreateInfo multisampleState     = {};
+    8 VkPipelineDepthStencilStateCreateInfo depthStencilState   = {};
+
+    gl::DrawBuffersArray&lt;VkPipelineColorBlendAttachmentState&gt; blendAttachmentState;
+    9 VkPipelineColorBlendStateCreateInfo blendState = {};
+
+    10 VkPipelineDynamicStateCreateInfo dynamicState = {};
+
+    VkGraphicsPipelineCreateInfo createInfo        = {};
+
+
+    VkSpecializationInfo specializationInfo        = {};
+    SpecializationConstantMap&lt;VkSpecializationMapEntry&gt; specializationEntries;
+    InitializeSpecializationInfo(specConsts, &amp;specializationEntries, &amp;specializationInfo);
+
+    // Vertex shader is always expected to be present.
+    ASSERT(vertexModule != nullptr);
+    VkPipelineShaderStageCreateInfo vertexStage = {};
+    SetPipelineShaderStageInfo(VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO,
+                               VK_SHADER_STAGE_VERTEX_BIT, vertexModule-&gt;getHandle(),
+                               specializationInfo, &amp;vertexStage);
+    shaderStages.push_back(vertexStage);
+
+    if (geometryModule)
+    {
+        VkPipelineShaderStageCreateInfo geometryStage = {};
+        SetPipelineShaderStageInfo(VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO,
+                                   VK_SHADER_STAGE_GEOMETRY_BIT, geometryModule-&gt;getHandle(),
+                                   specializationInfo, &amp;geometryStage);
+        shaderStages.push_back(geometryStage);
+    }
+
+    // Fragment shader is optional.
+    // anglebug.com/3509 - Don't compile the fragment shader if rasterizationDiscardEnable = true
+    if (fragmentModule &amp;&amp; !mRasterizationAndMultisampleStateInfo.bits.rasterizationDiscardEnable)
+    {
+        VkPipelineShaderStageCreateInfo fragmentStage = {};
+        SetPipelineShaderStageInfo(VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO,
+                                   VK_SHADER_STAGE_FRAGMENT_BIT, fragmentModule-&gt;getHandle(),
+                                   specializationInfo, &amp;fragmentStage);
+        shaderStages.push_back(fragmentStage);
+    }
+
+    // TODO(jmadill): Possibly use different path for ES 3.1 split bindings/attribs.
+    gl::AttribArray&lt;VkVertexInputBindingDescription&gt; bindingDescs;
+    gl::AttribArray&lt;VkVertexInputAttributeDescription&gt; attributeDescs;
+
+    uint32_t vertexAttribCount = 0;
+
+    size_t unpackedSize = sizeof(shaderStages) + sizeof(vertexInputState) +
+                          sizeof(inputAssemblyState) + sizeof(viewportState) + sizeof(rasterState) +
+                          sizeof(multisampleState) + sizeof(depthStencilState) +
+                          sizeof(blendAttachmentState) + sizeof(blendState) + sizeof(bindingDescs) +
+                          sizeof(attributeDescs);
+    ANGLE_UNUSED_VARIABLE(unpackedSize);
+
+    gl::AttribArray&lt;VkVertexInputBindingDivisorDescriptionEXT&gt; divisorDesc;
+    VkPipelineVertexInputDivisorStateCreateInfoEXT divisorState = {};
+    divisorState.sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_EXT;
+    divisorState.pVertexBindingDivisors = divisorDesc.data();
+    for (size_t attribIndexSizeT : activeAttribLocationsMask)
+    {
+        const uint32_t attribIndex = static_cast&lt;uint32_t&gt;(attribIndexSizeT);
+
+        VkVertexInputBindingDescription &amp;bindingDesc  = bindingDescs[vertexAttribCount];
+        VkVertexInputAttributeDescription &amp;attribDesc = attributeDescs[vertexAttribCount];
+        const PackedAttribDesc &amp;packedAttrib          = mVertexInputAttribs.attribs[attribIndex];
+
+        bindingDesc.binding = attribIndex;
+        bindingDesc.stride  = static_cast&lt;uint32_t&gt;(packedAttrib.stride);
+        if (packedAttrib.divisor != 0)
+        {
+            bindingDesc.inputRate = static_cast&lt;VkVertexInputRate&gt;(VK_VERTEX_INPUT_RATE_INSTANCE);
+            divisorDesc[divisorState.vertexBindingDivisorCount].binding = bindingDesc.binding;
+            divisorDesc[divisorState.vertexBindingDivisorCount].divisor = packedAttrib.divisor;
+            ++divisorState.vertexBindingDivisorCount;
+        }
+        else
+        {
+            bindingDesc.inputRate = static_cast&lt;VkVertexInputRate&gt;(VK_VERTEX_INPUT_RATE_VERTEX);
+        }
+
+        // Get the corresponding VkFormat for the attrib's format.
+        angle::FormatID formatID         = static_cast&lt;angle::FormatID&gt;(packedAttrib.format);
+        const Format &amp;format             = contextVk-&gt;getRenderer()-&gt;getFormat(formatID);
+        const angle::Format &amp;angleFormat = format.intendedFormat();
+        VkFormat vkFormat =
+            packedAttrib.compressed ? format.vkCompressedBufferFormat : format.vkBufferFormat;
+
+        gl::ComponentType attribType =
+            GetVertexAttributeComponentType(angleFormat.isPureInt(), angleFormat.vertexAttribType);
+        gl::ComponentType programAttribType =
+            gl::GetComponentTypeMask(programAttribsTypeMask, attribIndex);
+
+        if (attribType != programAttribType)
+        {
+            // Override the format with a compatible one.
+            vkFormat = kMismatchedComponentTypeMap[programAttribType];
+
+            bindingDesc.stride = 0;  // Prevent out-of-bounds accesses.
+        }
+
+        // The binding index could become more dynamic in ES 3.1.
+        attribDesc.binding  = attribIndex;
+        attribDesc.format   = vkFormat;
+        attribDesc.location = static_cast&lt;uint32_t&gt;(attribIndex);
+        attribDesc.offset   = packedAttrib.offset;
+
+        vertexAttribCount++;
+    }
+
+    // The binding descriptions are filled in at draw time.
+    vertexInputState.sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
+    vertexInputState.flags = 0;
+    vertexInputState.vertexBindingDescriptionCount   = vertexAttribCount;
+    vertexInputState.pVertexBindingDescriptions      = bindingDescs.data();
+    vertexInputState.vertexAttributeDescriptionCount = vertexAttribCount;
+    vertexInputState.pVertexAttributeDescriptions    = attributeDescs.data();
+    if (divisorState.vertexBindingDivisorCount)
+        vertexInputState.pNext = &amp;divisorState;
+
+    // Primitive topology is filled in at draw time.
+    inputAssemblyState.sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
+    inputAssemblyState.flags = 0;
+    inputAssemblyState.topology =
+        static_cast&lt;VkPrimitiveTopology&gt;(mInputAssemblyAndColorBlendStateInfo.primitive.topology);
+    // http://anglebug.com/3832
+    // We currently hit a VK Validation here where VUID
+    // VUID-VkPipelineInputAssemblyStateCreateInfo-topology-00428 is flagged because we allow
+    // primitiveRestartEnable to be true for topologies VK_PRIMITIVE_TOPOLOGY_POINT_LIST,
+    // VK_PRIMITIVE_TOPOLOGY_LINE_LIST, VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST
+    // VK_PRIMITIVE_TOPOLOGY_LINE_LIST_WITH_ADJACENCY,
+    // VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST_WITH_ADJACENCY and VK_PRIMITIVE_TOPOLOGY_PATCH_LIST
+    // However if we force primiteRestartEnable to FALSE we fail tests.
+    // Need to identify alternate fix.
+    inputAssemblyState.primitiveRestartEnable =
+        static_cast&lt;VkBool32&gt;(mInputAssemblyAndColorBlendStateInfo.primitive.restartEnable);
+
+    // Set initial viewport and scissor state.
+
+    // 0-sized viewports are invalid in Vulkan.  We always use a scissor that at least matches the
+    // requested viewport, so it's safe to adjust the viewport size here.
+    VkViewport viewport = mViewport;
+    if (viewport.width == 0)
+    {
+        viewport.width = 1;
+    }
+    if (viewport.height == 0)
+    {
+        viewport.height = 1;
+    }
+
+    viewportState.sType         = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO;
+    viewportState.flags         = 0;
+    viewportState.viewportCount = 1;
+    viewportState.pViewports    = &amp;viewport;
+
+    viewportState.scissorCount = 1;
+    VkRect2D scissor;
+    if (IsScissorStateDynamic(mScissor))
+    {
+        viewportState.pScissors = nullptr;
+    }
+    else
+    {
+        viewportState.pScissors = &amp;scissor;
+        scissor.offset.x        = mScissor.x;
+        scissor.offset.y        = mScissor.y;
+        scissor.extent.width    = mScissor.width;
+        scissor.extent.height   = mScissor.height;
+    }
+
+    const PackedRasterizationAndMultisampleStateInfo &amp;rasterAndMS =
+        mRasterizationAndMultisampleStateInfo;
+
+    // Rasterizer state.
+    rasterState.sType            = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO;
+    rasterState.flags            = 0;
+    rasterState.depthClampEnable = static_cast&lt;VkBool32&gt;(rasterAndMS.bits.depthClampEnable);
+    rasterState.rasterizerDiscardEnable =
+        static_cast&lt;VkBool32&gt;(rasterAndMS.bits.rasterizationDiscardEnable);
+    rasterState.polygonMode             = static_cast&lt;VkPolygonMode&gt;(rasterAndMS.bits.polygonMode);
+    rasterState.cullMode                = static_cast&lt;VkCullModeFlags&gt;(rasterAndMS.bits.cullMode);
+    rasterState.frontFace               = static_cast&lt;VkFrontFace&gt;(rasterAndMS.bits.frontFace);
+    rasterState.depthBiasEnable         = static_cast&lt;VkBool32&gt;(rasterAndMS.bits.depthBiasEnable);
+    rasterState.depthBiasConstantFactor = rasterAndMS.depthBiasConstantFactor;
+    rasterState.depthBiasClamp          = rasterAndMS.depthBiasClamp;
+    rasterState.depthBiasSlopeFactor    = rasterAndMS.depthBiasSlopeFactor;
+    rasterState.lineWidth               = rasterAndMS.lineWidth;
+    const void **pNextPtr               = &amp;rasterState.pNext;
+
+    VkPipelineRasterizationLineStateCreateInfoEXT rasterLineState = {};
+    rasterLineState.sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_LINE_STATE_CREATE_INFO_EXT;
+    // Enable Bresenham line rasterization if available and not multisampling.
+    if (rasterAndMS.bits.rasterizationSamples &lt;= 1 &amp;&amp;
+        contextVk-&gt;getFeatures().bresenhamLineRasterization.enabled)
+    {
+        rasterLineState.lineRasterizationMode = VK_LINE_RASTERIZATION_MODE_BRESENHAM_EXT;
+        *pNextPtr                             = &amp;rasterLineState;
+        pNextPtr                              = &amp;rasterLineState.pNext;
+    }
+
+    VkPipelineRasterizationProvokingVertexStateCreateInfoEXT provokingVertexState = {};
+    provokingVertexState.sType =
+        VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_PROVOKING_VERTEX_STATE_CREATE_INFO_EXT;
+    // Always set provoking vertex mode to last if available.
+    if (contextVk-&gt;getFeatures().provokingVertex.enabled)
+    {
+        provokingVertexState.provokingVertexMode = VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT;
+        *pNextPtr                                = &amp;provokingVertexState;
+        pNextPtr                                 = &amp;provokingVertexState.pNext;
+    }
+
+    // When depth clamping is used, depth clipping is automatically disabled.
+    // When the 'depthClamping' feature is enabled, we'll be using depth clamping
+    // to work around a driver issue, not as an alternative to depth clipping. Therefore we need to
+    // explicitly re-enable depth clipping.
+    VkPipelineRasterizationDepthClipStateCreateInfoEXT depthClipState = {};
+    depthClipState.sType =
+        VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_DEPTH_CLIP_STATE_CREATE_INFO_EXT;
+    if (contextVk-&gt;getFeatures().depthClamping.enabled)
+    {
+        depthClipState.depthClipEnable = VK_TRUE;
+        *pNextPtr                      = &amp;depthClipState;
+        pNextPtr                       = &amp;depthClipState.pNext;
+    }
+
+    VkPipelineRasterizationStateStreamCreateInfoEXT rasterStreamState = {};
+    rasterStreamState.sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_STREAM_CREATE_INFO_EXT;
+    if (contextVk-&gt;getFeatures().supportsTransformFeedbackExtension.enabled)
+    {
+        rasterStreamState.rasterizationStream = 0;
+        rasterState.pNext                     = &amp;rasterLineState;
+    }
+
+    // Multisample state.
+    multisampleState.sType = VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO;
+    multisampleState.flags = 0;
+    multisampleState.rasterizationSamples =
+        gl_vk::GetSamples(rasterAndMS.bits.rasterizationSamples);
+    multisampleState.sampleShadingEnable =
+        static_cast&lt;VkBool32&gt;(rasterAndMS.bits.sampleShadingEnable);
+    multisampleState.minSampleShading = rasterAndMS.minSampleShading;
+    multisampleState.pSampleMask      = rasterAndMS.sampleMask;
+    multisampleState.alphaToCoverageEnable =
+        static_cast&lt;VkBool32&gt;(rasterAndMS.bits.alphaToCoverageEnable);
+    multisampleState.alphaToOneEnable = static_cast&lt;VkBool32&gt;(rasterAndMS.bits.alphaToOneEnable);
+
+    // Depth/stencil state.
+    depthStencilState.sType = VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO;
+    depthStencilState.flags = 0;
+    depthStencilState.depthTestEnable =
+        static_cast&lt;VkBool32&gt;(mDepthStencilStateInfo.enable.depthTest);
+    depthStencilState.depthWriteEnable =
+        static_cast&lt;VkBool32&gt;(mDepthStencilStateInfo.enable.depthWrite);
+    depthStencilState.depthCompareOp = static_cast&lt;VkCompareOp&gt;(
+        mDepthStencilStateInfo.depthCompareOpAndSurfaceRotation.depthCompareOp);
+    depthStencilState.depthBoundsTestEnable =
+        static_cast&lt;VkBool32&gt;(mDepthStencilStateInfo.enable.depthBoundsTest);
+    depthStencilState.stencilTestEnable =
+        static_cast&lt;VkBool32&gt;(mDepthStencilStateInfo.enable.stencilTest);
+    UnpackStencilState(mDepthStencilStateInfo.front, mDepthStencilStateInfo.frontStencilReference,
+                       &amp;depthStencilState.front);
+    UnpackStencilState(mDepthStencilStateInfo.back, mDepthStencilStateInfo.backStencilReference,
+                       &amp;depthStencilState.back);
+    depthStencilState.minDepthBounds = mDepthStencilStateInfo.minDepthBounds;
+    depthStencilState.maxDepthBounds = mDepthStencilStateInfo.maxDepthBounds;
+
+    const PackedInputAssemblyAndColorBlendStateInfo &amp;inputAndBlend =
+        mInputAssemblyAndColorBlendStateInfo;
+
+    blendState.sType           = VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO;
+    blendState.flags           = 0;
+    blendState.logicOpEnable   = static_cast&lt;VkBool32&gt;(inputAndBlend.logic.opEnable);
+    blendState.logicOp         = static_cast&lt;VkLogicOp&gt;(inputAndBlend.logic.op);
+    blendState.attachmentCount = static_cast&lt;uint32_t&gt;(mRenderPassDesc.colorAttachmentRange());
+    blendState.pAttachments    = blendAttachmentState.data();
+
+    // If this graphics pipeline is for the unresolve operation, correct the color attachment count
+    // for that subpass.
+    if ((mRenderPassDesc.getColorUnresolveAttachmentMask().any() ||
+         mRenderPassDesc.hasDepthStencilUnresolveAttachment()) &amp;&amp;
+        mRasterizationAndMultisampleStateInfo.bits.subpass == 0)
+    {
+        blendState.attachmentCount =
+            static_cast&lt;uint32_t&gt;(mRenderPassDesc.getColorUnresolveAttachmentMask().count());
+    }
+
+    for (int i = 0; i &lt; 4; i++)
+    {
+        blendState.blendConstants[i] = inputAndBlend.blendConstants[i];
+    }
+
+    const gl::DrawBufferMask blendEnableMask(inputAndBlend.blendEnableMask);
+
+    // Zero-init all states.
+    blendAttachmentState = {};
+
+    for (uint32_t colorIndexGL = 0; colorIndexGL &lt; blendState.attachmentCount; ++colorIndexGL)
+    {
+        VkPipelineColorBlendAttachmentState &amp;state = blendAttachmentState[colorIndexGL];
+
+        if (blendEnableMask[colorIndexGL])
+        {
+            // To avoid triggering valid usage error, blending must be disabled for formats that do
+            // not have VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BLEND_BIT feature bit set.
+            // From OpenGL ES clients, this means disabling blending for integer formats.
+            if (!angle::Format::Get(mRenderPassDesc[colorIndexGL]).isInt())
+            {
+                ASSERT(!contextVk-&gt;getRenderer()
+                            -&gt;getFormat(mRenderPassDesc[colorIndexGL])
+                            .actualImageFormat()
+                            .isInt());
+                state.blendEnable = VK_TRUE;
+                UnpackBlendAttachmentState(inputAndBlend.attachments[colorIndexGL], &amp;state);
+            }
+        }
+        state.colorWriteMask =
+            Int4Array_Get&lt;VkColorComponentFlags&gt;(inputAndBlend.colorWriteMaskBits, colorIndexGL);
+    }
+
+    // Dynamic state
+    angle::FixedVector&lt;VkDynamicState, 1&gt; dynamicStateList;
+    if (IsScissorStateDynamic(mScissor))
+    {
+        dynamicStateList.push_back(VK_DYNAMIC_STATE_SCISSOR);
+    }
+
+
+    dynamicState.sType             = VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO;
+    dynamicState.dynamicStateCount = static_cast&lt;uint32_t&gt;(dynamicStateList.size());
+    dynamicState.pDynamicStates    = dynamicStateList.data();
+
+    createInfo.sType               = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO;
+    createInfo.flags               = 0;
+    createInfo.stageCount          = static_cast&lt;uint32_t&gt;(shaderStages.size());
+    createInfo.pStages             = shaderStages.data();
+    createInfo.pVertexInputState   = &amp;vertexInputState;
+    createInfo.pInputAssemblyState = &amp;inputAssemblyState;
+    createInfo.pTessellationState  = nullptr;
+    createInfo.pViewportState      = &amp;viewportState;
+    createInfo.pRasterizationState = &amp;rasterState;
+    createInfo.pMultisampleState   = &amp;multisampleState;
+    createInfo.pDepthStencilState  = &amp;depthStencilState;
+    createInfo.pColorBlendState    = &amp;blendState;
+    createInfo.pDynamicState       = dynamicStateList.empty() ? nullptr : &amp;dynamicState;
+    createInfo.layout              = pipelineLayout.getHandle();
+    createInfo.renderPass          = compatibleRenderPass.getHandle();
+    createInfo.subpass             = mRasterizationAndMultisampleStateInfo.bits.subpass;
+    createInfo.basePipelineHandle  = VK_NULL_HANDLE;
+    createInfo.basePipelineIndex   = 0;
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

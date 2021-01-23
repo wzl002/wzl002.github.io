@@ -1,0 +1,6019 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>总览 - Wesley的轨迹</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Wesley的轨迹</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../index.md" class="nav-link">首页</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../GLES/Framebuffer%20Object/" class="nav-link">OpenGL(ES)</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Vulkan <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Vulkan/0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/" class="dropdown-item">0.1. Vulkan 扩展</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link">总览</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#vk-extensions" class="nav-link">Vk Extensions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#vk-features" class="nav-link">Vk Features</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#limits" class="nav-link">Limits</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#angle-vk-extensions" class="nav-link">ANGLE : Vk Extensions</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#gles-core" class="nav-link">GLES Core</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#egl" class="nav-link">EGL</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#gles-ext" class="nav-link">GLES EXT</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#vulkan_8" class="nav-link">Vulkan 自用</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_2" class="nav-link">其他平台</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#v100-ext" class="nav-link">v100 已支持的Ext</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#angle-ext" class="nav-link">ANGLE 期望将来加入的 EXT</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#angle-vk-features" class="nav-link">ANGLE: Vk Features</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#angle-vk-limits" class="nav-link">ANGLE: Vk Limits</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#maxperstagedescriptorstoragebuffers" class="nav-link">maxPerStageDescriptorStorageBuffers</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#maxperstagedescriptoruniformbuffers" class="nav-link">maxPerStageDescriptorUniformBuffers</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#maxdescriptorsetuniformbuffers" class="nav-link">maxDescriptorSetUniformBuffers</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#maxvertexoutputcomponents-maxfragmentinputcomponents" class="nav-link">maxVertexOutputComponents 与 maxFragmentInputComponents</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#maxinterpolationoffset" class="nav-link">maxInterpolationOffset</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#gles-limits" class="nav-link">附表: GLES Limits 满足情况详情</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#properties" class="nav-link">其他 Properties</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#_3" class="nav-link">附录</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#v100-gles-extension" class="nav-link">v100 GLES Extension 支持情况</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#v100-egl-extension" class="nav-link">v100 EGL Extension</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#angle-vk-features_1" class="nav-link">ANGLE 中启用的 Vk Features</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#8-appendix" class="nav-link">8. Appendix</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#81-capability" class="nav-link">8.1. Capability</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#82-extension" class="nav-link">8.2. Extension</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="_1">总览</h1>
+<h2 id="vk-extensions">Vk Extensions</h2>
+<h3 id="angle-vk-ext-es">ANGLE 中 vk Ext 对应es功能</h3>
+<table>
+<thead>
+<tr>
+<th>Vk Extensions in ANGLE</th>
+<th>已支持</th>
+<th>vk内部</th>
+<th>es核心</th>
+<th>es Ext</th>
+<th>EGL</th>
+<th>其他</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Instance Level:</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>WSI:  VK_KHR_ANDROID_SURFACE /  VK_KHR_WIN32_SURFACE</td>
+<td>M*</td>
+<td>✔</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>VK_KHR_SURFACE</td>
+<td>M*</td>
+<td>✔</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>VK_EXT_DEBUG_UTILS / VK_EXT_DEBUG_REPORT</td>
+<td>??</td>
+<td>✔</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>VK_EXT_SWAPCHAIN_COLOR_SPACE</td>
+<td>??</td>
+<td></td>
+<td></td>
+<td></td>
+<td>✔</td>
+<td></td>
+</tr>
+<tr>
+<td>VK_KHR_GET_PHYSICAL_DEVICE_PROPERTIES_2</td>
+<td>✔</td>
+<td>✔</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Device Level</strong>:</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>✔</td>
+<td></td>
+</tr>
+<tr>
+<td>VK_EXT_QUEUE_FAMILY_FOREIGN</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>✔</td>
+<td></td>
+</tr>
+<tr>
+<td>VK_EXT_DEPTH_CLIP_ENABLE</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Nvidia</td>
+</tr>
+<tr>
+<td>VK_EXT_EXTERNAL_MEMORY_HOST</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>MAC</td>
+</tr>
+<tr>
+<td>VK_EXT_INDEX_TYPE_UINT8</td>
+<td></td>
+<td></td>
+<td>✔</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>VK_EXT_LINE_RASTERIZATION</td>
+<td></td>
+<td></td>
+<td>✔</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>VK_EXT_PROVOKING_VERTEX</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>ANGLE EXT</td>
+</tr>
+<tr>
+<td>VK_EXT_SHADER_STENCIL_EXPORT</td>
+<td></td>
+<td></td>
+<td>✔</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>VK_EXT_TRANSFORM_FEEDBACK</td>
+<td></td>
+<td></td>
+<td>✔</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>VK_EXT_VERTEX_ATTRIBUTE_DIVISOR</td>
+<td></td>
+<td></td>
+<td>✔</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>VK_FUCHSIA_EXTERNAL_MEMORY</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FUCHSIA</td>
+</tr>
+<tr>
+<td>VK_FUCHSIA_EXTERNAL_SEMAPHORE</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FUCHSIA</td>
+</tr>
+<tr>
+<td>VK_GOOGLE_SAMPLER_FILTERING_PRECISION</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>ANGLE EXT</td>
+</tr>
+<tr>
+<td>VK_GGP_FRAME_TOKEN</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Stadia</td>
+</tr>
+<tr>
+<td>VK_KHR_BIND_MEMORY_2</td>
+<td>✔</td>
+<td>✔</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>VK_KHR_CREATE_RENDERPASS_2</td>
+<td>✔</td>
+<td>✔</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>VK_KHR_DEPTH_STENCIL_RESOLVE</td>
+<td>✔</td>
+<td></td>
+<td>✔</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>VK_KHR_EXTERNAL_FENCE_CAPABILITIES</td>
+<td>✔</td>
+<td></td>
+<td>✔</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>VK_KHR_EXTERNAL_FENCE_FD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>U</td>
+<td></td>
+</tr>
+<tr>
+<td>VK_KHR_EXTERNAL_MEMORY</td>
+<td>✔</td>
+<td>✔</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>VK_KHR_EXTERNAL_MEMORY_FD</td>
+<td></td>
+<td></td>
+<td></td>
+<td>U</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>VK_KHR_EXTERNAL_SEMAPHORE</td>
+<td>✔</td>
+<td></td>
+<td>✔</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>VK_KHR_EXTERNAL_SEMAPHORE_CAPABILITIES</td>
+<td>✔</td>
+<td></td>
+<td>✔</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>VK_KHR_EXTERNAL_SEMAPHORE_FD</td>
+<td></td>
+<td></td>
+<td></td>
+<td>U</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>VK_KHR_GET_MEMORY_REQUIREMENTS_2</td>
+<td>✔</td>
+<td>✔</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>VK_KHR_IMAGE_FORMAT_LIST</td>
+<td>✔</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>AMD</td>
+</tr>
+<tr>
+<td>VK_KHR_INCREMENTAL_PRESENT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>U</td>
+<td></td>
+</tr>
+<tr>
+<td>VK_KHR_MAINTENANCE1</td>
+<td>✔</td>
+<td></td>
+<td>✔</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>VK_KHR_SAMPLER_YCBCR_CONVERSION</td>
+<td>✔</td>
+<td></td>
+<td>✔</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>VK_KHR_SHADER_FLOAT16_INT8</td>
+<td></td>
+<td></td>
+<td>✔</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>VK_KHR_SWAPCHAIN</td>
+<td></td>
+<td>✔</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>VK_QCOM_render_pass_store_ops</td>
+<td></td>
+<td>✔</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>*M 表示为Vulkan必须扩展, 但 v100 文档没有标出. 因此对于下面的 <code>VK_EXT_SWAPCHAIN_COLOR_SPACE</code> 是否已支持表示存疑.  有其他文档显示v100,v200均支持. </p>
+<p>*U 表示非必须: 其对应的 GLES / EGL Extension 不在 v100 的支持列表中.</p>
+<h3 id="vk-extensions_1">增加 Vk Extensions 的需求</h3>
+<p>将上表中的数据, 删去"'已支持的", "vk内部使用", 和"其他平台"的扩展, 剩下的即 v100 尚未支持的扩展需求表如下: </p>
+<table>
+<thead>
+<tr>
+<th>Vk Extensions</th>
+<th>所需 Feature</th>
+<th>分类</th>
+<th>必需</th>
+<th>支持 es 功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VK_EXT_SWAPCHAIN_COLOR_SPACE</td>
+<td>--</td>
+<td>EGL</td>
+<td>✔</td>
+<td><strong>EGL_KHR_gl_colorspace</strong></td>
+</tr>
+<tr>
+<td>VK_ANDROID_EXTERNAL_MEMORY<br />_ANDROID_HARDWARE_BUFFER<br />VK_EXT_QUEUE_FAMILY_FOREIGN</td>
+<td>--</td>
+<td>EGL</td>
+<td>✔</td>
+<td><strong>EGL_ANDROID_image_native_buffer</strong></td>
+</tr>
+<tr>
+<td>VK_EXT_INDEX_TYPE_UINT8</td>
+<td>indexTypeUint8</td>
+<td>es2.0</td>
+<td></td>
+<td>匹配 Draw 的 indexType 参数, <br />以优化性能</td>
+</tr>
+<tr>
+<td>VK_EXT_LINE_RASTERIZATION</td>
+<td>bresenhamLines</td>
+<td>es2.0</td>
+<td></td>
+<td>管线算法支持</td>
+</tr>
+<tr>
+<td>VK_EXT_SHADER_STENCIL_EXPORT</td>
+<td>--</td>
+<td>es2.0</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>VK_EXT_TRANSFORM_FEEDBACK</td>
+<td>transformFeedback</td>
+<td>es3.1</td>
+<td>✔</td>
+<td>实现 Transform Feedback 相关 API</td>
+</tr>
+<tr>
+<td>VK_EXT_VERTEX_ATTRIBUTE_DIVISOR</td>
+<td>vertexAttributeInstanceRateDivisor</td>
+<td>es2.0</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>VK_KHR_SHADER_FLOAT16_INT8</td>
+<td>shaderFloat16</td>
+<td>es2.0</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>VK_KHR_EXTERNAL_FENCE_FD</td>
+<td>--</td>
+<td>EGL</td>
+<td>U</td>
+<td>EGL_ANDROID_native_fence</td>
+</tr>
+<tr>
+<td>VK_KHR_EXTERNAL_MEMORY_FD</td>
+<td>--</td>
+<td>EXT</td>
+<td>U</td>
+<td>GL_EXT_memory_object_fd</td>
+</tr>
+<tr>
+<td>VK_KHR_EXTERNAL_SEMAPHORE_FD</td>
+<td>--</td>
+<td>EXT</td>
+<td>U</td>
+<td>GL_EXT_semaphore_fd</td>
+</tr>
+<tr>
+<td>VK_KHR_INCREMENTAL_PRESENT</td>
+<td>--</td>
+<td>EGL</td>
+<td>U</td>
+<td>EGL_KHR_swap_buffers_with_damage</td>
+</tr>
+</tbody>
+</table>
+<p>*U 表示非必须: 其对应的 GLES / EGL Extension 不在 v100 的支持列表中.</p>
+<h2 id="vk-features">Vk Features</h2>
+<p>对比 v100 支持情况:</p>
+<p>仅 <strong>inheritedQueries</strong> <strong>不支持</strong>且必需.  </p>
+<p>此外虽然 vertexPipelineStoresAndAtomics 不支持, 但 ANGLE 推荐用 VK_EXT_TRANSFORM_FEEDBACK 取代. </p>
+<p>其余Features 均在 v100 中支持: </p>
+<table>
+<thead>
+<tr>
+<th>Vk Features in ANGLE</th>
+<th>对应 GLES</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>inheritedQueries</strong></td>
+<td>es 3.0,  Query</td>
+<td></td>
+</tr>
+<tr>
+<td>vertexPipelineStoresAndAtomics</td>
+<td>transform feedback</td>
+<td>模拟实现 transform feedback, <br />应用 VK_EXT_TRANSFORM_FEEDBACK 代替</td>
+</tr>
+<tr>
+<td>imageCubeArray</td>
+<td>cubemap array</td>
+<td>仅在非 SwiftShader 和非 Qualcomm 下启用</td>
+</tr>
+<tr>
+<td><strong>independentBlend</strong></td>
+<td>fbo 多个 attachments</td>
+<td></td>
+</tr>
+<tr>
+<td>robustBufferAccess</td>
+<td>访问 robust buffer</td>
+<td></td>
+</tr>
+<tr>
+<td>samplerAnisotropy</td>
+<td>Anisotropic filtering</td>
+<td></td>
+</tr>
+<tr>
+<td>wideLines</td>
+<td>wide lines</td>
+<td></td>
+</tr>
+<tr>
+<td>fragmentStoresAndAtomics</td>
+<td>storage buffers</td>
+<td>实现 fragment shader 中 storage buffers 和 images</td>
+</tr>
+<tr>
+<td>geometryShader</td>
+<td>geometry shaders</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>shaderImageGatherExtended</strong></td>
+<td>EXT_gpu_shader5</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>shaderUniformBufferArrayDynamicIndexing</strong></td>
+<td>EXT_gpu_shader5</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>shaderSampledImageArrayDynamicIndexing</strong></td>
+<td>EXT_gpu_shader5</td>
+<td>支持 EXT_gpu_shader5 <br />并模拟实现 sampler array</td>
+</tr>
+<tr>
+<td><strong>shaderStorageBufferArrayDynamicIndexing</strong></td>
+<td>模拟实现 atomic counter</td>
+<td></td>
+</tr>
+<tr>
+<td>shaderClipDistance</td>
+<td>APPLE_clip_distance</td>
+<td></td>
+</tr>
+<tr>
+<td>sampleRateShading</td>
+<td>OES_sample_shading</td>
+<td></td>
+</tr>
+<tr>
+<td>depthClamp</td>
+<td>OES_sample_shading</td>
+<td>support depth clears through draw calls.</td>
+</tr>
+<tr>
+<td>sampleRateShading</td>
+<td>OES_sample_variables</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*粗体</strong>Features为核心API所必需特性. </p>
+<h2 id="limits">Limits</h2>
+<p>本表列出 ANGLE 中记了数字需求的 Limits.  </p>
+<p>[<em>] 对应 </em><em>v100 GLES Limits</em>* 是指 ANGLE 在模拟实现 GLES 时, 需要占用部分资源, 导致 v100 中标记的 GLES Limits 不再能满足.</p>
+<p>本表假设 VK_EXT_TRANSFORM_FEEDBACK 与 VK_EXT_LINE_RASTERIZATION 已满足. 否则一些所需值会增加, 但不会改变当前满足情况.</p>
+<table>
+<thead>
+<tr>
+<th>Vk Limits in ANGLE</th>
+<th>所需值</th>
+<th>Limits in v100</th>
+<th>v100 已满足</th>
+<th>对应 GLES EXT / Cap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>maxPerStageDescriptorStorageBuffers</td>
+<td>&gt;=12 / 16</td>
+<td><strong>8</strong></td>
+<td>不满足</td>
+<td>es3.0, <br />12 为满足 ANGLE es3.0 <br />16 为满足 v100 GLES Limits</td>
+</tr>
+<tr>
+<td>maxPerStageDescriptorUniformBuffers</td>
+<td>&gt;=14</td>
+<td>12</td>
+<td>不满足</td>
+<td>v100 GLES Limits*</td>
+</tr>
+<tr>
+<td>maxDescriptorSetUniformBuffers</td>
+<td>&gt;=76</td>
+<td>72</td>
+<td>不满足</td>
+<td>v100 GLES Limits*</td>
+</tr>
+<tr>
+<td>maxVertexOutputComponents 与 <br />maxFragmentInputComponents</td>
+<td>&gt;=136</td>
+<td>128</td>
+<td>不满足</td>
+<td>v100 GLES Limits*</td>
+</tr>
+<tr>
+<td>standardSampleLocations</td>
+<td>true</td>
+<td>true</td>
+<td></td>
+<td>textureStorageMultisample2DArrayOES</td>
+</tr>
+<tr>
+<td>maxSamplerAnisotropy</td>
+<td>&gt; 1.0f;</td>
+<td>16</td>
+<td></td>
+<td>textureFilterAnisotropic<br />maxTextureAnisotropy</td>
+</tr>
+<tr>
+<td>maxInterpolationOffset</td>
+<td>&gt;= 0.5;</td>
+<td>0.4375</td>
+<td>不满足</td>
+<td>OES_shader_multisample_interpolation</td>
+</tr>
+<tr>
+<td>maxVertexInputAttributeOffset</td>
+<td>&gt;=2047</td>
+<td>2047</td>
+<td></td>
+<td>es3.1</td>
+</tr>
+</tbody>
+</table>
+<h1 id="angle-vk-extensions">ANGLE : Vk Extensions</h1>
+<h2 id="gles-core">GLES Core</h2>
+<h3 id="vk_ext_transform_feedback">VK_EXT_TRANSFORM_FEEDBACK</h3>
+<table>
+<thead>
+<tr>
+<th>V100 已支持</th>
+<th>否</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>对应 GLES</td>
+<td>es3.0 APIs</td>
+</tr>
+<tr>
+<td>对应功能</td>
+<td>Transform Feedback</td>
+</tr>
+<tr>
+<td>必要性</td>
+<td>实现 Transform Feedback 必需</td>
+</tr>
+<tr>
+<td>所需 FeaturesEXT</td>
+<td>transformFeedback</td>
+</tr>
+<tr>
+<td>angle doc:</td>
+<td><a href="https://github.com/google/angle/blob/master/src/libANGLE/renderer/vulkan/doc/TransformFeedbackViaExtension.md">TransformFeedbackViaExtension</a></td>
+</tr>
+<tr>
+<td>angle issue:</td>
+<td>http://anglebug.com/3206</td>
+</tr>
+</tbody>
+</table>
+<p>ANGLE使用Vulkan中的vertexPipelineStoresAndAtomics功能模拟变换反馈。但是某些 Driver 不支持此特性。同样，在GLES 3.2中，仿真变得更加困难。因此，<strong>ANGLE必须支持使用 VK_EXT_transform_feedback 扩展</strong>。并且当使用此扩展时，我们也期望性能提高。</p>
+<h5 id="counterbuffer"><strong>使用CounterBuffer实现暂停/恢复</strong></h5>
+<ul>
+<li>Vulkan扩展没有为<code>glPauseTransformFeedback</code>/ <code>glEndTransformFeedback</code>分别提供单独的API 。</li>
+<li>相反，Vulkan在<code>vkCmdBeginTransformFeedbackEXT</code>/<code>vkCmdEndTransformFeedbackEXT</code>中 引入了计数器缓冲区作为API参数。</li>
+<li>要暂停FB，调用 <code>vkCmdEndTransformFeedbackEXT</code> 并在<code>pCounterBuffers</code>数组中提供有效的缓冲区句柄, 在<code>pCounterBufferOffsets</code>数组中提供有效的偏移量，以实现保存恢复点的实现。</li>
+<li>要恢复FB，我们调用 <code>vkCmdBeginTransformFeedbackEXT</code> 并传入先前的<code>pCounterBuffers</code> 和<code>pCounterBufferOffsets</code>值。</li>
+<li>暂停和恢复之间, 需要有一个存储阻挡 (memory barrier), 用于与访问源到访问模板的计数器缓冲器. </li>
+<li>访问源: Pipeline Stage 的 <code>VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT</code> 中的 <code>VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT</code></li>
+<li>访问目标 Pipeline Stage 的  <code>VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT</code> 中的 <code>VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT</code></li>
+</ul>
+<h5 id="gltransformfeedbackvaryings"><strong>glTransformFeedbackVaryings 的实现</strong></h5>
+<ul>
+<li>Vulkan中没有<code>glTransformFeedbackVaryings</code>的等效函数。</li>
+<li>Vulkan规范指出，必须使用XFB执行模式声明最后一个顶点处理阶段着色器。</li>
+<li>SPIR-V 转换器负责添加此执行模式，并修饰需要捕获的变量。</li>
+<li>ANGLE 为 Vulkan 坐标系修改顶点着色器中的<code>gl_position.z</code>。因此，如果我们在XFB缓冲区中捕获“ gl_position”的值，则捕获的值将是错误的。</li>
+<li>为了解决这个问题，我们声明一个内部 position 变化量，然后复制'gl_position'的值。我们捕获了变换反馈操作(transform feedback)期间内部 position 变化量的变化。为简单起见，我们会对每个捕获的变化都进行此操作,  而没有用<code>gl_PerVertex</code>直接在SPIR-V中装饰结构体。</li>
+</ul>
+<h5 id="transform-feedback-queries">Transform Feedback Queries</h5>
+<p>GLES 有两个不同的查询：<code>GL_TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN</code>和<code>GL_PRIMITIVES_GENERATED</code>。 但是在Vulkan中，这些是由来自<code>VK_EXT_transform_feedback</code>的单个查询提供的。 此外，Vulkan要求一次只能激活某类型的一个查询。 当两个 Transform Feedback 查询都处于活动状态时，这将迫使ANGLE使两个GL查询共享其Vulkan查询。</p>
+<h4 id="gles-api">对应 GLES API</h4>
+<ul>
+<li>
+<h4 id="transform-feedback"><strong>Transform Feedback</strong></h4>
+</li>
+<li>
+<p>glBeginTransformFeedback/ glPauseTransformFeedback /glResumeTransformFeedback/ glEndTransformFeedback / glTransformFeedbackVaryings </p>
+</li>
+<li>
+<p><strong>Buffer</strong></p>
+</li>
+<li>
+<p>glBufferData / glBufferStorage / glDeleteBuffers </p>
+</li>
+<li>
+<p><strong>glsl</strong></p>
+</li>
+<li>
+<p>glDispatchComputeIndirect / glDispatchCompute / glLinkProgram / glCreateShaderProgramv</p>
+</li>
+<li>
+<p><strong>Query</strong></p>
+</li>
+<li>
+<p>glBeginQuery /  glEndQuery</p>
+</li>
+</ul>
+<h4 id="vulkan">Vulkan 定义</h4>
+<p><strong>Features</strong>:  仅需启用 transformFeedback</p>
+<pre><code>// Provided by VK_EXT_transform_feedback
+typedef struct VkPhysicalDeviceTransformFeedbackFeaturesEXT {
+    VkStructureType    sType;
+    void*              pNext;
+    VkBool32           transformFeedback;
+    VkBool32           geometryStreams;
+} VkPhysicalDeviceTransformFeedbackFeaturesEXT;
+</code></pre>
+<p>扩展命令:</p>
+<ul>
+<li>vkCmdBeginQueryIndexedEXT</li>
+<li>vkCmdBeginTransformFeedbackEXT</li>
+<li>vkCmdBindTransformFeedbackBuffersEXT</li>
+<li>vkCmdDrawIndirectByteCountEXT</li>
+<li>vkCmdEndQueryIndexedEXT</li>
+<li>vkCmdEndTransformFeedbackEXT</li>
+</ul>
+<h4 id="angle-gles-on-vk">ANGLE : GLES on Vk</h4>
+<p>/API较多, 待分析/ </p>
+<p>结束</p>
+<hr />
+<h3 id="vk_ext_index_type_uint8">VK_EXT_INDEX_TYPE_UINT8 (.)</h3>
+<table>
+<thead>
+<tr>
+<th>V100 已支持</th>
+<th>否</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>对应 GLES</td>
+<td>es2.0 APIs</td>
+</tr>
+<tr>
+<td>对应功能</td>
+<td>指定了 IndexType 的 Draw</td>
+</tr>
+<tr>
+<td>必要性</td>
+<td>性能优化, 可绕过</td>
+</tr>
+<tr>
+<td>所需 FeaturesEXT</td>
+<td>indexTypeUint8</td>
+</tr>
+<tr>
+<td>angle issue:</td>
+<td>http://anglebug.com/4405</td>
+</tr>
+</tbody>
+</table>
+<p>此扩展为解决一个性能问题:  某些GLES基准（例如T-Rex）在 draw 时使用 8bit 的 indices 。 </p>
+<p>但是, Vulkan 中默认没有 8bit index, 因此ANGLE 需要使用 CPU, 或GPU的计算着色器, 将8位索引转换为16位。</p>
+<p>而如果 driver 支持<code>VK_EXT_index_type_uint8</code>，则不需要此转换. </p>
+<p>&nbsp;</p>
+<h4 id="gles">对应 GLES 功能</h4>
+<p>所有指定了 IndexType 的 Draw. (DrawArrays, DrawElements.....)</p>
+<pre><code>例: glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, indices);
+</code></pre>
+<p>其中 index 类型为以下枚举值之一: <code>GL_UNSIGNED_BYTE</code>, <code>GL_UNSIGNED_SHORT</code>, or <code>GL_UNSIGNED_INT</code>, 分别对应了 8bit, 16bit, 和 32bit.</p>
+<p>&nbsp;</p>
+<h4 id="vulkan_1">Vulkan 定义</h4>
+<p>此扩展允许在 <code>vkCmdBindIndexBuffer</code> 命令中使用 uint8_t indices, 对应枚举: </p>
+<pre><code>VkIndexType: VK_INDEX_TYPE_UINT8_EXT
+</code></pre>
+<p>而在没有此扩展时, 仅支持 VK_INDEX_TYPE_UINT16 和 VK_INDEX_TYPE_UINT32, 分别对应 16bit 和 32bit</p>
+<p><strong>Features</strong>:  仅需启用 indexTypeUint8</p>
+<pre><code>// Provided by VK_EXT_index_type_uint8
+typedef struct VkPhysicalDeviceIndexTypeUint8FeaturesEXT {
+    VkStructureType    sType;
+    void*              pNext;
+    VkBool32           indexTypeUint8;
+} VkPhysicalDeviceIndexTypeUint8FeaturesEXT;
+</code></pre>
+<p>vkCmdBindIndexBuffer 命令: </p>
+<pre><code>// Provided by VK_VERSION_1_0
+void vkCmdBindIndexBuffer(
+    VkCommandBuffer                             commandBuffer,
+    VkBuffer                                    buffer,
+    VkDeviceSize                                offset,
+    VkIndexType                                 indexType);
+</code></pre>
+<p>其中 <code>indexType</code> 对应枚举: </p>
+<pre><code class="language-c++">// Provided by VK_VERSION_1_0
+typedef enum VkIndexType {
+    VK_INDEX_TYPE_UINT16 = 0,
+    VK_INDEX_TYPE_UINT32 = 1,
+  // Provided by VK_KHR_acceleration_structure
+    VK_INDEX_TYPE_NONE_KHR = 1000165000,
+  // Provided by VK_EXT_index_type_uint8
+    VK_INDEX_TYPE_UINT8_EXT = 1000265000,
+  // Provided by VK_NV_ray_tracing
+    VK_INDEX_TYPE_NONE_NV = VK_INDEX_TYPE_NONE_KHR,
+} VkIndexType;
+</code></pre>
+<p>&nbsp;</p>
+<h4 id="angle-gles-on-vk_1">ANGLE : GLES on Vk</h4>
+<pre><code class="language-c++">// Init gles-vulkan index type map
+mIndexTypeMap[UnsignedByte] = supportsIndexTypeUint8 ? VK_INDEX_TYPE_UINT8_EXT : VK_INDEX_TYPE_UINT16;
+mIndexTypeMap[UnsignedShort] = VK_INDEX_TYPE_UINT16;
+mIndexTypeMap[UnsignedInt]   = VK_INDEX_TYPE_UINT32;
+</code></pre>
+<p>mIndexTypeMap 用于 执行 <code>vkCmdBindIndexBuffer</code>设置类型</p>
+<ul>
+<li>UnsignedByte :  VK_INDEX_TYPE_UINT8_EXT (原先 VK_INDEX_TYPE_UINT16)</li>
+<li>UnsignedShort : VK_INDEX_TYPE_UINT16</li>
+<li>UnsignedInt : VK_INDEX_TYPE_UINT32</li>
+</ul>
+<p>如果不支持, 在 DrawXXX 实现中处理 indices 时 (例如分配内存空间) 需要将 GLubyte 转为 GLushort 后再处理.</p>
+<p>TODO: 分析现有DDK实现, 检查是否需要</p>
+<hr />
+<h3 id="vk_ext_line_rasterization">VK_EXT_LINE_RASTERIZATION (.)</h3>
+<table>
+<thead>
+<tr>
+<th>V100 已支持</th>
+<th>否</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>对应 GLES</td>
+<td>es2.0</td>
+</tr>
+<tr>
+<td>对应功能</td>
+<td>光栅化: 单样本渲染</td>
+</tr>
+<tr>
+<td>必要性</td>
+<td>非必需: 保持算法一致性</td>
+</tr>
+<tr>
+<td>所需 FeaturesEXT</td>
+<td>bresenhamLines</td>
+</tr>
+<tr>
+<td>angle doc:</td>
+<td><a href="https://github.com/google/angle/blob/master/src/libANGLE/renderer/vulkan/doc/OpenGLLineSegmentRasterization.md">OpenGLLineSegmentRasterization</a></td>
+</tr>
+</tbody>
+</table>
+<p>由于 Vk 在光栅化的单样本渲染采样了不同的线段渲染算法, 需要此扩展来保持 GLES 与原有算法的一致性: </p>
+<p>在光栅化阶段, OpenGL和Vulkan都将线段渲染为两点之间的一系列像素。它们不同之处在于覆盖线的像素。</p>
+<ul>
+<li>对于单样本渲染，Vulkan使用<strong>基于四边形覆盖率的算法</strong>。较小的形状围绕线段挤出。形状所覆盖的样本将代表线段。</li>
+<li>OpenGL的算法 <strong>基于Bresenham的line算法</strong>。在两个分段点之间的线上选择像素。注意Bresenham不支持多重采样。</li>
+<li>在视觉上进行比较时，Vulkan线段栅格化算法始终选择在OpenGL中栅格化的线段像素的超集。</li>
+<li>详细区别见 ANGLE 文档: <a href="https://github.com/google/angle/blob/master/src/libANGLE/renderer/vulkan/doc/OpenGLLineSegmentRasterization.md">OpenGLLineSegmentRasterization</a></li>
+</ul>
+<h4 id="gles_1">对应 GLES</h4>
+<p>管线的光栅化, 无API对应</p>
+<h4 id="vulkan_2">Vulkan 定义</h4>
+<p><strong>Features</strong>:  仅需启用 bresenhamLines.</p>
+<pre><code class="language-c++">// Provided by VK_EXT_line_rasterization
+typedef struct VkPhysicalDeviceLineRasterizationFeaturesEXT {
+    VkStructureType    sType;
+    void*              pNext;
+    VkBool32           rectangularLines;
+    VkBool32           bresenhamLines;
+    VkBool32           smoothLines;
+    VkBool32           stippledRectangularLines;
+    VkBool32           stippledBresenhamLines;
+    VkBool32           stippledSmoothLines;
+} VkPhysicalDeviceLineRasterizationFeaturesEXT;
+</code></pre>
+<p>提供 Pipeline State 扩展: </p>
+<pre><code class="language-c++">// Provided by VK_EXT_line_rasterization
+typedef struct VkPipelineRasterizationLineStateCreateInfoEXT {
+    VkStructureType               sType;
+    const void*                   pNext;
+    VkLineRasterizationModeEXT    lineRasterizationMode;
+    VkBool32                      stippledLineEnable;
+    uint32_t                      lineStippleFactor;
+    uint16_t                      lineStipplePattern;
+} VkPipelineRasterizationLineStateCreateInfoEXT;
+</code></pre>
+<p>其中 <code>lineRasterizationMode</code> 对应枚举:</p>
+<pre><code class="language-c++">// Provided by VK_EXT_line_rasterization
+typedef enum VkLineRasterizationModeEXT {
+    VK_LINE_RASTERIZATION_MODE_DEFAULT_EXT = 0,
+    VK_LINE_RASTERIZATION_MODE_RECTANGULAR_EXT = 1,
+    VK_LINE_RASTERIZATION_MODE_BRESENHAM_EXT = 2,
+    VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH_EXT = 3,
+} VkLineRasterizationModeEXT;
+</code></pre>
+<ul>
+<li>其中 <code>VK_LINE_RASTERIZATION_MODE_BRESENHAM_EXT</code> 根据<a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#primsrast-lines-bresenham">Bresenham Line Segment Rasterization</a> 算法中的定义，指定通过确定线条相交和离开的像素菱形绘制的线条。</li>
+</ul>
+<h4 id="gles-on-vulkan">GLES on Vulkan</h4>
+<p>TODO: 与硬件沟通时, 设置选择算法的参数.</p>
+<p>在非多重采样时, 在定义 Pipeline 的 <code>VkPipelineRasterizationStateCreateInfo</code> 时, 为其 pNext 链上添加 <code>VkPipelineRasterizationLineStateCreateInfoEXT</code>即可.</p>
+<p>设置 lineRasterizationMode 为 <code>VK_LINE_RASTERIZATION_MODE_BRESENHAM_EXT</code></p>
+<pre><code class="language-c++">   VkPipelineRasterizationStateCreateInfo rasterState        = {};
+   ...
+   const void **pNextPtr               = &amp;rasterState.pNext;
+
+    VkPipelineRasterizationLineStateCreateInfoEXT rasterLineState = {};
+    rasterLineState.sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_LINE_STATE_CREATE_INFO_EXT;
+    // Enable Bresenham line rasterization if available and not multisampling.
+    if (rasterizationSamples &lt;= 1 &amp;&amp; bresenhamLineRasterization.enabled)
+    {
+        rasterLineState.lineRasterizationMode = VK_LINE_RASTERIZATION_MODE_BRESENHAM_EXT;
+        *pNextPtr                             = &amp;rasterLineState;
+        pNextPtr                              = &amp;rasterLineState.pNext;
+    }
+</code></pre>
+<hr />
+<h3 id="vk_ext_shader_stencil_export">VK_EXT_SHADER_STENCIL_EXPORT</h3>
+<table>
+<thead>
+<tr>
+<th>V100 已支持</th>
+<th>否</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>对应 GLES</td>
+<td>es2.0</td>
+</tr>
+<tr>
+<td>对应功能</td>
+<td>glBlitFramebuffer: stencil buffer 的 resolve 和 unresolve</td>
+</tr>
+<tr>
+<td>必要性</td>
+<td>非必须, 可模拟实现</td>
+</tr>
+<tr>
+<td>所需 FeaturesEXT</td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
+<p>此扩展用于执行模板缓冲区的多采样解析(multisampled resolve of stencil buffer)。 如果此扩展不可用，则使用多步骤模拟实现。</p>
+<h4 id="gles_2">对应 GLES 功能</h4>
+<p>Framebuffer 的 resolve 和 unresolve, 发生在读取和复制过程中, 如 glBlitFramebuffer</p>
+<h4 id="vulkan_3">Vulkan 定义</h4>
+<p>此扩展提供一种机制，使着色器可以在每次调用时生成模板引用值。在启用模板测试时，这允许针对着色器中生成的值执行测试。</p>
+<ul>
+<li>此扩展依赖 SPV_EXT_shader_stencil_export</li>
+<li>此扩展为GLES的shader扩展: <strong>GL_ARB_shader_stencil_export</strong> 提供 API 支持</li>
+</ul>
+<p>此扩为不增加其他结构体和指令.</p>
+<h4 id="gles-on-vk">GLES on Vk</h4>
+<p>待分析</p>
+<hr />
+<h3 id="vk_ext_vertex_attribute_divisor">VK_EXT_VERTEX_ATTRIBUTE_DIVISOR</h3>
+<table>
+<thead>
+<tr>
+<th>V100 已支持</th>
+<th>否</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>对应 GLES</td>
+<td>es2.0 APIs</td>
+</tr>
+<tr>
+<td>对应功能</td>
+<td>Vertex 绑定,  GL_EXT_instanced_arrays</td>
+</tr>
+<tr>
+<td>必要性</td>
+<td></td>
+</tr>
+<tr>
+<td>所需 FeaturesEXT</td>
+<td>vertexAttributeInstanceRateDivisor</td>
+</tr>
+</tbody>
+</table>
+<h4 id="gles_3">对应 GLES 功能</h4>
+<p>Vertex 绑定</p>
+<ul>
+<li>
+<p>GL_EXT_instanced_arrays</p>
+</li>
+<li>
+<p>glDrawArraysInstancedEXT</p>
+</li>
+<li>glDrawElementsInstancedEXT</li>
+<li>glVertexAttribDivisorEXT</li>
+</ul>
+<h4 id="vulkan_4">Vulkan 定义</h4>
+<p><strong>Vertex Attribute Divisor in Instanced Rendering</strong></p>
+<p>structure controls how vertex attributes are assigned to an instance when instanced rendering is enabled.</p>
+<p>VkPipelineVertexInputStateCreateInfo </p>
+<pre><code class="language-c++">// Provided by VK_EXT_vertex_attribute_divisor
+typedef struct VkPipelineVertexInputDivisorStateCreateInfoEXT {
+    VkStructureType                                     sType;
+    const void*                                         pNext;
+    uint32_t                                            vertexBindingDivisorCount;
+    const VkVertexInputBindingDivisorDescriptionEXT*    pVertexBindingDivisors;
+} VkPipelineVertexInputDivisorStateCreateInfoEXT;
+</code></pre>
+<pre><code class="language-c++">// Provided by VK_EXT_vertex_attribute_divisor
+typedef struct VkVertexInputBindingDivisorDescriptionEXT {
+    uint32_t    binding;
+    uint32_t    divisor;
+} VkVertexInputBindingDivisorDescriptionEXT;
+</code></pre>
+<ul>
+<li><code>binding</code> is the binding number for which the divisor is specified.</li>
+<li><code>divisor</code> is the number of successive instances that will use the same value of the vertex attribute when instanced rendering is enabled. For example, if the divisor is N, the same vertex attribute will be applied to N successive instances before moving on to the next vertex attribute. The maximum value of divisor is implementation dependent and can be queried using <code>VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT</code>::<code>maxVertexAttribDivisor</code>. A value of <code>0</code> <strong>can</strong> be used for the divisor if the <a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#features-vertexAttributeInstanceRateZeroDivisor"><code>vertexAttributeInstanceRateZeroDivisor</code></a> feature is enabled. In this case, the same vertex attribute will be applied to all instances.</li>
+</ul>
+<h4 id="gles-on-vk_1">GLES on Vk</h4>
+<p>参考Spec, 为 Pipeline 配置 <code>VkPipelineVertexInputDivisorStateCreateInfoEXT</code> 即可.</p>
+<hr />
+<h3 id="vk_khr_shader_float16_int8">VK_KHR_SHADER_FLOAT16_INT8 (.)</h3>
+<table>
+<thead>
+<tr>
+<th>V100 已支持</th>
+<th>否</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>对应 GLES</td>
+<td>es2.0 APIs</td>
+</tr>
+<tr>
+<td>对应功能</td>
+<td>glGenerateMipmap</td>
+</tr>
+<tr>
+<td>必要性</td>
+<td>非必要: 性能优化</td>
+</tr>
+<tr>
+<td>所需 FeaturesEXT</td>
+<td>shaderFloat16</td>
+</tr>
+<tr>
+<td>angle issue:</td>
+<td>http://anglebug.com/4551</td>
+</tr>
+</tbody>
+</table>
+<h4 id="gles-api_1">对应GLES API</h4>
+<p><code>glGenerateMipmap</code></p>
+<p>用于进行生成Mipmap 计算时, 在着色器中启用 float 16 来加速运算</p>
+<h4 id="vulkan_5">Vulkan 定义</h4>
+<p>此扩展将提升至 Vulkan 1.2 Core</p>
+<p>此扩展允许在着色器中使用16位浮点类型和8位整数类型进行算术运算。</p>
+<p><strong>Features</strong>: 仅需启用 shaderFloat16</p>
+<pre><code>typedef struct VkPhysicalDeviceShaderFloat16Int8Features {
+    VkStructureType    sType;
+    void*              pNext;
+    VkBool32           shaderFloat16;
+    VkBool32           shaderInt8;
+} VkPhysicalDeviceShaderFloat16Int8Features;
+</code></pre>
+<h4 id="gles-on-vk_2">GLES on VK</h4>
+<p>在 GenerateMipmap 过程中, 取 shader 进行计算时, 如果图片的 bits-per-component (eg: redBits) 为 8 或 16时, 使用扩展提供的 float16 来计算以获取更快的计算速度. </p>
+<pre><code>    if (actualFormat.redBits &lt;= 8)
+    {
+        flags = hasShaderFloat16 ? GenerateMipmap_comp::kIsRGBA8_UseHalf
+                                 : GenerateMipmap_comp::kIsRGBA8;
+    }
+    else if (actualFormat.redBits &lt;= 16)
+    {
+        flags = hasShaderFloat16 ? GenerateMipmap_comp::kIsRGBA16_UseHalf
+                                 : GenerateMipmap_comp::kIsRGBA16;
+    }
+    else
+    {
+        flags = GenerateMipmap_comp::kIsRGBA32F;
+    }
+</code></pre>
+<p>各 flag 分别各自对应一个预生成的 compressedShaderCode. </p>
+<h2 id="egl">EGL</h2>
+<h3 id="vk_ext_swapchain_color_space">VK_EXT_SWAPCHAIN_COLOR_SPACE(.)</h3>
+<table>
+<thead>
+<tr>
+<th>V100 已支持</th>
+<th>否 ?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>对应 GLES</td>
+<td>EGL Extension</td>
+</tr>
+<tr>
+<td>对应功能</td>
+<td>EGL_KHR_gl_colorspace (v100支持)</td>
+</tr>
+<tr>
+<td>必要性</td>
+<td>支持 EGL EXT 必须</td>
+</tr>
+<tr>
+<td>所需 FeaturesEXT</td>
+<td>无</td>
+</tr>
+<tr>
+<td>angle issue:</td>
+<td>http://anglebug.com/2514</td>
+</tr>
+</tbody>
+</table>
+<p>支持扩展 <strong>EGL_KHR_gl_colorspace</strong> (v100支持), 进而支持 EGL_EXT_image_gl_colorspace 等 colorspace 扩展.</p>
+<h4 id="gles_4">对应 GLES 功能</h4>
+<p>扩展 EGL_KHR_gl_colorspace 格式:</p>
+<ul>
+<li>EGL_GL_COLORSPACE_KHR  </li>
+<li>EGL_GL_COLORSPACE_SRGB_KHR    </li>
+<li>EGL_GL_COLORSPACE_LINEAR_KHR                     </li>
+</ul>
+<h4 id="vulkan_6">Vulkan 定义</h4>
+<p>提供扩展:</p>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#VkColorSpaceKHR">VkColorSpaceKHR</a>:</p>
+<ul>
+<li><code>VK_COLOR_SPACE_ADOBERGB_LINEAR_EXT</code></li>
+<li><code>VK_COLOR_SPACE_ADOBERGB_NONLINEAR_EXT</code></li>
+<li><code>VK_COLOR_SPACE_BT2020_LINEAR_EXT</code></li>
+<li><code>VK_COLOR_SPACE_BT709_LINEAR_EXT</code></li>
+<li><code>VK_COLOR_SPACE_BT709_NONLINEAR_EXT</code></li>
+<li><code>VK_COLOR_SPACE_DCI_P3_NONLINEAR_EXT</code></li>
+<li><code>VK_COLOR_SPACE_DISPLAY_P3_LINEAR_EXT</code></li>
+<li><code>VK_COLOR_SPACE_DISPLAY_P3_NONLINEAR_EXT</code></li>
+<li><code>VK_COLOR_SPACE_DOLBYVISION_EXT</code></li>
+<li><code>VK_COLOR_SPACE_EXTENDED_SRGB_LINEAR_EXT</code></li>
+<li><code>VK_COLOR_SPACE_EXTENDED_SRGB_NONLINEAR_EXT</code></li>
+<li><code>VK_COLOR_SPACE_HDR10_HLG_EXT</code></li>
+<li><code>VK_COLOR_SPACE_HDR10_ST2084_EXT</code></li>
+<li><code>VK_COLOR_SPACE_PASS_THROUGH_EXT</code></li>
+</ul>
+<h4 id="gles-on-vulkan_1">GLES on Vulkan</h4>
+<p>对 EGL 的 Format 向 Vk Format 进行映射:</p>
+<pre><code>static VkColorSpaceKHR MapEglColorSpaceToVkColorSpace(EGLenum EGLColorspace)
+{
+    switch (EGLColorspace)
+    {
+        case EGL_NONE:
+        case EGL_GL_COLORSPACE_LINEAR:
+        case EGL_GL_COLORSPACE_SRGB_KHR:
+        case EGL_GL_COLORSPACE_DISPLAY_P3_PASSTHROUGH_EXT:
+            return VK_COLOR_SPACE_SRGB_NONLINEAR_KHR;
+        case EGL_GL_COLORSPACE_DISPLAY_P3_LINEAR_EXT:
+            return VK_COLOR_SPACE_DISPLAY_P3_LINEAR_EXT;
+        case EGL_GL_COLORSPACE_DISPLAY_P3_EXT:
+            return VK_COLOR_SPACE_DISPLAY_P3_NONLINEAR_EXT;
+        case EGL_GL_COLORSPACE_SCRGB_LINEAR_EXT:
+            return VK_COLOR_SPACE_EXTENDED_SRGB_LINEAR_EXT;
+        case EGL_GL_COLORSPACE_SCRGB_EXT:
+            return VK_COLOR_SPACE_EXTENDED_SRGB_NONLINEAR_EXT;
+        default:
+            UNREACHABLE();
+            return VK_COLOR_SPACE_SRGB_NONLINEAR_KHR;
+    }
+}
+</code></pre>
+<hr />
+<h3 id="vk_android_external_memory_android_hardware_buffer-vk_ext_queue_family_foreign">VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER 和 VK_EXT_QUEUE_FAMILY_FOREIGN</h3>
+<table>
+<thead>
+<tr>
+<th>V100 已支持</th>
+<th>否</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>对应 GLES</td>
+<td>EGL Extension (仅安卓)</td>
+</tr>
+<tr>
+<td>对应功能</td>
+<td>EGL_ANDROID_image_native_buffer (v100支持)</td>
+</tr>
+<tr>
+<td>必要性</td>
+<td>支持 EGL EXT 必须</td>
+</tr>
+<tr>
+<td>所需 FeaturesEXT</td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
+<h4 id="gles_5">对应 GLES 功能</h4>
+<p>支持 <a href="https://www.khronos.org/registry/EGL/extensions/ANDROID/EGL_ANDROID_image_native_buffer.txt">ANativeWindowBuffer</a>:  EGL_NATIVE_BUFFER_ANDROID</p>
+<p>示例:</p>
+<pre><code>ANativeWindowBuffer* sSrcBuffer = graphicBuffer-&gt;getNativeBuffer();
+EGLint attrs[] = {
+    EGL_IMAGE_PRESERVED_KHR,    EGL_TRUE,
+    EGL_NONE,
+};
+EGLImageKHR eglSrcImage =eglCreateImageKHR(eglDisplay, EGL_NO_CONTEXT, EGL_NATIVE_BUFFER_ANDROID,
+(EGLClientBuffer)&amp;sSrcBuffer, attrs);
+</code></pre>
+<h4 id="vulkan_7">Vulkan 定义</h4>
+<p><strong>1. VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER</strong> </p>
+<p>此扩展使应用程序可以将在Vulkan设备外部创建的Android AHardwareBuffer对象导入Vulkan内存对象，在其中可以将它们绑定到图像和缓冲区。 它还允许从Vulkan内存对象中导出AHardwareBuffer，以与其他操作系统对称。 但是，由于并非所有AHardwareBuffer用法和格式都具有Vulkan等效项，因此从Vulkan导出与提供外部AHardwareBuffer并导入相比，提供的功能要少得多。</p>
+<p>某些AHardwareBuffer映像具有实现定义的外部格式，这些格式可能与Vulkan格式不对应。 采样器Y'CBCR转换可用于从这些图像中采样并将它们转换为已知的色彩空间。</p>
+<p>扩展命令包括: </p>
+<ul>
+<li>vkGetAndroidHardwareBufferPropertiesANDROID</li>
+<li>vkGetMemoryAndroidHardwareBufferANDROID</li>
+</ul>
+<p><strong>2. VK_EXT_QUEUE_FAMILY_FOREIGN</strong></p>
+<p>此扩展定义了一个特殊的队列族 (Queue Family): <strong><code>VK_QUEUE_FAMILY_FOREIGN_EXT</code></strong>:</p>
+<ul>
+<li>
+<p>用于将外部存储器支持的资源所有权转移到外部外部队列。 </p>
+</li>
+<li>
+<p>这类似于 <code>VK_KHR_external_memory</code>  中定义的<code>VK_QUEUE_FAMILY_EXTERNAL_KHR</code>。 两者之间的主要区别是：</p>
+</li>
+<li>
+<p><code>VK_QUEUE_FAMILY_EXTERNAL_KHR</code> 表示的队列必须与当前VkInstance共享相同的物理设备和相同的驱动程序版本。 </p>
+</li>
+<li>
+<p><code>VK_QUEUE_FAMILY_FOREIGN_EXT</code>没有这样的限制。 它可以代表其他供应商的设备和驱动程序，甚至可以代表不具有Vulkan功能的设备。</p>
+</li>
+<li>
+<p>外部存储器支持的所有资源均支持 <code>VK_QUEUE_FAMILY_EXTERNAL_KHR</code>。 对<code>VK_QUEUE_FAMILY_FOREIGN_EXT</code>的支持更具限制性。</p>
+</li>
+<li>应用程序应该期望到 <code>VK_QUEUE_FAMILY_FOREIGN_EXT</code> 的转换比从 <code>VK_QUEUE_FAMILY_EXTERNAL_KHR</code> 的转换要昂贵。</li>
+</ul>
+<h4 id="gles-on-vulkan_2">GLES on Vulkan</h4>
+<p>Android平台特殊代码 (src\libANGLE\renderer\vulkan\android).</p>
+<p>为image创建buffer时, 用于获取 BufferMemory 等底层信息.</p>
+<p>具体内容待分析. </p>
+<hr />
+<ul>
+<li>
+<p>VK_KHR_EXTERNAL_FENCE_FD</p>
+</li>
+<li>
+<p>有则启用</p>
+</li>
+<li>supportsExternalFenceFd</li>
+<li>
+<p>支持: EGL_ANDROID_native_fence</p>
+</li>
+<li>
+<p>VK_KHR_INCREMENTAL_PRESENT</p>
+</li>
+<li>
+<p>有则启用</p>
+</li>
+<li>supportsIncrementalPresent</li>
+<li>支持 EGL_KHR_swap_buffers_with_damage <ul>
+<li>eglSwapBuffersWithDamageEXT</li>
+<li>SurfaceVk::present</li>
+<li>SurfaceVk::swapImpl</li>
+</ul>
+</li>
+</ul>
+<h2 id="gles-ext">GLES EXT</h2>
+<ul>
+<li>
+<p>VK_KHR_EXTERNAL_MEMORY_FD</p>
+</li>
+<li>
+<p>有则启用</p>
+</li>
+<li>supportsExternalMemoryFd</li>
+<li>
+<p>支持: GL_EXT_memory_object_fd</p>
+</li>
+<li>
+<p>VK_KHR_EXTERNAL_SEMAPHORE_FD</p>
+</li>
+<li>
+<p>有则启用</p>
+</li>
+<li>supportsExternalSemaphoreFd </li>
+<li>支持: GL_EXT_semaphore_fd</li>
+</ul>
+<h2 id="vulkan_8">Vulkan 自用</h2>
+<ul>
+<li>
+<p>VK_KHR_SURFACE &amp;&amp;  VK_KHR_ANDROID_SURFACE</p>
+</li>
+<li>
+<p>WSI , 非可选 Extension</p>
+</li>
+<li>
+<p>VK_EXT_DEBUG_UTILS / VK_EXT_DEBUG_REPORT</p>
+</li>
+<li>
+<p>Vulkan ValidationLayers</p>
+</li>
+<li>
+<p>VK_KHR_SWAPCHAIN</p>
+</li>
+<li>
+<p>非可选 Extension</p>
+</li>
+<li>
+<p>VK_QCOM_render_pass_store_ops </p>
+</li>
+<li>
+<p>有则启用</p>
+</li>
+<li>
+<p>supportsRenderPassStoreOpNoneQCOM</p>
+</li>
+<li>
+<p><code>VK_ATTACHMENT_STORE_OP_NONE_QCOM</code></p>
+</li>
+<li>
+<p>http://anglebug.com/5505</p>
+</li>
+<li>
+<p><code>For read only depth stencil, we can use StoreOpNone if available. DONT_CARE is still preferred, so do this after finish the DONT_CARE handling.</code></p>
+</li>
+</ul>
+<h2 id="_2">其他平台</h2>
+<h3 id="nvidia">Nvidia</h3>
+<ul>
+<li>VK_EXT_DEPTH_CLIP_ENABLE </li>
+<li>有则启用</li>
+<li>FeatureVk.depthClamping <ul>
+<li>启用 : <strong>isNvidia</strong> &amp;&amp; Features.depthClamp &amp;&amp; EXT</li>
+<li>The workaround requires the VK_EXT_depth_clip_enable extension and the 'depthClamp' physical
+  device feature. This workaround caused test failures on Quadro P400/driver 418.56/Linux.
+    Therefore, on Linux we require a major version &gt; 418.</li>
+<li>On some NVIDIA drivers the depth value is not clamped to [0,1] for floating point depth buffers. This is NVIDIA bug 3171019, see http://anglebug.com/3970 for details.</li>
+<li>When depth clamping is used, depth clipping is automatically disabled.
+  When the 'depthClamping' feature is enabled, we'll be using depth clamping to work around a driver issue, not as an alternative to depth clipping. Therefore we need to
+  explicitly re-enable depth clipping.</li>
+<li>对应 vk:  <code>VkPipelineRasterizationState.depthClampEnable</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="mac">MAC</h3>
+<ul>
+<li>
+<p>VK_EXT_EXTERNAL_MEMORY_HOST</p>
+</li>
+<li>
+<p>有则启用</p>
+</li>
+<li>FeatureVk.supportsExternalMemoryHost<ul>
+<li>Whether the VkDevice supports the <code>VK_EXT_external_memory_host</code> extension, on which the <code>ANGLE_iosurface_client_buffer</code> extension can be layered.</li>
+<li>IOSurfaceSurfaceVkMac.mm</li>
+<li>OffscreenSurfaceVk::AttachmentImage::initializeWithExternalMemory</li>
+</ul>
+</li>
+<li>RendererVk.mMinImportedHostPointerAlignment</li>
+<li>vkGetMemoryHostPointerPropertiesEXT<ul>
+<li>IOSurfaceSurfaceVkMac.mm</li>
+</ul>
+</li>
+</ul>
+<h3 id="ggpstadia">GGP(Stadia)</h3>
+<ul>
+<li>
+<p>VK_GGP_FRAME_TOKEN</p>
+</li>
+<li>
+<p>if PLANTFORM_GGP  有则启用</p>
+</li>
+<li>
+<p>supportsGGPFrameToken</p>
+</li>
+<li>
+<p>支持 : EGL_ANGLE_swap_with_frame_token</p>
+<ul>
+<li><code>eglSwapBuffersWithFrameTokenANGLE</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="fuchsia">Fuchsia</h3>
+<ul>
+<li>
+<p>VK_FUCHSIA_EXTERNAL_MEMORY</p>
+</li>
+<li>
+<p>有则启用</p>
+</li>
+<li>supportsExternalMemoryFuchsia</li>
+<li>
+<p>支持: GL_ANGLE_memory_object_fuchsia</p>
+</li>
+<li>
+<p>VK_FUCHSIA_EXTERNAL_SEMAPHORE</p>
+</li>
+<li>
+<p>有则启用</p>
+</li>
+<li>supportsExternalSemaphoreFuchsia</li>
+<li>支持: GL_ANGLE_semaphore_fuchsia</li>
+</ul>
+<h3 id="angle">ANGLE</h3>
+<ul>
+<li>
+<p>VK_EXT_PROVOKING_VERTEX</p>
+</li>
+<li>
+<p>GL_ANGLE_provoking_vertex</p>
+</li>
+<li>
+<p>glProvokingVertexANGLE</p>
+</li>
+<li>
+<p>VK_GOOGLE_SAMPLER_FILTERING_PRECISION</p>
+</li>
+<li>
+<p>未启用, ANGLE自定义</p>
+</li>
+<li>
+<p>supportsFilteringPrecision</p>
+</li>
+<li>
+<p>支持: GL_CHROMIUM_texture_filtering_hint</p>
+<ul>
+<li><code>gHint(GL_TEXTURE_FILTERING_HINT_CHROMIUM)</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="v100-ext">v100 已支持的Ext</h2>
+<h3 id="gles_6">GLES</h3>
+<ul>
+<li>VK_KHR_DEPTH_STENCIL_RESOLVE</li>
+<li>启用 if supportsRenderpass2.enabled &amp;&amp;
+    mDepthStencilResolveProperties.independentResolveNone</li>
+<li>supportsDepthStencilResolve<ul>
+<li>http://anglebug.com/5065</li>
+<li>RenderbufferVk::setStorageImpl</li>
+<li>为 multisampled depth/stenci 启用 render render to texture</li>
+<li>可启用 VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT</li>
+<li>// If multisampled render to texture, an implicit multisampled image is created which is used as
+      // the color or depth/stencil attachment.  At the end of the render pass, this image is
+      // automatically resolved into |mImage| and its contents are discarded.</li>
+</ul>
+</li>
+<li>
+<p>支持 depth/stencil images, 非必需, 可绕过</p>
+</li>
+<li>
+<p>VK_KHR_EXTERNAL_FENCE_CAPABILITIES</p>
+</li>
+<li>有则启用</li>
+<li>supportsExternalFenceCapabilities</li>
+<li>
+<p>supportsAndroidNativeFenceSync</p>
+<ul>
+<li>(supportsExternalFenceCapabilities &amp;&amp; supportsExternalSemaphoreCapabilities ) || (supportsExternalFenceFd&amp;&amp;
+      supportsExternalSemaphoreFd)</li>
+</ul>
+</li>
+<li>
+<p>VK_KHR_EXTERNAL_SEMAPHORE</p>
+</li>
+<li>
+<p>启用 if supportsExternalSemaphoreFd || supportsExternalSemaphoreFuchsia</p>
+</li>
+<li>二者的前置? 无EXT存在检查</li>
+<li>
+<p>无绑定参数</p>
+</li>
+<li>
+<p>VK_KHR_EXTERNAL_SEMAPHORE_CAPABILITIES</p>
+</li>
+<li>
+<p>有则启用</p>
+</li>
+<li>
+<p>supportsExternalSemaphoreCapabilities</p>
+</li>
+<li>
+<p>VK_KHR_MAINTENANCE1</p>
+</li>
+<li>
+<p>PhysicalDeviceProperties.apiVersion &lt; VK_MAKE_VERSION(1, 1, 0)</p>
+</li>
+<li>
+<p>Enable KHR_MAINTENANCE1 to support viewport flipping.</p>
+</li>
+<li>
+<p>VK_KHR_SAMPLER_YCBCR_CONVERSION</p>
+</li>
+<li>
+<p>启用 if SamplerYcbcrConversionFeatures.samplerYcbcrConversion</p>
+</li>
+<li>supportsYUVSamplerConversion</li>
+</ul>
+<h3 id="vulkan_9">Vulkan 自用</h3>
+<ul>
+<li>
+<p>VK_KHR_GET_PHYSICAL_DEVICE_PROPERTIES_2  </p>
+</li>
+<li>
+<p>有则启用</p>
+</li>
+<li>
+<p>VK_KHR_GET_MEMORY_REQUIREMENTS_2</p>
+</li>
+<li>
+<p>有则启用</p>
+</li>
+<li>
+<p>无绑定参数</p>
+</li>
+<li>
+<p>VK_KHR_BIND_MEMORY_2</p>
+</li>
+<li>有则启用</li>
+<li>
+<p>无绑定参数</p>
+</li>
+<li>
+<p>VK_KHR_EXTERNAL_MEMORY</p>
+</li>
+<li>启用 if supportsAndroidHardwareBuffer || supportsExternalMemoryFd||
+    supportsExternalMemoryFuchsia</li>
+<li>可能为三者的前置:  无EXT支持检查, 条件满足直接启用.</li>
+<li>
+<p>无绑定参数</p>
+</li>
+<li>
+<p>VK_KHR_CREATE_RENDERPASS_2</p>
+</li>
+<li>有则启用</li>
+<li>supportsRenderpass2</li>
+<li><code>vkCreateRenderPass2KHR</code></li>
+<li>VK_KHR_DEPTH_STENCIL_RESOLVE 依赖此扩展</li>
+</ul>
+<h3 id="amd">AMD</h3>
+<ul>
+<li>VK_KHR_IMAGE_FORMAT_LIST</li>
+<li>启用 if AMD</li>
+<li>supportsImageFormatList</li>
+<li>EGL_EXT_image_gl_colorspace </li>
+</ul>
+<h2 id="angle-ext">ANGLE 期望将来加入的 EXT</h2>
+<p>TODO 分析对应功能</p>
+<p>以下多Extension尚未列入 Vulkan Spec, 是 ANGLE 期望为支持GLES 而提出的. </p>
+<ul>
+<li>VK_KHR_shader_terminate_invocation</li>
+<li>VK_EXT_primitive_topology_list_restart</li>
+<li>VK_EXT_vertex_attribute_aliasing</li>
+<li>VK_EXT_generate_mipmap</li>
+<li>VK_EXT_pipeline_robustness</li>
+<li>VK_EXT_image_robustness</li>
+<li>VK_EXT_custom_border_color</li>
+<li>VK_EXT_blend_operation_advanced</li>
+</ul>
+<p>出现在代码中但尚未启用的Feature. </p>
+<ul>
+<li>textureCompressionETC2</li>
+</ul>
+<h1 id="angle-vk-features">ANGLE: Vk Features</h1>
+<h3 id="inheritedqueries">inheritedQueries</h3>
+<ul>
+<li>3.0 必须</li>
+</ul>
+<h4 id="gles_7">支持 GLES 功能:</h4>
+<ul>
+<li>glBeginQuery</li>
+<li>glEndQuery</li>
+<li>glGetQueryiv</li>
+</ul>
+<p>支持GLES 扩展:  <strong>GL_EXT_occlusion_query_boolean</strong></p>
+<p>glGenQueriesEXT
+glDeleteQueriesEXT
+glIsQueryEXT
+glBeginQueryEXT
+glEndQueryEXT
+glGetQueryivEXT
+glGetQueryObjectuivEXT</p>
+<hr />
+<h3 id="vertexpipelinestoresandatomics">vertexPipelineStoresAndAtomics</h3>
+<p>用于模拟实现 transform feedback 功能, 作为不支持扩展 VK_EXT_ransform_feedback 时的替代. 但 es3.2 中可能出现无法支持功能. </p>
+<h1 id="angle-vk-limits">ANGLE: Vk Limits</h1>
+<h2 id="maxperstagedescriptorstoragebuffers"><strong>maxPerStageDescriptorStorageBuffers</strong></h2>
+<table>
+<thead>
+<tr>
+<th>当前值</th>
+<th align="left">期待值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8</td>
+<td align="left">12 / 16</td>
+</tr>
+</tbody>
+</table>
+<p>ANGLE 中, Vulkan Limit: <code>maxPerStageDescriptorStorageBuffers</code> 为 GLES 同时提供 StorageBuffers 和 CounterBuffers, </p>
+<p>对应的 GLES 的 Limits 为:</p>
+<ul>
+<li>StorageBuffers:</li>
+<li>MAX_VERTEX_SHADER_STORAGE_BLOCKS</li>
+<li>MAX_FRAGMENT_SHADER_STORAGE_BLOCKS </li>
+<li>MAX_COMPUTE_SHADER_STORAGE_BLOCKS</li>
+<li>AtomicCounterBuffers: </li>
+<li>MAX_VERTEX_ATOMIC_COUNTER_BUFFERS</li>
+<li>MAX_FRAGMENT_ATOMIC_COUNTER_BUFFERS</li>
+<li>MAX_COMPUTE_ATOMIC_COUNTER_BUFFERS</li>
+<li>MAX_GEOMETRY_ATOMIC_COUNTER_BUFFERS</li>
+</ul>
+<p>各组值分别计算, 例如 VERTEX 的两者相加为Buffer 的 Limit 值:</p>
+<pre><code>MAX_VERTEX_SHADER_STORAGE_BLOCKS + MAX_VERTEX_ATOMIC_COUNTER_BUFFERS = maxPerStageDescriptorStorageBuffers,
+</code></pre>
+<p>FRAGMENT, COMPUTE 同理. (GEOMETRY 的 StorageBuffers 对应 vkLimit: maxPerStageResources)</p>
+<p>在 ANGLE 中, 期待值 StorageBuffers &gt;=4, AtomicCounterBuffers =8, 因此对 GLES 3.1 要求 <strong>maxPerStageDescriptorStorageBuffers &gt;=12</strong> 若不满足, 限制版本为3.0, 并设 AtomicCounterBuffers 为 0. </p>
+<p>同时, 若满足 AtomicCounterBuffers =8 后, 要同时满足 v100 GLES Limits 中 MAX_FRAGMENT_SHADER_STORAGE_BLOCKS = MAX_COMPUTE_SHADER_STORAGE_BLOCKS = 8, 则需 <strong>maxPerStageDescriptorStorageBuffers = 16</strong> </p>
+<ul>
+<li>对应3.1功能: </li>
+<li>MAX_VERTEX_SHADER_STORAGE_BLOCKS 和 MAX_VERTEX_ATOMIC_COUNTER_BUFFERS 需要 vk 特性 vertexPipelineStoresAndAtomics, 而此特性在支持 VK_EXT_TRANSFORM_FEEDBACK 扩展时不再需要. 因此实现 VK_EXT_TRANSFORM_FEEDBACK 后该组可忽略</li>
+<li>MAX_FRAGMENT_SHADER_STORAGE_BLOCKS 和 MAX_FRAGMENT_ATOMIC_COUNTER_BUFFERS 需要 vk 特性 fragmentStoresAndAtomics (v100已支持). </li>
+</ul>
+<h2 id="maxperstagedescriptoruniformbuffers">maxPerStageDescriptorUniformBuffers</h2>
+<table>
+<thead>
+<tr>
+<th>当前值</th>
+<th align="left">期待值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12</td>
+<td align="left">14</td>
+</tr>
+</tbody>
+</table>
+<p>为 kReservedDriverUniformBindingCount, kReservedPerStageDefaultUniformBindingCount 各留出1个.</p>
+<p>影响 GLES Limits:</p>
+<ul>
+<li>MAX_VERTEX_UNIFORM_BLOCKS</li>
+<li>MAX_FRAGMENT_UNIFORM_BLOCKS</li>
+<li>MAX_COMPUTE_UNIFORM_BLOCKS</li>
+<li>
+<p>MAX_GEOMETRY_UNIFORM_BLOCKS</p>
+</li>
+<li>
+<p>MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS</p>
+</li>
+<li>MAX_COMBINED_GEOMETRY_UNIFORM_COMPONENTS</li>
+<li>MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS</li>
+<li>MAX_COMBINED_COMPUTE_UNIFORM_COMPONENTS</li>
+</ul>
+<h2 id="maxdescriptorsetuniformbuffers">maxDescriptorSetUniformBuffers</h2>
+<table>
+<thead>
+<tr>
+<th>当前值</th>
+<th align="left">期待值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>72</td>
+<td align="left">72+4 = 76</td>
+</tr>
+</tbody>
+</table>
+<p>为 kReservedDriverUniformBindingCount , kReservedDefaultUniformBindingCount 预留出1 + 3 = 4个.</p>
+<p>constexpr uint32_t kTotalReservedUniformBuffers =
+    kReservedDriverUniformBindingCount + kReservedDefaultUniformBindingCount;</p>
+<p>const int32_t maxCombinedUniformBuffers =
+    LimitToInt(limitsVk.maxDescriptorSetUniformBuffers - kTotalReservedUniformBuffers);</p>
+<p>影响 GLES Limits:</p>
+<ul>
+<li>MAX_UNIFORM_BUFFER_BINDINGS</li>
+<li>MAX_COMBINED_UNIFORM_BLOCKS</li>
+</ul>
+<h2 id="maxvertexoutputcomponents-maxfragmentinputcomponents">maxVertexOutputComponents 与 maxFragmentInputComponents</h2>
+<table>
+<thead>
+<tr>
+<th>当前值</th>
+<th align="left">期待值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>128</td>
+<td align="left">128 + 4*2 = 136</td>
+</tr>
+</tbody>
+</table>
+<p>当前值 128,  假设 EXT 均得到支持, 且要满足GLES Limits, </p>
+<ul>
+<li>若<strong>不</strong>支持 VK_EXT_LINE_RASTERIZATION, 则预留 1</li>
+<li>为了支持 VK_EXT_TRANSFORM_FEEDBACK, 需要预留 2</li>
+</ul>
+<p>影响 GLES Limits:</p>
+<ul>
+<li>MAX_VARYING_VECTORS </li>
+<li>预留前 31刚好满足.  </li>
+<li>MAX_VARYING_COMPONENTS</li>
+<li>预留前 124 刚好满足.   (Vector * 4 = Components )</li>
+</ul>
+<h2 id="maxinterpolationoffset">maxInterpolationOffset</h2>
+<table>
+<thead>
+<tr>
+<th>当前值</th>
+<th align="left">期待值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.4375</td>
+<td align="left">0.5</td>
+</tr>
+</tbody>
+</table>
+<h2 id="gles-limits">附表: GLES Limits 满足情况详情</h2>
+<p>本表基于 ANGLE 内的计算方式, 带入 v100 的 Vulkan Limits 值, 检查结果是否满足 GLES Limits 的要求.</p>
+<p>[*] 带此标记的计算公式基于假设: 上面提及的扩展 TransForm_feedback 和 Line_Rasterization 已得到支持.  而相应的由于模拟的Feature不再启用. maxPerStageDescriptorStorageBuffers 以 12 计算</p>
+<table>
+<thead>
+<tr>
+<th align="center">1</th>
+<th>GLES Limits</th>
+<th>GLES Limits in V100</th>
+<th>Vk(v100)值带入 ANGLE</th>
+<th>ANGLE 计算公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">2</td>
+<td>SUBPIXEL_BITS</td>
+<td>8</td>
+<td>8</td>
+<td>subPixelPrecisionBits</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td>MAX_3D_TEXTURE_SIZE</td>
+<td>256</td>
+<td>256</td>
+<td>maxImageDimension3D</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td>MAX_TEXTURE_SIZE</td>
+<td>8192</td>
+<td>8192</td>
+<td>min(maxFramebufferWidth, maxImageDimension2D);</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td>MAX_ARRAY_TEXTURE_LAYERS</td>
+<td>256</td>
+<td>256</td>
+<td>maxImageArrayLayers</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td>MAX_TEXTURE_LOD_BIAS</td>
+<td>14</td>
+<td>14</td>
+<td>maxSamplerLodBias</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td>MAX_CUBE_MAP_TEXTURE_SIZE</td>
+<td>8192</td>
+<td>8192</td>
+<td>maxImageDimensionCube</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td>MAX_RENDERBUFFER_SIZE</td>
+<td>8192</td>
+<td>8192</td>
+<td>min(maxImageDimension2D, maxFramebufferWidth, maxFramebufferHeight);</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td>ALIASED_LINE_WIDTH_RANGE[0]</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td>ALIASED_LINE_WIDTH_RANGE[1]</td>
+<td>4095.9375</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td>ALIASED_POINT_SIZE_RANGE[0]</td>
+<td>1</td>
+<td>1</td>
+<td>max(1.0f, pointSizeRange[0])</td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td>ALIASED_POINT_SIZE_RANGE[1]</td>
+<td>1024</td>
+<td>1024</td>
+<td>pointSizeRange[1]</td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td>MULTISAMPLE_LINE_WIDTH_RANGE</td>
+<td>[1.0, 4095.9375]</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td align="center">14</td>
+<td>MULTISAMPLE_LINE_WIDTH_GRANULARITY</td>
+<td>0.125</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td align="center">15</td>
+<td>MAX_DRAW_BUFFERS</td>
+<td>4</td>
+<td>4</td>
+<td>min(maxColorAttachments, maxFragmentOutputAttachments);</td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td>MAX_FRAMEBUFFER_WIDTH</td>
+<td>8192</td>
+<td>8192</td>
+<td>maxFramebufferWidth</td>
+</tr>
+<tr>
+<td align="center">17</td>
+<td>MAX_FRAMEBUFFER_HEIGHT</td>
+<td>8192</td>
+<td>8192</td>
+<td>maxFramebufferHeight</td>
+</tr>
+<tr>
+<td align="center">18</td>
+<td>MAX_FRAMEBUFFER_LAYERS</td>
+<td>256</td>
+<td>256</td>
+<td>maxFramebufferLayers</td>
+</tr>
+<tr>
+<td align="center">19</td>
+<td>MAX_FRAMEBUFFER_SAMPLES</td>
+<td>SAMPLECOUNT1 - SAMPLE_COUNT_4</td>
+<td>4</td>
+<td>同 maxSamples</td>
+</tr>
+<tr>
+<td align="center">21</td>
+<td>MAX_COLOR_ATTACHMENTS</td>
+<td>4</td>
+<td>4</td>
+<td>maxColorAttachments</td>
+</tr>
+<tr>
+<td align="center">22</td>
+<td>MIN_FRAGMENT_INTERPOLATION_OFFSET</td>
+<td>-0.5</td>
+<td>-0.5</td>
+<td>minInterpolationOffset</td>
+</tr>
+<tr>
+<td align="center">23</td>
+<td>MAX_FRAGMENT_INTERPOLATION_OFFSET</td>
+<td>0.5</td>
+<td><strong>0.4375</strong></td>
+<td>maxInterpolationOffset</td>
+</tr>
+<tr>
+<td align="center">24</td>
+<td>FRAGMENT_INTERPOLATION_OFFSET_BITS</td>
+<td>4</td>
+<td>4</td>
+<td>subPixelInterpolationOffsetBits</td>
+</tr>
+<tr>
+<td align="center">25</td>
+<td>MAX_VIEWPORT_DIMS[0]</td>
+<td>8192</td>
+<td>8192</td>
+<td>maxViewportDimensions[0]</td>
+</tr>
+<tr>
+<td align="center">26</td>
+<td>MAX_VIEWPORT_DIMS[1]</td>
+<td>8192</td>
+<td>8192</td>
+<td>maxViewportDimensions[1]</td>
+</tr>
+<tr>
+<td align="center">27</td>
+<td>MAX_SAMPLE_MASK_WORDS</td>
+<td>1</td>
+<td>1</td>
+<td>maxSampleMaskWords</td>
+</tr>
+<tr>
+<td align="center">28</td>
+<td>MAX_COLOR_TEXTURE_SAMPLES</td>
+<td>SAMPLECOUNT1 ???</td>
+<td>SAMPLECOUNT1-SAMPLECOUNT4?</td>
+<td>sampledImageColorSampleCounts&amp;31</td>
+</tr>
+<tr>
+<td align="center">29</td>
+<td>SAMPLE_COUNT_4</td>
+<td></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td align="center">30</td>
+<td>MAX_DEPTH_TEXTURE_SAMPLES</td>
+<td>SAMPLECOUNT1 ???</td>
+<td>SAMPLECOUNT1-SAMPLECOUNT4?</td>
+<td>sampledImageDepthSampleCounts&amp;31</td>
+</tr>
+<tr>
+<td align="center">31</td>
+<td>SAMPLE_COUNT_4</td>
+<td></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td align="center">32</td>
+<td>MAX_INTEGER_SAMPLES</td>
+<td>SAMPLECOUNT1 ???</td>
+<td>SAMPLECOUNT1-SAMPLECOUNT4?</td>
+<td>sampledImageIntegerSampleCounts&amp;31</td>
+</tr>
+<tr>
+<td align="center">33</td>
+<td>SAMPLE_COUNT_4</td>
+<td></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td align="center">34</td>
+<td>MAX_SERVER_WAIT_TIMEOUT</td>
+<td>0</td>
+<td>-</td>
+<td>UNIMPLEMENT</td>
+</tr>
+<tr>
+<td align="center">35</td>
+<td>LAYER_PROVOKING_VERTEX</td>
+<td>FIRSTVERTEXCONVENTION</td>
+<td>-</td>
+<td>GL_LAST_VERTEX_CONVENTION_EXT</td>
+</tr>
+<tr>
+<td align="center">36</td>
+<td>LAST_VERTEX_CONVENTION</td>
+<td></td>
+<td>-</td>
+<td>--</td>
+</tr>
+<tr>
+<td align="center">37</td>
+<td>PRIMITIVE_RESTART_FOR_PATCHES_SUPPORTED</td>
+<td>FALSE</td>
+<td>-</td>
+<td>--</td>
+</tr>
+<tr>
+<td align="center">38</td>
+<td>MAX_VERTEX_ATTRIB_RELATIVE_OFFSET</td>
+<td>2047</td>
+<td>2047</td>
+<td>min(maxVertexInputAttributeOffset, (int16_max -1))</td>
+</tr>
+<tr>
+<td align="center">39</td>
+<td>MAX_VERTEX_ATTRIB_BINDINGS</td>
+<td>16</td>
+<td>16</td>
+<td>maxVertexInputBindings</td>
+</tr>
+<tr>
+<td align="center">40</td>
+<td>MAX_VERTEX_ATTRIB_STRIDE</td>
+<td>2048</td>
+<td>2048</td>
+<td>min(maxVertexInputBindingStride, int16_max)</td>
+</tr>
+<tr>
+<td align="center">41</td>
+<td>MAX_ELEMENTS_INDICES</td>
+<td></td>
+<td>INT_MAX</td>
+<td>INT_MAX</td>
+</tr>
+<tr>
+<td align="center">42</td>
+<td>MAX_ELEMENTS_VERTICES</td>
+<td></td>
+<td>INT_MAX</td>
+<td>INT_MAX</td>
+</tr>
+<tr>
+<td align="center">43</td>
+<td>MAX_ELEMENT_INDEX</td>
+<td>0xFFFFFFFF</td>
+<td>UINT_MAX - 1</td>
+<td>UINT_MAX - 1</td>
+</tr>
+<tr>
+<td align="center">44</td>
+<td>MAX_TEXTURE_BUFFER_SIZE</td>
+<td><strong>2^24</strong>  ???</td>
+<td><strong>224</strong></td>
+<td>maxTexelBufferElements</td>
+</tr>
+<tr>
+<td align="center">45</td>
+<td>NUM_COMPRESSED_TEXTURE_FORMATS</td>
+<td>49</td>
+<td>--</td>
+<td>-- // size of Compressed Texture Formats</td>
+</tr>
+<tr>
+<td align="center">46</td>
+<td>COMPRESSED_TEXTURE_FORMATS</td>
+<td></td>
+<td>--</td>
+<td>--</td>
+</tr>
+<tr>
+<td align="center">47</td>
+<td>NUM_PROGRAM_BINARY_FORMATS</td>
+<td>0</td>
+<td>--</td>
+<td>--</td>
+</tr>
+<tr>
+<td align="center">48</td>
+<td>PROGRAM_BINARY_FORMATS</td>
+<td></td>
+<td>--</td>
+<td>--</td>
+</tr>
+<tr>
+<td align="center">49</td>
+<td>NUM_SHADER_BINARY_FORMATS</td>
+<td>0</td>
+<td>--</td>
+<td>--</td>
+</tr>
+<tr>
+<td align="center">50</td>
+<td>SHADER_BINARY_FORMATS</td>
+<td></td>
+<td>--</td>
+<td>--</td>
+</tr>
+<tr>
+<td align="center">51</td>
+<td>SHADER_COMPILER</td>
+<td></td>
+<td>TRUE</td>
+<td>TRUE</td>
+</tr>
+<tr>
+<td align="center">52</td>
+<td>TEXTURE_BUFFER_OFFSET_ALIGNMENT</td>
+<td>256</td>
+<td>256</td>
+<td>minTexelBufferOffsetAlignment</td>
+</tr>
+<tr>
+<td align="center">53</td>
+<td>MAX_TEXTURE_MAX_ANISOTROPY_EXT</td>
+<td>16</td>
+<td>16</td>
+<td>maxSamplerAnisotropy</td>
+</tr>
+<tr>
+<td align="center">54</td>
+<td>MAX_VERTEX_ATTRIBS</td>
+<td>16</td>
+<td>16</td>
+<td>maxVertexInputAttributes</td>
+</tr>
+<tr>
+<td align="center">55</td>
+<td>MAX_VERTEX_UNIFORM_COMPONENTS</td>
+<td>1024</td>
+<td>4,096‬</td>
+<td>maxUniformBufferRange / sizeof(float)</td>
+</tr>
+<tr>
+<td align="center">56</td>
+<td>MAX_VERTEX_UNIFORM_VECTORS</td>
+<td>256</td>
+<td>1024</td>
+<td>maxUniformBufferRange / (sizeof(float) *4)</td>
+</tr>
+<tr>
+<td align="center">57</td>
+<td>MAX_VERTEX_UNIFORM_BLOCKS</td>
+<td>12</td>
+<td>10</td>
+<td>maxPerStageDescriptorUniformBuffers-2</td>
+</tr>
+<tr>
+<td align="center">58</td>
+<td>MAX_VERTEX_OUTPUT_COMPONENTS</td>
+<td>128</td>
+<td>128</td>
+<td>maxVertexOutputComponents</td>
+</tr>
+<tr>
+<td align="center">59</td>
+<td>MAX_VERTEX_TEXTURE_IMAGE_UNITS</td>
+<td>16</td>
+<td>16</td>
+<td>min(maxPerStageDescriptorSamplers, maxPerStageDescriptorSampledImages);</td>
+</tr>
+<tr>
+<td align="center">60</td>
+<td>MAX_VERTEX_ATOMIC_COUNTER_BUFFERS</td>
+<td>0</td>
+<td>0</td>
+<td>0*</td>
+</tr>
+<tr>
+<td align="center">61</td>
+<td>MAX_VERTEX_ATOMIC_COUNTERS</td>
+<td>0</td>
+<td>0</td>
+<td>0*</td>
+</tr>
+<tr>
+<td align="center">62</td>
+<td>MAX_VERTEX_SHADER_STORAGE_BLOCKS</td>
+<td>0</td>
+<td>0</td>
+<td>0*</td>
+</tr>
+<tr>
+<td align="center">63</td>
+<td>MAX_TESS_GEN_LEVEL</td>
+<td>64</td>
+<td></td>
+<td>--</td>
+</tr>
+<tr>
+<td align="center">64</td>
+<td>MAX_PATCH_VERTICES</td>
+<td>32</td>
+<td></td>
+<td>--</td>
+</tr>
+<tr>
+<td align="center">65</td>
+<td>MAX_TESS_CONTROL_UNIFORM_COMPONENTS</td>
+<td>1024</td>
+<td></td>
+<td>--</td>
+</tr>
+<tr>
+<td align="center">66</td>
+<td>MAX_TESS_CONTROL_TEXTURE_IMAGE_UNITS</td>
+<td>16</td>
+<td></td>
+<td>--</td>
+</tr>
+<tr>
+<td align="center">67</td>
+<td>MAX_TESS_CONTROL_OUTPUT_COMPONENTS</td>
+<td>128</td>
+<td></td>
+<td>--</td>
+</tr>
+<tr>
+<td align="center">68</td>
+<td>MAX_TESS_PATCH_COMPONENTS</td>
+<td>120</td>
+<td></td>
+<td>--</td>
+</tr>
+<tr>
+<td align="center">69</td>
+<td>MAX_TESS_CONTROL_TOTAL_OUTPUT_COMPONENTS</td>
+<td>4096</td>
+<td></td>
+<td>--</td>
+</tr>
+<tr>
+<td align="center">70</td>
+<td>MAX_TESS_CONTROL_INPUT_COMPONENTS</td>
+<td>128</td>
+<td></td>
+<td>--</td>
+</tr>
+<tr>
+<td align="center">71</td>
+<td>MAX_TESS_CONTROL_UNIFORM_BLOCKS</td>
+<td>12</td>
+<td></td>
+<td>--</td>
+</tr>
+<tr>
+<td align="center">72</td>
+<td>MAX_TESS_CONTROL_ATOMIC_COUNTER_BUFFERS</td>
+<td>0</td>
+<td></td>
+<td>--</td>
+</tr>
+<tr>
+<td align="center">73</td>
+<td>MAX_TESS_CONTROL_ATOMIC_COUNTERS</td>
+<td>0</td>
+<td></td>
+<td>--</td>
+</tr>
+<tr>
+<td align="center">74</td>
+<td>MAX_TESS_CONTROL_SHADER_STORAGE_BLOCKS</td>
+<td>0</td>
+<td></td>
+<td>--</td>
+</tr>
+<tr>
+<td align="center">75</td>
+<td>MAX_TESS_EVALUATION_UNIFORM_COMPONENTS</td>
+<td>1024</td>
+<td></td>
+<td>--</td>
+</tr>
+<tr>
+<td align="center">76</td>
+<td>MAX_TESS_EVALUATION_TEXTURE_IMAGE_UNITS</td>
+<td>16</td>
+<td></td>
+<td>--</td>
+</tr>
+<tr>
+<td align="center">77</td>
+<td>MAX_TESS_EVALUATION_OUTPUT_COMPONENTS</td>
+<td>128</td>
+<td></td>
+<td>--</td>
+</tr>
+<tr>
+<td align="center">78</td>
+<td>MAX_TESS_EVALUATION_INPUT_COMPONENTS</td>
+<td>128</td>
+<td></td>
+<td>--</td>
+</tr>
+<tr>
+<td align="center">79</td>
+<td>MAX_TESS_EVALUATION_UNIFORM_BLOCKS</td>
+<td>12</td>
+<td></td>
+<td>--</td>
+</tr>
+<tr>
+<td align="center">80</td>
+<td>MAX_TESS_EVALUATION_ATOMIC_COUNTER_BUFFERS</td>
+<td>0</td>
+<td></td>
+<td>--</td>
+</tr>
+<tr>
+<td align="center">81</td>
+<td>MAX_TESS_EVALUATION_ATOMIC_COUNTERS</td>
+<td>0</td>
+<td></td>
+<td>--</td>
+</tr>
+<tr>
+<td align="center">82</td>
+<td>MAX_TESS_EVALUATION_SHADER_STORAGE_BLOCKS</td>
+<td>0</td>
+<td></td>
+<td>--</td>
+</tr>
+<tr>
+<td align="center">83</td>
+<td>MAX_GEOMETRY_UNIFORM_COMPONENTS</td>
+<td>1024</td>
+<td>4,096‬</td>
+<td>maxUniformBufferRange / sizeof(float)</td>
+</tr>
+<tr>
+<td align="center">84</td>
+<td>MAX_GEOMETRY_UNIFORM_BLOCKS</td>
+<td>12</td>
+<td><strong>10</strong></td>
+<td>maxPerStageDescriptorUniformBuffers-2</td>
+</tr>
+<tr>
+<td align="center">85</td>
+<td>MAX_GEOMETRY_INPUT_COMPONENTS</td>
+<td>128</td>
+<td>128</td>
+<td>maxGeometryInputComponents</td>
+</tr>
+<tr>
+<td align="center">86</td>
+<td>MAX_GEOMETRY_OUTPUT_COMPONENTS</td>
+<td>128</td>
+<td>128</td>
+<td>maxGeometryOutputComponents</td>
+</tr>
+<tr>
+<td align="center">87</td>
+<td>MAX_GEOMETRY_OUTPUT_VERTICES</td>
+<td>256</td>
+<td>256</td>
+<td>maxGeometryOutputVertices</td>
+</tr>
+<tr>
+<td align="center">88</td>
+<td>MAX_GEOMETRY_TOTAL_OUTPUT_COMPONENTS</td>
+<td>1024</td>
+<td>1024</td>
+<td>maxGeometryTotalOutputComponents</td>
+</tr>
+<tr>
+<td align="center">89</td>
+<td>MAX_GEOMETRY_TEXTURE_IMAGE_UNITS</td>
+<td>16</td>
+<td>16</td>
+<td>min(maxPerStageDescriptorSamplers, maxPerStageDescriptorSampledImages);</td>
+</tr>
+<tr>
+<td align="center">90</td>
+<td>MAX_GEOMETRY_SHADER_INVOCATIONS</td>
+<td>32</td>
+<td>32</td>
+<td>maxGeometryShaderInvocations</td>
+</tr>
+<tr>
+<td align="center">91</td>
+<td>MAX_GEOMETRY_ATOMIC_COUNTER_BUFFERS</td>
+<td>0</td>
+<td>8*</td>
+<td>8*</td>
+</tr>
+<tr>
+<td align="center">92</td>
+<td>MAX_GEOMETRY_ATOMIC_COUNTERS</td>
+<td>0</td>
+<td>56</td>
+<td>maxStorageBufferRange / sizeof(uint32_t)</td>
+</tr>
+<tr>
+<td align="center">93</td>
+<td>MAX_GEOMETRY_SHADER_STORAGE_BLOCKS</td>
+<td>0</td>
+<td>45</td>
+<td>maxPerStageResources-7</td>
+</tr>
+<tr>
+<td align="center">94</td>
+<td>MAX_FRAGMENT_UNIFORM_COMPONENTS</td>
+<td>1024</td>
+<td>4,096‬</td>
+<td>maxUniformBufferRange / sizeof(float)</td>
+</tr>
+<tr>
+<td align="center">95</td>
+<td>MAX_FRAGMENT_UNIFORM_VECTORS</td>
+<td>256</td>
+<td>1024</td>
+<td>maxUniformBufferRange / (sizeof(float) *4)</td>
+</tr>
+<tr>
+<td align="center">96</td>
+<td>MAX_FRAGMENT_UNIFORM_BLOCKS</td>
+<td>12</td>
+<td>10</td>
+<td>maxPerStageDescriptorUniformBuffers-2</td>
+</tr>
+<tr>
+<td align="center">97</td>
+<td>MAX_FRAGMENT_INPUT_COMPONENTS</td>
+<td>128</td>
+<td>4,096‬</td>
+<td>maxUniformBufferRange / sizeof(float)</td>
+</tr>
+<tr>
+<td align="center">98</td>
+<td>MAX_TEXTURE_IMAGE_UNITS</td>
+<td>16</td>
+<td>16</td>
+<td>min(maxPerStageDescriptorSamplers, maxPerStageDescriptorSampledImages);</td>
+</tr>
+<tr>
+<td align="center">99</td>
+<td>MAX_FRAGMENT_ATOMIC_COUNTER_BUFFERS</td>
+<td>1</td>
+<td>8</td>
+<td>8*</td>
+</tr>
+<tr>
+<td align="center">100</td>
+<td>MAX_FRAGMENT_ATOMIC_COUNTERS</td>
+<td>8</td>
+<td>56</td>
+<td>maxStorageBufferRange / sizeof(uint32_t)</td>
+</tr>
+<tr>
+<td align="center">101</td>
+<td>MAX_FRAGMENT_SHADER_STORAGE_BLOCKS</td>
+<td>8</td>
+<td><strong>4</strong></td>
+<td>4*</td>
+</tr>
+<tr>
+<td align="center">102</td>
+<td>MIN_PROGRAM_TEXTURE_GATHER_OFFSET</td>
+<td>-8</td>
+<td>-8</td>
+<td>minTexelGatherOffset</td>
+</tr>
+<tr>
+<td align="center">103</td>
+<td>MAX_PROGRAM_TEXTURE_GATHER_OFFSET</td>
+<td>7</td>
+<td>7</td>
+<td>maxTexelGatherOffset</td>
+</tr>
+<tr>
+<td align="center">104</td>
+<td>MIN_PROGRAM_TEXEL_OFFSET</td>
+<td>-8</td>
+<td>-8</td>
+<td>minTexelOffset</td>
+</tr>
+<tr>
+<td align="center">105</td>
+<td>MAX_PROGRAM_TEXEL_OFFSET</td>
+<td>7</td>
+<td>7</td>
+<td>maxTexelOffset</td>
+</tr>
+<tr>
+<td align="center">106</td>
+<td>MAX_COMPUTE_WORK_GROUP_COUNT[0]</td>
+<td>65535</td>
+<td>65535</td>
+<td>maxComputeWorkGroupCount[0]</td>
+</tr>
+<tr>
+<td align="center">107</td>
+<td>MAX_COMPUTE_WORK_GROUP_COUNT[1]</td>
+<td>65535</td>
+<td>65535</td>
+<td>maxComputeWorkGroupCount[1]</td>
+</tr>
+<tr>
+<td align="center">108</td>
+<td>MAX_COMPUTE_WORK_GROUP_COUNT[2]</td>
+<td>65535</td>
+<td>65535</td>
+<td>maxComputeWorkGroupCount[2]</td>
+</tr>
+<tr>
+<td align="center">109</td>
+<td>MAX_COMPUTE_WORK_GROUP_SIZE[0]</td>
+<td>1024</td>
+<td>1024 [vulkan]</td>
+<td>maxComputeWorkGroupSize[0]</td>
+</tr>
+<tr>
+<td align="center">110</td>
+<td>MAX_COMPUTE_WORK_GROUP_SIZE[1]</td>
+<td>1024</td>
+<td>1024 [vulkan]</td>
+<td>maxComputeWorkGroupSize[1]</td>
+</tr>
+<tr>
+<td align="center">111</td>
+<td>MAX_COMPUTE_WORK_GROUP_SIZE[2]</td>
+<td>64</td>
+<td>64 [vulkan]</td>
+<td>maxComputeWorkGroupSize[2]</td>
+</tr>
+<tr>
+<td align="center">112</td>
+<td>MAX_COMPUTE_WORK_GROUP_INVOCATIONS</td>
+<td>1024</td>
+<td>1024 [vulkan]</td>
+<td>maxComputeWorkGroupInvocations</td>
+</tr>
+<tr>
+<td align="center">113</td>
+<td>MAX_COMPUTE_UNIFORM_BLOCKS</td>
+<td>12</td>
+<td>10</td>
+<td>maxPerStageDescriptorUniformBuffers-2</td>
+</tr>
+<tr>
+<td align="center">114</td>
+<td>MAX_COMPUTE_TEXTURE_IMAGE_UNITS</td>
+<td>16</td>
+<td>16</td>
+<td>min(maxPerStageDescriptorSamplers, maxPerStageDescriptorSampledImages);</td>
+</tr>
+<tr>
+<td align="center">115</td>
+<td>MAX_COMPUTE_SHARED_MEMORY_SIZE</td>
+<td>32768</td>
+<td>32768</td>
+<td>maxComputeSharedMemorySize</td>
+</tr>
+<tr>
+<td align="center">116</td>
+<td>MAX_COMPUTE_UNIFORM_COMPONENTS</td>
+<td>1024</td>
+<td>4,096‬</td>
+<td>maxUniformBufferRange / sizeof(float)</td>
+</tr>
+<tr>
+<td align="center">117</td>
+<td>MAX_COMPUTE_ATOMIC_COUNTER_BUFFERS</td>
+<td>1</td>
+<td>8</td>
+<td>8*</td>
+</tr>
+<tr>
+<td align="center">118</td>
+<td>MAX_COMPUTE_ATOMIC_COUNTERS</td>
+<td>8</td>
+<td>56</td>
+<td>maxStorageBufferRange / sizeof(uint32_t)</td>
+</tr>
+<tr>
+<td align="center">119</td>
+<td>MAX_COMBINED_COMPUTE_UNIFORM_COMPONENTS</td>
+<td>50176</td>
+<td><strong>45,056</strong></td>
+<td>(maxPerStageDescriptorUniformBuffers-2 + 1) * maxUniformBufferRange / sizeof(float)</td>
+</tr>
+<tr>
+<td align="center">120</td>
+<td>MAX_COMPUTE_SHADER_STORAGE_BLOCKS</td>
+<td>8</td>
+<td><strong>4</strong></td>
+<td>maxPerStageDescriptorStorageBuffers - 8</td>
+</tr>
+<tr>
+<td align="center">121</td>
+<td>MAX_UNIFORM_BUFFER_BINDINGS</td>
+<td>72</td>
+<td>68</td>
+<td>maxDescriptorSetUniformBuffers -4</td>
+</tr>
+<tr>
+<td align="center">122</td>
+<td>MAX_UNIFORM_BLOCK_SIZE</td>
+<td>16384</td>
+<td>16384</td>
+<td>maxUniformBufferRange</td>
+</tr>
+<tr>
+<td align="center">123</td>
+<td>UNIFORM_BUFFER_OFFSET_ALIGNMENT</td>
+<td>16</td>
+<td>16</td>
+<td>minUniformBufferOffsetAlignment</td>
+</tr>
+<tr>
+<td align="center">124</td>
+<td>MAX_COMBINED_UNIFORM_BLOCKS</td>
+<td>72</td>
+<td>68</td>
+<td>maxDescriptorSetUniformBuffers -4</td>
+</tr>
+<tr>
+<td align="center">125</td>
+<td>MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS</td>
+<td>50176</td>
+<td><strong>45,056</strong></td>
+<td>(maxPerStageDescriptorUniformBuffers-2 + 1) * maxUniformBufferRange / sizeof(float)</td>
+</tr>
+<tr>
+<td align="center">126</td>
+<td>MAX_COMBINED_TESS_CONTROL_UNIFORM_COMPONENTS</td>
+<td>50176</td>
+<td></td>
+<td>--</td>
+</tr>
+<tr>
+<td align="center">127</td>
+<td>MAX_COMBINED_TESS_EVALUATION_UNIFORM_COMPONENTS</td>
+<td>50176</td>
+<td></td>
+<td>--</td>
+</tr>
+<tr>
+<td align="center">128</td>
+<td>MAX_COMBINED_GEOMETRY_UNIFORM_COMPONENTS</td>
+<td>50176</td>
+<td><strong>45,056</strong></td>
+<td>(maxPerStageDescriptorUniformBuffers-2 + 1) * maxUniformBufferRange / sizeof(float)</td>
+</tr>
+<tr>
+<td align="center">129</td>
+<td>MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS</td>
+<td>50176</td>
+<td><strong>45,056</strong></td>
+<td>(maxPerStageDescriptorUniformBuffers-2 + 1) * maxUniformBufferRange / sizeof(float)</td>
+</tr>
+<tr>
+<td align="center">130</td>
+<td>MAX_VARYING_COMPONENTS</td>
+<td>124</td>
+<td><strong>116</strong></td>
+<td>(min(maxVertexOutputComponents, maxFragmentInputComponents) /4 - 3)*4</td>
+</tr>
+<tr>
+<td align="center">131</td>
+<td>MAX_VARYING_VECTORS</td>
+<td>31</td>
+<td><strong>29</strong></td>
+<td>min(maxVertexOutputComponents, maxFragmentInputComponents) /4 - 3</td>
+</tr>
+<tr>
+<td align="center">132</td>
+<td>MAX_COMBINED_TEXTURE_IMAGE_UNITS</td>
+<td>96</td>
+<td>96</td>
+<td>min(maxDescriptorSetSamplers, maxDescriptorSetSampledImages);</td>
+</tr>
+<tr>
+<td align="center">133</td>
+<td>MAX_COMBINED_SHADER_OUTPUT_RESOURCES</td>
+<td>20</td>
+<td>45</td>
+<td>maxPerStageResources-7</td>
+</tr>
+<tr>
+<td align="center">134</td>
+<td>MAX_UNIFORM_LOCATIONS</td>
+<td>1024</td>
+<td>1024</td>
+<td>maxUniformBufferRange / (sizeof(float) *4)</td>
+</tr>
+<tr>
+<td align="center">135</td>
+<td>MAX_ATOMIC_COUNTER_BUFFER_BINDINGS</td>
+<td>1</td>
+<td>8</td>
+<td>8*</td>
+</tr>
+<tr>
+<td align="center">136</td>
+<td>MAX_ATOMIC_COUNTER_BUFFER_SIZE</td>
+<td>32</td>
+<td>227</td>
+<td>maxStorageBufferRange</td>
+</tr>
+<tr>
+<td align="center">137</td>
+<td>MAX_COMBINED_ATOMIC_COUNTER_BUFFERS</td>
+<td>1</td>
+<td>8</td>
+<td>8*</td>
+</tr>
+<tr>
+<td align="center">138</td>
+<td>MAX_COMBINED_ATOMIC_COUNTERS</td>
+<td>8</td>
+<td>56</td>
+<td>maxStorageBufferRange / sizeof(uint32_t)</td>
+</tr>
+<tr>
+<td align="center">139</td>
+<td>MAX_IMAGE_UNITS</td>
+<td>8</td>
+<td>48</td>
+<td>maxDescriptorSetStorageImages</td>
+</tr>
+<tr>
+<td align="center">140</td>
+<td>MAX_VERTEX_IMAGE_UNIFORMS</td>
+<td>0</td>
+<td>0</td>
+<td>0*</td>
+</tr>
+<tr>
+<td align="center">141</td>
+<td>MAX_TESS_CONTROL_IMAGE_UNIFORMS</td>
+<td>0</td>
+<td>--</td>
+<td>--</td>
+</tr>
+<tr>
+<td align="center">142</td>
+<td>MAX_TESS_EVALUATION_IMAGE_UNIFORMS</td>
+<td>0</td>
+<td>--</td>
+<td>--</td>
+</tr>
+<tr>
+<td align="center">143</td>
+<td>MAX_GEOMETRY_IMAGE_UNIFORMS</td>
+<td>0</td>
+<td>0</td>
+<td>0*</td>
+</tr>
+<tr>
+<td align="center">144</td>
+<td>MAX_FRAGMENT_IMAGE_UNIFORMS</td>
+<td>8</td>
+<td>8</td>
+<td>maxPerStageDescriptorStorageImages*</td>
+</tr>
+<tr>
+<td align="center">145</td>
+<td>MAX_COMPUTE_IMAGE_UNIFORMS</td>
+<td>8</td>
+<td>8</td>
+<td>maxPerStageDescriptorStorageImages*</td>
+</tr>
+<tr>
+<td align="center">146</td>
+<td>MAX_COMBINED_IMAGE_UNIFORMS</td>
+<td>8</td>
+<td>48</td>
+<td>maxDescriptorSetStorageImages</td>
+</tr>
+<tr>
+<td align="center">147</td>
+<td>MAX_SHADER_STORAGE_BUFFER_BINDINGS</td>
+<td>4</td>
+<td>40</td>
+<td>maxDescriptorSetStorageBuffers - 8*</td>
+</tr>
+<tr>
+<td align="center">148</td>
+<td>MAX_SHADER_STORAGE_BLOCK_SIZE</td>
+<td><strong>2^27</strong>  ???</td>
+<td><strong>227</strong></td>
+<td>maxStorageBufferRange</td>
+</tr>
+<tr>
+<td align="center">149</td>
+<td>MAX_COMBINED_SHADER_STORAGE_BLOCKS</td>
+<td>8</td>
+<td>40</td>
+<td>maxDescriptorSetStorageBuffers - 8*</td>
+</tr>
+<tr>
+<td align="center">150</td>
+<td>SHADER_STORAGE_BUFFER_OFFSET_ALIGNMENT</td>
+<td>256</td>
+<td>256</td>
+<td>minStorageBufferOffsetAlignment</td>
+</tr>
+<tr>
+<td align="center">151</td>
+<td>MAX_LABEL_LENGTH</td>
+<td>256</td>
+<td>1024</td>
+<td>1024</td>
+</tr>
+<tr>
+<td align="center">152</td>
+<td>MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS</td>
+<td>64</td>
+<td>128</td>
+<td>128</td>
+</tr>
+<tr>
+<td align="center">153</td>
+<td>MAX_TRANSFORM_FEEDBACK_SEPARATE_ATTRIBS</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td align="center">154</td>
+<td>MAX_TRANSFORM_FEEDBACK_SEPARATE_COMPONENTS</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td align="center">155</td>
+<td>MAX_SAMPLES</td>
+<td>4</td>
+<td>4</td>
+<td>SAMPLE_COUNT_1 - SAMPLE_COUNT_4</td>
+</tr>
+<tr>
+<td align="center">156</td>
+<td>MAX_SERVER_WAIT_TIMEOUT</td>
+<td>0</td>
+<td>--</td>
+<td>UNIMPLEMENT</td>
+</tr>
+<tr>
+<td align="center">157</td>
+<td>MAX_VIEWS_OVR</td>
+<td>6</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h1 id="properties">其他 Properties</h1>
+<pre><code>// Provided by VK_VERSION_1_0
+typedef struct VkQueueFamilyProperties {
+    VkQueueFlags    queueFlags;
+    uint32_t        queueCount;
+    uint32_t        timestampValidBits;
+    VkExtent3D      minImageTransferGranularity;
+} VkQueueFamilyProperties;
+</code></pre>
+<p>需求: VkQueueFamilyProperties. timestampValidBits &gt; 0</p>
+<p>支持 GLES EXT:  <strong>GL_EXT_disjoint_timer_query</strong> </p>
+<p>disjointTimerQuery</p>
+<h1 id="_3">附录</h1>
+<h2 id="v100-gles-extension">v100 GLES Extension 支持情况</h2>
+<p>从 GLES Extensions 视角, 查询所需的 Vk 支持. </p>
+<table>
+<thead>
+<tr>
+<th align="left">OpenGL ES Extension in v100</th>
+<th>ANGLE 支持</th>
+<th>ANGLE 支持条件</th>
+<th>Vulkan (v100) 满足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">GL_EXT_multi_draw_indirect</td>
+<td>UNIMPLEMENTED</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_debug_marker</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_ARM_rgba8</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_ARM_mali_shader_binary</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_depth24</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_depth_texture</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_depth_texture_cube_map</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_packed_depth_stencil</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_rgb8_rgba8</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_read_format_bgra</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_compressed_paletted_texture</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_compressed_ETC1_RGB8_texture</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_standard_derivatives</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_EGL_image</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_EGL_image_external</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_EGL_image_external_essl3</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_EGL_sync</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_texture_npot</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_vertex_half_float</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_required_internalformat</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_vertex_array_object</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_mapbuffer</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_texture_format_BGRA8888</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_texture_rg</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_texture_type_2_10_10_10_REV</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_fbo_render_mipmap</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_element_index_uint</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_shadow_samplers</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_KHR_texture_compression_astc_ldr</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_KHR_debug</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_occlusion_query_boolean</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_disjoint_timer_query</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_blend_minmax</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_discard_framebuffer</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_get_program_binary</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_texture_3D</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_texture_storage</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_multisampled_render_to_texture</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_surfaceless_context</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_texture_stencil8</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_shader_pixel_local_storage</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_ARM_shader_framebuffer_fetch</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_ARM_shader_framebuffer_fetch_depth_stencil</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_shader_framebuffer_fetch_non_coherent</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_ARM_mali_program_binary</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_sRGB</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_sRGB_write_control</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_texture_sRGB_decode</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_texture_sRGB_R8</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_texture_sRGB_RG8</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_KHR_blend_equation_advanced</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_KHR_blend_equation_advanced_coherent</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_texture_storage_multisample_2d_array</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_shader_image_atomic</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_robustness</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_draw_buffers_indexed</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_draw_buffers_indexed</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_texture_border_clamp</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_texture_border_clamp</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_texture_cube_map_array</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_texture_cube_map_array</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_sample_variables</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_sample_shading</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_shader_multisample_interpolation</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_shader_io_blocks</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_shader_io_blocks</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_tessellation_shader</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_tessellation_shader</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_primitive_bounding_box</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_primitive_bounding_box</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_geometry_shader</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_geometry_shader</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_ANDROID_extension_pack_es31a</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_gpu_shader5</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_gpu_shader5</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_texture_buffer</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_texture_buffer</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_copy_image</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_copy_image</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_shader_non_constant_global_initializers</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_color_buffer_half_float</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_color_buffer_float</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_YUV_target</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OVR_multiview</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OVR_multiview2</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OVR_multiview_multisampled_render_to_texture</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_KHR_robustness</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_KHR_robust_buffer_access_behavior</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_draw_elements_base_vertex</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_draw_elements_base_vertex</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_protected_textures</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_geometry_point_size</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_geometry_point_size</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_tessellation_point_size</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_tessellation_point_size</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">GL_OES_draw_texture</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="v100-egl-extension">v100 EGL Extension</h2>
+<table>
+<thead>
+<tr>
+<th align="left">EGL extensions</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">EGL_KHR_get_all_proc_addresses</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">EGL_ANDROID_presentation_time</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">EGL_KHR_swap_buffes_witn_damage</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">EGL_ANDROID_get_native_client_buffer</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">EGL_ANDROID_front_buffer_auto_refresh</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">EGL_ANDROID_get_frame_timestamps</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">EGL_KHR_image</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">EGL_KHR_image_base</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">EGL_KHR_gl_colorspace</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">EGL_KHR_gl_texture_2D_image</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">EGL_KHR_gl_texture_cubemap_image</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">EGL_KHR_gl_renderbuffer_image</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">EGL_KHR_fence_sync</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">EGL_KHR_create_context</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">EGL_KHR_config_attribs</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">EGL_KHR_surfaceless_context</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">EGL_EXT_create_context_robustness</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">EGL_ANDROID_image_native_buffer</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">EGL_KHR_wait_sync</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">EGL_ANDROID_recordable</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">EGL_KHR_partial_update</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">EGL_KHR_mutable_render_buffer</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">EGL_EXT_protected_content</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">EGL_IMG_context_priority</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="angle-vk-features_1">ANGLE 中启用的 Vk Features</h2>
+<h3 id="vulkan_1_0-features">Vulkan_1_0 Features:</h3>
+<pre><code class="language-c++">// Select additional features to be enabled.
+mPhysicalDeviceFeatures{
+    // Used to support cubemap array:  only enable when not SwiftShader or not Qualcomm
+    imageCubeArray;
+    // Used to support framebuffers with multiple attachments:
+   independentBlend;
+    // Used to support robust buffer access:
+    robustBufferAccess;
+    // Used to support Anisotropic filtering:
+    samplerAnisotropy;
+    // Used to support wide lines:
+    wideLines;
+    // Used to emulate transform feedback:
+    vertexPipelineStoresAndAtomics;
+    // Used to implement storage buffers and images in the fragment shader:
+    fragmentStoresAndAtomics;
+    // Used to support geometry shaders:
+    geometryShader
+    // Used to support EXT_gpu_shader5:
+    shaderImageGatherExtended;
+    // Used to support EXT_gpu_shader5:
+    shaderUniformBufferArrayDynamicIndexing
+    // Used to support EXT_gpu_shader5 and sampler array of array emulation:
+    shaderSampledImageArrayDynamicIndexing;
+    // Used to support atomic counter emulation:
+    shaderStorageBufferArrayDynamicIndexing;
+    // Used to support APPLE_clip_distance
+   shaderClipDistance
+    // Used to support OES_sample_shading
+    sampleRateShading;
+    // Used to support depth clears through draw calls.
+    depthClamp;
+    // if (!vk::CommandBuffer::ExecutesInline())
+    inheritedQueries;
+    // Used to support OES_sample_variables
+    sampleRateShading;
+}
+</code></pre>
+<p>Extension Features: </p>
+<pre><code>VkPhysicalDeviceLineRasterizationFeaturesEXT 
+VkPhysicalDeviceProvokingVertexFeaturesEXT 
+VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT 
+VkPhysicalDeviceTransformFeedbackFeaturesEXT 
+VkPhysicalDeviceIndexTypeUint8FeaturesEXT 
+VkPhysicalDeviceShaderFloat16Int8FeaturesKHR 
+VkPhysicalDeviceSamplerYcbcrConversionFeatures
+</code></pre>
+<h1 id="8-appendix">8. Appendix</h1>
+<h2 id="81-capability">8.1. Capability</h2>
+<p>The recommended value for vulkan 1.1 <a href="https://www.khronos.org/registry/vulkan/specs/1.1/html/vkspec.html#features-features">features</a> and <a href="https://www.khronos.org/registry/vulkan/specs/1.1/html/vkspec.html#features-limits">limits</a> report for HiVoyager V100 chip are listed in this chapter.</p>
+<h3 id="811-physical-device-features">8.1.1. Physical Device Features</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Feature</th>
+<th align="center">Supported on HiVoyager V100</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">robustBufferAccess</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">fullDrawIndexUint32</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">imageCubeArray</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">independentBlend</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">geometryShader</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">tessellationShader</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">sampleRateShading</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">dualSrcBlend</td>
+<td align="center">no</td>
+</tr>
+<tr>
+<td align="left">logicOp</td>
+<td align="center">no</td>
+</tr>
+<tr>
+<td align="left">multiDrawIndirect</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">drawIndirectFirstInstance</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">depthClamp</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">depthBiasClamp</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">fillModeNonSolid</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">depthBounds</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">wideLines</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">largePoints</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">alphaToOne</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">multiViewport</td>
+<td align="center">no</td>
+</tr>
+<tr>
+<td align="left">samplerAnisotropy</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">textureCompressionETC2</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">textureCompressionASTC_LDR</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">textureCompressionBC</td>
+<td align="center">no</td>
+</tr>
+<tr>
+<td align="left">occlusionQueryPrecise</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">pipelineStatisticsQuery</td>
+<td align="center">no</td>
+</tr>
+<tr>
+<td align="left"><strong>vertexPipelineStoresAndAtomics</strong></td>
+<td align="center"><strong>no</strong></td>
+</tr>
+<tr>
+<td align="left">fragmentStoresAndAtomics</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">shaderTessellationAndGeometryPointSize</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">shaderImageGatherExtended</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">shaderStorageImageExtendedFormats</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">shaderStorageImageMultisample</td>
+<td align="center">no</td>
+</tr>
+<tr>
+<td align="left">shaderStorageImageReadWithoutFormat</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">shaderStorageImageWriteWithoutFormat</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">shaderUniformBufferArrayDynamicIndexing</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">shaderSampledImageArrayDynamicIndexing</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">shaderStorageBufferArrayDynamicIndexing</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">shaderStorageImageArrayDynamicIndexing</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">shaderClipDistance</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">shaderCullDistance</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">shaderFloat64</td>
+<td align="center">no</td>
+</tr>
+<tr>
+<td align="left">shaderInt64</td>
+<td align="center">no</td>
+</tr>
+<tr>
+<td align="left">shaderInt16</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">shaderResourceResidency</td>
+<td align="center">no</td>
+</tr>
+<tr>
+<td align="left">shaderResourceMinLod</td>
+<td align="center">no</td>
+</tr>
+<tr>
+<td align="left">sparseBinding</td>
+<td align="center">no</td>
+</tr>
+<tr>
+<td align="left">sparseResidencyBuffer</td>
+<td align="center">no</td>
+</tr>
+<tr>
+<td align="left">sparseResidencyImage2D</td>
+<td align="center">no</td>
+</tr>
+<tr>
+<td align="left">sparseResidencyImage3D</td>
+<td align="center">no</td>
+</tr>
+<tr>
+<td align="left">sparseResidency2Samples</td>
+<td align="center">no</td>
+</tr>
+<tr>
+<td align="left">sparseResidency4Samples</td>
+<td align="center">no</td>
+</tr>
+<tr>
+<td align="left">sparseResidency8Samples</td>
+<td align="center">no</td>
+</tr>
+<tr>
+<td align="left">sparseResidency16Samples</td>
+<td align="center">no</td>
+</tr>
+<tr>
+<td align="left">sparseResidencyAliased</td>
+<td align="center">no</td>
+</tr>
+<tr>
+<td align="left">variableMultisampleRate</td>
+<td align="center">no</td>
+</tr>
+<tr>
+<td align="left">inheritedQueries</td>
+<td align="center">no</td>
+</tr>
+</tbody>
+</table>
+<h3 id="812-physical-device-limits">8.1.2. Physical Device Limits</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="center">Limit of HiVoyager V100</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">maxImageDimension1D</td>
+<td align="center">8192</td>
+</tr>
+<tr>
+<td align="left">maxImageDimension2D</td>
+<td align="center">8192[<a href="#Limit_of_HiVoyager_V100">1</a>]</td>
+</tr>
+<tr>
+<td align="left">maxImageDimension3D</td>
+<td align="center">256</td>
+</tr>
+<tr>
+<td align="left">maxImageDimensionCube</td>
+<td align="center">8192</td>
+</tr>
+<tr>
+<td align="left">maxImageArrayLayers</td>
+<td align="center">256</td>
+</tr>
+<tr>
+<td align="left">maxTexelBufferElements</td>
+<td align="center">224</td>
+</tr>
+<tr>
+<td align="left">maxUniformBufferRange</td>
+<td align="center">16384</td>
+</tr>
+<tr>
+<td align="left">maxStorageBufferRange</td>
+<td align="center">227</td>
+</tr>
+<tr>
+<td align="left">maxPushConstantsSize</td>
+<td align="center">256</td>
+</tr>
+<tr>
+<td align="left">maxMemoryAllocationCount</td>
+<td align="center">232-1</td>
+</tr>
+<tr>
+<td align="left">maxSamplerAllocationCount</td>
+<td align="center">223</td>
+</tr>
+<tr>
+<td align="left">bufferImageGranularity</td>
+<td align="center">4096</td>
+</tr>
+<tr>
+<td align="left">sparseAddressSpaceSize</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="left">maxBoundDescriptorSets</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="left">maxPerStageDescriptorSamplers</td>
+<td align="center">16</td>
+</tr>
+<tr>
+<td align="left">maxPerStageDescriptorUniformBuffers</td>
+<td align="center">12</td>
+</tr>
+<tr>
+<td align="left">maxPerStageDescriptorStorageBuffers</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="left">maxPerStageDescriptorSampledImages</td>
+<td align="center">16</td>
+</tr>
+<tr>
+<td align="left">maxPerStageDescriptorStorageImages</td>
+<td align="center">8[<a href="#Limit_of_HiVoyager_V100">2</a>]</td>
+</tr>
+<tr>
+<td align="left">maxPerStageDescriptorInputAttachments</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="left">maxPerStageResources</td>
+<td align="center">52</td>
+</tr>
+<tr>
+<td align="left">maxDescriptorSetSamplers</td>
+<td align="center">96</td>
+</tr>
+<tr>
+<td align="left">maxDescriptorSetUniformBuffers</td>
+<td align="center">72</td>
+</tr>
+<tr>
+<td align="left">maxDescriptorSetUniformBuffersDynamic</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="left">maxDescriptorSetStorageBuffers</td>
+<td align="center">48</td>
+</tr>
+<tr>
+<td align="left">maxDescriptorSetStorageBuffersDynamic</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="left">maxDescriptorSetSampledImages</td>
+<td align="center">96</td>
+</tr>
+<tr>
+<td align="left">maxDescriptorSetStorageImages</td>
+<td align="center">48</td>
+</tr>
+<tr>
+<td align="left">maxDescriptorSetInputAttachments</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="left">maxVertexInputAttributes</td>
+<td align="center">16</td>
+</tr>
+<tr>
+<td align="left">maxVertexInputBindings</td>
+<td align="center">16</td>
+</tr>
+<tr>
+<td align="left">maxVertexInputAttributeOffset</td>
+<td align="center">2047</td>
+</tr>
+<tr>
+<td align="left">maxVertexInputBindingStride</td>
+<td align="center">2048</td>
+</tr>
+<tr>
+<td align="left">maxVertexOutputComponents</td>
+<td align="center">128</td>
+</tr>
+<tr>
+<td align="left">maxTessellationGenerationLevel</td>
+<td align="center">64</td>
+</tr>
+<tr>
+<td align="left">maxTessellationPatchSize</td>
+<td align="center">32</td>
+</tr>
+<tr>
+<td align="left">maxTessellationControlPerVertexInputComponents</td>
+<td align="center">128</td>
+</tr>
+<tr>
+<td align="left">maxTessellationControlPerVertexOutputComponents</td>
+<td align="center">128</td>
+</tr>
+<tr>
+<td align="left">maxTessellationControlPerPatchOutputComponents</td>
+<td align="center">120</td>
+</tr>
+<tr>
+<td align="left">maxTessellationControlTotalOutputComponents</td>
+<td align="center">4096</td>
+</tr>
+<tr>
+<td align="left">maxTessellationEvaluationInputComponents</td>
+<td align="center">128</td>
+</tr>
+<tr>
+<td align="left">maxTessellationEvaluationOutputComponents</td>
+<td align="center">128</td>
+</tr>
+<tr>
+<td align="left">maxGeometryShaderInvocations</td>
+<td align="center">32</td>
+</tr>
+<tr>
+<td align="left">maxGeometryInputComponents</td>
+<td align="center">128</td>
+</tr>
+<tr>
+<td align="left">maxGeometryOutputComponents</td>
+<td align="center">128</td>
+</tr>
+<tr>
+<td align="left">maxGeometryOutputVertices</td>
+<td align="center">256</td>
+</tr>
+<tr>
+<td align="left">maxGeometryTotalOutputComponents</td>
+<td align="center">1024</td>
+</tr>
+<tr>
+<td align="left">maxFragmentInputComponents</td>
+<td align="center">128</td>
+</tr>
+<tr>
+<td align="left">maxFragmentOutputAttachments</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="left">maxFragmentDualSrcAttachments</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="left">maxFragmentCombinedOutputResources</td>
+<td align="center">20</td>
+</tr>
+<tr>
+<td align="left">maxComputeSharedMemorySize</td>
+<td align="center">32768</td>
+</tr>
+<tr>
+<td align="left">maxComputeWorkGroupCount[0]</td>
+<td align="center">65535</td>
+</tr>
+<tr>
+<td align="left">maxComputeWorkGroupCount[1]</td>
+<td align="center">65535</td>
+</tr>
+<tr>
+<td align="left">maxComputeWorkGroupCount[2]</td>
+<td align="center">65535</td>
+</tr>
+<tr>
+<td align="left">maxComputeWorkGroupInvocations</td>
+<td align="center">384 [v120, opencl]</td>
+</tr>
+<tr>
+<td align="left">maxComputeWorkGroupInvocations</td>
+<td align="center">256 [v100, opencl]</td>
+</tr>
+<tr>
+<td align="left">maxComputeWorkGroupInvocations</td>
+<td align="center">1024 [vulkan]</td>
+</tr>
+<tr>
+<td align="left">maxComputeWorkGroupSize[0]</td>
+<td align="center">256 [opencl]</td>
+</tr>
+<tr>
+<td align="left">maxComputeWorkGroupSize[0]</td>
+<td align="center">1024 [vulkan]</td>
+</tr>
+<tr>
+<td align="left">maxComputeWorkGroupSize[1]</td>
+<td align="center">256 [v120, opencl]</td>
+</tr>
+<tr>
+<td align="left">maxComputeWorkGroupSize[1]</td>
+<td align="center">32 [v100, opencl]</td>
+</tr>
+<tr>
+<td align="left">maxComputeWorkGroupSize[1]</td>
+<td align="center">1024 [vulkan]</td>
+</tr>
+<tr>
+<td align="left">maxComputeWorkGroupSize[2]</td>
+<td align="center">64 [v120, opencl]</td>
+</tr>
+<tr>
+<td align="left">maxComputeWorkGroupSize[2]</td>
+<td align="center">2 [v100, opencl]</td>
+</tr>
+<tr>
+<td align="left">maxComputeWorkGroupSize[2]</td>
+<td align="center">64 [vulkan]</td>
+</tr>
+<tr>
+<td align="left">subPixelPrecisionBits</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="left">subTexelPrecisionBits</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="left">mipmapPrecisionBits</td>
+<td align="center">6</td>
+</tr>
+<tr>
+<td align="left">maxDrawIndexedIndexValue</td>
+<td align="center">0xFFFFFFFF</td>
+</tr>
+<tr>
+<td align="left">maxDrawIndirectCount</td>
+<td align="center">232-1</td>
+</tr>
+<tr>
+<td align="left">maxSamplerLodBias</td>
+<td align="center">14</td>
+</tr>
+<tr>
+<td align="left">maxSamplerAnisotropy</td>
+<td align="center">16</td>
+</tr>
+<tr>
+<td align="left">maxViewports</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="left">maxViewportDimensions[0]</td>
+<td align="center">8192</td>
+</tr>
+<tr>
+<td align="left">maxViewportDimensions[1]</td>
+<td align="center">8192</td>
+</tr>
+<tr>
+<td align="left">viewportBoundsRange[0]</td>
+<td align="center">-16384</td>
+</tr>
+<tr>
+<td align="left">viewportBoundsRange[1]</td>
+<td align="center">16383</td>
+</tr>
+<tr>
+<td align="left">viewportSubPixelBits</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="left">minMemoryMapAlignment</td>
+<td align="center">64</td>
+</tr>
+<tr>
+<td align="left">minTexelBufferOffsetAlignment</td>
+<td align="center">256</td>
+</tr>
+<tr>
+<td align="left">minUniformBufferOffsetAlignment</td>
+<td align="center">16</td>
+</tr>
+<tr>
+<td align="left">minStorageBufferOffsetAlignment</td>
+<td align="center">256</td>
+</tr>
+<tr>
+<td align="left">minTexelOffset</td>
+<td align="center">-8</td>
+</tr>
+<tr>
+<td align="left">maxTexelOffset</td>
+<td align="center">7</td>
+</tr>
+<tr>
+<td align="left">minTexelGatherOffset</td>
+<td align="center">-8</td>
+</tr>
+<tr>
+<td align="left">maxTexelGatherOffset</td>
+<td align="center">7</td>
+</tr>
+<tr>
+<td align="left">minInterpolationOffset</td>
+<td align="center">-0.5</td>
+</tr>
+<tr>
+<td align="left">maxInterpolationOffset</td>
+<td align="center">0.4375</td>
+</tr>
+<tr>
+<td align="left">subPixelInterpolationOffsetBits</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="left">maxFramebufferWidth</td>
+<td align="center">8192</td>
+</tr>
+<tr>
+<td align="left">maxFramebufferHeight</td>
+<td align="center">8192</td>
+</tr>
+<tr>
+<td align="left">maxFramebufferLayers</td>
+<td align="center">256</td>
+</tr>
+<tr>
+<td align="left">framebufferColorSampleCounts</td>
+<td align="center">SAMPLE_COUNT_1</td>
+</tr>
+<tr>
+<td align="left">SAMPLE_COUNT_4</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">framebufferDepthSampleCounts</td>
+<td align="center">SAMPLE_COUNT_1</td>
+</tr>
+<tr>
+<td align="left">SAMPLE_COUNT_4</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">framebufferStencilSampleCounts</td>
+<td align="center">SAMPLE_COUNT_1</td>
+</tr>
+<tr>
+<td align="left">SAMPLE_COUNT_4</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">framebufferNoAttachmentsSampleCounts</td>
+<td align="center">SAMPLE_COUNT_1</td>
+</tr>
+<tr>
+<td align="left">SAMPLE_COUNT_4</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">maxColorAttachments</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="left">sampledImageColorSampleCounts</td>
+<td align="center">SAMPLE_COUNT_1</td>
+</tr>
+<tr>
+<td align="left">SAMPLE_COUNT_4</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">sampledImageIntegerSampleCounts</td>
+<td align="center">SAMPLE_COUNT_1</td>
+</tr>
+<tr>
+<td align="left">SAMPLE_COUNT_4</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">sampledImageDepthSampleCounts</td>
+<td align="center">SAMPLE_COUNT_1</td>
+</tr>
+<tr>
+<td align="left">SAMPLE_COUNT_4</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">sampledImageStencilSampleCounts</td>
+<td align="center">SAMPLE_COUNT_1</td>
+</tr>
+<tr>
+<td align="left">SAMPLE_COUNT_4</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">storageImageSampleCounts</td>
+<td align="center">SAMPLE_COUNT_1</td>
+</tr>
+<tr>
+<td align="left">SAMPLE_COUNT_4</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">maxSampleMaskWords</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="left">timestampComputeAndGraphics</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">timestampPeriod</td>
+<td align="center">52.083333333 (1000/19.2)</td>
+</tr>
+<tr>
+<td align="left">maxClipDistances</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="left">maxCullDistances</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="left">maxCombinedClipAndCullDistances</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="left">discreteQueuePriorities</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="left">pointSizeRange[0]</td>
+<td align="center">1.0</td>
+</tr>
+<tr>
+<td align="left">pointSizeRange[1]</td>
+<td align="center">1024.0</td>
+</tr>
+<tr>
+<td align="left">lineWidthRange[0]</td>
+<td align="center">1.0</td>
+</tr>
+<tr>
+<td align="left">lineWidthRange[1]</td>
+<td align="center">4095.9375</td>
+</tr>
+<tr>
+<td align="left">pointSizeGranularity</td>
+<td align="center">0.1</td>
+</tr>
+<tr>
+<td align="left">lineWidthGranularity</td>
+<td align="center">0.1</td>
+</tr>
+<tr>
+<td align="left">strictLines</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">standardSampleLocations</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="left">optimalBufferCopyOffsetAlignment</td>
+<td align="center">512</td>
+</tr>
+<tr>
+<td align="left">optimalBufferCopyRowPitchAlignment</td>
+<td align="center">512</td>
+</tr>
+<tr>
+<td align="left">nonCoherentAtomSize</td>
+<td align="center">64</td>
+</tr>
+<tr>
+<td align="left">maxUpdateAfterBindDescriptorsInAllPools</td>
+<td align="center">500000</td>
+</tr>
+<tr>
+<td align="left">maxMultiviewViewCount</td>
+<td align="center">6</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Actually the hardware ability of maxImageDimension2D is <code>16384</code>. According to driver’s requirement, maxImageDimension2D is set to <code>8192</code>.</li>
+<li>Do not support image load store for vertex pipeline in GLES; Do not support image store for vertex pipeline in Vulkan.</li>
+</ol>
+<h3 id="813-physical-device-limits-opengles">8.1.3. Physical Device Limits OpenGLES</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="center">Limit of HiVoyager V100</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">SUBPIXEL_BITS</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="left">MAX_3D_TEXTURE_SIZE</td>
+<td align="center">256</td>
+</tr>
+<tr>
+<td align="left">MAX_TEXTURE_SIZE</td>
+<td align="center">8192</td>
+</tr>
+<tr>
+<td align="left">MAX_ARRAY_TEXTURE_LAYERS</td>
+<td align="center">256</td>
+</tr>
+<tr>
+<td align="left">MAX_TEXTURE_LOD_BIAS</td>
+<td align="center">14</td>
+</tr>
+<tr>
+<td align="left">MAX_CUBE_MAP_TEXTURE_SIZE</td>
+<td align="center">8192</td>
+</tr>
+<tr>
+<td align="left">MAX_RENDERBUFFER_SIZE</td>
+<td align="center">8192</td>
+</tr>
+<tr>
+<td align="left">ALIASED_LINE_WIDTH_RANGE[0]</td>
+<td align="center">1.0</td>
+</tr>
+<tr>
+<td align="left">ALIASED_LINE_WIDTH_RANGE[1]</td>
+<td align="center">4095.9375</td>
+</tr>
+<tr>
+<td align="left">ALIASED_POINT_SIZE_RANGE[0]</td>
+<td align="center">1.0</td>
+</tr>
+<tr>
+<td align="left">ALIASED_POINT_SIZE_RANGE[1]</td>
+<td align="center">1024.0</td>
+</tr>
+<tr>
+<td align="left">MULTISAMPLE_LINE_WIDTH_RANGE</td>
+<td align="center">[1.0, 4095.9375]</td>
+</tr>
+<tr>
+<td align="left">MULTISAMPLE_LINE_WIDTH_GRANULARITY</td>
+<td align="center">0.125</td>
+</tr>
+<tr>
+<td align="left">MAX_DRAW_BUFFERS</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="left">MAX_FRAMEBUFFER_WIDTH</td>
+<td align="center">8192</td>
+</tr>
+<tr>
+<td align="left">MAX_FRAMEBUFFER_HEIGHT</td>
+<td align="center">8192</td>
+</tr>
+<tr>
+<td align="left">MAX_FRAMEBUFFER_LAYERS</td>
+<td align="center">256</td>
+</tr>
+<tr>
+<td align="left">MAX_FRAMEBUFFER_SAMPLES</td>
+<td align="center">SAMPLE_COUNT_1</td>
+</tr>
+<tr>
+<td align="left">SAMPLE_COUNT_4</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">MAX_COLOR_ATTACHMENTS</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="left">MIN_FRAGMENT_INTERPOLATION_OFFSET</td>
+<td align="center">-0.5</td>
+</tr>
+<tr>
+<td align="left">MAX_FRAGMENT_INTERPOLATION_OFFSET</td>
+<td align="center">0.5</td>
+</tr>
+<tr>
+<td align="left">FRAGMENT_INTERPOLATION_OFFSET_BITS</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="left">MAX_VIEWPORT_DIMS[0]</td>
+<td align="center">8192</td>
+</tr>
+<tr>
+<td align="left">MAX_VIEWPORT_DIMS[1]</td>
+<td align="center">8192</td>
+</tr>
+<tr>
+<td align="left">MAX_SAMPLE_MASK_WORDS</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="left">MAX_COLOR_TEXTURE_SAMPLES</td>
+<td align="center">SAMPLE_COUNT_1</td>
+</tr>
+<tr>
+<td align="left">SAMPLE_COUNT_4</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">MAX_DEPTH_TEXTURE_SAMPLES</td>
+<td align="center">SAMPLE_COUNT_1</td>
+</tr>
+<tr>
+<td align="left">SAMPLE_COUNT_4</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">MAX_INTEGER_SAMPLES</td>
+<td align="center">SAMPLE_COUNT_1</td>
+</tr>
+<tr>
+<td align="left">SAMPLE_COUNT_4</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">MAX_SERVER_WAIT_TIMEOUT</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="left">LAYER_PROVOKING_VERTEX</td>
+<td align="center">FIRST_VERTEX_CONVENTION</td>
+</tr>
+<tr>
+<td align="left">LAST_VERTEX_CONVENTION</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">PRIMITIVE_RESTART_FOR_PATCHES_SUPPORTED</td>
+<td align="center">FALSE</td>
+</tr>
+<tr>
+<td align="left">MAX_VERTEX_ATTRIB_RELATIVE_OFFSET</td>
+<td align="center">2047</td>
+</tr>
+<tr>
+<td align="left">MAX_VERTEX_ATTRIB_BINDINGS</td>
+<td align="center">16</td>
+</tr>
+<tr>
+<td align="left">MAX_VERTEX_ATTRIB_STRIDE</td>
+<td align="center">2048</td>
+</tr>
+<tr>
+<td align="left">MAX_ELEMENTS_INDICES</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">MAX_ELEMENTS_VERTICES</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">MAX_ELEMENT_INDEX</td>
+<td align="center">0xFFFFFFFF</td>
+</tr>
+<tr>
+<td align="left">MAX_TEXTURE_BUFFER_SIZE</td>
+<td align="center">2^24</td>
+</tr>
+<tr>
+<td align="left">NUM_COMPRESSED_TEXTURE_FORMATS</td>
+<td align="center">49</td>
+</tr>
+<tr>
+<td align="left">COMPRESSED_TEXTURE_FORMATS</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">NUM_PROGRAM_BINARY_FORMATS</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="left">PROGRAM_BINARY_FORMATS</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">NUM_SHADER_BINARY_FORMATS</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="left">SHADER_BINARY_FORMATS</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">SHADER_COMPILER</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">TEXTURE_BUFFER_OFFSET_ALIGNMENT</td>
+<td align="center">256</td>
+</tr>
+<tr>
+<td align="left">MAX_TEXTURE_MAX_ANISOTROPY_EXT</td>
+<td align="center">16</td>
+</tr>
+<tr>
+<td align="left">MAX_VERTEX_ATTRIBS</td>
+<td align="center">16</td>
+</tr>
+<tr>
+<td align="left">MAX_VERTEX_UNIFORM_COMPONENTS</td>
+<td align="center">1024</td>
+</tr>
+<tr>
+<td align="left">MAX_VERTEX_UNIFORM_VECTORS</td>
+<td align="center">256</td>
+</tr>
+<tr>
+<td align="left">MAX_VERTEX_UNIFORM_BLOCKS</td>
+<td align="center">12</td>
+</tr>
+<tr>
+<td align="left">MAX_VERTEX_OUTPUT_COMPONENTS</td>
+<td align="center">128</td>
+</tr>
+<tr>
+<td align="left">MAX_VERTEX_TEXTURE_IMAGE_UNITS</td>
+<td align="center">16</td>
+</tr>
+<tr>
+<td align="left">MAX_VERTEX_ATOMIC_COUNTER_BUFFERS</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="left">MAX_VERTEX_ATOMIC_COUNTERS</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="left">MAX_VERTEX_SHADER_STORAGE_BLOCKS</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="left">MAX_TESS_GEN_LEVEL</td>
+<td align="center">64</td>
+</tr>
+<tr>
+<td align="left">MAX_PATCH_VERTICES</td>
+<td align="center">32</td>
+</tr>
+<tr>
+<td align="left">MAX_TESS_CONTROL_UNIFORM_COMPONENTS</td>
+<td align="center">1024</td>
+</tr>
+<tr>
+<td align="left">MAX_TESS_CONTROL_TEXTURE_IMAGE_UNITS</td>
+<td align="center">16</td>
+</tr>
+<tr>
+<td align="left">MAX_TESS_CONTROL_OUTPUT_COMPONENTS</td>
+<td align="center">128</td>
+</tr>
+<tr>
+<td align="left">MAX_TESS_PATCH_COMPONENTS</td>
+<td align="center">120</td>
+</tr>
+<tr>
+<td align="left">MAX_TESS_CONTROL_TOTAL_OUTPUT_COMPONENTS</td>
+<td align="center">4096</td>
+</tr>
+<tr>
+<td align="left">MAX_TESS_CONTROL_INPUT_COMPONENTS</td>
+<td align="center">128</td>
+</tr>
+<tr>
+<td align="left">MAX_TESS_CONTROL_UNIFORM_BLOCKS</td>
+<td align="center">12</td>
+</tr>
+<tr>
+<td align="left">MAX_TESS_CONTROL_ATOMIC_COUNTER_BUFFERS</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="left">MAX_TESS_CONTROL_ATOMIC_COUNTERS</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="left">MAX_TESS_CONTROL_SHADER_STORAGE_BLOCKS</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="left">MAX_TESS_EVALUATION_UNIFORM_COMPONENTS</td>
+<td align="center">1024</td>
+</tr>
+<tr>
+<td align="left">MAX_TESS_EVALUATION_TEXTURE_IMAGE_UNITS</td>
+<td align="center">16</td>
+</tr>
+<tr>
+<td align="left">MAX_TESS_EVALUATION_OUTPUT_COMPONENTS</td>
+<td align="center">128</td>
+</tr>
+<tr>
+<td align="left">MAX_TESS_EVALUATION_INPUT_COMPONENTS</td>
+<td align="center">128</td>
+</tr>
+<tr>
+<td align="left">MAX_TESS_EVALUATION_UNIFORM_BLOCKS</td>
+<td align="center">12</td>
+</tr>
+<tr>
+<td align="left">MAX_TESS_EVALUATION_ATOMIC_COUNTER_BUFFERS</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="left">MAX_TESS_EVALUATION_ATOMIC_COUNTERS</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="left">MAX_TESS_EVALUATION_SHADER_STORAGE_BLOCKS</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="left">MAX_GEOMETRY_UNIFORM_COMPONENTS</td>
+<td align="center">1024</td>
+</tr>
+<tr>
+<td align="left">MAX_GEOMETRY_UNIFORM_BLOCKS</td>
+<td align="center">12</td>
+</tr>
+<tr>
+<td align="left">MAX_GEOMETRY_INPUT_COMPONENTS</td>
+<td align="center">128</td>
+</tr>
+<tr>
+<td align="left">MAX_GEOMETRY_OUTPUT_COMPONENTS</td>
+<td align="center">128</td>
+</tr>
+<tr>
+<td align="left">MAX_GEOMETRY_OUTPUT_VERTICES</td>
+<td align="center">256</td>
+</tr>
+<tr>
+<td align="left">MAX_GEOMETRY_TOTAL_OUTPUT_COMPONENTS</td>
+<td align="center">1024</td>
+</tr>
+<tr>
+<td align="left">MAX_GEOMETRY_TEXTURE_IMAGE_UNITS</td>
+<td align="center">16</td>
+</tr>
+<tr>
+<td align="left">MAX_GEOMETRY_SHADER_INVOCATIONS</td>
+<td align="center">32</td>
+</tr>
+<tr>
+<td align="left">MAX_GEOMETRY_ATOMIC_COUNTER_BUFFERS</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="left">MAX_GEOMETRY_ATOMIC_COUNTERS</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="left">MAX_GEOMETRY_SHADER_STORAGE_BLOCKS</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="left">MAX_FRAGMENT_UNIFORM_COMPONENTS</td>
+<td align="center">1024</td>
+</tr>
+<tr>
+<td align="left">MAX_FRAGMENT_UNIFORM_VECTORS</td>
+<td align="center">256</td>
+</tr>
+<tr>
+<td align="left">MAX_FRAGMENT_UNIFORM_BLOCKS</td>
+<td align="center">12</td>
+</tr>
+<tr>
+<td align="left">MAX_FRAGMENT_INPUT_COMPONENTS</td>
+<td align="center">128</td>
+</tr>
+<tr>
+<td align="left">MAX_TEXTURE_IMAGE_UNITS</td>
+<td align="center">16</td>
+</tr>
+<tr>
+<td align="left">MAX_FRAGMENT_ATOMIC_COUNTER_BUFFERS</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="left">MAX_FRAGMENT_ATOMIC_COUNTERS</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="left">MAX_FRAGMENT_SHADER_STORAGE_BLOCKS</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="left">MIN_PROGRAM_TEXTURE_GATHER_OFFSET</td>
+<td align="center">-8</td>
+</tr>
+<tr>
+<td align="left">MAX_PROGRAM_TEXTURE_GATHER_OFFSET</td>
+<td align="center">7</td>
+</tr>
+<tr>
+<td align="left">MIN_PROGRAM_TEXEL_OFFSET</td>
+<td align="center">-8</td>
+</tr>
+<tr>
+<td align="left">MAX_PROGRAM_TEXEL_OFFSET</td>
+<td align="center">7</td>
+</tr>
+<tr>
+<td align="left">MAX_COMPUTE_WORK_GROUP_COUNT[0]</td>
+<td align="center">65535</td>
+</tr>
+<tr>
+<td align="left">MAX_COMPUTE_WORK_GROUP_COUNT[1]</td>
+<td align="center">65535</td>
+</tr>
+<tr>
+<td align="left">MAX_COMPUTE_WORK_GROUP_COUNT[2]</td>
+<td align="center">65535</td>
+</tr>
+<tr>
+<td align="left">MAX_COMPUTE_WORK_GROUP_SIZE[0]</td>
+<td align="center">1024</td>
+</tr>
+<tr>
+<td align="left">MAX_COMPUTE_WORK_GROUP_SIZE[1]</td>
+<td align="center">1024</td>
+</tr>
+<tr>
+<td align="left">MAX_COMPUTE_WORK_GROUP_SIZE[2]</td>
+<td align="center">64</td>
+</tr>
+<tr>
+<td align="left">MAX_COMPUTE_WORK_GROUP_INVOCATIONS</td>
+<td align="center">1024</td>
+</tr>
+<tr>
+<td align="left">MAX_COMPUTE_UNIFORM_BLOCKS</td>
+<td align="center">12</td>
+</tr>
+<tr>
+<td align="left">MAX_COMPUTE_TEXTURE_IMAGE_UNITS</td>
+<td align="center">16</td>
+</tr>
+<tr>
+<td align="left">MAX_COMPUTE_SHARED_MEMORY_SIZE</td>
+<td align="center">32768</td>
+</tr>
+<tr>
+<td align="left">MAX_COMPUTE_UNIFORM_COMPONENTS</td>
+<td align="center">1024</td>
+</tr>
+<tr>
+<td align="left">MAX_COMPUTE_ATOMIC_COUNTER_BUFFERS</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="left">MAX_COMPUTE_ATOMIC_COUNTERS</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="left">MAX_COMBINED_COMPUTE_UNIFORM_COMPONENTS</td>
+<td align="center">50176</td>
+</tr>
+<tr>
+<td align="left">MAX_COMPUTE_SHADER_STORAGE_BLOCKS</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="left">MAX_UNIFORM_BUFFER_BINDINGS</td>
+<td align="center">72</td>
+</tr>
+<tr>
+<td align="left">MAX_UNIFORM_BLOCK_SIZE</td>
+<td align="center">16384</td>
+</tr>
+<tr>
+<td align="left">UNIFORM_BUFFER_OFFSET_ALIGNMENT</td>
+<td align="center">16</td>
+</tr>
+<tr>
+<td align="left">MAX_COMBINED_UNIFORM_BLOCKS</td>
+<td align="center">72</td>
+</tr>
+<tr>
+<td align="left">MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS</td>
+<td align="center">50176</td>
+</tr>
+<tr>
+<td align="left">MAX_COMBINED_TESS_CONTROL_UNIFORM_COMPONENTS</td>
+<td align="center">50176</td>
+</tr>
+<tr>
+<td align="left">MAX_COMBINED_TESS_EVALUATION_UNIFORM_COMPONENTS</td>
+<td align="center">50176</td>
+</tr>
+<tr>
+<td align="left">MAX_COMBINED_GEOMETRY_UNIFORM_COMPONENTS</td>
+<td align="center">50176</td>
+</tr>
+<tr>
+<td align="left">MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS</td>
+<td align="center">50176</td>
+</tr>
+<tr>
+<td align="left">MAX_VARYING_COMPONENTS</td>
+<td align="center">124</td>
+</tr>
+<tr>
+<td align="left">MAX_VARYING_VECTORS</td>
+<td align="center">31</td>
+</tr>
+<tr>
+<td align="left">MAX_COMBINED_TEXTURE_IMAGE_UNITS</td>
+<td align="center">96</td>
+</tr>
+<tr>
+<td align="left">MAX_COMBINED_SHADER_OUTPUT_RESOURCES</td>
+<td align="center">20</td>
+</tr>
+<tr>
+<td align="left">MAX_UNIFORM_LOCATIONS</td>
+<td align="center">1024</td>
+</tr>
+<tr>
+<td align="left">MAX_ATOMIC_COUNTER_BUFFER_BINDINGS</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="left">MAX_ATOMIC_COUNTER_BUFFER_SIZE</td>
+<td align="center">32</td>
+</tr>
+<tr>
+<td align="left">MAX_COMBINED_ATOMIC_COUNTER_BUFFERS</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="left">MAX_COMBINED_ATOMIC_COUNTERS</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="left">MAX_IMAGE_UNITS</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="left">MAX_VERTEX_IMAGE_UNIFORMS</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="left">MAX_TESS_CONTROL_IMAGE_UNIFORMS</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="left">MAX_TESS_EVALUATION_IMAGE_UNIFORMS</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="left">MAX_GEOMETRY_IMAGE_UNIFORMS</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="left">MAX_FRAGMENT_IMAGE_UNIFORMS</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="left">MAX_COMPUTE_IMAGE_UNIFORMS</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="left">MAX_COMBINED_IMAGE_UNIFORMS</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="left">MAX_SHADER_STORAGE_BUFFER_BINDINGS</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="left">MAX_SHADER_STORAGE_BLOCK_SIZE</td>
+<td align="center">2^27</td>
+</tr>
+<tr>
+<td align="left">MAX_COMBINED_SHADER_STORAGE_BLOCKS</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="left">SHADER_STORAGE_BUFFER_OFFSET_ALIGNMENT</td>
+<td align="center">256</td>
+</tr>
+<tr>
+<td align="left">MAX_LABEL_LENGTH</td>
+<td align="center">256</td>
+</tr>
+<tr>
+<td align="left">MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS</td>
+<td align="center">64</td>
+</tr>
+<tr>
+<td align="left">MAX_TRANSFORM_FEEDBACK_SEPARATE_ATTRIBS</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="left">MAX_TRANSFORM_FEEDBACK_SEPARATE_COMPONENTS</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="left">MAX_SAMPLES</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="left">MAX_SERVER_WAIT_TIMEOUT</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="left">MAX_VIEWS_OVR</td>
+<td align="center">6</td>
+</tr>
+</tbody>
+</table>
+<h2 id="82-extension">8.2. Extension</h2>
+<p>OpenGL ES, EGL and Vulkan extension for HiVoyager V100 chip are listed in this chapter.</p>
+<h3 id="821-opengl-es-extension">8.2.1. OpenGL ES Extension</h3>
+<table>
+<thead>
+<tr>
+<th align="left">OpenGL ES Extension</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><a href="https://www.khronos.org/registry/OpenGL/extensions/EXT/EXT_multi_draw_indirect.txt">GL_EXT_multi_draw_indirect</a></td>
+</tr>
+<tr>
+<td align="left">GL_EXT_debug_marker</td>
+</tr>
+<tr>
+<td align="left">GL_ARM_rgba8</td>
+</tr>
+<tr>
+<td align="left">GL_ARM_mali_shader_binary</td>
+</tr>
+<tr>
+<td align="left">GL_OES_depth24</td>
+</tr>
+<tr>
+<td align="left">GL_OES_depth_texture</td>
+</tr>
+<tr>
+<td align="left">GL_OES_depth_texture_cube_map</td>
+</tr>
+<tr>
+<td align="left">GL_OES_packed_depth_stencil</td>
+</tr>
+<tr>
+<td align="left">GL_OES_rgb8_rgba8</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_read_format_bgra</td>
+</tr>
+<tr>
+<td align="left">GL_OES_compressed_paletted_texture</td>
+</tr>
+<tr>
+<td align="left">GL_OES_compressed_ETC1_RGB8_texture</td>
+</tr>
+<tr>
+<td align="left">GL_OES_standard_derivatives</td>
+</tr>
+<tr>
+<td align="left">GL_OES_EGL_image</td>
+</tr>
+<tr>
+<td align="left">GL_OES_EGL_image_external</td>
+</tr>
+<tr>
+<td align="left">GL_OES_EGL_image_external_essl3</td>
+</tr>
+<tr>
+<td align="left">GL_OES_EGL_sync</td>
+</tr>
+<tr>
+<td align="left">GL_OES_texture_npot</td>
+</tr>
+<tr>
+<td align="left">GL_OES_vertex_half_float</td>
+</tr>
+<tr>
+<td align="left">GL_OES_required_internalformat</td>
+</tr>
+<tr>
+<td align="left">GL_OES_vertex_array_object</td>
+</tr>
+<tr>
+<td align="left">GL_OES_mapbuffer</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_texture_format_BGRA8888</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_texture_rg</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_texture_type_2_10_10_10_REV</td>
+</tr>
+<tr>
+<td align="left">GL_OES_fbo_render_mipmap</td>
+</tr>
+<tr>
+<td align="left">GL_OES_element_index_uint</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_shadow_samplers</td>
+</tr>
+<tr>
+<td align="left">GL_KHR_texture_compression_astc_ldr</td>
+</tr>
+<tr>
+<td align="left">GL_KHR_debug</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_occlusion_query_boolean</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_disjoint_timer_query</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_blend_minmax</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_discard_framebuffer</td>
+</tr>
+<tr>
+<td align="left">GL_OES_get_program_binary</td>
+</tr>
+<tr>
+<td align="left">GL_OES_texture_3D</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_texture_storage</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_multisampled_render_to_texture</td>
+</tr>
+<tr>
+<td align="left">GL_OES_surfaceless_context</td>
+</tr>
+<tr>
+<td align="left">GL_OES_texture_stencil8</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_shader_pixel_local_storage</td>
+</tr>
+<tr>
+<td align="left">GL_ARM_shader_framebuffer_fetch</td>
+</tr>
+<tr>
+<td align="left">GL_ARM_shader_framebuffer_fetch_depth_stencil</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_shader_framebuffer_fetch_non_coherent</td>
+</tr>
+<tr>
+<td align="left">GL_ARM_mali_program_binary</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_sRGB</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_sRGB_write_control</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_texture_sRGB_decode</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_texture_sRGB_R8</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_texture_sRGB_RG8</td>
+</tr>
+<tr>
+<td align="left">GL_KHR_blend_equation_advanced</td>
+</tr>
+<tr>
+<td align="left">GL_KHR_blend_equation_advanced_coherent</td>
+</tr>
+<tr>
+<td align="left">GL_OES_texture_storage_multisample_2d_array</td>
+</tr>
+<tr>
+<td align="left">GL_OES_shader_image_atomic</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_robustness</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_draw_buffers_indexed</td>
+</tr>
+<tr>
+<td align="left">GL_OES_draw_buffers_indexed</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_texture_border_clamp</td>
+</tr>
+<tr>
+<td align="left">GL_OES_texture_border_clamp</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_texture_cube_map_array</td>
+</tr>
+<tr>
+<td align="left">GL_OES_texture_cube_map_array</td>
+</tr>
+<tr>
+<td align="left">GL_OES_sample_variables</td>
+</tr>
+<tr>
+<td align="left">GL_OES_sample_shading</td>
+</tr>
+<tr>
+<td align="left">GL_OES_shader_multisample_interpolation</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_shader_io_blocks</td>
+</tr>
+<tr>
+<td align="left">GL_OES_shader_io_blocks</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_tessellation_shader</td>
+</tr>
+<tr>
+<td align="left">GL_OES_tessellation_shader</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_primitive_bounding_box</td>
+</tr>
+<tr>
+<td align="left">GL_OES_primitive_bounding_box</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_geometry_shader</td>
+</tr>
+<tr>
+<td align="left">GL_OES_geometry_shader</td>
+</tr>
+<tr>
+<td align="left">GL_ANDROID_extension_pack_es31a</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_gpu_shader5</td>
+</tr>
+<tr>
+<td align="left">GL_OES_gpu_shader5</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_texture_buffer</td>
+</tr>
+<tr>
+<td align="left">GL_OES_texture_buffer</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_copy_image</td>
+</tr>
+<tr>
+<td align="left">GL_OES_copy_image</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_shader_non_constant_global_initializers</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_color_buffer_half_float</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_color_buffer_float</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_YUV_target</td>
+</tr>
+<tr>
+<td align="left">GL_OVR_multiview</td>
+</tr>
+<tr>
+<td align="left">GL_OVR_multiview2</td>
+</tr>
+<tr>
+<td align="left">GL_OVR_multiview_multisampled_render_to_texture</td>
+</tr>
+<tr>
+<td align="left">GL_KHR_robustness</td>
+</tr>
+<tr>
+<td align="left">GL_KHR_robust_buffer_access_behavior</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_draw_elements_base_vertex</td>
+</tr>
+<tr>
+<td align="left">GL_OES_draw_elements_base_vertex</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_protected_textures</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_geometry_point_size</td>
+</tr>
+<tr>
+<td align="left">GL_OES_geometry_point_size</td>
+</tr>
+<tr>
+<td align="left">GL_EXT_tessellation_point_size</td>
+</tr>
+<tr>
+<td align="left">GL_OES_tessellation_point_size</td>
+</tr>
+<tr>
+<td align="left">GL_OES_draw_texture</td>
+</tr>
+</tbody>
+</table>
+<h3 id="822-egl-extension">8.2.2. EGL Extension</h3>
+<table>
+<thead>
+<tr>
+<th align="left">EGL extensions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">EGL_KHR_get_all_proc_addresses</td>
+</tr>
+<tr>
+<td align="left">EGL_ANDROID_presentation_time</td>
+</tr>
+<tr>
+<td align="left">EGL_KHR_swap_buffes_witn_damage</td>
+</tr>
+<tr>
+<td align="left">EGL_ANDROID_get_native_client_buffer</td>
+</tr>
+<tr>
+<td align="left">EGL_ANDROID_front_buffer_auto_refresh</td>
+</tr>
+<tr>
+<td align="left">EGL_ANDROID_get_frame_timestamps</td>
+</tr>
+<tr>
+<td align="left">EGL_KHR_image</td>
+</tr>
+<tr>
+<td align="left">EGL_KHR_image_base</td>
+</tr>
+<tr>
+<td align="left">EGL_KHR_gl_colorspace</td>
+</tr>
+<tr>
+<td align="left">EGL_KHR_gl_texture_2D_image</td>
+</tr>
+<tr>
+<td align="left">EGL_KHR_gl_texture_cubemap_image</td>
+</tr>
+<tr>
+<td align="left">EGL_KHR_gl_renderbuffer_image</td>
+</tr>
+<tr>
+<td align="left">EGL_KHR_fence_sync</td>
+</tr>
+<tr>
+<td align="left">EGL_KHR_create_context</td>
+</tr>
+<tr>
+<td align="left">EGL_KHR_config_attribs</td>
+</tr>
+<tr>
+<td align="left">EGL_KHR_surfaceless_context</td>
+</tr>
+<tr>
+<td align="left">EGL_EXT_create_context_robustness</td>
+</tr>
+<tr>
+<td align="left">EGL_ANDROID_image_native_buffer</td>
+</tr>
+<tr>
+<td align="left">EGL_KHR_wait_sync</td>
+</tr>
+<tr>
+<td align="left">EGL_ANDROID_recordable</td>
+</tr>
+<tr>
+<td align="left">EGL_KHR_partial_update</td>
+</tr>
+<tr>
+<td align="left">EGL_KHR_mutable_render_buffer</td>
+</tr>
+<tr>
+<td align="left">EGL_EXT_protected_content</td>
+</tr>
+<tr>
+<td align="left">EGL_IMG_context_priority</td>
+</tr>
+</tbody>
+</table>
+<h3 id="823-vulkan-extension">8.2.3. Vulkan Extension</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Vulkan Extension</th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">storageBuffer8BitAccess[<a href="#Vulkan_extension_small">1</a>]</td>
+<td align="left">m[<a href="#Vulkan_extension_m">2</a>]</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_create_renderpass2</strong>[<a href="#Vulkan_extension_capital">3</a>]</td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_depth_stencil_resolve</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left">supportedDepthResolveModes</td>
+<td align="left">m</td>
+</tr>
+<tr>
+<td align="left">supportedStencilResolveModes</td>
+<td align="left">m</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_driver_properties</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_image_format_list</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_imageless_framebuffer</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_separate_depth_stencil_layouts</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_spirv_1_4</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_timeline_semaphore</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_uniform_buffer_standard_layout</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left">uniformBufferStandardLayout</td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_vulkan_memory_model</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left">vulkanMemoryModel</td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_EXT_buffer_device_address</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left">shaderUniformTexelBufferArrayDynamicIndexing</td>
+<td align="left">m</td>
+</tr>
+<tr>
+<td align="left">shaderStorageTexelBufferArrayDynamicIndexing</td>
+<td align="left">m</td>
+</tr>
+<tr>
+<td align="left">shaderSampledImageArrayNonUniformIndexing</td>
+<td align="left">m</td>
+</tr>
+<tr>
+<td align="left">shaderStorageBufferArrayNonUniformIndexing</td>
+<td align="left">m</td>
+</tr>
+<tr>
+<td align="left">shaderUniformTexelBufferArrayNonUniformIndexing</td>
+<td align="left">m</td>
+</tr>
+<tr>
+<td align="left">descriptorBindingSampledImageUpdateAfterBind</td>
+<td align="left">m</td>
+</tr>
+<tr>
+<td align="left">descriptorBindingStorageBufferUpdateAfterBind</td>
+<td align="left">m</td>
+</tr>
+<tr>
+<td align="left">descriptorBindingUniformTexelBufferUpdateAfterBind</td>
+<td align="left">m</td>
+</tr>
+<tr>
+<td align="left">descriptorBindingStorageTexelBufferUpdateAfterBind</td>
+<td align="left">m</td>
+</tr>
+<tr>
+<td align="left">descriptorBindingUpdateUnusedWhilePending</td>
+<td align="left">m</td>
+</tr>
+<tr>
+<td align="left">descriptorBindingPartiallyBound</td>
+<td align="left">m</td>
+</tr>
+<tr>
+<td align="left">descriptorBindingVariableDescriptorCount</td>
+<td align="left">m</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_EXT_host_query_reset</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_EXT_separate_stencil_usage</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_16bit_storage</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_bind_memory2</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_dedicated_allocation</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_descriptor_update_template</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_device_group</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_device_group_creation</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_external_fence</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_external_fence_capabilities</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_external_memory</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_external_memory_capabilities</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_external_semaphore</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_external_semaphore_capabilities</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_get_memory_requirements2</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_get_physical_device_properties2</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_maintenance1</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_maintenance2</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_maintenance3</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_multiview</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left">multiview</td>
+<td align="left">m</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_relaxed_block_layout</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_sampler_ycbcr_conversion</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_shader_draw_parameters</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_storage_buffer_storage_class</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VK_KHR_variable_pointers</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>subgroup</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>protected memory</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>instance version enumeration</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VkPhysicalDeviceVulkan12Features</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left">imagelessFramebuffer</td>
+<td align="left">m</td>
+</tr>
+<tr>
+<td align="left">uniformBufferStandardLayout</td>
+<td align="left">m</td>
+</tr>
+<tr>
+<td align="left">separateDepthStencilLayouts</td>
+<td align="left">m</td>
+</tr>
+<tr>
+<td align="left">hostQueryReset</td>
+<td align="left">m</td>
+</tr>
+<tr>
+<td align="left">timelineSemaphore</td>
+<td align="left">m</td>
+</tr>
+<tr>
+<td align="left">subgroupBroadcastDynamicId</td>
+<td align="left">m</td>
+</tr>
+<tr>
+<td align="left"><strong>VkPhysicalDeviceVulkan11Features</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left">storageBuffer16BitAccess</td>
+<td align="left">m</td>
+</tr>
+<tr>
+<td align="left">multiview</td>
+<td align="left">m</td>
+</tr>
+<tr>
+<td align="left"><strong>VkPhysicalDeviceFeatures</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left">robustBufferAccess</td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>VkPhysicalDeviceSparseProperties</strong></td>
+<td align="left">O[<a href="#Vulkan_extension_O">4</a>]</td>
+</tr>
+<tr>
+<td align="left"><strong>VkPhysicalDeviceLimits</strong></td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>Linear Formats</strong>[<a href="#Vulkan_extension_format">5</a>]</td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>Optimal Formats</strong>[<a href="#Vulkan_extension_format">5</a>]</td>
+<td align="left">M</td>
+</tr>
+<tr>
+<td align="left"><strong>Buffer Formats</strong>[<a href="#Vulkan_extension_format">5</a>]</td>
+<td align="left">M</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Lowercase character means this is subfunction of the above vulkan extension.</li>
+<li>M/m means current extension <strong>MUST</strong> support.</li>
+<li>Capital character means this is a main vulkan extension.</li>
+<li>O means current extension <strong>OPTIONALLY</strong> support.</li>
+<li>Details of Linear Formats, Optimal Formats and Buffer Formats are shown in <a href="#Format_constraint_table_1">Format_constraint_table_1</a> and <a href="#Format_constraint_table_2">Format_constraint_table_2</a>.</li>
+</ol></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

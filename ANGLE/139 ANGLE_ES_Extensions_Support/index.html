@@ -1,0 +1,2154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>139 ANGLE ES Extensions Support - Wesley的轨迹</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Wesley的轨迹</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../index.md" class="nav-link">首页</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../GLES/Framebuffer%20Object/" class="nav-link">OpenGL(ES)</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Vulkan <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Vulkan/0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/" class="dropdown-item">0.1. Vulkan 扩展</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#1-angle-vk" class="nav-link">1. ANGLE: Vk扩展的使用与支持</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#2-vulkan" class="nav-link">2. Vulkan 扩展</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#21-vulkan" class="nav-link">2.1. Vulkan 初始化流程</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#22-extensions" class="nav-link">2.2. Extensions: 扩展</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#23-features" class="nav-link">2.3. Features: 功能</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#24-limitations" class="nav-link">2.4. Limitations</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#25-formats" class="nav-link">2.5. Formats</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#3-angle-vk" class="nav-link">3. ANGLE 中 Vk 扩展</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#31-angle-vkdevice" class="nav-link">3.1. ANGLE 初始化 VkDevice</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#32-angle-vk-extensions" class="nav-link">3.2. ANGLE 中的 Vk Extensions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#33-angle-featuresvk" class="nav-link">3.3. ANGLE FeaturesVk</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#4-angle-gles-extensions" class="nav-link">4. ANGLE 中的 GLES Extensions</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#41-angle-gles" class="nav-link">4.1. ANGLE 添加的 GLES 扩展</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#5-es-vk-ext" class="nav-link">5. ES 与 Vk 的 Ext 对应流程</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#6-gles" class="nav-link">6. GLES 版本选择</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#61-gles-32" class="nav-link">6.1. GLES 3.2 (未启用)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#62-gles-31" class="nav-link">6.2. GLES 3.1</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#63-gles-30" class="nav-link">6.3. GLES 3.0</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#7-gles-extensions" class="nav-link">7. GLES Extensions 支持</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#71-extensions" class="nav-link">7.1. 默认支持的 Extensions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#72-extensions" class="nav-link">7.2. 有条件的支持的 Extensions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#73-gles-extensions" class="nav-link">7.3. 不支持的 GLES Extensions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#8" class="nav-link">8. 参考列表</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#9-1-angle-khr" class="nav-link">9. 附表1: ANGLE 向 KHR 特出的特性需求:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#10-2-angle-vk-extensions" class="nav-link">10. 附表2: ANGLE 中出现的 Vk Extensions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#11-3-angle-vk-features" class="nav-link">11. 附表3: ANGLE 中启用的 Vk Features</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#vulkan_1_0-features" class="nav-link">Vulkan_1_0 Features:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#extension-features" class="nav-link">Extension Features:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#12-4-angle-featuresvk" class="nav-link">12. 附表4: ANGLE 自定义 FeaturesVk</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<div class="toc">
+<ul>
+<li><a href="#1-angle-vk">1. ANGLE: Vk扩展的使用与支持</a></li>
+<li><a href="#2-vulkan">2. Vulkan 扩展</a><ul>
+<li><a href="#21-vulkan">2.1. Vulkan 初始化流程</a></li>
+<li><a href="#22-extensions">2.2. Extensions: 扩展</a><ul>
+<li><a href="#221-vk-extensions">2.2.1. 启用 Vk Extensions</a></li>
+</ul>
+</li>
+<li><a href="#23-features">2.3. Features: 功能</a><ul>
+<li><a href="#231-features">2.3.1. 核心 Features</a></li>
+<li><a href="#232-features">2.3.2. 扩展提供的Features</a></li>
+<li><a href="#233-features">2.3.3. 启用 Features</a></li>
+</ul>
+</li>
+<li><a href="#24-limitations">2.4. Limitations</a><ul>
+<li><a href="#241-limits">2.4.1. 查询扩展提供的Limits</a></li>
+</ul>
+</li>
+<li><a href="#25-formats">2.5. Formats</a></li>
+</ul>
+</li>
+<li><a href="#3-angle-vk">3. ANGLE 中 Vk 扩展</a><ul>
+<li><a href="#31-angle-vkdevice">3.1. ANGLE 初始化 VkDevice</a></li>
+<li><a href="#32-angle-vk-extensions">3.2. ANGLE 中的 Vk Extensions</a></li>
+<li><a href="#33-angle-featuresvk">3.3. ANGLE FeaturesVk</a></li>
+</ul>
+</li>
+<li><a href="#4-angle-gles-extensions">4. ANGLE 中的 GLES Extensions</a><ul>
+<li><a href="#41-angle-gles">4.1. ANGLE 添加的 GLES 扩展</a></li>
+</ul>
+</li>
+<li><a href="#5-es-vk-ext">5. ES 与 Vk 的 Ext 对应流程</a></li>
+<li><a href="#6-gles">6. GLES 版本选择</a><ul>
+<li><a href="#61-gles-32">6.1. GLES 3.2 (未启用)</a><ul>
+<li><a href="#611-features">6.1.1. Features</a></li>
+</ul>
+</li>
+<li><a href="#62-gles-31">6.2. GLES 3.1</a><ul>
+<li><a href="#621-caps">6.2.1. Caps</a></li>
+</ul>
+</li>
+<li><a href="#63-gles-30">6.3. GLES 3.0</a><ul>
+<li><a href="#631-features">6.3.1. Features</a></li>
+<li><a href="#632-caps">6.3.2. Caps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#7-gles-extensions">7. GLES Extensions 支持</a><ul>
+<li><a href="#71-extensions">7.1. 默认支持的 Extensions</a></li>
+<li><a href="#72-extensions">7.2. 有条件的支持的 Extensions</a></li>
+<li><a href="#73-gles-extensions">7.3. 不支持的 GLES Extensions</a></li>
+</ul>
+</li>
+<li><a href="#8">8. 参考列表</a></li>
+<li><a href="#9-1-angle-khr">9. 附表1: ANGLE 向 KHR 特出的特性需求:</a></li>
+<li><a href="#10-2-angle-vk-extensions">10. 附表2: ANGLE 中出现的 Vk Extensions</a></li>
+<li><a href="#11-3-angle-vk-features">11. 附表3: ANGLE 中启用的 Vk Features</a><ul>
+<li><a href="#vulkan_1_0-features">Vulkan_1_0 Features:</a></li>
+<li><a href="#extension-features">Extension Features:</a></li>
+</ul>
+</li>
+<li><a href="#12-4-angle-featuresvk">12. 附表4: ANGLE 自定义 FeaturesVk</a></li>
+</ul>
+</div>
+<h1 id="1-angle-vk">1. ANGLE: Vk扩展的使用与支持</h1>
+<p>本文档内容:</p>
+<ol>
+<li>首先根据 Vulkan Specification 描述了 Vulkan 标准中如何定义 Extension, Feature 等相关功能集, 以及如何在初始化过程中启用他们.</li>
+<li>描述 ANGLE 在创建 Vulkan 后端时, 如何使用 Extensions. </li>
+<li>描述 ANGLE 前端 GLES 中是如何对 GLES 提供支持的</li>
+<li>以统计列表,  列举出 ANGLE 使用了哪些 vk 功能, 并用来支持了哪些 GLES Extensions.</li>
+</ol>
+<h1 id="2-vulkan">2. Vulkan 扩展</h1>
+<p>对于不同的平台, 驱动, 操作系统等,  当Vulkan的底层实现不同时, Vulkan 可用的<strong>功能集</strong>也有很多区别.  本章描述了 Vulkan 如何定义和扩展功能集, 主要介绍了四个概念:  <strong>Extension, Feature, Limitation, 和 Format.</strong> </p>
+<p>(本章文本内容的更多细节, 参见 <a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html">Vulkan Specification 1.1</a>,  代码均为示例用伪码)</p>
+<h2 id="21-vulkan">2.1. Vulkan 初始化流程</h2>
+<p>在开发应用程序时, 程序中要启用的 Vulkan 功能集必须在初始化 Device 前确定下来. </p>
+<p>以下是初始化过程中与功能相关的过程: </p>
+<p>对应 vk 初始化的前三步: Instance --&gt; Physical Device --&gt; Device</p>
+<pre><code class="language-plantuml">@startuml
+
+class Device {
+}
+hide members
+hide circle
+Instance --&gt; Physical_Device
+Physical_Device --&gt; Device
+
+@enduml
+</code></pre>
+<p>Vulkan初始化 Device 相关流程: </p>
+<ol>
+<li>选择启用 Instance Extensions, 创建 VkInstance </li>
+<li>选定物理设备,  查询 Extensions, Features, Limitations, Formats</li>
+<li>选中 Device Extensions, 查询 Features2*, Properties2, Formats</li>
+<li>选择启用的   Device Extensions, Features, Features2,  创建 VkDevice </li>
+</ol>
+<p><strong>注</strong>(<em>): </em><em>本文档为方便描述, Features2, Properties2 用来特指来自 Extension 的属性, 以区分由 Vulkan 核心提供的 Features, Properties. </em>*</p>
+<pre><code class="language-plantuml">@startuml
+
+[*] -&gt; Enume_Instance_Extension
+Enume_Instance_Extension --&gt; CreateInstance
+CreateInstance --&gt; Enume_PhysicalDevices
+
+Enume_PhysicalDevices --&gt; Device_Extension
+Device_Extension --&gt; Features2
+Device_Extension --&gt; Properties2与Format
+Enume_PhysicalDevices --&gt; Features
+Enume_PhysicalDevices --&gt; Limits与Formats
+Device_Extension --&gt; vkCreateDevice
+Features --&gt; vkCreateDevice
+Features2 --&gt; vkCreateDevice
+Limits与Formats --&gt; Application
+Properties2与Format --&gt; Application
+
+Enume_Instance_Extension: 枚举 vk 支持的 
+Enume_Instance_Extension: Instance-level Extensions 
+Enume_Instance_Extension: 选择要启用的
+
+CreateInstance: 创建 Instance
+Enume_PhysicalDevices: 枚举 物理设备, 选择 GPU 设备
+
+Device_Extension: 查询GPU支持的
+Device_Extension: Device-Level Extensions
+Device_Extension: 从中选择要启用的
+
+Features2: 查询 Extensions 
+Features2: 的 Features 结构体, 
+Features2: 从中选择要启用的
+Properties2与Format: 查询 Extensions 的 
+Properties2与Format: Limits 与 Format
+
+Features: 查询 GPU 支持的 
+Features:  Features, 
+Features: 从中选择要启用的
+
+Limits与Formats: 查询 GPU 支持的 
+Limits与Formats: Limits与Formats
+
+vkCreateDevice: 将启用的 Extensions 
+vkCreateDevice: 和 Features 作为参数
+vkCreateDevice: 放入 CreateInfo 结构体, 
+vkCreateDevice: 创建逻辑设备 Device,  
+Application: 查询支持功能
+
+@enduml
+</code></pre>
+<ul>
+<li>
+<p>Extension: 功能集的抽象概念, 用来为 Vulkan 添加新的 Commands，Structures 和 Enumerants. 同时可能新增 Features, Limitations, 和 Format.</p>
+</li>
+<li>
+<p>Feature:  bool 值集合, 可选功能的开关. 可以用来查询设备支持的功能, </p>
+</li>
+<li>Limitation 和 Format 是两个只读参数集, Limitation 又称做 Properties, 表示设备特征值; Format 表示支持的格式.</li>
+</ul>
+<p>本章后面各章节对此流程各步骤进行解释, 并包含示例代码.</p>
+<h2 id="22-extensions">2.2. Extensions: 扩展</h2>
+<ul>
+<li>扩展 (Extensions) 可用来为 Vk 添加新功能.   Vk 核心的新版本 (如: VK_VERSION_1_1) 也可以视为一个扩展.</li>
+<li>
+<p>扩展可以定义新的 命令, 枚举, 和结构. ( Commands，Structures 和 Enumerants)</p>
+</li>
+<li>
+<p>扩展分为实例级和设备级 (Instance-level 和  Device-level)</p>
+</li>
+<li>当 Commands 用来枚举实例属性 (instance properties), 或接受 VkInstance 对象作为参数, 则被视为实例级功能。 </li>
+<li>当 Commands 用来枚举物理设备属性 (physical device properties), 或接受 VkDevice 及其子类对象作为参数，则被视为设备级功能。</li>
+</ul>
+<p>为了方便编译，在 Khronos 提供的 <code>vulkan_core.h</code> 中除了核心API, 还定义了已注册 Extensions 定义的接口，包括新 结构, 枚举, 和命令的函数指针类型。扩展的实现通过 Layers 和 Vulkan实现来提供。</p>
+<p>Vulkan 与 Extensions, Features, Properties 的关系:</p>
+<pre><code class="language-plantuml">@startuml
+
+hide circle
+
+package Vulkan {
+class &quot;VK_VERSION_1_0&quot; {
+VkPhysicalDeviceFeatures
+VkPhysicalDeviceProperties
+VkFormat
+}
+
+class &quot;VK_VERSION_1_1&quot; {
+VK_KHR_XXX_
+VK_XXX_Features
+VK_XXX_Properties
+vkGetPhysical_Device_Feature2()
+vkGetPhysical_Device_Properties2()
+}
+
+class &quot;Other Vk Extensions&quot; {
+VK_EXT_XXX_
+VK_AMD/GOOLE_XXX_
+VK_XXX_Features_EXT
+VK_XXX_Properties_EXT
+}
+}
+
+
+@enduml
+</code></pre>
+<h3 id="221-vk-extensions">2.2.1. 启用 Vk Extensions</h3>
+<ul>
+<li>Vk Extensions 需要在初始化阶段显式启用.  </li>
+<li>启用 instance extension, 要在创建 <code>VKInstance</code> 时, 将扩展名添加到 <code>VkInstanceCreateInfo</code> 的成员 <code>ppEnabledExtensionNames</code> 中.</li>
+<li>启用 device extension, 要在 创建 <code>VkDevice</code>时, 将扩展名添加到 <code>VkDeviceCreateInfo</code>的成员 <code>ppEnabledExtensionNames</code> 中.</li>
+<li>Physical-Device-Level 功能没有启用机制，只要 <code>VkPhysicalDevice</code> 的功能对应的 Extensions 在枚举函数 <code>vkEnumerateDeviceExtensionProperties</code> 中被列出. </li>
+</ul>
+<p>仅 <strong>启用</strong> 扩展操作而言, 除了 启用 该扩展自身定义的命令, 枚举, 和结构外, 不会更改核心Vulkan API 或其他扩展的功能。</p>
+<p>示例: 创建 VkInstance 时, 启用 Extensions: </p>
+<pre><code class="language-c++">// add Target Extension Names
+std::vector&lt;const char*&gt; extensions();
+extensions.push_back(VK_KHR_WIN32_SURFACE_EXTENSION_NAME);
+
+VkInstanceCreateInfo inst_info = {};
+inst_info.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
+...
+
+// Enable Instance Extensions
+inst_info.enabledExtensionCount = extensions.size();
+inst_info.ppEnabledExtensionNames = extensions.data();
+
+VkInstance instance;
+VkResult res = vkCreateInstance(&amp;inst_info, NULL, &amp;instance);
+</code></pre>
+<p>对 VkPhysicalDevice,  枚举其支持的 Extensions:</p>
+<pre><code class="language-c++">// 枚举设备
+uint32_t deviceCount = 0;
+vkEnumeratePhysicalDevices(instance, &amp;deviceCount, nullptr);
+
+std::vector&lt;VkPhysicalDevice&gt; devices(deviceCount);
+vkEnumeratePhysicalDevices(instance, &amp;deviceCount, devices.data());
+// 选择设备
+VkPhysicalDevice physicalDevice = devices[0]; // 仅示例,正确代码应选择对应 GPU 设备
+
+// 枚举 Extensions
+uint32_t extensionCount;
+vkEnumerateDeviceExtensionProperties(physicalDevice, nullptr, &amp;extensionCount, nullptr);
+
+std::vector&lt;VkExtensionProperties&gt; availableExtensions(extensionCount);
+vkEnumerateDeviceExtensionProperties(physicalDevice, nullptr, &amp;extensionCount, availableExtensions.data());
+
+</code></pre>
+<p>创建 VkDevice 时, 启用 Extensions: </p>
+<pre><code class="language-c++">// add Target Extension Names
+std::vector&lt;const char*&gt; device_extension_names();
+// check if physicalDevice support extension:
+for (const auto&amp; extension : availableExtensions) {
+    if(strcmp(extension.extensionName, VK_KHR_SWAPCHAIN_EXTENSION_NAME) == 0)
+            device_extension_names.push_back(extension.extensionName);
+    }
+}
+
+VkDeviceCreateInfo device_info = {};
+device_info.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
+device_info.pNext = NULL;
+...
+
+// Enable Device Extensions
+device_info.enabledExtensionCount = device_extension_names.size();
+device_info.ppEnabledExtensionNames = enabledExtensionCount ? device_extension_names.data() : NULL;
+
+VkDevice device;
+res = vkCreateDevice(physicalDevice, &amp;device_info, NULL, &amp;device);
+
+</code></pre>
+<h2 id="23-features">2.3. Features: 功能</h2>
+<p>Features 用来设置或查询 非所有实现都支持 的功能。 Feature 均为 bool 值.</p>
+<ul>
+<li>
+<p>Features 是物理设备的属性。(physical device properties)</p>
+</li>
+<li>
+<p>这些功能是“可选”的，并且必须在使用前明确启用。 </p>
+</li>
+</ul>
+<h3 id="231-features">2.3.1. 核心 Features</h3>
+<p>Vk 核心中定义的 Features, 可以通过 <strong><code>vkGetPhysicalDeviceFeatures</code></strong> 查询.</p>
+<pre><code>VkPhysicalDeviceFeatures mPhysicalDeviceFeatures;
+vkGetPhysicalDeviceFeatures(mPhysicalDevice, &amp;mPhysicalDeviceFeatures);
+</code></pre>
+<p>查询结果 <code>VkPhysicalDeviceFeatures</code> 的结构体定义如下:</p>
+<pre><code>// Provided by VK_VERSION_1_0
+typedef struct VkPhysicalDeviceFeatures {
+    VkBool32    robustBufferAccess;
+    VkBool32    fullDrawIndexUint32;
+    VkBool32    imageCubeArray;
+    VkBool32    independentBlend;
+    VkBool32    geometryShader;
+    VkBool32    tessellationShader;
+    VkBool32    sampleRateShading;
+    .... // 总计50+个 Bool 值
+ } VkPhysicalDeviceFeatures
+</code></pre>
+<p>其中每个 Feature 的含义 在  <a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#features">Vulkan Specification 1.1/Features</a> 中都有解释.</p>
+<p>例如: </p>
+<p><code>IndependentBlend</code> 指定: 是否每个 attachments 的  <code>VkPipelineColorBlendAttachmentState</code> 设置互相独立。</p>
+<ul>
+<li>未启用此 Feature，则所有 color attachments 的 <code>VkPipelineColorBlendAttachmentState</code> 设置必须相同。 </li>
+<li>若启用此 Feature，则可以为每个绑定的 color attachment 提供不同的<code>VkPipelineColorBlendAttachmentState</code>。</li>
+</ul>
+<h3 id="232-features">2.3.2. 扩展提供的Features</h3>
+<p>查询函数:  vkGetPhysicalDeviceFeatures2</p>
+<pre><code class="language-c++">VkPhysicalDeviceFeatures2 physicalDeviceFeatures2;
+vkGetPhysicalDeviceFeatures2(mPhysicalDevice, &amp;physicalDeviceFeatures2);
+</code></pre>
+<p>查询结果:  <code>VkPhysicalDeviceFeatures2</code>  结构:</p>
+<pre><code>// Provided by VK_VERSION_1_1
+typedef struct VkPhysicalDeviceFeatures2 {
+    VkStructureType             sType;
+    void*                       pNext;
+    VkPhysicalDeviceFeatures    features;
+} VkPhysicalDeviceFeatures2;
+</code></pre>
+<ul>
+<li>
+<p>sType:  VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2</p>
+</li>
+<li>
+<p>pNext:  指针链.</p>
+</li>
+<li>
+<p>VkPhysicalDeviceFeatures:  Vulkan 1.0 提供的核心 Features </p>
+</li>
+</ul>
+<p>注: VkPhysicalDeviceFeatures2 等价 VkPhysicalDeviceFeatures2KHR, vkGetPhysicalDeviceFeatures2 等价 vkGetPhysicalDeviceFeatures2KHR</p>
+<p>通过 <code>pNext</code>, 可以获得扩展所定义的 Features 结构体, 有的由 Vulkan 核心新版本提供, 有的由其他 Extension提供. </p>
+<p>例如: </p>
+<p>Vulkan 1.1 提供的 samplerYcbcrConversion.</p>
+<pre><code>// Provided by VK_VERSION_1_1: VK_KHR_sampler_ycbcr_conversion
+typedef struct VkPhysicalDeviceSamplerYcbcrConversionFeatures {
+    VkStructureType    sType;
+    void*              pNext;
+    VkBool32           samplerYcbcrConversion;
+} VkPhysicalDeviceSamplerYcbcrConversionFeatures;
+</code></pre>
+<p>VK_EXT_transform_feedback 提供的 transformFeedback 和 geometryStreams.</p>
+<pre><code>// Provided by VK_EXT_transform_feedback
+typedef struct VkPhysicalDeviceTransformFeedbackFeaturesEXT {
+    VkStructureType    sType;
+    void*              pNext;
+    VkBool32           transformFeedback;
+    VkBool32           geometryStreams;
+} VkPhysicalDeviceTransformFeedbackFeaturesEXT;
+</code></pre>
+<p>查询示例:</p>
+<pre><code class="language-c++">// 扩展的 Feature 结构体
+VkPhysicalDeviceSamplerYcbcrConversionFeatures mSamplerYcbcrConversionFeatures = {};
+mSamplerYcbcrConversionFeatures.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_YCBCR_CONVERSION_FEATURES;
+
+// vk1.1 的 VkPhysicalDeviceFeatures2
+VkPhysicalDeviceFeatures2 deviceFeatures = {};
+deviceFeatures.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2;
+deviceFeatures.pNext = mVertexAttributeDivisorFeatures
+// 查询
+vkGetPhysicalDeviceFeatures2(mPhysicalDevice, &amp;deviceFeatures);
+// 使用
+if (mVertexAttributeDivisorFeatures.vertexAttributeInstanceRateDivisor)
+{
+...
+}
+</code></pre>
+<h3 id="233-features">2.3.3. 启用 Features</h3>
+<p>Features 默认皆为不启用状态. 必须在 <code>VkDevice</code> 创建时显式启用。如果启用了物理设备不支持的功能，则 <code>VkDevice</code> 创建将失败，并返回VK_ERROR_FEATURE_NOT_PRESENT。</p>
+<p>启用方法: </p>
+<ol>
+<li>创建 VkPhysicalDeviceFeatures 结构的指针 (或1.1的 VkPhysicalDeviceFeatures2结构) </li>
+<li>将成员设置为 VK_TRUE 或 VK_FALSE,  eg:  physicalDeviceFeatures.independentBlend = VK_TRUE </li>
+<li>通过传递给 vkCreateDevice 用的 VkDeviceCreateInfo结构的 pEnabledFeatures 成员.</li>
+</ol>
+<p>要启动所有设备的功能 (慎用)，则只需传入查询函数<code>vkGetPhysicalDeviceFeatures</code> 返回的<code>VkPhysicalDeviceFeatures</code>结构即可。要禁用单个功能，应用程序可以在相同结构中将所需成员设置为VK_FALSE。</p>
+<p>用过给 pNext链添加 Extensions 提供的 Features 结构体, 来启用扩展的 Features.</p>
+<pre><code class="language-c++">// 查询核心 Features 是否支持
+VkPhysicalDeviceFeatures mPhysicalDeviceFeatures;
+vkGetPhysicalDeviceFeatures(mPhysicalDevice, &amp;mPhysicalDeviceFeatures);
+
+// 设置启用 Features
+VkPhysicalDeviceFeatures2KHR enabledFeatures = {};
+enabledFeatures.sType                        = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2;
+enabledFeatures.features.imageCubeArray = mPhysicalDeviceFeatures.imageCubeArray; 
+enabledFeatures.features.independentBlend = mPhysicalDeviceFeatures.independentBlend;
+
+// Create Device
+VkDeviceCreateInfo device_info = {};
+device_info.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
+
+// 指向 Features 结构体以设置 Extensions 提供的 Features
+// mSamplerYcbcrConversionFeatures : 前面查询示例中的结构体. 
+device_info.pNext = mSamplerYcbcrConversionFeatures; 
+
+// Enable Physical Device Features
+device_info.pEnabledFeatures = &amp;enabledFeatures.features;
+...
+
+VkDevice device;
+res = vkCreateDevice(physicalDevice, &amp;device_info, NULL, &amp;device);
+</code></pre>
+<h2 id="24-limitations">2.4. Limitations</h2>
+<p><em>Limits</em>  提供开发应用程序可能需要明确的一些设备特征值, 这些特征的最小值，最大值等会随底层实现的不同而异.</p>
+<p>通过查询 Properties 命令, 获取 <code>VkPhysicalDeviceLimits</code> 结构体获取核心1.0的 Limits, 或利用 vk1.1 中加入的 <code>VkPhysicalDeviceProperties2</code> 的 pNext 链 获取各 Extension 新增的 <code>Limits</code>.</p>
+<p>结构体 <code>VkPhysicalDeviceLimits</code> 定义如下:</p>
+<pre><code>// Provided by VK_VERSION_1_0
+typedef struct VkPhysicalDeviceLimits {
+    uint32_t              maxImageDimension1D;
+    uint32_t              maxImageDimension2D;
+    uint32_t              maxImageDimension3D;
+    uint32_t              maxImageDimensionCube;
+    uint32_t              maxImageArrayLayers;
+    uint32_t              maxTexelBufferElements;
+    uint32_t              maxUniformBufferRange;
+    uint32_t              maxStorageBufferRange;
+    uint32_t              maxPushConstantsSize;
+    uint32_t              maxMemoryAllocationCount;
+    uint32_t              maxSamplerAllocationCount;
+    VkDeviceSize          bufferImageGranularity;
+    VkDeviceSize          sparseAddressSpaceSize;
+    ... // 省略约 100+ 个值
+} VkPhysicalDeviceLimits;
+</code></pre>
+<p>specs 文档对每个值都有介绍:</p>
+<p>例如: </p>
+<p><code>maxUniformBufferRange</code> :   当将结构体 <code>VkDescriptorBufferInfo</code>  作为参数调用 <code>vkUpdateDescriptorSets</code> , 并且 descriptors 类型为<code>VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER</code> 或 <code>VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC</code> 时, 其结构体成员 <code>range</code> 可设的最大值.</p>
+<h3 id="241-limits">2.4.1. 查询扩展提供的Limits</h3>
+<p>查询扩展提供的结构体均以 Properties 而非 Limits 结尾,  其查询方法与查询 <a href="#扩展提供的Features">扩展提供的 Feature</a> 一样. </p>
+<p>查询函数和结果结构体如下:</p>
+<pre><code class="language-c++">VkPhysicalDeviceProperties2 deviceProperties;
+vkGetPhysicalDeviceProperties2KHR(mPhysicalDevice, &amp;deviceProperties);
+</code></pre>
+<p>查询结果示例: </p>
+<p>结构体<code>VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT</code> 包含了扩展 VK_EXT_vertex_attribute_divisor 提供的 limits 值 <code>maxVertexAttribDivisor</code>:</p>
+<pre><code>// Provided by VK_EXT_vertex_attribute_divisor
+typedef struct VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT {
+    VkStructureType    sType;
+    void*              pNext;
+    uint32_t           maxVertexAttribDivisor;
+} VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT;
+</code></pre>
+<h2 id="25-formats">2.5. Formats</h2>
+<p>对于不同的 vk 实现, 其支持的缓冲区和图像格式可能会不同。虽然 Vulkan 规定了一组必须支持的 Format 的最小集，但在使用除此以外的 Format功能之前, 必须显式的查询，以确保实现支持这些格式。</p>
+<p>查询命令: <code>vkGetPhysicalDeviceFormatProperties</code>, 查询返回的<code>VkFormat</code> 结构体的包含了当前实现所支持的格式功能。</p>
+<p><code>VkFormat</code> 结构体示例: </p>
+<pre><code>// Provided by VK_VERSION_1_0
+typedef enum VkFormat {
+    VK_FORMAT_UNDEFINED = 0,
+    VK_FORMAT_R4G4_UNORM_PACK8 = 1,
+    VK_FORMAT_R4G4B4A4_UNORM_PACK16 = 2,
+    VK_FORMAT_B4G4R4A4_UNORM_PACK16 = 3,
+    VK_FORMAT_R5G6B5_UNORM_PACK16 = 4,
+    VK_FORMAT_B5G6R5_UNORM_PACK16 = 5,
+    VK_FORMAT_R5G5B5A1_UNORM_PACK16 = 6,
+    VK_FORMAT_B5G5R5A1_UNORM_PACK16 = 7,
+    VK_FORMAT_A1R5G5B5_UNORM_PACK16 = 8,
+    ... // 约 300+, 其中
+</code></pre>
+<p>关于 Format 相关的内容比较复杂, 本章节以及后续章节都不进行深入.  如果需要考虑再单独进行研究. </p>
+<h1 id="3-angle-vk">3. ANGLE 中 Vk 扩展</h1>
+<p><strong>后端</strong>: 对调用各图形 API 的实现, 如 Vulkan, DirectX, GL 等</p>
+<p><strong>前段</strong>: GLES 部分的实现, 提供给应用程序接口, 进行状态跟踪, 调用后台 API.</p>
+<p>前后端划分示意图:</p>
+<pre><code class="language-plantuml">@startuml
+
+class Application
+package &quot;Front-End (libANGLE)&quot; {
+Entry_Points --&gt; gl::Context
+gl::Context --&gt; &quot;State Tracing&quot;
+}
+
+Application --&gt; Entry_Points
+
+package &quot;Back-End (libANGLE/renderer)&quot; {
+class Vk_backend
+class D3D_Backend
+class GL_Backend
+}
+&quot;State Tracing&quot; --&gt; Vk_backend
+&quot;State Tracing&quot; --&gt; D3D_Backend
+&quot;State Tracing&quot; --&gt; GL_Backend
+
+hide member
+hide circle
+
+@enduml
+</code></pre>
+<p>本章中介绍 后端 Vulkan 中的相关内容.</p>
+<p>后续章节介绍 GLES 前段中的相关内容.</p>
+<h2 id="31-angle-vkdevice">3.1. ANGLE 初始化 VkDevice</h2>
+<p>ANGLE 初始化  VkInstance 和 VkDevice 位于 <code>src/libANGLE/renderer/vulkan/RendererVk.cpp</code></p>
+<p>ANGLE 中 Vulkan 的初始化流程与 2.1 Vulkan初始化流程 一致, 简单总结即:</p>
+<ol>
+<li>选择启用 Instance Extensions, 创建 VkInstance </li>
+<li>选定物理设备,  查询 <strong>Extensions, Features, Limitations, Formats</strong></li>
+<li>选中 Device Extensions, 查询 <strong>Features2</strong>,</li>
+<li>选择启用的   Device Extensions, Features, Features2,  创建 VkDevice </li>
+</ol>
+<p>其中 ANGLE 中启用的 Extensions 列表, 参见 <strong>附表2: ANGLE 中出现的 Vk Extensions</strong></p>
+<p>ANGLE 中启用的物理设备 Features , 和 Extensions 提供 Features2,  参见 <strong>附表3: ANGLE 中启用的 Vk Features</strong></p>
+<h2 id="32-angle-vk-extensions">3.2. ANGLE 中的 Vk Extensions</h2>
+<p>首先, ANGLE 使用了 近 30余个 Vulkan Extensions . 这些 Vulkan 的头文件都被包含在 Vulkan 头文件中, 相关说明可以在 Specification 文档中找到. </p>
+<p>具体引用列表, 参见 <strong>附表2: ANGLE 中出现的 Vk Extensions</strong> </p>
+<p>此外, ANGLE 新增了两个自定义 Vk 的 Extensions:</p>
+<p><strong>VK_EXT_provoking_vertex</strong></p>
+<p>angle/src/common/vulkan/vk_ext_provoking_vertex.h</p>
+<p>作用: </p>
+<p>对应 GLES 端的 ANGLE 自定义 Extension:  GL_ANGLE_provoking_vertex, 其新增了API: glProvokingVertexANGLE : </p>
+<ul>
+<li>
+<p>glProvokingVertexANGLE (GLenum mode) 函数:  调用 setProvokingVertex 设置 mode 为 <code>gl::ProvokingVertexConvention::LastVertexConvention,</code></p>
+</li>
+<li>
+<p>跟踪代码, 读取 ProvokingVertex 并使用的仅有:  ProgramD3D 中判断是否 usesGeometryShader : <code>if  mode == LastVertexConvention, return true</code>; openGL 后端中进行了一次序列化</p>
+</li>
+<li>Vulkan : 在管线中的 RasterizationState 的 pNext链中, 添加 provokingVertexState.</li>
+</ul>
+<p>猜测: 未完成的功能.  ANGLE 多数自定义 <strong>GLES</strong> 侧 Extension 都有标准的说明文档, 但仅有3个没有, 这是其中一个.</p>
+<p><strong>VK_GOOGLE_sampler_filtering_precision</strong></p>
+<p>angle/src/common/vulkan/vk_google_sampler_filtering_precision.h</p>
+<p>作用:</p>
+<ul>
+<li>
+<p>新增了一个 CHROMIUM 后缀的 Texture: TEXTURE_FILTERING_HINT_CHROMIUM;</p>
+</li>
+<li>
+<p>对应 GLES 端 自定义 Extension: GL_CHROMIUM_texture_filtering_hint</p>
+</li>
+</ul>
+<pre><code>    This extension defines a way to request high precision texture filtering
+    using a new value to Hint.
+
+    When this extension is enabled, TEXTURE_FILTERING_HINT_CHROMIUM can be used
+    by the implementation as a means to distinguish between a performance
+    focused implementation, using FASTEST, or a precision focused
+    implementation, using NICEST.
+
+    Like other hints, either option is spec compliant and the behavior of
+    DONT_CARE is implementation specific.
+</code></pre>
+<h2 id="33-angle-featuresvk">3.3. ANGLE FeaturesVk</h2>
+<p>(在ANGLE 后端中, 类的后缀为对应图形 API, 例如存在 FeaturesVk,  FeaturesD3D, FeaturesGL 等. )</p>
+<p>对于 vk 核心1.0 提供的 Features, Limitations,  ANGLE中分别使用 Vulkan 提供的结构体保存, 以供查询</p>
+<p><code>VkPhysicalDeviceFeatures mPhysicalDeviceFeatures</code></p>
+<p><code>VkPhysicalDeviceLimits limitsVk</code></p>
+<p>(Formats 暂不做讨论)</p>
+<p>此外, ANGLE 中还为每个后端都自定义了一个Feature合集, Vulkan对应的为: FeaturesVk  (源码: <code>angle\include\platform\FeaturesVk.h</code>)</p>
+<p>FeaturesVk.h</p>
+<pre><code class="language-c++">
+struct FeaturesVk : FeatureSetBase
+{
+    FeaturesVk();
+    ~FeaturesVk();
+
+    // Line segment rasterization must follow OpenGL rules. This means using an algorithm similar
+    // to Bresenham's. Vulkan uses a different algorithm. This feature enables the use of pixel
+    // shader patching to implement OpenGL basic line rasterization rules. This feature will
+    // normally always be enabled. Exposing it as an option enables performance testing.
+    Feature basicGLLineRasterization = {
+        &quot;basicGLLineRasterization&quot;, FeatureCategory::VulkanFeatures,
+        &quot;Enable the use of pixel shader patching to implement OpenGL basic line &quot;
+        &quot;rasterization rules&quot;,
+        &amp;members};
+
+    // If the VK_EXT_line_rasterization extension is available we'll use it to get
+    // Bresenham line rasterization.
+    Feature bresenhamLineRasterization = {
+        &quot;bresenhamLineRasterization&quot;, FeatureCategory::VulkanFeatures,
+        &quot;Enable Bresenham line rasterization via VK_EXT_line_rasterization extension&quot;, &amp;members};
+
+    // If the VK_EXT_provoking_vertex extension is available, we'll use it to set
+    // the provoking vertex mode
+    Feature provokingVertex = {&quot;provokingVertex&quot;, FeatureCategory::VulkanFeatures,
+                               &quot;Enable provoking vertex mode via VK_EXT_provoking_vertex extension&quot;,
+                               &amp;members};
+
+
+    ... // 总计 62 个 Feature
+}
+</code></pre>
+<p>其中各个 feature 都有注释描述,  其类型 为 Feature 结构:</p>
+<pre><code class="language-c++">struct Feature
+{
+    ...
+    const char *const name;
+    const FeatureCategory category;
+    const char *const description;
+    const char *const bug;
+    const char *condition;
+
+    // Whether the workaround is enabled or not. Determined by heuristics like vendor ID and
+    // version, but may be overriden to any value.
+    bool enabled = false;
+};
+</code></pre>
+<p>Feature 最主要使用的即 enabled 属性, 用来判断该 Feature 是否支持和启用.  和 Vulkan 的 Feature 合集一样, ANGLE_FeaturesVk  内也是由一组 bool 值来表示当前是否支持某一功能. 并且 FeaturesVk 同样在创建 VkDevice 的过程中完成初始化, 其值来源依据:</p>
+<ul>
+<li>Physical Device 是否支持某 Extension, 以及 Extension 的 Features2 和 Properties2</li>
+<li>Features, Limitations, Format 的支持情况</li>
+<li>OS : Windows, Linux, Android</li>
+<li>GPU : AMD, Intel, Nvidia, Qualcomm, ARM </li>
+<li>设备型号: Nexus5X, Pixel2</li>
+</ul>
+<p>FeaturesVk 的属性值来自以上几个条件的组合, 例如</p>
+<ul>
+<li><code>supportsShaderStencilExport</code>:   设备支持 VK_EXT_SHADER_STENCIL_EXPORT</li>
+<li><code>forceCPUPathForCubeMapCopy</code>:  当前系统为 Windows 且设备为 Intel</li>
+<li><code>supportsImageFormatList</code>:  当前设备支持 VK_KHR_IMAGE_FORMAT_LIST 且 设备为 AMD</li>
+</ul>
+<p>详细的对应关系, 参见 <strong>附表4: ANGLE 自定义 FeaturesVK</strong></p>
+<p><strong>FeaturesVK 的作用:</strong></p>
+<p>FeaturesVK 在 RendererVk 中初始化后, 包含在 ContextVk 中作为环境上下文被 Vulkan <strong>后端</strong> 的各个类使用, 如 FrameBufferVk,  ProgramVk 等.</p>
+<p>功能主要包括: </p>
+<ol>
+<li>初始化时, 判断是否支持某 Feature, 进而添加相应配置</li>
+<li>实现流程中, 根据 Feature 支持的不同, 进入不同的分支</li>
+</ol>
+<p>例: </p>
+<p>​   FeatureVk 中 <code>supportsDepthStencilResolve</code> 为 enabled 需要 : 物理设备支持 VK_KHR_CREATE_RENDERPASS_2, VK_KHR_DEPTH_STENCIL_RESOLVE 且后者的 Properties.independentResolveNone 为 VK_TRUE.</p>
+<p>​   而当其为 enabled时, ANGLE: </p>
+<ol>
+<li>在创建 Device 时启用 Extension: VK_KHR_DEPTH_STENCIL_RESOLVE</li>
+<li>在执行 RenderBufferVk 中, 允许支持 depth/stencil images , 可设置 VkImageUsageFlags 含 VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT</li>
+</ol>
+<h1 id="4-angle-gles-extensions">4. ANGLE 中的 GLES Extensions</h1>
+<p>(angle/libANGLE/Caps.h)</p>
+<p>ANGLE 在GLES 前端, 定义了结构体 Extensions, Caps, 和 TextureCapsMap,  </p>
+<p><strong>Extension</strong>:</p>
+<p>其中 Extension 中定义了约 200 个bool 值, 分别对应了约 200 个 GLES Extensions, 其中 17个为 texture ext.</p>
+<p>大部分 Extension 可以在 GLES Specification 网站找到说明. 此外 ANGLE 还新增了 数十个 EXT, 并提供了说明文档: angle/extensions  新增EXT列表见下一节 "<strong>AGNLE 添加的 GLES 扩展</strong>"</p>
+<p>其 bool 值代表了后端是否支持此扩展.</p>
+<p>示例:</p>
+<pre><code>// GL_OES_element_index_uint
+bool elementIndexUintOES = false;
+
+// GL_OES_packed_depth_stencil
+bool packedDepthStencilOES = false;
+
+// GL_NV_read_depth
+bool readDepthNV = false;
+</code></pre>
+<p><strong>Caps</strong>: </p>
+<p>类似 vk Limitations, 定义设备支持的设备特征值的最大值, 最小值等</p>
+<p>示例:</p>
+<pre><code>GLfloat minInterpolationOffset        = 0;
+GLfloat maxInterpolationOffset        = 0;
+GLint subPixelInterpolationOffsetBits = 0;
+
+// ES 3.1 (April 29, 2015) 20.39: implementation dependent values
+GLint64 maxElementIndex       = 0;
+GLint max3DTextureSize        = 0;
+GLint max2DTextureSize        = 0;
+</code></pre>
+<p><strong>TextureCaps</strong>:</p>
+<p>类似 vk Format, 定义设备支持的格式功能</p>
+<p>定义类 TextureCapsMap, 提供 set 和 get 函数, 根据 formatID 查询是否支持某格式.</p>
+<h2 id="41-angle-gles">4.1. ANGLE 添加的 GLES 扩展</h2>
+<p>GLES Extesions 在源码中集中注册的地方: </p>
+<ul>
+<li>
+<p>register_xml.py  描述各版本包含的 Extensions</p>
+</li>
+<li>
+<p>gl_angle_ext.xml 注册 Extensions 扩展的方法, 通常为 glXXXXANGLE</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>gl_angle_ext.xml</th>
+<th>gl2ext_angle.h</th>
+<th>extensions/文档</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--</td>
+<td>GL_ANGLE_client_arrays</td>
+<td>ANGLE_client_arrays</td>
+</tr>
+<tr>
+<td>GL_ANGLE_request_extension</td>
+<td>GL_ANGLE_request_extension</td>
+<td>ANGLE_request_extension</td>
+</tr>
+<tr>
+<td>--</td>
+<td>GL_ANGLE_robust_resource_initialization</td>
+<td>ANGLE_robust_resource_initialization</td>
+</tr>
+<tr>
+<td>GL_ANGLE_provoking_vertex</td>
+<td>GL_ANGLE_provoking_vertex</td>
+<td></td>
+</tr>
+<tr>
+<td>--</td>
+<td>GL_ANGLE_memory_size</td>
+<td>ANGLE_memory_size</td>
+</tr>
+<tr>
+<td>GL_ANGLE_copy_texture_3d</td>
+<td>GL_ANGLE_copy_texture_3d</td>
+<td>ANGLE_copy_texture_3d</td>
+</tr>
+<tr>
+<td>--</td>
+<td>GL_ANGLE_lossy_etc_decode</td>
+<td>ANGLE_lossy_etc_decode</td>
+</tr>
+<tr>
+<td>GL_ANGLE_robust_client_memory</td>
+<td>GL_ANGLE_robust_client_memory</td>
+<td>ANGLE_robust_client_memory</td>
+</tr>
+<tr>
+<td>--</td>
+<td>GL_ANGLE_program_cache_control</td>
+<td>ANGLE_program_cache_control</td>
+</tr>
+<tr>
+<td>--</td>
+<td>GL_ANGLE_texture_rectangle</td>
+<td></td>
+</tr>
+<tr>
+<td>GL_ANGLE_texture_multisample</td>
+<td>GL_ANGLE_texture_multisample</td>
+<td>ANGLE_texture_multisample</td>
+</tr>
+<tr>
+<td>GL_ANGLE_get_tex_level_parameter</td>
+<td>GL_ANGLE_get_tex_level_parameter</td>
+<td>ANGLE_get_tex_level_parameter</td>
+</tr>
+<tr>
+<td>--</td>
+<td>GL_ANGLE_explicit_context</td>
+<td>ANGLE_explicit_context</td>
+</tr>
+<tr>
+<td>GL_ANGLE_multi_draw</td>
+<td>GL_ANGLE_multi_draw</td>
+<td>ANGLE_multi_draw</td>
+</tr>
+<tr>
+<td>GL_ANGLE_base_vertex_base_instance</td>
+<td>GL_ANGLE_base_vertex_base_instance</td>
+<td>ANGLE_base_vertex_base_instance</td>
+</tr>
+<tr>
+<td>GL_ANGLE_texture_external_update</td>
+<td>GL_ANGLE_texture_external_update</td>
+<td></td>
+</tr>
+<tr>
+<td>GL_ANGLE_get_image</td>
+<td>GL_ANGLE_get_image</td>
+<td>ANGLE_get_image</td>
+</tr>
+<tr>
+<td>GL_ANGLE_memory_object_flags</td>
+<td>GL_ANGLE_memory_object_flags</td>
+<td><strong>ANGLE_external_objects_flags</strong></td>
+</tr>
+<tr>
+<td>GL_ANGLE_memory_object_fuchsia</td>
+<td>GL_ANGLE_memory_object_fuchsia</td>
+<td><strong>ANGLE_external_objects_fuchsia</strong></td>
+</tr>
+<tr>
+<td>GL_ANGLE_semaphore_fuchsia</td>
+<td>GL_ANGLE_semaphore_fuchsia</td>
+<td><strong>ANGLE_external_objects_fuchsia</strong></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>ANGLE_compressed_texture_etc</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>ANGLE_depth_texture</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>ANGLE_explicit_context_gles1</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>ANGLE_framebuffer_blit</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>ANGLE_framebuffer_multisample</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>ANGLE_instanced_arrays</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>ANGLE_multiview_multisample</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>ANGLE_pack_reverse_row_order</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>ANGLE_program_binary</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>ANGLE_texture_compression_dxt</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>ANGLE_texture_usage</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>ANGLE_timer_query</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>ANGLE_translated_shader_source</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>ANGLE_webgl_compatibility</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="5-es-vk-ext">5. ES 与 Vk 的 Ext 对应流程</h1>
+<p>应用程序调用 API 时的验证流程: </p>
+<pre><code class="language-plantuml">@startuml
+
+participant APP
+participant entry_points
+participant Validation
+participant Context
+participant Renderer
+
+Renderer-&gt; Renderer : initDevice()
+
+APP -&gt; entry_points : glAnyCall()
+entry_points -&gt; Validation : ValidateAnyCall()
+Validation -&gt; Context : initCaps() [初始化]
+Context -&gt; Renderer : getNativeExtensions()
+Renderer -&gt; Renderer : ensureCapsInitialized() 仅一次
+Context -&gt; Renderer : getNativeCaps()
+Context -&gt; Renderer : getNativeTextureCaps()
+
+Validation -&gt; Context : getExtensions()
+Validation -&gt; Context : getCaps() 
+Validation -&gt; Context : getTextureCaps()
+
+@enduml
+</code></pre>
+<p><strong>将功能集对应</strong></p>
+<p>在 Renderer :: ensureCapsInitialized() 中, 将 GLES 侧的功能集 与 vk 侧的 Extension, Features, Limits, Format 对应, 完成对  GLES 侧的功能集的赋值初始化</p>
+<pre><code class="language-plantuml">@startmindmap
++ Mapping
+++ ANGLE FeatureVk
+++ Physical Device Features
+++ Physical Device Limits
+++ Formats
+-- Extensions
+-- Caps
+-- TextureCaps
+
+@endmindmap
+</code></pre>
+<p>具体 Extension 对应方式, 参见章节 <strong>GLES Extensions 支持</strong></p>
+<p><strong>GLES Extensions 作用</strong></p>
+<p>GLES Extensions 功能主要包括: </p>
+<ol>
+<li>应用程序调用 API 时, 在校验层根据 Extensions 的 bool 值, 判断是否支持某扩展.</li>
+<li>实现流程中, 根据 Extensions 支持的不同, 进入不同的分支</li>
+</ol>
+<p>示例1: 校验某 API 调用时, 传入的 type 类型是否支持:</p>
+<pre><code class="language-c++">
+bool ValidReadPixelsTypeEnum(const Context *context, GLenum type)
+{
+    switch (type)
+    {
+        ....
+        case GL_UNSIGNED_SHORT:
+        case GL_UNSIGNED_SHORT_1_5_5_5_REV_EXT:
+        case GL_UNSIGNED_SHORT_4_4_4_4_REV_EXT:
+            return context-&gt;getClientVersion() &gt;= ES_3_0;
+
+        case GL_FLOAT:
+            return context-&gt;getClientVersion() &gt;= ES_3_0 ||
+                   context-&gt;getExtensions().textureFloatOES ||
+                   context-&gt;getExtensions().colorBufferHalfFloat;
+
+        case GL_HALF_FLOAT:
+            return context-&gt;getClientVersion() &gt;= ES_3_0 ||
+                   context-&gt;getExtensions().textureHalfFloat;
+
+        case GL_HALF_FLOAT_OES:
+            return context-&gt;getExtensions().colorBufferHalfFloat;
+
+        default:
+            return false;
+    }
+}
+
+</code></pre>
+<p>示例2:  根据 Extensions 进入不同分支</p>
+<pre><code class="language-c++">void Program::postResolveLink(const gl::Context *context)
+{
+    mState.updateActiveSamplers();
+    mState.mExecutable-&gt;updateActiveImages(getExecutable());
+
+    setUniformValuesFromBindingQualifiers();
+
+    if (context-&gt;getExtensions().multiDraw)
+    {
+        mState.mDrawIDLocation = getUniformLocation(&quot;gl_DrawID&quot;).value;
+    }
+
+    if (context-&gt;getExtensions().baseVertexBaseInstance)
+    {
+        mState.mBaseVertexLocation   = getUniformLocation(&quot;gl_BaseVertex&quot;).value;
+        mState.mBaseInstanceLocation = getUniformLocation(&quot;gl_BaseInstance&quot;).value;
+    }
+}
+</code></pre>
+<h1 id="6-gles">6. GLES 版本选择</h1>
+<p>来源: RendererVk::getMaxSupportedESVersion</p>
+<p>在获取支持的 ES 版本时, ANGLE 根据以下特性来过滤, 当存在 特性/参数 不满足时, 降一级. 最低 2.0. </p>
+<h2 id="61-gles-32">6.1. GLES 3.2 (未启用)</h2>
+<h3 id="611-features">6.1.1. Features</h3>
+<p>ES 3.2 需要实现 EXT_gpu_shader5 的4个特性</p>
+<p>3.2 目前仅在测试模式下启用</p>
+<table>
+<thead>
+<tr>
+<th>Vk Features</th>
+<th>Spec</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shaderImageGatherExtended</td>
+<td>VkPhysicalDeviceFeatures</td>
+<td>一个非常量的 offset 的 textureGatherOffset和 一系列相关功能。</td>
+</tr>
+<tr>
+<td>shaderSampledImageArrayDynamicIndexing</td>
+<td>VkPhysicalDeviceFeatures</td>
+<td>用于 采样(Sample) 的 动态 uniform indices</td>
+</tr>
+<tr>
+<td>shaderUniformBufferArrayDynamicIndexing</td>
+<td>VkPhysicalDeviceFeatures</td>
+<td>用于 uniform buffers 的 动态 uniform indices</td>
+</tr>
+<tr>
+<td>shaderStorageBufferArrayDynamicIndexing</td>
+<td>VkPhysicalDeviceFeatures</td>
+<td>当 EXT_gpu_shader5 不需要在存储缓冲区(storage buffers)使用 动态uniform indices 时, 需要此特性在存储缓冲区来 模拟 原子计数缓存(atomic counter buffers)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="62-gles-31">6.2. GLES 3.1</h2>
+<p>ES 3.1 需支持以下两个参数: </p>
+<h3 id="621-caps">6.2.1. Caps</h3>
+<table>
+<thead>
+<tr>
+<th>VkPhysicalDeviceLimits</th>
+<th></th>
+<th>Value</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>maxPerStageDescriptorStorageBuffers</td>
+<td>&gt;=</td>
+<td>gl::kMinimumComputeStorageBuffers (4) + gl::IMPLEMENTATION_MAX_ATOMIC_COUNTER_BUFFERS (8)</td>
+<td>至少一个 atomic counter buffer 和 四个 storage buffers</td>
+</tr>
+<tr>
+<td>maxVertexInputAttributeOffset</td>
+<td>&gt;=</td>
+<td>2047</td>
+<td>maximum offset 至少 2047</td>
+</tr>
+</tbody>
+</table>
+<h2 id="63-gles-30">6.3. GLES 3.0</h2>
+<h3 id="631-features">6.3.1. Features</h3>
+<table>
+<thead>
+<tr>
+<th>Vk Features</th>
+<th>Spec</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>inheritedQueries</td>
+<td>VkPhysicalDeviceFeatures</td>
+<td>command buffer 支持查询</td>
+</tr>
+<tr>
+<td>independentBlend</td>
+<td>VkPhysicalDeviceFeatures</td>
+<td>blending operations are controlled per-attachment</td>
+</tr>
+<tr>
+<td>supportsTransformFeedbackExtension</td>
+<td>VK_EXT_transform_feedback</td>
+<td></td>
+</tr>
+<tr>
+<td>emulateTransformFeedback</td>
+<td>PhysicalDeviceFeatures.vertexPipelineStoresAndAtomics</td>
+<td>没有 VK_EXT_transform_feedback 时的替代</td>
+</tr>
+</tbody>
+</table>
+<h3 id="632-caps">6.3.2. Caps</h3>
+<table>
+<thead>
+<tr>
+<th>Spec</th>
+<th></th>
+<th></th>
+<th>Value</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vk</td>
+<td>standardSampleLocations</td>
+<td>=</td>
+<td>true</td>
+<td>Multisample textures (ES3.1) 和 multisample renderbuffers (ES3.0)</td>
+</tr>
+<tr>
+<td>gles</td>
+<td>MAX_VERTEX_UNIFORM_BLOCKS</td>
+<td>&gt;=</td>
+<td>12</td>
+<td></td>
+</tr>
+<tr>
+<td>gles</td>
+<td>MAX_FRAGMENT_UNIFORM_BLOCKS</td>
+<td>&gt;=</td>
+<td>12</td>
+<td></td>
+</tr>
+<tr>
+<td>gles</td>
+<td>MAX_VERTEX_OUTPUT_COMPONENTS</td>
+<td>&gt;=</td>
+<td>64</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="7-gles-extensions">7. GLES Extensions 支持</h1>
+<p>本章的各表中 <strong>ES Features</strong>  即 GLES Extension 名称的简写, 同时为 ANGLE 代码中的对应的变量名.</p>
+<p><strong>ES Features</strong> 简写规则: 改写成  "GL_OES/EXT_下划线格式", 即为扩展名. </p>
+<ul>
+<li>如: bufferStorageEXT  = GL_EXT_buffer_storage),  mapBufferOES = GL_OES_mapbuffer</li>
+<li>部分后缀 ANGLE, CHROMIUM 等没有写在名称后面, 见 ES EXT name 补充</li>
+</ul>
+<h2 id="71-extensions">7.1. 默认支持的 Extensions</h2>
+<p>ANGLE 在初始化 GLES 时默认开启的特性</p>
+<table>
+<thead>
+<tr>
+<th>ES Features</th>
+<th>ES EXT Name</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bufferStorageEXT</td>
+<td>GL_EXT_buffer_storage <br />以下空即对应默认规则的名称</td>
+<td></td>
+</tr>
+<tr>
+<td>mapBufferOES           <br />mapBufferRange</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>textureStorage          <br />drawBuffers             <br />fragDepth</td>
+<td>EXT</td>
+<td></td>
+</tr>
+<tr>
+<td>framebufferBlit        <br />framebufferMultisample</td>
+<td>GL_ANGLE_framebuffer_blit<br />GL_ANGLE_framebuffer_multisample</td>
+<td></td>
+</tr>
+<tr>
+<td>copyTexture            <br />copyCompressedTexture<br />copyTexture3d</td>
+<td>CHROMIUM<br />CHROMIUM<br />ANGLE</td>
+<td></td>
+</tr>
+<tr>
+<td>debugMarker</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>translatedShaderSource</td>
+<td>GL_ANGLE_translated_shader_source</td>
+<td></td>
+</tr>
+<tr>
+<td>discardFramebuffer</td>
+<td>EXT</td>
+<td></td>
+</tr>
+<tr>
+<td>memoryObject<br/>memoryObjectFlagsANGLE</td>
+<td>EXT<br />ANGLE</td>
+<td></td>
+</tr>
+<tr>
+<td>semaphore</td>
+<td>EXT</td>
+<td></td>
+</tr>
+<tr>
+<td>eglImageOES                   <br />eglImageExternalOES           <br />eglImageExternalWrapModesEXT<br />eglImageExternalEssl3OES <br />eglImageArray</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>textureFormat2101010REV</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>baseVertexBaseInstance</td>
+<td>GL_ANGLE_base_vertex_base_instance</td>
+<td></td>
+</tr>
+<tr>
+<td>drawElementsBaseVertexOES<br />drawElementsBaseVertexEXT</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>blendMinMax</td>
+<td>EXT</td>
+<td></td>
+</tr>
+<tr>
+<td>vertexHalfFloatOES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>instancedArraysANGLE  <br />instancedArraysEXT</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>textureNPOTOES<br />texture3DOES</td>
+<td></td>
+<td>Vulkan natively supports non power-of-two textures</td>
+</tr>
+<tr>
+<td>standardDerivativesOES</td>
+<td></td>
+<td>Vulkan natively supports standard derivatives</td>
+</tr>
+<tr>
+<td>shaderTextureLOD</td>
+<td></td>
+<td>Vulkan natively supports texture LOD</td>
+</tr>
+<tr>
+<td>noperspectiveInterpolationNV</td>
+<td></td>
+<td>Vulkan natively supports noperspective interpolation</td>
+</tr>
+<tr>
+<td>elementIndexUintOES</td>
+<td></td>
+<td>Vulkan natively supports 32-bit indices, entry in kIndexTypeMap</td>
+</tr>
+<tr>
+<td>fboRenderMipmapOES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>getImageANGLE</td>
+<td></td>
+<td>ANGLE support getting image data for Textures and Renderbuffers.</td>
+</tr>
+<tr>
+<td>shaderNonConstGlobalInitializersEXT</td>
+<td></td>
+<td>Implemented in the translator</td>
+</tr>
+<tr>
+<td>separateShaderObjects</td>
+<td>EXT</td>
+<td>Implemented in the front end</td>
+</tr>
+<tr>
+<td>eglSyncOES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>vertexAttribType1010102OES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>getProgramBinaryOES</td>
+<td></td>
+<td>Program Binary extension.</td>
+</tr>
+<tr>
+<td>pixelBufferObjectNV</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>fenceNV</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>copyImageEXT</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>shadowSamplersEXT</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="72-extensions">7.2. 有条件的支持的 Extensions</h2>
+<p>ANGLE 在初始化 GLES 时, 需先初始化 Vk Features, 然后根据 Vk Features 的启用情况, 来有条件的启用 ES 特性:</p>
+<p>Note: 表格略去了与 Format 相关的特性</p>
+<table>
+<thead>
+<tr>
+<th>ES Features</th>
+<th>Vk Features</th>
+<th>Vk Spec / EXT</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>multisampledRenderToTexture<br />multisampledRenderToTexture2</td>
+<td>enableMultisampledRenderToTexture</td>
+<td>Enable on Android by default</td>
+<td></td>
+</tr>
+<tr>
+<td>textureStorageMultisample2DArrayOES</td>
+<td>standardSampleLocations</td>
+<td>VkPhysicalDeviceLimits</td>
+<td></td>
+</tr>
+<tr>
+<td>compressedTextureETC<br />(ANGLE_compressed_texture_etc)</td>
+<td>textureCompressionETC2</td>
+<td>VkPhysicalDeviceFeatures<br />GL_ANGLE_compressed_texture_etc</td>
+<td>To ensure that ETC2/EAC formats are enabled only on hardware that supports them natively, this flag is not set by the function above and must be set explicitly. It exposes ANGLE_compressed_texture_etc extension string</td>
+</tr>
+<tr>
+<td>textureCompressionSliced3dASTCKHR</td>
+<td></td>
+<td>GL_KHR_texture_compression_astc_ldr</td>
+<td>Vulkan supports sliced 3D ASTC texture uploads when ASTC is supported.</td>
+</tr>
+<tr>
+<td>compressedETC1RGB8SubTexture</td>
+<td></td>
+<td>GL_OES_compressed_ETC1_RGB8_texture</td>
+<td></td>
+</tr>
+<tr>
+<td>drawBuffersIndexedOES <br />drawBuffersIndexedOES;</td>
+<td>independentBlend</td>
+<td>VkPhysicalDeviceFeatures</td>
+<td></td>
+</tr>
+<tr>
+<td>memoryObjectFd</td>
+<td>supportsExternalMemoryFd</td>
+<td>VK_KHR_external_memory_fd</td>
+<td></td>
+</tr>
+<tr>
+<td>semaphoreFd</td>
+<td>supportsExternalSemaphoreFd</td>
+<td>VK_KHR_external_semaphore_fd</td>
+<td></td>
+</tr>
+<tr>
+<td>robustBufferAccessBehavior</td>
+<td>robustBufferAccess</td>
+<td>VkPhysicalDeviceFeatures</td>
+<td></td>
+</tr>
+<tr>
+<td>occlusionQueryBoolean</td>
+<td>inheritedQueries</td>
+<td>VkPhysicalDeviceFeatures</td>
+<td>ANGLE use secondary command buffers almost everywhere and they require a feature to be able to execute in the presence of queries.  As a result, we won't support queries unless that feature is available.</td>
+</tr>
+<tr>
+<td>disjointTimerQuery       queryCounterBitsTimeElapsed queryCounterBitsTimestamp</td>
+<td>timestampValidBits</td>
+<td>VkQueueFamilyProperties</td>
+<td></td>
+</tr>
+<tr>
+<td>textureFilterAnisotropic <br />maxTextureAnisotropy</td>
+<td>samplerAnisotropy<br />maxSamplerAnisotropy</td>
+<td>VkPhysicalDeviceFeatures<br />VkPhysicalDeviceLimits</td>
+<td></td>
+</tr>
+<tr>
+<td>depthTextureCubeMapOES</td>
+<td></td>
+<td>(ES)GL_OES_depth_texture  (ES)GL_OES_packed_depth_stencil</td>
+<td>Vulkan has no restrictions of the format of cubemaps, so if the proper formats are supported, creating a cube of any of these formats should be implicitly supported.</td>
+</tr>
+<tr>
+<td>gpuShader5EXT</td>
+<td>shaderImageGatherExtended, shaderSampledImageArrayDynamicIndexing, shaderUniformBufferArrayDynamicIndexing, shaderStorageBufferArrayDynamicIndexing</td>
+<td>VkPhysicalDeviceFeatures</td>
+<td></td>
+</tr>
+<tr>
+<td>textureFilteringCHROMIUM</td>
+<td>supportsFilteringPrecision</td>
+<td>VK_GOOGLE_sampler_filtering_precision</td>
+<td></td>
+</tr>
+<tr>
+<td>textureCubeMapArrayOES textureCubeMapArrayEXT</td>
+<td>imageCubeArray</td>
+<td>mPhysicalDeviceFeatures</td>
+<td>Only expose texture cubemap array if the physical device supports it.</td>
+</tr>
+<tr>
+<td>sampleShadingOES <br />sampleVariablesOES<br />multisampleInterpolationOES</td>
+<td>sampleRateShading</td>
+<td>VkPhysicalDeviceFeatures</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="73-gles-extensions">7.3. 不支持的 GLES Extensions</h2>
+<p>ANGLE 在初始化 GLES 时默认关闭的特性</p>
+<table>
+<thead>
+<tr>
+<th>ES Features</th>
+<th>EXT Name</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>textureBorderClampOES</td>
+<td>GL_OES_texture_border_clamp</td>
+<td>尚未实现</td>
+</tr>
+<tr>
+<td>textureCompressionASTCOES</td>
+<td>GL_OES_texture_compression_astc</td>
+<td>Vulkan doesn't support ASTC 3D block textures.</td>
+</tr>
+<tr>
+<td>textureCompressionASTCHDRKHR</td>
+<td>GL_KHR_texture_compression_astc_hdr</td>
+<td>Vulkan doesn't guarantee HDR blocks decoding without VK_EXT_texture_compression_astc_hdr.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="8">8. 参考列表</h1>
+<h1 id="9-1-angle-khr">9. 附表1: ANGLE 向 KHR 特出的特性需求:</h1>
+<p>(来自 华为 GPU Workshop "Khronos 相关议题", 王輝龍, 2020)</p>
+<p>ANGLE 向 vk 1.2/1.3 提出的需求</p>
+<p><img alt="ANGLE Vk Required" src="../img/ANGLE_Vk_Request.png" /></p>
+<h1 id="10-2-angle-vk-extensions">10. 附表2: ANGLE 中出现的 Vk Extensions</h1>
+<ul>
+<li>
+<p>Instance Level</p>
+</li>
+<li>
+<p>WSIExtension:  VK_KHR_ANDROID_SURFACE /  VK_KHR_WIN32_SURFACE / ...</p>
+</li>
+<li>VK_KHR_SURFACE</li>
+<li>VK_EXT_DEBUG_UTILS</li>
+<li>VK_EXT_DEBUG_REPORT</li>
+<li>VK_EXT_SWAPCHAIN_COLOR_SPACE</li>
+<li>VK_KHR_GET_PHYSICAL_DEVICE_PROPERTIES_2</li>
+<li>
+<p>Device Level</p>
+</li>
+<li>
+<p>VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER</p>
+</li>
+<li>VK_EXT_DEPTH_CLIP_ENABLE</li>
+<li>VK_EXT_EXTERNAL_MEMORY_HOST</li>
+<li>VK_EXT_INDEX_TYPE_UINT8</li>
+<li>VK_EXT_LINE_RASTERIZATION</li>
+<li>VK_EXT_PROVOKING_VERTEX</li>
+<li>VK_EXT_QUEUE_FAMILY_FOREIGN</li>
+<li>VK_EXT_SHADER_STENCIL_EXPORT</li>
+<li>VK_EXT_TRANSFORM_FEEDBACK</li>
+<li>VK_EXT_VERTEX_ATTRIBUTE_DIVISOR</li>
+<li>VK_FUCHSIA_EXTERNAL_MEMORY</li>
+<li>VK_FUCHSIA_EXTERNAL_SEMAPHORE</li>
+<li>VK_GOOGLE_SAMPLER_FILTERING_PRECISION</li>
+<li>VK_GGP_FRAME_TOKEN</li>
+<li>VK_KHR_BIND_MEMORY_2</li>
+<li>VK_KHR_CREATE_RENDERPASS_2</li>
+<li>VK_KHR_DEPTH_STENCIL_RESOLVE</li>
+<li>VK_KHR_EXTERNAL_FENCE_CAPABILITIES</li>
+<li>VK_KHR_EXTERNAL_FENCE_FD</li>
+<li>VK_KHR_EXTERNAL_MEMORY</li>
+<li>VK_KHR_EXTERNAL_MEMORY_FD</li>
+<li>VK_KHR_EXTERNAL_SEMAPHORE</li>
+<li>VK_KHR_EXTERNAL_SEMAPHORE_CAPABILITIES</li>
+<li>VK_KHR_EXTERNAL_SEMAPHORE_FD</li>
+<li>VK_KHR_GET_MEMORY_REQUIREMENTS_2</li>
+<li>VK_KHR_IMAGE_FORMAT_LIST</li>
+<li>VK_KHR_INCREMENTAL_PRESENT</li>
+<li>VK_KHR_MAINTENANCE1</li>
+<li>VK_KHR_SAMPLER_YCBCR_CONVERSION</li>
+<li>VK_KHR_SHADER_FLOAT16_INT8</li>
+<li>VK_KHR_SWAPCHAIN</li>
+<li>VK_QCOM_render_pass_store_ops</li>
+</ul>
+<h1 id="11-3-angle-vk-features">11. 附表3: ANGLE 中启用的 Vk Features</h1>
+<h2 id="vulkan_1_0-features">Vulkan_1_0 Features:</h2>
+<pre><code class="language-c++">// Select additional features to be enabled.
+mPhysicalDeviceFeatures{
+    // Used to support cubemap array:  only enable when not SwiftShader or not Qualcomm
+    imageCubeArray;
+    // Used to support framebuffers with multiple attachments:
+   independentBlend;
+    // Used to support robust buffer access:
+    robustBufferAccess;
+    // Used to support Anisotropic filtering:
+    samplerAnisotropy;
+    // Used to support wide lines:
+    wideLines;
+    // Used to emulate transform feedback:
+    vertexPipelineStoresAndAtomics;
+    // Used to implement storage buffers and images in the fragment shader:
+    fragmentStoresAndAtomics;
+    // Used to support geometry shaders:
+    geometryShader = mPhysicalDeviceFeatures.geometryShader;
+    // Used to support EXT_gpu_shader5:
+    mPhysicalDeviceFeatures.shaderImageGatherExtended;
+    // Used to support EXT_gpu_shader5:
+    shaderUniformBufferArrayDynamicIndexing
+    // Used to support EXT_gpu_shader5 and sampler array of array emulation:
+    shaderSampledImageArrayDynamicIndexing;
+    // Used to support atomic counter emulation:
+    shaderStorageBufferArrayDynamicIndexing;
+    // Used to support APPLE_clip_distance
+    enabledFeatures.features.shaderClipDistance
+    // Used to support OES_sample_shading
+    sampleRateShading;
+    // Used to support depth clears through draw calls.
+    depthClamp;
+    // if (!vk::CommandBuffer::ExecutesInline())
+    inheritedQueries;
+    // Used to support OES_sample_variables
+    sampleRateShading;
+}
+</code></pre>
+<h2 id="extension-features">Extension Features:</h2>
+<pre><code>VkPhysicalDeviceLineRasterizationFeaturesEXT 
+VkPhysicalDeviceProvokingVertexFeaturesEXT 
+VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT 
+VkPhysicalDeviceTransformFeedbackFeaturesEXT 
+VkPhysicalDeviceIndexTypeUint8FeaturesEXT 
+VkPhysicalDeviceShaderFloat16Int8FeaturesKHR 
+VkPhysicalDeviceSamplerYcbcrConversionFeatures
+</code></pre>
+<h1 id="12-4-angle-featuresvk">12. 附表4: ANGLE 自定义 FeaturesVk</h1>
+<p>以下皆为 ANGLE 在初始化 Vk 中涉及的特性和列表, 以供参考</p>
+<table>
+<thead>
+<tr>
+<th>ANGLE Features</th>
+<th>Extension</th>
+<th>Platform</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>supportsSwapchainColorspace</td>
+<td>VK_EXT_SWAPCHAIN_COLOR_SPACE_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>bresenhamLineRasterization</td>
+<td>VK_EXT_LINE_RASTERIZATION_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>basicGLLineRasterization</td>
+<td>--</td>
+<td>!IsAndroid() &amp;&amp; !isPowerVR</td>
+<td>Use OpenGL line rasterization rules if extension mLineRasterizationFeatures not available by default.</td>
+</tr>
+<tr>
+<td>provokingVertex</td>
+<td>VK_EXT_PROVOKING_VERTEX_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>extraCopyBufferRegion</td>
+<td>--</td>
+<td>IsWindows() &amp;&amp; isIntel</td>
+<td></td>
+</tr>
+<tr>
+<td>forceCPUPathForCubeMapCopy</td>
+<td>--</td>
+<td>IsWindows() &amp;&amp; isIntel</td>
+<td></td>
+</tr>
+<tr>
+<td>clampPointSize</td>
+<td>--</td>
+<td>isNvidia</td>
+<td>nvidia Version &lt; 421</td>
+</tr>
+<tr>
+<td>depthClamping</td>
+<td>VK_EXT_depth_clip_enable</td>
+<td>isNvidia</td>
+<td></td>
+</tr>
+<tr>
+<td>flushAfterVertexConversion</td>
+<td>--</td>
+<td>IsAndroid() &amp;&amp; IsNexus5X</td>
+<td>Work around ineffective compute-graphics barriers on Nexus 5X.<br />Testing other vendors and driver versions are affected</td>
+</tr>
+<tr>
+<td>supportsRenderpass2</td>
+<td>VK_KHR_CREATE_RENDERPASS_2_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsIncrementalPresent</td>
+<td>VK_KHR_INCREMENTAL_PRESENT_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsAndroidHardwareBuffer</td>
+<td>VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE<br />_BUFFER_EXTENSION_NAME<br />VK_EXT_QUEUE_FAMILY_FOREIGN_EXTENSION_NAME</td>
+<td>ANDROID</td>
+<td></td>
+</tr>
+<tr>
+<td>supportsExternalMemoryFd</td>
+<td>VK_KHR_EXTERNAL_MEMORY_FD_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsExternalMemoryFuchsia</td>
+<td>VK_FUCHSIA_EXTERNAL_MEMORY_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsFilteringPrecision</td>
+<td>VK_GOOGLE_SAMPLER_FILTERING_PRECISION_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsExternalFenceCapabilities</td>
+<td>VK_KHR_EXTERNAL_FENCE_CAPABILITIES_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsExternalSemaphoreCapabilities</td>
+<td>VK_KHR_EXTERNAL_SEMAPHORE_CAPABILITIES_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsExternalSemaphoreFd</td>
+<td>VK_KHR_EXTERNAL_SEMAPHORE_FD_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsExternalSemaphoreFuchsia</td>
+<td>VK_FUCHSIA_EXTERNAL_SEMAPHORE_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsExternalFenceFd</td>
+<td>VK_KHR_EXTERNAL_FENCE_FD_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsAndroidNativeFenceSync</td>
+<td>VK_KHR_EXTERNAL_FENCE_CAPABILITIES_EXTENSION_NAME<br />VK_KHR_EXTERNAL_SEMAPHORE_CAPABILITIES_EXTENSION_NAME</td>
+<td>ANDROID</td>
+<td></td>
+</tr>
+<tr>
+<td>supportsShaderStencilExport</td>
+<td>VK_EXT_SHADER_STENCIL_EXPORT_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsRenderPassStoreOpNoneQCOM</td>
+<td>VK_QCOM_render_pass_store_ops_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsTransformFeedbackExtension</td>
+<td>VK_EXT_TRANSFORM_FEEDBACK_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsIndexTypeUint8</td>
+<td>mIndexTypeUint8Features</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsDepthStencilResolve</td>
+<td>VK_KHR_CREATE_RENDERPASS_2_EXTENSION_NAME<br />mDepthStencilResolveProperties</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>emulateTransformFeedback</td>
+<td>mTransformFeedbackFeatures<br />PhysicalDeviceFeatures.<br />vertexPipelineStoresAndAtomics = true</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>disableFifoPresentMode</td>
+<td>--</td>
+<td>Linux() &amp;&amp; isIntel</td>
+<td></td>
+</tr>
+<tr>
+<td>bindEmptyForUnusedDescriptorSets</td>
+<td>--</td>
+<td>IsAndroid() &amp;&amp; isQualcomm</td>
+<td></td>
+</tr>
+<tr>
+<td>forceOldRewriteStructSamplers</td>
+<td>mPhysicalDeviceFeatures.<br />shaderSampledImageArrayDynamicIndexing = false</td>
+<td>isQualcomm</td>
+<td></td>
+</tr>
+<tr>
+<td>perFrameWindowSizeQuery</td>
+<td>--</td>
+<td>isIntel || (IsWindows() &amp;&amp; isAMD) || IsFuchsia()</td>
+<td></td>
+</tr>
+<tr>
+<td>disallowSeamfulCubeMapEmulation</td>
+<td>--</td>
+<td>IsWindows() &amp;&amp; isAMD</td>
+<td></td>
+</tr>
+<tr>
+<td>padBuffersToMaxVertexAttribStride</td>
+<td>--</td>
+<td>isAMD</td>
+<td></td>
+</tr>
+<tr>
+<td>forceD16TexFilter</td>
+<td>--</td>
+<td>IsAndroid() &amp;&amp; isQualcomm</td>
+<td></td>
+</tr>
+<tr>
+<td>disableFlippingBlitWithCommand</td>
+<td>--</td>
+<td>IsAndroid() &amp;&amp; isQualcomm</td>
+<td></td>
+</tr>
+<tr>
+<td>shadowBuffers</td>
+<td>Enable</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>persistentlyMappedBuffers</td>
+<td>Enable</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>allocateNonZeroMemory</td>
+<td>Disable</td>
+<td>Allocation sanitization disabled by default because of a heaveyweight implementation<br/>that can cause OOM and timeouts.</td>
+<td></td>
+</tr>
+<tr>
+<td>supportsExternalMemoryHost</td>
+<td>VK_EXT_EXTERNAL_MEMORY_HOST_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>enablePreRotateSurfaces</td>
+<td>Enable on Android</td>
+<td>IsAndroid</td>
+<td></td>
+</tr>
+<tr>
+<td>enableFramebufferVkCache</td>
+<td>Disable on apple</td>
+<td>!IsApple()</td>
+<td>Currently disable FramebufferVk cache on Apple</td>
+</tr>
+<tr>
+<td>enablePrecisionQualifiers</td>
+<td>Disabled by default</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>preferAggregateBarrierCalls</td>
+<td>Enable on target gpu</td>
+<td>isNvidia || isAMD || isIntel</td>
+<td></td>
+</tr>
+<tr>
+<td>asyncCommandQueue</td>
+<td>Disabled</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsYUVSamplerConversion</td>
+<td>VK_KHR_SAMPLER_YCBCR_CONVERSION_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>supportsShaderFloat16</td>
+<td>VK_KHR_SHADER_FLOAT16_INT8_EXTENSION_NAME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>forceMaxUniformBufferSize16KB</td>
+<td>Enable on Adreno540</td>
+<td>isQualcomm &amp;&amp; isAdreno540</td>
+<td></td>
+</tr>
+<tr>
+<td>supportsImageFormatList</td>
+<td>VK_KHR_IMAGE_FORMAT_LIST_EXTENSION_NAME</td>
+<td>isAMD</td>
+<td></td>
+</tr>
+<tr>
+<td>enableMultisampledRenderToTexture</td>
+<td>Enable except on Swiftshader, Inter, AMD</td>
+<td>!(IsApple() &amp;&amp; isSwiftShader) &amp;&amp; !(IsWindows() &amp;&amp; (isIntel || isAMD))</td>
+<td></td>
+</tr>
+<tr>
+<td>supportsImageCubeArray</td>
+<td>mPhysicalDeviceFeatures.imageCubeArray == VK_TRUE</td>
+<td>!isSwiftShader &amp;&amp; !isQualcomm</td>
+<td></td>
+</tr>
+<tr>
+<td>preferredLargeHeapBlockSize4MB</td>
+<td>Enable except Qualcomm</td>
+<td>!isQualcomm</td>
+<td></td>
+</tr>
+<tr>
+<td>deferFlushUntilEndRenderPass</td>
+<td>Enable except Qualcomm</td>
+<td>!isQualcomm</td>
+<td>Defer glFLush call causes manhattan 3.0 perf regression. Let Qualcomm driver opt out from<br/>// this optimization.</td>
+</tr>
+<tr>
+<td>waitIdleBeforeSwapchainRecreation</td>
+<td>Enable on Android Arm</td>
+<td>IsAndroid() &amp;&amp; isARM</td>
+<td>Android mistakenly destroys the old swapchain when creating a new one.</td>
+</tr>
+<tr>
+<td>preferDrawClearOverVkCmdClearAttachments</td>
+<td>Enable only on Pixel2</td>
+<td>IsPixel2</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

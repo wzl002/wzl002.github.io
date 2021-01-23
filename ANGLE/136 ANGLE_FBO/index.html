@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>136 ANGLE FBO - Wesley的轨迹</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Wesley的轨迹</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../index.md" class="nav-link">首页</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../GLES/Framebuffer%20Object/" class="nav-link">OpenGL(ES)</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Vulkan <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Vulkan/0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/" class="dropdown-item">0.1. Vulkan 扩展</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#1-gles-framebuffers" class="nav-link">1. GLES Framebuffers</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#11" class="nav-link">1.1. 定义</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#12" class="nav-link">1.2. 相关定义</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#13" class="nav-link">1.3. 创建帧缓冲</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#14" class="nav-link">1.4. 纹理附着</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#15-renderbuffer" class="nav-link">1.5. Renderbuffer 附着</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#16-texture-vs-renderbuffer" class="nav-link">1.6. Texture VS. Renderbuffer</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#17" class="nav-link">1.7. 示例: 场景滤镜</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#18-msaa" class="nav-link">1.8. 离屏MSAA</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#19" class="nav-link">1.9. 更多用例:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#110-framebuffer-api" class="nav-link">1.10. Framebuffer 相关 API 汇总</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#2-vulkan-framebuffer" class="nav-link">2. Vulkan Framebuffer</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#21-vkrenderpass" class="nav-link">2.1. VkRenderPass</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#22-vkframebuffers" class="nav-link">2.2. VkFramebuffers</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#23-vk" class="nav-link">2.3. VK 离屏渲染示例:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#3-gles-vk" class="nav-link">3. GLES 与 Vk 对比</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#31" class="nav-link">3.1. 概念对应</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#32" class="nav-link">3.2. 流程对应</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#33" class="nav-link">3.3. 实例代码对比</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#34" class="nav-link">3.4. 总结</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#4-angle-fbo" class="nav-link">4. ANGLE 对于 FBO 的管理</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#41-framebuffer" class="nav-link">4.1. 前端 Framebuffer</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#42-framebuffervk" class="nav-link">4.2. 后端 FramebufferVk</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#43-api" class="nav-link">4.3. API 实现</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#44" class="nav-link">4.4. 状态同步</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<div class="toc">
+<ul>
+<li><a href="#1-gles-framebuffers">1. GLES Framebuffers</a><ul>
+<li><a href="#11">1.1. 定义</a><ul>
+<li><a href="#111">1.1.1. 应用</a></li>
+</ul>
+</li>
+<li><a href="#12">1.2. 相关定义</a></li>
+<li><a href="#13">1.3. 创建帧缓冲</a></li>
+<li><a href="#14">1.4. 纹理附着</a></li>
+<li><a href="#15-renderbuffer">1.5. Renderbuffer 附着</a></li>
+<li><a href="#16-texture-vs-renderbuffer">1.6. Texture VS. Renderbuffer</a></li>
+<li><a href="#17">1.7. 示例: 场景滤镜</a><ul>
+<li><a href="#171">1.7.1. 创建阶段</a></li>
+<li><a href="#172">1.7.2. 绘制阶段</a></li>
+</ul>
+</li>
+<li><a href="#18-msaa">1.8. 离屏MSAA</a></li>
+<li><a href="#19">1.9. 更多用例:</a></li>
+<li><a href="#110-framebuffer-api">1.10. Framebuffer 相关 API 汇总</a></li>
+</ul>
+</li>
+<li><a href="#2-vulkan-framebuffer">2. Vulkan Framebuffer</a><ul>
+<li><a href="#21-vkrenderpass">2.1. VkRenderPass</a></li>
+<li><a href="#22-vkframebuffers">2.2. VkFramebuffers</a></li>
+<li><a href="#23-vk">2.3. VK 离屏渲染示例:</a><ul>
+<li><a href="#231-vkrenderpass">2.3.1. VkRenderPass</a></li>
+<li><a href="#232-vkimageview">2.3.2. VkImageView</a></li>
+<li><a href="#233-vkframebuffer">2.3.3. VkFrameBuffer</a></li>
+<li><a href="#234-imageview-descriptorset">2.3.4. 设置 ImageView 到 DescriptorSet</a></li>
+<li><a href="#235-commandbuffers">2.3.5. 绘制: CommandBuffers</a><ul>
+<li><a href="#2351">2.3.5.1. 离屏渲染</a></li>
+<li><a href="#2352">2.3.5.2. 主屏渲染</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#3-gles-vk">3. GLES 与 Vk 对比</a><ul>
+<li><a href="#31">3.1. 概念对应</a></li>
+<li><a href="#32">3.2. 流程对应</a><ul>
+<li><a href="#321">3.2.1. 大致对应流程</a></li>
+</ul>
+</li>
+<li><a href="#33">3.3. 实例代码对比</a></li>
+<li><a href="#34">3.4. 总结</a></li>
+</ul>
+</li>
+<li><a href="#4-angle-fbo">4. ANGLE 对于 FBO 的管理</a><ul>
+<li><a href="#41-framebuffer">4.1. 前端 Framebuffer</a></li>
+<li><a href="#42-framebuffervk">4.2. 后端 FramebufferVk</a></li>
+<li><a href="#43-api">4.3. API 实现</a><ul>
+<li><a href="#431">4.3.1. 创建阶段</a></li>
+<li><a href="#432-resourcemanager">4.3.2. ResourceManager</a></li>
+<li><a href="#433">4.3.3. 纹理附着</a></li>
+<li><a href="#434-renderbuffer">4.3.4. Renderbuffer 附着</a></li>
+</ul>
+</li>
+<li><a href="#44">4.4. 状态同步</a><ul>
+<li><a href="#441-framebuffervksyncstate">4.4.1. FramebufferVk.syncState()</a></li>
+<li><a href="#442-framebuffer-pipeline">4.4.2. 切换 Framebuffer 时修改 Pipeline</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="1-gles-framebuffers">1. GLES Framebuffers</h1>
+<p>本章主要来自 <a href="https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/05%20Framebuffers/">LearnOpenGL</a> 及 GLES 3.0 编程指南</p>
+<h2 id="11">1.1. 定义</h2>
+<p>通常我们的操作都是在 默认<strong>帧缓冲</strong> (Default Framebuffer ) 的渲染缓冲上进行的。默认的帧缓冲是在你创建窗口的时候生成和配置的（EGL）。</p>
+<p>在GL中会使用几种不同类型的屏幕缓冲：用于写入颜色值的<strong>颜色缓冲</strong>，用于写入深度信息的<strong>深度缓冲</strong>，以及允许我们基于一些条件丢弃指定片段的<strong>模板缓冲</strong>。把这几种缓冲结合起来叫做帧缓冲(Framebuffer)。</p>
+<p>而使用 <strong>帧缓冲对象</strong> (Framebuffer Object) 允许用户<strong>自定义帧缓冲</strong>，Framebuffer 实际是一个可添加<strong>缓冲的容器</strong>.</p>
+<p>用户可以为其添加<strong>纹理</strong> (Textures ) 或 <strong>渲染缓冲区</strong> 对象（Renderbuffer), 来定义自己的颜色缓冲，深度缓冲, 和模板缓冲。</p>
+<h3 id="111">1.1.1. 应用</h3>
+<p>渲染到一个非默认的帧缓冲被叫做<strong>离屏渲染</strong>(Off-screen Rendering) 或 <strong>渲染到纹理</strong> (Render to Texture)。</p>
+<p>通过自定义帧缓冲可以将你的场景渲染到一个不同的帧缓冲中, 可以使我们能够在当前场景中创建<strong>镜子, 倒影</strong>这样的效果. 还有很多常见特效需要用到帧缓冲, </p>
+<ul>
+<li>例如: 阴影贴图, 动态反射和环境贴图, 多道景深技术, 动态模糊, 和后期处理特效等.</li>
+</ul>
+<h2 id="12">1.2. 相关定义</h2>
+<ul>
+<li><strong>默认帧缓冲</strong> Default Framebuffers</li>
+<li>在进行GLES指令操作前, 需要创建一个 Context 和 绘图表面 (默认 Framebuffer), 这通常由原生窗口系统通过 EGL 等完成.  </li>
+<li>创建 EGL 绘制表面的调用时, 以像素形式指定 宽度,高度, 是否使用  颜色缓冲, 深度缓冲, 模板缓冲, 及这些缓冲区的位深. </li>
+<li>不能对其进行修改或查询状态操作</li>
+<li><code>glViewport</code> 控制帧缓冲的大小, 以及控制阴影深度贴图大小等等</li>
+<li><strong>帧缓冲对象</strong> Framebuffers Objects (FBOs)</li>
+<li><strong>附着</strong> Attachment  <ul>
+<li>FBO 仅被视为缓存的容器, 因此使用 FBO 作为渲染目标时，首先需要为 FBO 的附着连接对象，</li>
+<li>附着是一个内存位置，它能够作为帧缓冲的一个缓冲，可以将它想象为一个图像。</li>
+<li>创建一个附件方式有两种：<strong>纹理</strong>或<strong>渲染缓冲</strong>对象(Renderbuffer)。</li>
+<li>帧缓冲的3个附着</li>
+<li><strong>颜色附着</strong>  Color Attachment </li>
+<li><strong>深度附着</strong>  Depth Attachment </li>
+<li><strong>模板附着</strong>  Stencil Attachment </li>
+</ul>
+</li>
+<li><strong>纹理附件</strong> Textures </li>
+<li>即普通的 Texture, 根据 Format的不同, 可以分别用作 FBO 中的颜色、深度或者模板附着。</li>
+<li><strong>渲染缓冲对象</strong> Renderbuffer Objects </li>
+<li>是一个由应用程序分配的 2D 图像缓冲区。</li>
+<li>渲染缓冲区可以用于分配和存储 颜色、深度或者模板值，可以用作 FBO 中的颜色、深度或者模板附着。</li>
+</ul>
+<p>使用 纹理 和 Renderbuffer 对象, 都支持为 FBO 分别添加三种附着. 但通常使用 Texture 添加颜色附着, 用 Renderbuffer 来添加深度和模板附着. 原因在后面讨论. </p>
+<p><img alt="FBO" src="../img/FBOs.png" /></p>
+<p>(OpenGL ES 3.0 编程指南)</p>
+<h2 id="13">1.3. 创建帧缓冲</h2>
+<ul>
+<li>创建一个帧缓冲对象</li>
+</ul>
+<pre><code class="language-C++">glGenFramebuffers(1, &amp;fbo);
+</code></pre>
+<ul>
+<li>绑定为激活的(Active)帧缓冲</li>
+</ul>
+<pre><code class="language-C++">glBindFramebuffer(GL_FRAMEBUFFER, fbo);
+</code></pre>
+<p>在绑定到GL_FRAMEBUFFER目标之后，所有的<strong>读取</strong>和<strong>写入</strong>帧缓冲的操作将会影响当前绑定的帧缓冲。</p>
+<ul>
+<li>我们也可以使用<code>GL_READ_FRAMEBUFFER</code>或<code>GL_DRAW_FRAMEBUFFER</code>，将一个帧缓冲分别绑定到读取目标或写入目标。</li>
+<li>绑定到<code>GL_READ_FRAMEBUFFER</code>的帧缓冲将会使用在所有像是<code>glReadPixels</code>的读取操作中，</li>
+<li>绑定到<code>GL_DRAW_FRAMEBUFFER</code>的帧缓冲将会被用作渲染、清除等写入操作的目标。</li>
+<li>通常都<strong>不需要区分</strong>它们，使用<code>GL_FRAMEBUFFER</code>，绑定到两个上。</li>
+</ul>
+<p>&nbsp;</p>
+<pre><code>添加附着: 在这一阶段, 使用Texture或Renderbuffer对FBO添加附着, 代码在下两节种展示.
+</code></pre>
+<ul>
+<li>添加附着后, 检查帧缓冲的完整性</li>
+</ul>
+<pre><code class="language-C++">if( glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE)
+</code></pre>
+<p>一个完整的帧缓冲需要满足以下的条件：</p>
+<ul>
+<li>附加至少一个附着（颜色、深度或模板附着）。</li>
+<li>至少有一个颜色附件(Attachment)。TODO: check angle</li>
+<li>所有的附件都必须是完整的（保留了内存）。</li>
+<li>每个缓冲都应该有相同的高度和宽度。</li>
+<li>如果存在深度和模板附着, 它们必须是相同的图像. </li>
+<li>所有附着的 GL_RENDERBUFFER_SAMPLES 样本值相同.  若附着对象是纹理, 则此值为0. </li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>解绑FBO / 激活默认帧缓冲</li>
+</ul>
+<pre><code class="language-C++">glBindFramebuffer(GL_FRAMEBUFFER, 0);
+</code></pre>
+<p>渲染到一个不同的帧缓冲被叫做<strong>离屏渲染</strong>(Off-screen Rendering)。要保证所有的渲染操作在主窗口中有视觉效果，我们需要再次激活默认帧缓冲，将它绑定到<code>0</code>。</p>
+<h2 id="14">1.4. 纹理附着</h2>
+<ul>
+<li>普通的创建纹理的方式</li>
+</ul>
+<pre><code class="language-c++">unsigned int texture;
+glGenTextures(1, &amp;texture);
+glBindTexture(GL_TEXTURE_2D, texture);
+glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 800, 600, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+</code></pre>
+<p>如果你想将你的屏幕渲染到一个更小或更大的纹理上，你需要（在渲染到你的帧缓冲之前）再次调用<code>glViewport</code>，使用纹理的新维度作为参数，否则只有一小部分的纹理或屏幕会被渲染到这个纹理上。(?)</p>
+<p>&nbsp;</p>
+<ul>
+<li>将纹理附加在帧缓冲上</li>
+</ul>
+<pre><code class="language-C++">glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texture, 0);
+</code></pre>
+<ul>
+<li><code>target</code>：帧缓冲的目标（绘制、读取或者两者皆有）</li>
+<li><code>attachment</code>：我们想要附加的附件类型。当前我们正在附加一个<strong>颜色附件</strong>。注意最后的<code>0</code>意味着可以附加多个颜色附件。</li>
+<li><code>GL_COLOR_ATTACHMENT</code><em>i</em>, <code>GL_DEPTH_ATTACHMENT</code>, <code>GL_STENCIL_ATTACHMENT</code> or <code>GL_DEPTH_STENCIL_ATTACHMENT</code>.</li>
+<li><code>textarget</code>：你希望附加的纹理类型</li>
+<li><code>texture</code>：要附加的纹理本身</li>
+<li><code>level</code>：多级渐远纹理的级别。我们将它保留为0</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>
+<p>纹理对象允许附加一个深度或模板缓冲纹理到帧缓冲对象中。</p>
+</li>
+<li>
+<p>要附加深度缓冲的话，将附件类型<code>attachment</code>设置为<code>GL_DEPTH_ATTACHMENT</code>。并将纹理的格式(Format)和内部格式(Internalformat)类型变为<code>GL_DEPTH_COMPONENT</code>，来反映深度缓冲的储存格式。</p>
+</li>
+<li>
+<p>要附加模板缓冲的话，将附件类型<code>attachment</code>设置为<code>GL_STENCIL_ATTACHMENT</code>，并将纹理的格式设定为<code>GL_STENCIL_INDEX</code>。</p>
+</li>
+<li>
+<p>也可以将深度缓冲和模板缓冲合并附加为一个纹理。纹理的每32位数值将包含24位的深度信息和8位的模板信息。将附件类型<code>attachment</code>设置<code>GL_DEPTH_STENCIL_ATTACHMENT</code>类型，并配置纹理的格式，让它包含合并的深度和模板值。</p>
+</li>
+<li>
+<p>```
+    glTexImage2D(
+      GL_TEXTURE_2D, 0, GL_DEPTH24_STENCIL8, 800, 600, 0, 
+      GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8, NULL
+    );</p>
+<p>glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, texture, 0);
+```</p>
+</li>
+</ul>
+<p>&nbsp;</p>
+<h2 id="15-renderbuffer">1.5. Renderbuffer 附着</h2>
+<ul>
+<li>创建一个渲染缓冲对象的代码</li>
+</ul>
+<pre><code>glGenRenderbuffers(1, &amp;rbo);
+</code></pre>
+<ul>
+<li>绑定这个渲染缓冲对象，让之后所有的渲染缓冲操作影响当前的 RBO：</li>
+</ul>
+<pre><code>glBindRenderbuffer(GL_RENDERBUFFER, rbo);
+</code></pre>
+<ul>
+<li>创建一个深度和模板渲染缓冲对象</li>
+</ul>
+<pre><code>glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, 800, 600);
+</code></pre>
+<p>创建一个渲染缓冲对象和纹理对象类似，不同的是这个对象是专门被设计作为图像使用的，而不是纹理那样的通用数据缓冲(General Purpose Data Buffer)。</p>
+<p>这里我们选择<code>GL_DEPTH24_STENCIL8</code>作为内部格式，它封装了24位的深度和8位的模板缓冲。</p>
+<ul>
+<li>附加这个渲染缓冲对象到 FBO：</li>
+</ul>
+<pre><code>glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo);
+</code></pre>
+<p>使用<code>GL_DEPTH_STENCIL_ATTACHMENT</code>表示同时包含深度和模板附着</p>
+<p>&nbsp;</p>
+<h2 id="16-texture-vs-renderbuffer">1.6. Texture VS. Renderbuffer</h2>
+<p>渲染缓冲对象(Renderbuffer Object) 是在纹理之后引入到OpenGL中，作为一个可用的帧缓冲附件类型的，所以在过去纹理是唯一可用的附件。</p>
+<p><strong>Renderbuffer</strong>: </p>
+<ul>
+<li>
+<p>和纹理图像一样，渲染缓冲对象是一个真正的缓冲，即一系列的字节、整数、像素等。</p>
+</li>
+<li>
+<p>优点: Renderbuffer 会将数据储存为OpenGL原生的渲染格式，它是为离屏渲染到帧缓冲优化过的。</p>
+</li>
+<li>
+<p>Renderbuffer 直接将所有的渲染数据储存到它的缓冲中，不会做任何针对纹理格式的转换，让它变为一个更快的可写储存介质。</p>
+</li>
+<li>
+<p>缺点: Renderbuffer 不能做纹理: 渲染缓冲对象通常都是<strong>只写</strong>的，所以你不能读取它们, 比如使用纹理访问。</p>
+</li>
+<li>当然你仍然还是能够使用<code>glReadPixels</code>来读取它，这会从当前绑定的帧缓冲(而不是附件本身)中返回特定区域的像素。</li>
+</ul>
+<p>&nbsp;</p>
+<p>因此通常的规则是:</p>
+<ul>
+<li>
+<p>如果你<strong>不需要从一个缓冲中采样</strong>数据，那么对这个缓冲使用<strong>渲染缓冲</strong>对象会是明智的选择。</p>
+</li>
+<li>
+<p>而如果你<strong>需要从缓冲中采样颜色或深度</strong>值等数据，那么你应该选择<strong>纹理</strong>附件。性能方面它不会产生非常大的影响的。</p>
+</li>
+</ul>
+<p>Renderbuffer 对象通常用于<strong>深度和模板</strong>附件，因为大部分时间我们都不需要从深度和模板缓冲中读取值，只关心深度和模板测试, 但不需要对它们进行采样. </p>
+<p>&nbsp;</p>
+<p>对应到场景中:</p>
+<ul>
+<li>选择 Texture</li>
+<li>渲染到一个用作颜色纹理的颜色缓冲区</li>
+<li>渲染到一个用作阴影的深度纹理的深度缓冲区</li>
+<li>选择 Renderbuffer</li>
+<li>多重采样(? 来自"3.0 编程指南" 但 Texture 也有MS, 版本原因?)</li>
+<li>如果图像不被作为纹理,  则 Renderbuffer 可能带来性能优势:<ul>
+<li>GLES 可能以更高效的格式存储 Renderbuffer, 比纹理更适合渲染</li>
+<li>例如: 利用其写入或者复制到其它缓冲快的特点。<strong>交换缓冲</strong>这样的操作在使用渲染缓冲对象时会非常快。</li>
+<li>在每个渲染迭代最后使用的<code>glfwSwapBuffers</code>，也可以通过渲染缓冲对象实现：只需要写入一个渲染缓冲图像，并在最后交换到另外一个渲染缓冲就可以了。</li>
+</ul>
+</li>
+</ul>
+<h2 id="17">1.7. 示例: 场景滤镜</h2>
+<h3 id="171">1.7.1. 创建阶段</h3>
+<pre><code class="language-c++">// 创建一个帧缓冲对象，并绑定
+unsigned int framebuffer;
+glGenFramebuffers(1, &amp;framebuffer);
+glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
+
+// 使用 Texture 添加颜色附着
+// 生成纹理
+unsigned int texColorBuffer;
+glGenTextures(1, &amp;texColorBuffer);
+glBindTexture(GL_TEXTURE_2D, texColorBuffer);
+glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 800, 600, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+glBindTexture(GL_TEXTURE_2D, 0);
+
+// 将纹理对象, 附加到当前绑定的帧缓冲对象颜色(color)附件上
+glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texColorBuffer, 0);  
+
+// 使用 Renderbuffer 添加深度和模板附着
+// 深度（和模板）测试
+// 添加一个深度（和模板）附件到帧缓冲中
+unsigned int rbo;
+glGenRenderbuffers(1, &amp;rbo);
+glBindRenderbuffer(GL_RENDERBUFFER, rbo); 
+glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, 800, 600);  // GL_DEPTH24_STENCIL8
+glBindRenderbuffer(GL_RENDERBUFFER, 0);
+
+// 将渲染缓冲对象, 附加到到当前绑定的帧缓冲的 depth 和 stencil 附件上
+glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo);
+
+// 检查帧缓冲是否是完整的
+if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+    std::cout &lt;&lt; &quot;ERROR::FRAMEBUFFER:: Framebuffer is not complete!&quot; &lt;&lt; std::endl;
+
+// 解绑帧缓冲/绑定回默认
+glBindFramebuffer(GL_FRAMEBUFFER, 0);
+</code></pre>
+<p>&nbsp;</p>
+<h3 id="172">1.7.2. 绘制阶段</h3>
+<p>要想绘制场景到一个纹理上，我们需要采取以下的步骤：</p>
+<ol>
+<li>将新的帧缓冲绑定为激活的帧缓冲</li>
+<li>和往常一样渲染场景</li>
+<li>此时场景会渲染到绑定的帧缓冲, 而不是默认的帧缓冲。</li>
+<li>所有的深度和模板操作都会从当前绑定的帧缓冲的深度和模板附件中（如果有的话）读取。</li>
+<li>绑定回默认的帧缓冲</li>
+<li>绘制一个整屏幕的四边形，然后将帧缓冲的颜色缓冲作为四边形的纹理。</li>
+</ol>
+<pre><code class="language-c++">// 第一处理阶段: 绘制到FBO
+glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
+glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // 我们现在不使用模板缓冲
+glEnable(GL_DEPTH_TEST);
+DrawScene();    // 绘制原始 3D 场景 // Load VAO, bind Textures, uniform data, call glDrawArrays or glDrawElements
+
+// 第二处理阶段: 绘制到屏幕
+glBindFramebuffer(GL_FRAMEBUFFER, 0); // 返回默认
+glClearColor(1.0f, 1.0f, 1.0f, 1.0f); 
+glClear(GL_COLOR_BUFFER_BIT);
+
+screenShader.use();  // 使用另一套 shader
+glBindVertexArray(quadVAO); // 绘制一个四边形
+glDisable(GL_DEPTH_TEST);
+glBindTexture(GL_TEXTURE_2D, textureColorbuffer); // 将 Color Buffer 作为纹理绘制到四边形上
+glDrawArrays(GL_TRIANGLES, 0, 6);  
+</code></pre>
+<p>如果<code>screenShader</code>不做特殊处理, 此时画面会和<code>DrawScene</code>绘制的原始3D场景一致. 此时绘制的四边形类似一个显示屏幕, 利用贴图显示原始场景. </p>
+<p>&nbsp;</p>
+<p>但如果对 <code>screenShader</code> 中纹理的color进行修改, 就可用实现滤镜效果.</p>
+<pre><code class="language-c++">void main()
+{
+    // 反色特效
+    FragColor = vec4(vec3(1.0 - texture(screenTexture, TexCoords)), 1.0);
+}
+</code></pre>
+<p>画面效果和更多特效处理, 参见 <a href="https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/05%20Framebuffers/#_6">LearnOpenGL</a></p>
+<p>&nbsp;</p>
+<h2 id="18-msaa">1.8. 离屏MSAA</h2>
+<p><a href="https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/11%20Anti%20Aliasing/#msaa">离屏MSAA</a></p>
+<p>在默认帧缓冲中启用MASS, 只需要<code>glEnable(GL_MULTISAMPLE);</code>启用即可. 但对于离屏渲染, 需要手动创建多重采样的附着. </p>
+<p><strong>Texture:</strong></p>
+<ul>
+<li>创建MS Texture: 使用<code>glTexImage2DMultisample</code>来替代<code>glTexImage2D</code></li>
+</ul>
+<pre><code>glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, tex);
+glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, samples, GL_RGB, width, height, GL_TRUE);
+glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, 0);
+</code></pre>
+<ul>
+<li>附加到帧缓冲: 使用<code>glFramebufferTexture2D</code>将多重采样纹理上，但这里纹理类型使用的是<code>GL_TEXTURE_2D_MULTISAMPLE</code>。</li>
+</ul>
+<pre><code>glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D_MULTISAMPLE, tex, 0);
+</code></pre>
+<p><strong>Renderbuffer</strong>:</p>
+<ul>
+<li>创建过程不变</li>
+<li>附加到帧缓冲: 将<code>glRenderbufferStorage</code>的调用改为<code>glRenderbufferStorageMultisample</code>就可以了</li>
+</ul>
+<pre><code>glRenderbufferStorageMultisample(GL_RENDERBUFFER, 4, GL_DEPTH24_STENCIL8, width, height);
+</code></pre>
+<p>第二参数<code>4</code>为采样次数</p>
+<p><strong>绘制:</strong></p>
+<pre><code>void glBlitFramebuffer (GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+</code></pre>
+<ul>
+<li>将一个矩形区域的像素值, 从一个帧缓冲复制到另一个帧缓冲.</li>
+</ul>
+<p>通过<code>glBlitFramebuffer</code>将多重采样的帧缓冲, 复制到一个中介帧缓冲的颜色附着的纹理, 实现多重采样.</p>
+<pre><code class="language-c++">    glBindFramebuffer(multisampledFBO);
+    ClearFrameBuffer();
+    DrawScene();
+    // 将多重采样缓冲还原到中介FBO上
+    glBindFramebuffer(GL_READ_FRAMEBUFFER, multisampledFBO);
+    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, intermediateFBO);
+    glBlitFramebuffer(0, 0, width, height, 0, 0, width, height, GL_COLOR_BUFFER_BIT, GL_NEAREST);
+    // 现在场景是一个2D纹理缓冲，可以将这个图像用来后期处理
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    ClearFramebuffer();
+    glBindTexture(GL_TEXTURE_2D, screenTexture);
+    DrawPostProcessingQuad();  
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="19">1.9. 更多用例:</h2>
+<p><a href="https://learnopengl-cn.readthedocs.io/zh/latest/05%20Advanced%20Lighting/07%20Bloom/">泛光</a></p>
+<p><a href="https://cloud.tencent.com/developer/article/1713617">多渲染目标(Multiple Render Targets)</a> 与 <a href="https://learnopengl-cn.readthedocs.io/zh/latest/05%20Advanced%20Lighting/08%20Deferred%20Shading/"><strong>延迟着色法</strong></a></p>
+<p>其他待补充内容: Framebuffer 与 mipmaps 及 Cube_map 相关资料</p>
+<h2 id="110-framebuffer-api">1.10. Framebuffer 相关 API 汇总</h2>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>ES Ver.</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>void <strong>glGenFramebuffers</strong>( sizei n, uint *framebuffers );</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>void <strong>glBindFramebuffer</strong>( enum target, uint framebuffer );</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>void <strong>glGenRenderbuffers</strong>( sizei n, uint *renderbuffers );</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>void <strong>glBindRenderbuffer</strong>( enum target, uint renderbuffer );</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>void <strong>glRenderbufferStorage</strong> <br />(GLenum target, <br />GLenum internalformat, <br />GLsizei width, GLsizei height);</td>
+<td>2</td>
+<td>创建一个 Renderbuffer<br /><strong>internalformat</strong>: 指定缓冲格式: depth 和 stencil <br />GL_DEPTH24_STENCIL8;<br/>GL_DEPTH32F_STENCIL8<br />GL_DEPTH_COMPONENT16<br />GL_DEPTH_COMPONENT24<br />GL_DEPTH_COMPONENT32F<br />GL_STENCIL_INDEX8</td>
+</tr>
+<tr>
+<td>void <strong>glRenderbufferStorageMultisample</strong> (<br />GLenum target, <br />GLsizei samples, GLenum internalformat, <br />GLsizei width, GLsizei height);</td>
+<td>3.0</td>
+<td>创建一个多重采样 Renderbuffer, <br />与glRenderbufferStorage的区别仅为后者samples=0</td>
+</tr>
+<tr>
+<td>GLenum <strong>glCheckFramebufferStatus</strong> (GLenum target);</td>
+<td></td>
+<td>检查fbo完整性</td>
+</tr>
+<tr>
+<td>void <strong>glBlitFramebuffer</strong> (GLint srcX0, <br />GLint srcY0, GLint srcX1, GLint srcY1, <br />GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, <br />GLbitfield mask, GLenum filter);</td>
+<td></td>
+<td>将一个矩形区域的像素值, 从一个fb复制到另一个fb. <br />应用举例: 1. 复制多个纹理到屏幕<br />2. 将多重采样渲染解析为一个纹理</td>
+</tr>
+<tr>
+<td><strong>绑定</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>void <strong>glFramebufferRenderbuffer</strong> (<br />GLenum target, GLenum attachment, <br />GLenum renderbuffertarget, GLuint renderbuffer);</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>void <strong>glFramebufferTexture</strong> (<br />GLenum target, <br />GLenum attachment, GLuint texture, <br />GLint level);</td>
+<td>3.2</td>
+<td></td>
+</tr>
+<tr>
+<td>void <strong>glFramebufferTexture2D</strong>( <br />enum target, <br />enum attachment, <br />enum textarget, uint texture, int level );</td>
+<td>2.0</td>
+<td></td>
+</tr>
+<tr>
+<td>void <strong>glFramebufferTextureLayer</strong>( <br />enum target, <br />enum attachment, <br />uint texture, int level, int layer );</td>
+<td>3.0</td>
+<td>绑定 3D Texture</td>
+</tr>
+<tr>
+<td><strong>无效化/删除</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>void <strong>glInvalidateFramebuffer</strong> (GLenum target, <br />GLsizei numAttachments, <br />const GLenum *attachments);</td>
+<td>3.0</td>
+<td>通知驱动不再需要fb内容. 使驱动可用进行优化:<br />如跳过TBR架构中不必要的图块内容恢复<br />跳过实现中为改进性能而做的缓存刷新</td>
+</tr>
+<tr>
+<td>void <strong>glInvalidateSubFramebuffer</strong> (GLenum target, <br />GLsizei numAttachments, <br />const GLenum *attachments, <br />GLint x, GLint y, GLsizei width, GLsizei height);</td>
+<td>3.0</td>
+<td></td>
+</tr>
+<tr>
+<td>void <strong>glDeleteRenderbuffers</strong> (GLsizei n, <br />const GLuint *renderbuffers);</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>void <strong>glDeleteFramebuffers</strong> (GLsizei n, <br />const GLuint *framebuffers);</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>其他</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>void <strong>glFramebufferParameteri</strong> (GLenum target, <br />GLenum pname, GLint param);<br/>void <strong>glGetFramebufferParameteriv</strong> (GLenum target, <br />GLenum pname, GLint *params);</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>boolean <strong>IsRenderbuffer</strong>( uint renderbuffer );</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>boolean <strong>IsFramebuffer</strong>( uint framebuffer );</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>其他针对读帧缓冲的命令: glReadPixels, glCopyTexImage, and glCopyTexSubImage,</p>
+<h1 id="2-vulkan-framebuffer">2. Vulkan Framebuffer</h1>
+<p>首先, Vulkan 中没有类似 GLES中内置的预定义 Framebuffer, 主屏的渲染过程也全需要显式的定义. </p>
+<p>其次, 对于离屏渲染, 其流程与主屏渲染基本一致, 并通过将离屏渲染的 Attachments 通过 DescriptorSet 绑定到主屏作为纹理渲染. </p>
+<h2 id="21-vkrenderpass">2.1. VkRenderPass</h2>
+<pre><code class="language-c++">// RenderPass
+VkRenderPassCreateInfo renderPassInfo = {};
+renderPassInfo.pAttachments = attachmentDescs.data(); // attachment descriptions
+renderPassInfo.pSubpasses = &amp;subpassDescription; // subpass
+renderPassInfo.pDependencies = dependencies.data(); // dependencies
+...
+</code></pre>
+<ul>
+<li><strong>渲染过程</strong> Renderpass</li>
+<li><strong>附着描述</strong> Attachments Descriptions<ul>
+<li>渲染过程<strong>描述</strong> 渲染操作所需的一组数据。在Vulkan中，描述的是一组将在渲染期间使用的<strong>帧缓冲区附着</strong>。</li>
+<li>这些附着包括在渲染过程中会读取或写入的任何缓冲区，例如<strong>颜色，深度和模板缓冲区</strong>。</li>
+<li>这也可以包括输入附件，这些输入附件是中间缓冲区，它们被写入一个子通道中，然后被另一个子通道读出。</li>
+<li>在创建渲染通道时必须明确定义这些附件，并指定诸如图像格式，样本数量以及指定的加载和存储行为等信息。这样就减少了驱动程序在运行时的工作量，因为它不必推断此信息本身。</li>
+</ul>
+</li>
+<li><strong>子过程</strong> Sub-pass <ul>
+<li>渲染过程包含一个或多个子过程 subpass，这些子过程对渲染操作进行排序。</li>
+<li>子阶段本质上表示渲染的阶段，其中渲染工作是通过渲染阶段中的附件的子集完成的。一组命令记录在每个子通道中，以描述在该子通道中需要完成的工作。</li>
+</ul>
+</li>
+<li><strong>子过程依赖</strong> Sub-pass Dependencies <ul>
+<li>渲染过程定义了一组子过程依赖关系(sub-pass dependencies)，这些依赖关系确定了成对子过程的执行顺序。</li>
+<li>它们充当执行和内存依赖项。当两个或多个子通道访问同一附件时，依赖关系至关重要，因为Vulkan不保证GPU执行子通道的顺序。</li>
+</ul>
+</li>
+</ul>
+<p><strong>注意</strong>: 尽管 RenderPass 描述了所有使用的附件的<strong>特征</strong>以及<strong>如何处理</strong>附件，但它并不指向任何实际对象。这由 <strong>Framebuffers</strong> 处理。</p>
+<h2 id="22-vkframebuffers">2.2. VkFramebuffers</h2>
+<p>在 Vulkan 中，VkFramebuffer 的作用仅是将包含 <strong>附着描述</strong> 的 RenderPass 与 ImageView 定义的 <strong>附着对象</strong> 关联起来.</p>
+<pre><code>VkFramebufferCreateInfo frameBufferCreateInfo = {};
+frameBufferCreateInfo.renderPass = renderPass;
+frameBufferCreateInfo.pAttachments = attachments; // VkImageView*
+...
+</code></pre>
+<p>拆分渲染通道的附着描述, 和帧缓冲区的附着定义, 有助于总体上优化GPU上的操作. 并且只要帧缓冲区与渲染通道兼容，就可以允许在不更改渲染通道的情况下交换帧缓冲区对象。(来自<a href="https://docs.imgtec.com/Vulkan_Migrating_from_OpenGLES/topics/Technical_API_Overview/vulkan_migrating_render_passes_in_vulkan.html">imgtec</a>)</p>
+<p><img alt="Framebuffer" src="../img/vkframebuffer.PNG" /></p>
+<hr />
+<p><strong>疑问:</strong> RenderPass 在创建后被三处引用: Pipeline, Framebuffer, 和 执行 CommandBuffer 阶段的 BeginRenderpass. 而且 BeginRenderpass 同时再次指定了 Framebuffer.  因此 Renderpass, Framebuffer, BeginRenderpass 出现了类似循环指定. </p>
+<ul>
+<li>为什么需要独立出 Framebuffer 而不是把 Attachment 和 AttachmentDescription 一起都放于 Renderpass 中 ?</li>
+<li>为什么 Pipeline 要引用 Renderpass ? </li>
+<li>猜测: 创建 Pipeline 前需要定义好的 Renderpass获取 "诸如图像格式，样本数量以及指定的加载和存储行为等信息" 来进行优化?</li>
+</ul>
+<h2 id="23-vk">2.3. VK 离屏渲染示例:</h2>
+<h3 id="231-vkrenderpass">2.3.1. VkRenderPass</h3>
+<p>Renderpass 中, 使用 VkAttachmentDescription 定义了 各 Attachment 的类型, 行为等. </p>
+<p>创建 Render Pass 示例: </p>
+<pre><code>    // RenderPass
+    VkRenderPassCreateInfo renderPassInfo = {};
+    renderPassInfo.pAttachments = attachmentDescs.data(); // attachment descriptions
+    renderPassInfo.pSubpasses = &amp;subpassDescription; // subpass
+    renderPassInfo.pDependencies = dependencies.data(); // dependencies
+</code></pre>
+<p>其中, Attachment Description, 描述附着的类型, 特征和处理方式</p>
+<pre><code class="language-c++">    std::array&lt;VkAttachmentDescription, 2&gt; attachmentDescs = {};
+    // Color attachment
+    attachmentDescs[0].format = swapChain.colorFormat;
+    attachmentDescs[0].samples = VK_SAMPLE_COUNT_1_BIT;
+    attachmentDescs[0].loadOp = VK_ATTACHMENT_LOAD_OP_CLEAR;
+    attachmentDescs[0].storeOp = VK_ATTACHMENT_STORE_OP_STORE;
+    attachmentDescs[0].stencilLoadOp = VK_ATTACHMENT_LOAD_OP_DONT_CARE;
+    attachmentDescs[0].stencilStoreOp = VK_ATTACHMENT_STORE_OP_DONT_CARE;
+    attachmentDescs[0].initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
+    attachmentDescs[0].finalLayout = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR;
+
+    // Depth attachment
+    attachmentDescs[1].format = depthFormat;
+    attachmentDescs[1].samples = VK_SAMPLE_COUNT_1_BIT;
+    attachmentDescs[1].loadOp = VK_ATTACHMENT_LOAD_OP_CLEAR;
+    attachmentDescs[1].storeOp = VK_ATTACHMENT_STORE_OP_STORE;
+    attachmentDescs[1].stencilLoadOp = VK_ATTACHMENT_LOAD_OP_CLEAR;
+    attachmentDescs[1].stencilStoreOp = VK_ATTACHMENT_STORE_OP_DONT_CARE;
+    attachmentDescs[1].initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
+    attachmentDescs[1].finalLayout = VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL;
+</code></pre>
+<p>Subpass 中包含了对附着的引用</p>
+<pre><code class="language-c++">    VkAttachmentReference colorReference = {};
+    colorReference.attachment = 0;
+    colorReference.layout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL;
+
+    VkAttachmentReference depthReference = {};
+    depthReference.attachment = 1;
+    depthReference.layout = VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL;
+
+    VkSubpassDescription subpassDescription = {};
+    subpassDescription.pColorAttachments = &amp;colorReference;
+    subpassDescription.pDepthStencilAttachment = &amp;depthReference;
+</code></pre>
+<h3 id="232-vkimageview">2.3.2. VkImageView</h3>
+<p>使用 ImageView 对象定义附着, 包括 颜色附着和 深度/模板附着, 后者通常为同一个附着. </p>
+<pre><code class="language-c++">    VkImageView attachments[2];
+    // Color attachement
+    attachments[0] = color.view;
+    // Depth/Stencil attachment is the same for all frame buffers
+    attachments[1] = depthStencil.view; 
+</code></pre>
+<h3 id="233-vkframebuffer">2.3.3. VkFrameBuffer</h3>
+<p>FrameBuffer 将 <strong>ImageView</strong> 作为 Attachment, 并将其与 Renderpass 连接起来. </p>
+<pre><code>    VkFramebufferCreateInfo frameBufferCreateInfo = {};
+    frameBufferCreateInfo.renderPass = renderPass;
+    frameBufferCreateInfo.pAttachments = attachments; // VkImageView*
+    ...
+</code></pre>
+<h3 id="234-imageview-descriptorset">2.3.4. 设置 ImageView 到 DescriptorSet</h3>
+<p>为屏幕渲染的 Framebuffer 设置 DescriptorSet, 将离屏渲染的 ImageView 作为 Texture 传递给 Shader.</p>
+<pre><code class="language-C++">// Image descriptors for the offscreen color attachments
+VkDescriptorImageInfo imageInfo{};
+imageInfo.imageLayout = VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL;
+imageInfo.imageView = color.view;  // color attachments in Framebuffer
+imageInfo.sampler = textureSampler;
+
+std::array&lt;VkWriteDescriptorSet, 2&gt; descriptorWrites{};
+descriptorWrites[0].dstSet = descriptorSet;
+descriptorWrites[0].descriptorType = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER;
+descriptorWrites[0].pBufferInfo = &amp;imageInfo;
+
+vkUpdateDescriptorSets(device, static_cast&lt;uint32_t&gt;(descriptorWrites.size()), descriptorWrites.data(), 0, nullptr);
+</code></pre>
+<h3 id="235-commandbuffers">2.3.5. 绘制: CommandBuffers</h3>
+<h4 id="2351">2.3.5.1. 离屏渲染</h4>
+<p>指定渲染流程 Renderbuffer 和 Framebuffer</p>
+<pre><code class="language-C++">VkRenderPassBeginInfo renderPassInfo{};
+renderPassInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
+renderPassBeginInfo.renderPass =  offScreenFrameBuf.renderPass;
+renderPassBeginInfo.framebuffer = offScreenFrameBuf.frameBuffer;
+renderPassBeginInfo.renderArea.extent.width = offScreenFrameBuf.width;
+renderPassBeginInfo.renderArea.extent.height = offScreenFrameBuf.height;
+renderPassBeginInfo.clearValueCount = static_cast&lt;uint32_t&gt;(clearValues.size());
+renderPassBeginInfo.pClearValues = clearValues.data();
+</code></pre>
+<p>在离屏渲染中, 渲染模型等</p>
+<pre><code class="language-C++">vkCmdBeginRenderPass(offScreenCmdBuffer, &amp;ofsRenderPassBeginInfo, VK_SUBPASS_CONTENTS_INLINE);
+
+vkCmdBindPipeline(offScreenCmdBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, pipelines.offscreen);
+
+// 绘制Background, 背景模型
+vkCmdBindDescriptorSets(offScreenCmdBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, pipelineLayout, 0, 1, &amp;descriptorSets.floor, 0, nullptr);
+models.floor.draw(offScreenCmdBuffer);
+
+// 绘制实例模型
+vkCmdBindDescriptorSets(offScreenCmdBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, pipelineLayout, 0, 1, &amp;descriptorSets.model, 0, nullptr);
+models.model.bindBuffers(offScreenCmdBuffer);
+
+vkCmdDrawIndexed(offScreenCmdBuffer, models.model.indices.count, 3, 0, 0, 0);
+
+vkCmdEndRenderPass(offScreenCmdBuffer);
+</code></pre>
+<h4 id="2352">2.3.5.2. 主屏渲染</h4>
+<p>同样先指定主屏的  Renderbuffer 和 Framebuffer, 然后开始渲染</p>
+<p>输出到屏幕时, 取 <strong><code>descriptorSet</code></strong> 中的纹理, 绘制到四边形上.</p>
+<pre><code class="language-C++">vkCmdBeginRenderPass(drawCmdBuffers[i], &amp;renderPassBeginInfo, VK_SUBPASS_CONTENTS_INLINE);
+// 含 Attachment 的 descriptorSet
+vkCmdBindDescriptorSets(drawCmdBuffers[i], VK_PIPELINE_BIND_POINT_GRAPHICS, pipelineLayout, 0, 1, &amp;descriptorSet, 0, nullptr);
+
+vkCmdBindPipeline(drawCmdBuffers[i], VK_PIPELINE_BIND_POINT_GRAPHICS, pipelines.composition);
+// 绘制全屏幕的四边形
+vkCmdDraw(drawCmdBuffers[i], 3, 1, 0, 0);
+
+vkCmdEndRenderPass(drawCmdBuffers[i]);
+</code></pre>
+<h1 id="3-gles-vk">3. GLES 与 Vk 对比</h1>
+<h2 id="31">3.1. 概念对应</h2>
+<table>
+<thead>
+<tr>
+<th>概念</th>
+<th>GLES 对象</th>
+<th>Vk对象</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Color/Depth/Stencil Attachment</td>
+<td>Texture / Renderbuffer</td>
+<td>ImageView</td>
+</tr>
+<tr>
+<td>Framebuffer 容器</td>
+<td>Framebuffer</td>
+<td>Framebuffer &amp; Renderpass</td>
+</tr>
+<tr>
+<td>纹理绑定到 Shader</td>
+<td>glBindTexture</td>
+<td>设置 ImageView 到 DescriptorSets</td>
+</tr>
+</tbody>
+</table>
+<h2 id="32">3.2. 流程对应</h2>
+<ul>
+<li>GLES</li>
+<li>串行渲染: 用 Bindframebuffer 进行两次渲染的切换, 利用 Texture 对象传递渲染画面</li>
+<li>Vulkan</li>
+<li>行为预定义式: <ul>
+<li>不同两套 Commandbuffer 执行过程, 对应两套 Pipeline, Renderpass,  和 DescriptionSet </li>
+<li>利用 DescriptionSet 绑定 ImageView (Attachment) 传递画面</li>
+</ul>
+</li>
+</ul>
+<h3 id="321">3.2.1. 大致对应流程</h3>
+<p>两种流程的顺序差异较大, 这里对 gles api 操作做一个概念上的对应</p>
+<table>
+<thead>
+<tr>
+<th>GLES</th>
+<th>Vulkan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>创建:</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>创建一个帧缓冲对象，并绑定<br/>unsigned int framebuffer;<br/>glGenFramebuffers(1, &amp;framebuffer);<br/>glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);</td>
+<td>设置并创建 Pipeline, RenderPass 和 Framebuffer 对象</td>
+</tr>
+<tr>
+<td>创建 Texture 颜色附着 <br />glGenTextures(1, &amp;texColorBuffer);<br/>glBindTexture(GL_TEXTURE_2D, texColorBuffer);</td>
+<td>设置并创建 Image 和 ImageView 对象.<br />对应配置 VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT</td>
+</tr>
+<tr>
+<td>为深度和模板附着创建 Renderbuffer<br/>unsigned int rbo;<br/>glGenRenderbuffers(1, &amp;rbo);<br/>glBindRenderbuffer(GL_RENDERBUFFER, rbo);</td>
+<td>设置并创建 Image 和 ImageView 对象.<br />对应配置 DEPTH_STENCIL_ATTACHMENT_BIT</td>
+</tr>
+<tr>
+<td>绑定附着对象到 Framebuffer<br />glFramebufferTexture2D<br />glBindRenderbuffer</td>
+<td>用 Framebuffer 对象将 ImageView 与 RenderPass 关联</td>
+</tr>
+<tr>
+<td><strong>绘制:</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>第一绘制阶段: 绘制到FBO<br/>glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);</td>
+<td>为离屏渲染配置一个 CommandBuffer</td>
+</tr>
+<tr>
+<td>绘制场景, 包括顶点, 纹理, Shader参数等<br />DrawScene();</td>
+<td>使用为离屏渲染配置的 Pipeline 和RenderPass, Framebuffer<br />并读取 DescriptorSet 来执行 CommandBuffer 中一系列指令</td>
+</tr>
+<tr>
+<td>第二绘制阶段: 绘制到屏幕<br/>glBindFramebuffer(GL_FRAMEBUFFER, 0);</td>
+<td>为主屏渲染配置 CommandBuffer</td>
+</tr>
+<tr>
+<td>将一阶段离屏渲染的纹理, 在二阶段启用<br />glBindTexture(GL_TEXTURE_2D, textureColorbuffer);</td>
+<td>将离屏渲染中的 ImageView 配置到 主屏渲染的 DescriptorSet 中</td>
+</tr>
+<tr>
+<td>绘制主屏<br />glDrawArrays(GL_TRIANGLES, 0, 6);</td>
+<td>使用为主屏渲染配置的 Pipeline 和RenderPass, Framebuffer<br />并读取 DescriptorSet 来执行 CommandBuffer 中一系列指令</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h2 id="33">3.3. 实例代码对比</h2>
+<p><a href="https://learnopengl-cn.readthedocs.io/zh/latest/05%20Advanced%20Lighting/08%20Deferred%20Shading/"><strong>GL 延迟渲染</strong></a> 与 <a href="https://blog.csdn.net/qq_35312463/article/details/105878760"><strong>Vulkan延迟渲染</strong></a> (<a href="https://github.com/SaschaWillems/Vulkan/blob/master/examples/deferred/deferred.cpp">完整代码: Vulkan Example: 延迟渲染</a>)</p>
+<h2 id="34">3.4. 总结</h2>
+<ul>
+<li>Framebuffer 对象</li>
+<li>就 Framebuffer Object 本身而言, 它在 gles 和 vk 中都仅仅担当了容器的作用, 对应的 Attachment 也类似: 多个Color 和一个 depth, stencil.</li>
+<li>但 Framebuffer 在 gles 的渲染过程中, 作为隐藏的渲染的目标而存在, 虽然不对它直接操作, 但它贯穿每个渲染流程, 同时保存渲染的结果.</li>
+<li>在 Vulkan 中, 渲染处理指令被分散在创建的 Pipeline, RenderPass 等一众配置项中, 而其名为Framebuffer对象的职责很轻. </li>
+<li>离屏渲染</li>
+<li>对于 Framebuffer 在 gles 提供的离屏渲染功能, Vulkan 是通过配置多套渲染流程来实现, 每套包含  Pipeline, RenderPass, CommandBuffer等配置.</li>
+<li>不同渲染直接的共享, gles 通过绑定存储了颜色附着的纹理实现,  Vulkan通过将纹理附着配置给 descriptorSet 的方式实现.</li>
+<li>因此所以对于 FBO, 实现 <strong>gles on Vulkan</strong> 实则是实现渲染 <strong>流程的对应</strong>.</li>
+<li>参考其他分析文档中关于 angle 中流程对应分析, 包括: <ul>
+<li>CommandBuffer (PCB, SCB) 的配置和 Flush 时机.</li>
+<li>gles 状态更新与 Pipeline 等配置更新的关联方式. </li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<h1 id="4-angle-fbo">4. ANGLE 对于 FBO 的管理</h1>
+<h2 id="41-framebuffer">4.1. 前端 Framebuffer</h2>
+<pre><code class="language-plantuml">@startuml
+hide method
+
+class State {
+    Framebuffer *mReadFramebuffer;
+    Framebuffer *mDrawFramebuffer;
+    BindingPointer&lt;Renderbuffer&gt; mRenderbuffer;
+}
+
+class Framebuffer {
+      FramebufferImpl *mImpl; //FramebufferVk
+    mutable Optional&lt;GLenum&gt; mCachedStatus;
+    vector&lt;ObserverBinding&gt; mDirtyColorAttachmentBindings;
+    ObserverBinding mDirtyDepthAttachmentBinding;
+    ObserverBinding mDirtyStencilAttachmentBinding;
+}
+
+class FramebufferState {
+    vector&lt;FramebufferAttachment&gt; mColorAttachments;
+    FramebufferAttachment mDepthAttachment;
+    FramebufferAttachment mStencilAttachment;
+    DrawBufferMask mColorAttachmentsMask;
+}
+
+Context *-- State
+State --&gt; Framebuffer
+FramebufferState --* Framebuffer
+FramebufferAttachment --* FramebufferState
+FramebufferAttachmentRenderTarget --* FramebufferAttachment
+@enduml
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="42-framebuffervk">4.2. 后端 FramebufferVk</h2>
+<pre><code class="language-plantuml">@startuml
+
+skinparam classAttributeIconSize 0
+
+class ContextVk {
+FramebufferVk *mDrawFramebuffer
+}
+
+class FramebufferVk {
+- WindowSurfaceVk *mBackbuffer
+  syncState()
+  startNewRenderPass()
+  &amp;getRenderPassDesc()
+  getFramebuffer()
+  }
+
+class RenderPassDesc {
+    -DrawBufferMask mColorResolveAttachmentMask;
+    -DrawBufferMask mColorUnresolveAttachmentMask;
+    -FramebufferNonResolveAttachmentArray mAttachmentFormats;
+}
+
+
+class RenderTargetVk {
+  ImageHelper *mImage;
+  ImageViewHelper *mImageViews;
+}
+
+class FramebufferDesc {
+    updateColor()
+    updateDepthStencil()
+    attachmentCount()
+}
+
+ContextVk --&gt; RenderPassCache
+ContextVk ..&gt; FramebufferVk
+
+FramebufferVk *-- RenderPassDesc
+FramebufferVk *-- RenderTargetCache
+
+RenderTargetVk ..&gt; RenderTargetCache
+
+FramebufferVk *--  FramebufferDesc
+
+RenderPassCache ..&gt; RenderPassDesc
+
+@enduml
+</code></pre>
+<p><code>FramebufferDesc</code>, <code>RenderPassDesc</code> 用于最终生成 vk 原生对象的字段.</p>
+<p><code>RenderTargetVk</code> 实现前端的 FramebufferAttachmentRenderTarget接口, 为各附着的对象类</p>
+<h2 id="43-api">4.3. API 实现</h2>
+<h3 id="431">4.3.1. 创建阶段</h3>
+<ul>
+<li>创建默认 Framebuffer</li>
+</ul>
+<pre><code class="language-plantuml">@startuml
+
+APP -&gt; EGLWindow : initializeContext()
+EGLWindow -&gt; Display : makeCurrent()
+Display -&gt; Context : makeCurrent()
+Context -&gt; Context : setDefaultFramebuffer(\ndrawSurface = readSurface)
+Context -&gt; Surface : createDefaultFramebuffer()
+Surface -&gt; Framebuffer : Framebuffer()
+Framebuffer -&gt; SurfaceVk : createDefaultFramebuffer()
+SurfaceVk -&gt; FramebufferVk : CreateDefaultFBO()
+
+@enduml
+</code></pre>
+<p>&nbsp;</p>
+<p><strong>CreateDefaultFBO vs. CreateUserFBO</strong></p>
+<p>创建时, 二者区别仅为默认FBO会包含一个WindowSurfaceVk</p>
+<pre><code>// static
+FramebufferVk *FramebufferVk::CreateUserFBO(RendererVk *renderer, const gl::FramebufferState &amp;state)
+
+// static
+FramebufferVk *FramebufferVk::CreateDefaultFBO(RendererVk *renderer,
+                                               const gl::FramebufferState &amp;state,
+                                               WindowSurfaceVk *backbuffer)
+
+</code></pre>
+<p>&nbsp;</p>
+<ul>
+<li>创建一个帧缓冲对象</li>
+</ul>
+<pre><code class="language-C++">glGenFramebuffers(1, &amp;fbo);
+</code></pre>
+<pre><code class="language-plantuml">@startuml
+
+APP -&gt; Context :createFramebuffer()
+Context -&gt; FramebufferManager : createFramebuffer()
+Context -&gt; FramebufferManager : AllocateEmptyObject()
+
+@startuml
+</code></pre>
+<p>&nbsp;</p>
+<h3 id="432-resourcemanager">4.3.2. ResourceManager</h3>
+<p>ANGLE 的 gles 前端中, 使用一系列 ResourceManager 来关联注册的 id 与类的对应情况.其有两个功能: 创建新对象, 并用一个hash表把 id与对象存储起来以供查询.</p>
+<pre><code class="language-plantuml">@startuml
+
+hide method
+
+class ResourceManagerBase {
+HandleAllocator mHandleAllocator;
+}
+
+class TypedResourceManager {
+ResourceMap&lt;ResourceType, IDType&gt; mObjectMap;
+}
+
+class ShaderProgramManager {
+ResourceMap&lt;Shader, ShaderProgramID&gt; mShaders;
+ResourceMap&lt;Program, ShaderProgramID&gt; mPrograms;
+}
+
+TypedResourceManager --|&gt; ResourceManagerBase
+ShaderProgramManager --|&gt; ResourceManagerBase
+
+@enduml
+</code></pre>
+<p>TypedResourceManager 的子类: </p>
+<ul>
+<li>
+<p>BufferManager </p>
+</li>
+<li>
+<p>ShaderProgramManager </p>
+</li>
+<li>
+<p>TextureManager </p>
+</li>
+<li>
+<p>RenderbufferManager </p>
+</li>
+<li>
+<p>SamplerManager </p>
+</li>
+<li>
+<p>SyncManager </p>
+</li>
+<li>
+<p>FramebufferManager </p>
+</li>
+<li>
+<p>ProgramPipelineManager </p>
+</li>
+<li>
+<p>MemoryObjectManager </p>
+</li>
+<li>
+<p>SemaphoreManager </p>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>绑定为激活的(Active)帧缓冲</li>
+</ul>
+<pre><code class="language-C++">glBindFramebuffer(GL_FRAMEBUFFER, fbo);
+</code></pre>
+<p>GL_READ_FRAMEBUFFER 和 GL_DRAW_FRAMEBUFFER 分开处理, 若为GL_FRAMEBUFFER则两个分支都走一遍.</p>
+<p>先去FramebufferManager的Hash中查找, 无则创建.</p>
+<ul>
+<li>GL_READ_FRAMEBUFFER</li>
+</ul>
+<pre><code class="language-plantuml">@startuml
+EntryPoint -&gt; Context : bindReadFramebuffer
+box &quot;if(query(fbID) == null)&quot;
+Context -&gt; FramebufferManager : checkFramebufferAllocation (ShareGroup)
+
+FramebufferManager -&gt; FramebufferManager :  AllocateNewObject
+
+FramebufferManager -&gt; Framebuffer : new Framebuffer
+
+Framebuffer -&gt; FramebufferVk : CreateUserFBO
+end box
+Context -&gt; State : setReadFramebufferBinding(framebuffer)
+
+Context -&gt; ObserverBinding : bind(framebuffer)
+@enduml
+</code></pre>
+<p>Context 中 mDrawFramebufferObserverBinding: ObserverBinding.bind 为观察者绑定单一观察对象.</p>
+<ul>
+<li>GL_DRAW_FRAMEBUFFER (省略创建部分)</li>
+</ul>
+<pre><code class="language-plantuml">@startuml
+EntryPoint -&gt; Context: bindDrawFramebuffer
+
+Context -&gt; State : setDrawFramebufferBinding
+Context -&gt; ObserverBinding : bind(framebuffer)
+Context -&gt; StateCache : onDrawFramebufferChange( context ) \n 错误校验用
+
+@enduml
+</code></pre>
+<p>&nbsp;</p>
+<ul>
+<li>解绑FBO / 激活默认帧缓冲</li>
+</ul>
+<pre><code class="language-C++">glBindFramebuffer(GL_FRAMEBUFFER, 0);
+</code></pre>
+<p>同绑定FBO</p>
+<h3 id="433">4.3.3. 纹理附着</h3>
+<p>&nbsp;</p>
+<ul>
+<li>将纹理附加在帧缓冲上</li>
+</ul>
+<pre><code class="language-C++">glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texture, 0);
+</code></pre>
+<pre><code class="language-plantuml">@startuml
+EntryPoint -&gt; Context: framebufferTexture2D
+
+Context -&gt; State : getTargetFramebuffer (ShareGroup)
+
+Context -&gt; Framebuffer : setAttachment
+
+Framebuffer -&gt; FramebufferAttachment : attachment(FBAObject)
+
+Context -&gt; State : setObjectDirty()
+
+@enduml
+</code></pre>
+<p>绑定后, 会设置如下 dirty状态
+ - State : setObjectDirty()
+    - framebuffer.mDirtyBits.set(DIRTY_BIT_COLOR_ATTACHMENT_0) </p>
+<pre><code>- state.mDirtyObjects.set(DIRTY_OBJECT_READ_FRAMEBUFFER);
+
+- state.mDirtyObjects.set(DIRTY_OBJECT_DRAW_FRAMEBUFFER);
+
+- state.mDirtyObjects.set(DIRTY_OBJECT_DRAW_ATTACHMENTS);
+</code></pre>
+<p>&nbsp;</p>
+<h3 id="434-renderbuffer">4.3.4. Renderbuffer 附着</h3>
+<p>创建和绑定 Renderbuffer 对象的实现与 Framebuffer 类似</p>
+<pre><code>glGenRenderbuffers(1, &amp;rbo);
+
+glBindRenderbuffer(GL_RENDERBUFFER, rbo);
+</code></pre>
+<p>参考 <code>GenFramebuffer</code>, <code>BindFramebuffer</code></p>
+<ul>
+<li>创建一个深度和模板渲染缓冲对象</li>
+</ul>
+<pre><code>void glRenderbufferStorage (GLenum target, GLenum internalformat, GLsizei width, GLsizei height);
+
+void glRenderbufferStorageMultisample (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+</code></pre>
+<p>两个方法同一个实现, 前者<code>samples=0</code></p>
+<p>完成对 <code>RenderBufferVk</code> 对象内各参数的初始化, 及设置 <code>RenderTargetVk</code> </p>
+<pre><code class="language-plantuml">@startuml
+
+Context -&gt; Renderbuffer : setStorage()
+Renderbuffer -&gt; RenderbufferVk : setStorageImpl()
+RenderbufferVk -&gt; ImageHelper : init()
+RenderbufferVk -&gt; ImageViewHelper : init()
+RenderbufferVk -&gt; RenderTargetVk : init()
+@enduml
+</code></pre>
+<ul>
+<li>附加这个渲染缓冲对象到 FBO：</li>
+</ul>
+<pre><code>glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo);
+</code></pre>
+<pre><code class="language-plantuml">@startuml
+
+Context -&gt; RenderbufferManager : getRenderbuffer()
+Context -&gt; Framebuffer : setAttachmentMultisample(renderbuffer)
+
+@enduml
+</code></pre>
+<p>framebuffer.mDirtyBits.set(DIRTY_BIT_DEPTH_ATTACHMENT);</p>
+<p>state.mDirtyObjects.set(DIRTY_OBJECT_READ_FRAMEBUFFER);</p>
+<p>state.mDirtyObjects.set(DIRTY_OBJECT_DRAW_FRAMEBUFFER);</p>
+<p>state.mDirtyObjects.set(DIRTY_OBJECT_DRAW_ATTACHMENTS);</p>
+<p>&nbsp;</p>
+<h2 id="44">4.4. 状态同步</h2>
+<p>ANGLE 的前后端在执行可能会触发Flush的操作时, 会进行状态同步.</p>
+<p>常见的操作例如 Clear, Draw, CopyImage 等.</p>
+<p>例如在绑定一个FBO并执行 Clear的时候, 会进行如下同步:</p>
+<pre><code class="language-plantuml">@startuml
+
+Context -&gt; Context : syncState()
+
+Context -&gt; State : syncDirtyObjects()
+State -&gt; FramebufferVk : syncState()
+Context -&gt; ContextVk : syncDirtyBits()
+ContextVk -&gt; ContextVk : syncState() \n  case: DIRTY_BIT_DRAW_FRAMEBUFFER_BINDING
+
+ContextVk -&gt; GraphicsPipelineDesc : updatePipelineXXXX()
+
+@enduml
+</code></pre>
+<ul>
+<li>其中State : syncDirtyObjects 会依次调用注册的 dirty 对象的 syncState方法.</li>
+<li>ContextVk : syncState 的 DirtyBits 中, 包含一个 DRAW_FRAMEBUFFER_BINDING 表示发生过 Framebuffer 的重绑定, 需要更新Pipeline</li>
+</ul>
+<h3 id="441-framebuffervksyncstate">4.4.1. FramebufferVk.syncState()</h3>
+<ul>
+<li>
+<p>syncState</p>
+</li>
+<li>
+<p>RenderTargetCache.update // Read_Framebuffer</p>
+</li>
+<li>updateColorAttachment<ul>
+<li>RenderTargetCache.updateColorRenderTarget()</li>
+<li>RenderTargetCache.getColors()</li>
+<li>updateActiveColorMasks()</li>
+<li>contextVk-&gt;updateColorMasks()</li>
+<li>renderTarget-&gt;flushStagedUpdates()</li>
+<li>FramebufferDesc.updateColor()</li>
+<li>index++</li>
+<li>FramebufferDesc::updateColorResolve()</li>
+<li>index++</li>
+</ul>
+</li>
+<li>updateDepthStencilAttachment<ul>
+<li>RenderTargetCache.updateDepthStencilRenderTarget()</li>
+<li>FramebufferDesc.updateDepthStencil</li>
+<li>FramebufferDesc.updateColorResolve</li>
+<li>renderTarget-&gt;flushStagedUpdates</li>
+</ul>
+</li>
+<li>contextVk-&gt;updateColorMasks() //Draw_fb则更新pipeline的colormask</li>
+<li>contextVk-&gt;flushCommandsAndEndRenderPass() // ??? 为什么 sync 要 flush?</li>
+<li>updateRenderPassDesc();</li>
+<li>contextVk-&gt;onFramebufferChange(this);<ul>
+<li>GraphicsPipelineDesc-&gt;updateRenderPassDesc()</li>
+</ul>
+</li>
+</ul>
+<h3 id="442-framebuffer-pipeline">4.4.2. 切换 Framebuffer 时修改 Pipeline</h3>
+<p>(ContextVk::syncState)</p>
+<p>由于在 gles 切换 Framebuffer时, 一些与之绑定的设置也相应被切换. 例如 颜色附着的数量等.</p>
+<p>而在 vk 中, 除了要切换对应 RenderPass 和 Framebuffer, 部分设置还会反应到 Pipeline 上, </p>
+<p>本节列出在 angle 的 vk::ContextVk 进行状态同步(<code>syncState</code>) 的过程中, 对 Draw Framebuffer 绑定更新时涉及到的 Pipeline 属性的更新:</p>
+<ul>
+<li>
+<p><strong>VkPipelineViewportStateCreateInfo</strong></p>
+</li>
+<li>
+<p><strong>pViewports</strong>    </p>
+</li>
+<li>
+<p><strong>pScissors</strong></p>
+</li>
+<li>
+<p>来源: 由绘制过程中, glViewpoint 修改</p>
+</li>
+<li>
+<p><strong>VkPipelineRasterizationStateCreateInfo</strong></p>
+</li>
+<li>
+<p>光栅, 设置: 深度测试, 背面剔除, 裁剪测试, 例如: cullMode 表明剔除类型: 背面 / 正面 / 双面</p>
+</li>
+<li><strong>frontFace</strong>    =VK_FRONT_FACE_CLOCKWISE / VK_FRONT_FACE_COUNTER_CLOCKWISE  </li>
+<li>
+<p>指定顺时针顶点序是正面, 还是逆时针顶点序是正面</p>
+</li>
+<li>
+<p>来源: ANGLE 在绘制 默认FB和自定义FB时, 会对画面进行旋转, 按不同的顺序进行绘制.</p>
+</li>
+<li>
+<p>离屏: VK_FRONT_FACE_COUNTER_CLOCKWISE</p>
+</li>
+<li>
+<p>ANGLE 说明:</p>
+<ul>
+<li>由于Vulkan和GLES坐标系的不同，默认的帧缓冲区（源自交换链）呈上下颠倒显示。颠倒渲染具有与OpenGL相同的渲染方式。随后启用KHR_MAINTENANCE_1 扩展程序以允许否定视口。我们通过反转视口的高度并将Y增加高度来反转渲染到后缓冲区。因此，如果视口为（0，0，width，height），则视口变为（0，height，width，-height）。不幸的是，当我们开始这样做时，由于渲染现在是上下颠倒的，所以我们还需要调整一些位置。到目前为止受影响的地方：</li>
+<li>readPixels</li>
+<li>copyTexImage</li>
+<li>framebuffer blit</li>
+<li>generating mipmaps</li>
+<li>Point sprites tests</li>
+<li>texStorage</li>
+</ul>
+</li>
+<li>
+<p><strong>VkPipelineMultisampleStateCreateInfo</strong> </p>
+</li>
+<li>
+<p>多重采样: 组合多个不同多边形产生的片段的颜色, 来决定最终颜色的技术. (抗锯齿) </p>
+</li>
+<li>
+<p><strong>rasterizationSamples</strong>  : 采样数, 等于 VkImage.sample</p>
+</li>
+<li><strong>sampleShadingEnable</strong> : rasterizationSamples  &gt; 1</li>
+<li><strong>minSampleShading</strong>  : sampleShadingEnable 为 false 时, 值为1</li>
+<li>
+<p><strong>pSampleMask</strong>  : rasterizationSamples  &gt; 1 且 SamplerMaskEnable 时才会启用</p>
+</li>
+<li>
+<p>来源:  与 VkImage 中 samples 数发生变化时, 上述值对应改变. </p>
+</li>
+<li>
+<p><strong>VkPipelineDepthStencilStateCreateInfo</strong> </p>
+</li>
+<li>
+<p>深度测试, 模板测试</p>
+</li>
+<li><strong>depthTestEnable</strong> = static_cast<VkBool32>(mDepthStencilStateInfo.enable.<strong>depthTest</strong>);</li>
+<li><strong>depthWriteEnable</strong> = static_cast<VkBool32>(mDepthStencilStateInfo.enable.<strong>depthWrite</strong>);</li>
+<li><strong>stencilTestEnable</strong> =  static_cast<VkBool32>(mDepthStencilStateInfo.enable.<strong>stencilTest</strong>);</li>
+<li><strong>front.writeMask</strong></li>
+<li>
+<p><strong>back.writeMask</strong></p>
+</li>
+<li>
+<p>来源: gLEnable 启用 depth test等</p>
+</li>
+<li>
+<p><strong>VkPipelineColorBlendStateCreateInfo</strong></p>
+</li>
+<li>颜色混合: </li>
+<li>blendState.<strong>pAttachments</strong>  [</li>
+<li>​   VkPipelineColorBlendAttachmentState.  <strong>colorWriteMask</strong></li>
+<li>]</li>
+<li>来源:  Color Attachment 数量变动时, 需对应增删</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

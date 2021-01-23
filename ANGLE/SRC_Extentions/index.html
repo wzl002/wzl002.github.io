@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>SRC Extentions - Wesley的轨迹</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Wesley的轨迹</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../index.md" class="nav-link">首页</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../GLES/Framebuffer%20Object/" class="nav-link">OpenGL(ES)</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Vulkan <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Vulkan/0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/" class="dropdown-item">0.1. Vulkan 扩展</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#ifndef-angle_platform_featuresvk_h_" class="nav-link">ifndef ANGLE_PLATFORM_FEATURESVK_H_</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#define-angle_platform_featuresvk_h_" class="nav-link">define ANGLE_PLATFORM_FEATURESVK_H_</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#include-platformfeaturefeaturefeatureh" class="nav-link">include "platform/FeatureFeatureFeature.h"</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#include" class="nav-link">include </a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#endif-angle_platform_featuresvk_h_" class="nav-link">endif  // ANGLE_PLATFORM_FEATURESVK_H_</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<pre><code>// Provided by VK_VERSION_1_0
+typedef enum VkFormat {
+VK_FORMAT_UNDEFINED = 0,
+VK_FORMAT_R4G4_UNORM_PACK8 = 1,
+VK_FORMAT_R4G4B4A4_UNORM_PACK16 = 2,
+VK_FORMAT_B4G4R4A4_UNORM_PACK16 = 3,
+VK_FORMAT_R5G6B5_UNORM_PACK16 = 4,
+VK_FORMAT_B5G6R5_UNORM_PACK16 = 5,
+VK_FORMAT_R5G5B5A1_UNORM_PACK16 = 6,
+VK_FORMAT_B5G5R5A1_UNORM_PACK16 = 7,
+VK_FORMAT_A1R5G5B5_UNORM_PACK16 = 8,
+VK_FORMAT_R8_UNORM = 9,
+VK_FORMAT_R8_SNORM = 10,
+VK_FORMAT_R8_USCALED = 11,
+VK_FORMAT_R8_SSCALED = 12,
+VK_FORMAT_R8_UINT = 13,
+VK_FORMAT_R8_SINT = 14,
+VK_FORMAT_R8_SRGB = 15,
+VK_FORMAT_R8G8_UNORM = 16,
+VK_FORMAT_R8G8_SNORM = 17,
+VK_FORMAT_R8G8_USCALED = 18,
+VK_FORMAT_R8G8_SSCALED = 19,
+VK_FORMAT_R8G8_UINT = 20,
+VK_FORMAT_R8G8_SINT = 21,
+VK_FORMAT_R8G8_SRGB = 22,
+VK_FORMAT_R8G8B8_UNORM = 23,
+VK_FORMAT_R8G8B8_SNORM = 24,
+VK_FORMAT_R8G8B8_USCALED = 25,
+VK_FORMAT_R8G8B8_SSCALED = 26,
+VK_FORMAT_R8G8B8_UINT = 27,
+VK_FORMAT_R8G8B8_SINT = 28,
+VK_FORMAT_R8G8B8_SRGB = 29,
+VK_FORMAT_B8G8R8_UNORM = 30,
+VK_FORMAT_B8G8R8_SNORM = 31,
+VK_FORMAT_B8G8R8_USCALED = 32,
+VK_FORMAT_B8G8R8_SSCALED = 33,
+VK_FORMAT_B8G8R8_UINT = 34,
+VK_FORMAT_B8G8R8_SINT = 35,
+VK_FORMAT_B8G8R8_SRGB = 36,
+VK_FORMAT_R8G8B8A8_UNORM = 37,
+VK_FORMAT_R8G8B8A8_SNORM = 38,
+VK_FORMAT_R8G8B8A8_USCALED = 39,
+VK_FORMAT_R8G8B8A8_SSCALED = 40,
+VK_FORMAT_R8G8B8A8_UINT = 41,
+VK_FORMAT_R8G8B8A8_SINT = 42,
+VK_FORMAT_R8G8B8A8_SRGB = 43,
+VK_FORMAT_B8G8R8A8_UNORM = 44,
+VK_FORMAT_B8G8R8A8_SNORM = 45,
+VK_FORMAT_B8G8R8A8_USCALED = 46,
+VK_FORMAT_B8G8R8A8_SSCALED = 47,
+VK_FORMAT_B8G8R8A8_UINT = 48,
+VK_FORMAT_B8G8R8A8_SINT = 49,
+VK_FORMAT_B8G8R8A8_SRGB = 50,
+VK_FORMAT_A8B8G8R8_UNORM_PACK32 = 51,
+VK_FORMAT_A8B8G8R8_SNORM_PACK32 = 52,
+VK_FORMAT_A8B8G8R8_USCALED_PACK32 = 53,
+VK_FORMAT_A8B8G8R8_SSCALED_PACK32 = 54,
+VK_FORMAT_A8B8G8R8_UINT_PACK32 = 55,
+VK_FORMAT_A8B8G8R8_SINT_PACK32 = 56,
+VK_FORMAT_A8B8G8R8_SRGB_PACK32 = 57,
+VK_FORMAT_A2R10G10B10_UNORM_PACK32 = 58,
+VK_FORMAT_A2R10G10B10_SNORM_PACK32 = 59,
+VK_FORMAT_A2R10G10B10_USCALED_PACK32 = 60,
+VK_FORMAT_A2R10G10B10_SSCALED_PACK32 = 61,
+VK_FORMAT_A2R10G10B10_UINT_PACK32 = 62,
+VK_FORMAT_A2R10G10B10_SINT_PACK32 = 63,
+VK_FORMAT_A2B10G10R10_UNORM_PACK32 = 64,
+VK_FORMAT_A2B10G10R10_SNORM_PACK32 = 65,
+VK_FORMAT_A2B10G10R10_USCALED_PACK32 = 66,
+VK_FORMAT_A2B10G10R10_SSCALED_PACK32 = 67,
+VK_FORMAT_A2B10G10R10_UINT_PACK32 = 68,
+VK_FORMAT_A2B10G10R10_SINT_PACK32 = 69,
+VK_FORMAT_R16_UNORM = 70,
+VK_FORMAT_R16_SNORM = 71,
+VK_FORMAT_R16_USCALED = 72,
+VK_FORMAT_R16_SSCALED = 73,
+VK_FORMAT_R16_UINT = 74,
+VK_FORMAT_R16_SINT = 75,
+VK_FORMAT_R16_SFLOAT = 76,
+VK_FORMAT_R16G16_UNORM = 77,
+VK_FORMAT_R16G16_SNORM = 78,
+VK_FORMAT_R16G16_USCALED = 79,
+VK_FORMAT_R16G16_SSCALED = 80,
+VK_FORMAT_R16G16_UINT = 81,
+VK_FORMAT_R16G16_SINT = 82,
+VK_FORMAT_R16G16_SFLOAT = 83,
+VK_FORMAT_R16G16B16_UNORM = 84,
+VK_FORMAT_R16G16B16_SNORM = 85,
+VK_FORMAT_R16G16B16_USCALED = 86,
+VK_FORMAT_R16G16B16_SSCALED = 87,
+VK_FORMAT_R16G16B16_UINT = 88,
+VK_FORMAT_R16G16B16_SINT = 89,
+VK_FORMAT_R16G16B16_SFLOAT = 90,
+VK_FORMAT_R16G16B16A16_UNORM = 91,
+VK_FORMAT_R16G16B16A16_SNORM = 92,
+VK_FORMAT_R16G16B16A16_USCALED = 93,
+VK_FORMAT_R16G16B16A16_SSCALED = 94,
+VK_FORMAT_R16G16B16A16_UINT = 95,
+VK_FORMAT_R16G16B16A16_SINT = 96,
+VK_FORMAT_R16G16B16A16_SFLOAT = 97,
+VK_FORMAT_R32_UINT = 98,
+VK_FORMAT_R32_SINT = 99,
+VK_FORMAT_R32_SFLOAT = 100,
+VK_FORMAT_R32G32_UINT = 101,
+VK_FORMAT_R32G32_SINT = 102,
+VK_FORMAT_R32G32_SFLOAT = 103,
+VK_FORMAT_R32G32B32_UINT = 104,
+VK_FORMAT_R32G32B32_SINT = 105,
+VK_FORMAT_R32G32B32_SFLOAT = 106,
+VK_FORMAT_R32G32B32A32_UINT = 107,
+VK_FORMAT_R32G32B32A32_SINT = 108,
+VK_FORMAT_R32G32B32A32_SFLOAT = 109,
+VK_FORMAT_R64_UINT = 110,
+VK_FORMAT_R64_SINT = 111,
+VK_FORMAT_R64_SFLOAT = 112,
+VK_FORMAT_R64G64_UINT = 113,
+VK_FORMAT_R64G64_SINT = 114,
+VK_FORMAT_R64G64_SFLOAT = 115,
+VK_FORMAT_R64G64B64_UINT = 116,
+VK_FORMAT_R64G64B64_SINT = 117,
+VK_FORMAT_R64G64B64_SFLOAT = 118,
+VK_FORMAT_R64G64B64A64_UINT = 119,
+VK_FORMAT_R64G64B64A64_SINT = 120,
+VK_FORMAT_R64G64B64A64_SFLOAT = 121,
+VK_FORMAT_B10G11R11_UFLOAT_PACK32 = 122,
+VK_FORMAT_E5B9G9R9_UFLOAT_PACK32 = 123,
+VK_FORMAT_D16_UNORM = 124,
+VK_FORMAT_X8_D24_UNORM_PACK32 = 125,
+VK_FORMAT_D32_SFLOAT = 126,
+VK_FORMAT_S8_UINT = 127,
+VK_FORMAT_D16_UNORM_S8_UINT = 128,
+VK_FORMAT_D24_UNORM_S8_UINT = 129,
+VK_FORMAT_D32_SFLOAT_S8_UINT = 130,
+VK_FORMAT_BC1_RGB_UNORM_BLOCK = 131,
+VK_FORMAT_BC1_RGB_SRGB_BLOCK = 132,
+VK_FORMAT_BC1_RGBA_UNORM_BLOCK = 133,
+VK_FORMAT_BC1_RGBA_SRGB_BLOCK = 134,
+VK_FORMAT_BC2_UNORM_BLOCK = 135,
+VK_FORMAT_BC2_SRGB_BLOCK = 136,
+VK_FORMAT_BC3_UNORM_BLOCK = 137,
+VK_FORMAT_BC3_SRGB_BLOCK = 138,
+VK_FORMAT_BC4_UNORM_BLOCK = 139,
+VK_FORMAT_BC4_SNORM_BLOCK = 140,
+VK_FORMAT_BC5_UNORM_BLOCK = 141,
+VK_FORMAT_BC5_SNORM_BLOCK = 142,
+VK_FORMAT_BC6H_UFLOAT_BLOCK = 143,
+VK_FORMAT_BC6H_SFLOAT_BLOCK = 144,
+VK_FORMAT_BC7_UNORM_BLOCK = 145,
+VK_FORMAT_BC7_SRGB_BLOCK = 146,
+VK_FORMAT_ETC2_R8G8B8_UNORM_BLOCK = 147,
+VK_FORMAT_ETC2_R8G8B8_SRGB_BLOCK = 148,
+VK_FORMAT_ETC2_R8G8B8A1_UNORM_BLOCK = 149,
+VK_FORMAT_ETC2_R8G8B8A1_SRGB_BLOCK = 150,
+VK_FORMAT_ETC2_R8G8B8A8_UNORM_BLOCK = 151,
+VK_FORMAT_ETC2_R8G8B8A8_SRGB_BLOCK = 152,
+VK_FORMAT_EAC_R11_UNORM_BLOCK = 153,
+VK_FORMAT_EAC_R11_SNORM_BLOCK = 154,
+VK_FORMAT_EAC_R11G11_UNORM_BLOCK = 155,
+VK_FORMAT_EAC_R11G11_SNORM_BLOCK = 156,
+VK_FORMAT_ASTC_4x4_UNORM_BLOCK = 157,
+VK_FORMAT_ASTC_4x4_SRGB_BLOCK = 158,
+VK_FORMAT_ASTC_5x4_UNORM_BLOCK = 159,
+VK_FORMAT_ASTC_5x4_SRGB_BLOCK = 160,
+VK_FORMAT_ASTC_5x5_UNORM_BLOCK = 161,
+VK_FORMAT_ASTC_5x5_SRGB_BLOCK = 162,
+VK_FORMAT_ASTC_6x5_UNORM_BLOCK = 163,
+VK_FORMAT_ASTC_6x5_SRGB_BLOCK = 164,
+VK_FORMAT_ASTC_6x6_UNORM_BLOCK = 165,
+VK_FORMAT_ASTC_6x6_SRGB_BLOCK = 166,
+VK_FORMAT_ASTC_8x5_UNORM_BLOCK = 167,
+VK_FORMAT_ASTC_8x5_SRGB_BLOCK = 168,
+VK_FORMAT_ASTC_8x6_UNORM_BLOCK = 169,
+VK_FORMAT_ASTC_8x6_SRGB_BLOCK = 170,
+VK_FORMAT_ASTC_8x8_UNORM_BLOCK = 171,
+VK_FORMAT_ASTC_8x8_SRGB_BLOCK = 172,
+VK_FORMAT_ASTC_10x5_UNORM_BLOCK = 173,
+VK_FORMAT_ASTC_10x5_SRGB_BLOCK = 174,
+VK_FORMAT_ASTC_10x6_UNORM_BLOCK = 175,
+VK_FORMAT_ASTC_10x6_SRGB_BLOCK = 176,
+VK_FORMAT_ASTC_10x8_UNORM_BLOCK = 177,
+VK_FORMAT_ASTC_10x8_SRGB_BLOCK = 178,
+VK_FORMAT_ASTC_10x10_UNORM_BLOCK = 179,
+VK_FORMAT_ASTC_10x10_SRGB_BLOCK = 180,
+VK_FORMAT_ASTC_12x10_UNORM_BLOCK = 181,
+VK_FORMAT_ASTC_12x10_SRGB_BLOCK = 182,
+VK_FORMAT_ASTC_12x12_UNORM_BLOCK = 183,
+VK_FORMAT_ASTC_12x12_SRGB_BLOCK = 184,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_G8B8G8R8_422_UNORM = 1000156000,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_B8G8R8G8_422_UNORM = 1000156001,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM = 1000156002,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_G8_B8R8_2PLANE_420_UNORM = 1000156003,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_G8_B8_R8_3PLANE_422_UNORM = 1000156004,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_G8_B8R8_2PLANE_422_UNORM = 1000156005,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_G8_B8_R8_3PLANE_444_UNORM = 1000156006,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_R10X6_UNORM_PACK16 = 1000156007,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_R10X6G10X6_UNORM_2PACK16 = 1000156008,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_R10X6G10X6B10X6A10X6_UNORM_4PACK16 = 1000156009,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_G10X6B10X6G10X6R10X6_422_UNORM_4PACK16 = 1000156010,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_B10X6G10X6R10X6G10X6_422_UNORM_4PACK16 = 1000156011,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_420_UNORM_3PACK16 = 1000156012,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_G10X6_B10X6R10X6_2PLANE_420_UNORM_3PACK16 = 1000156013,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_422_UNORM_3PACK16 = 1000156014,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 = 1000156015,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_444_UNORM_3PACK16 = 1000156016,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_R12X4_UNORM_PACK16 = 1000156017,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_R12X4G12X4_UNORM_2PACK16 = 1000156018,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_R12X4G12X4B12X4A12X4_UNORM_4PACK16 = 1000156019,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_G12X4B12X4G12X4R12X4_422_UNORM_4PACK16 = 1000156020,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_B12X4G12X4R12X4G12X4_422_UNORM_4PACK16 = 1000156021,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_420_UNORM_3PACK16 = 1000156022,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_G12X4_B12X4R12X4_2PLANE_420_UNORM_3PACK16 = 1000156023,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_422_UNORM_3PACK16 = 1000156024,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_G12X4_B12X4R12X4_2PLANE_422_UNORM_3PACK16 = 1000156025,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_444_UNORM_3PACK16 = 1000156026,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_G16B16G16R16_422_UNORM = 1000156027,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_B16G16R16G16_422_UNORM = 1000156028,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_G16_B16_R16_3PLANE_420_UNORM = 1000156029,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_G16_B16R16_2PLANE_420_UNORM = 1000156030,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_G16_B16_R16_3PLANE_422_UNORM = 1000156031,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_G16_B16R16_2PLANE_422_UNORM = 1000156032,
+  // Provided by VK_VERSION_1_1
+VK_FORMAT_G16_B16_R16_3PLANE_444_UNORM = 1000156033,
+  // Provided by VK_IMG_format_pvrtc
+VK_FORMAT_PVRTC1_2BPP_UNORM_BLOCK_IMG = 1000054000,
+  // Provided by VK_IMG_format_pvrtc
+VK_FORMAT_PVRTC1_4BPP_UNORM_BLOCK_IMG = 1000054001,
+  // Provided by VK_IMG_format_pvrtc
+VK_FORMAT_PVRTC2_2BPP_UNORM_BLOCK_IMG = 1000054002,
+  // Provided by VK_IMG_format_pvrtc
+VK_FORMAT_PVRTC2_4BPP_UNORM_BLOCK_IMG = 1000054003,
+  // Provided by VK_IMG_format_pvrtc
+VK_FORMAT_PVRTC1_2BPP_SRGB_BLOCK_IMG = 1000054004,
+  // Provided by VK_IMG_format_pvrtc
+VK_FORMAT_PVRTC1_4BPP_SRGB_BLOCK_IMG = 1000054005,
+  // Provided by VK_IMG_format_pvrtc
+VK_FORMAT_PVRTC2_2BPP_SRGB_BLOCK_IMG = 1000054006,
+  // Provided by VK_IMG_format_pvrtc
+VK_FORMAT_PVRTC2_4BPP_SRGB_BLOCK_IMG = 1000054007,
+  // Provided by VK_EXT_texture_compression_astc_hdr
+VK_FORMAT_ASTC_4x4_SFLOAT_BLOCK_EXT = 1000066000,
+  // Provided by VK_EXT_texture_compression_astc_hdr
+VK_FORMAT_ASTC_5x4_SFLOAT_BLOCK_EXT = 1000066001,
+  // Provided by VK_EXT_texture_compression_astc_hdr
+VK_FORMAT_ASTC_5x5_SFLOAT_BLOCK_EXT = 1000066002,
+  // Provided by VK_EXT_texture_compression_astc_hdr
+VK_FORMAT_ASTC_6x5_SFLOAT_BLOCK_EXT = 1000066003,
+  // Provided by VK_EXT_texture_compression_astc_hdr
+VK_FORMAT_ASTC_6x6_SFLOAT_BLOCK_EXT = 1000066004,
+  // Provided by VK_EXT_texture_compression_astc_hdr
+VK_FORMAT_ASTC_8x5_SFLOAT_BLOCK_EXT = 1000066005,
+  // Provided by VK_EXT_texture_compression_astc_hdr
+VK_FORMAT_ASTC_8x6_SFLOAT_BLOCK_EXT = 1000066006,
+  // Provided by VK_EXT_texture_compression_astc_hdr
+VK_FORMAT_ASTC_8x8_SFLOAT_BLOCK_EXT = 1000066007,
+  // Provided by VK_EXT_texture_compression_astc_hdr
+VK_FORMAT_ASTC_10x5_SFLOAT_BLOCK_EXT = 1000066008,
+  // Provided by VK_EXT_texture_compression_astc_hdr
+VK_FORMAT_ASTC_10x6_SFLOAT_BLOCK_EXT = 1000066009,
+  // Provided by VK_EXT_texture_compression_astc_hdr
+VK_FORMAT_ASTC_10x8_SFLOAT_BLOCK_EXT = 1000066010,
+  // Provided by VK_EXT_texture_compression_astc_hdr
+VK_FORMAT_ASTC_10x10_SFLOAT_BLOCK_EXT = 1000066011,
+  // Provided by VK_EXT_texture_compression_astc_hdr
+VK_FORMAT_ASTC_12x10_SFLOAT_BLOCK_EXT = 1000066012,
+  // Provided by VK_EXT_texture_compression_astc_hdr
+VK_FORMAT_ASTC_12x12_SFLOAT_BLOCK_EXT = 1000066013,
+  // Provided by VK_EXT_4444_formats
+VK_FORMAT_A4R4G4B4_UNORM_PACK16_EXT = 1000340000,
+  // Provided by VK_EXT_4444_formats
+VK_FORMAT_A4B4G4R4_UNORM_PACK16_EXT = 1000340001,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_G8B8G8R8_422_UNORM_KHR = VK_FORMAT_G8B8G8R8_422_UNORM,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_B8G8R8G8_422_UNORM_KHR = VK_FORMAT_B8G8R8G8_422_UNORM,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM_KHR = VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_G8_B8R8_2PLANE_420_UNORM_KHR = VK_FORMAT_G8_B8R8_2PLANE_420_UNORM,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_G8_B8_R8_3PLANE_422_UNORM_KHR = VK_FORMAT_G8_B8_R8_3PLANE_422_UNORM,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_G8_B8R8_2PLANE_422_UNORM_KHR = VK_FORMAT_G8_B8R8_2PLANE_422_UNORM,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_G8_B8_R8_3PLANE_444_UNORM_KHR = VK_FORMAT_G8_B8_R8_3PLANE_444_UNORM,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_R10X6_UNORM_PACK16_KHR = VK_FORMAT_R10X6_UNORM_PACK16,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_R10X6G10X6_UNORM_2PACK16_KHR = VK_FORMAT_R10X6G10X6_UNORM_2PACK16,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_R10X6G10X6B10X6A10X6_UNORM_4PACK16_KHR = VK_FORMAT_R10X6G10X6B10X6A10X6_UNORM_4PACK16,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_G10X6B10X6G10X6R10X6_422_UNORM_4PACK16_KHR = VK_FORMAT_G10X6B10X6G10X6R10X6_422_UNORM_4PACK16,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_B10X6G10X6R10X6G10X6_422_UNORM_4PACK16_KHR = VK_FORMAT_B10X6G10X6R10X6G10X6_422_UNORM_4PACK16,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_420_UNORM_3PACK16_KHR = VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_420_UNORM_3PACK16,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_G10X6_B10X6R10X6_2PLANE_420_UNORM_3PACK16_KHR = VK_FORMAT_G10X6_B10X6R10X6_2PLANE_420_UNORM_3PACK16,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_422_UNORM_3PACK16_KHR = VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_422_UNORM_3PACK16,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16_KHR = VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_444_UNORM_3PACK16_KHR = VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_444_UNORM_3PACK16,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_R12X4_UNORM_PACK16_KHR = VK_FORMAT_R12X4_UNORM_PACK16,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_R12X4G12X4_UNORM_2PACK16_KHR = VK_FORMAT_R12X4G12X4_UNORM_2PACK16,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_R12X4G12X4B12X4A12X4_UNORM_4PACK16_KHR = VK_FORMAT_R12X4G12X4B12X4A12X4_UNORM_4PACK16,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_G12X4B12X4G12X4R12X4_422_UNORM_4PACK16_KHR = VK_FORMAT_G12X4B12X4G12X4R12X4_422_UNORM_4PACK16,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_B12X4G12X4R12X4G12X4_422_UNORM_4PACK16_KHR = VK_FORMAT_B12X4G12X4R12X4G12X4_422_UNORM_4PACK16,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_420_UNORM_3PACK16_KHR = VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_420_UNORM_3PACK16,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_G12X4_B12X4R12X4_2PLANE_420_UNORM_3PACK16_KHR = VK_FORMAT_G12X4_B12X4R12X4_2PLANE_420_UNORM_3PACK16,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_422_UNORM_3PACK16_KHR = VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_422_UNORM_3PACK16,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_G12X4_B12X4R12X4_2PLANE_422_UNORM_3PACK16_KHR = VK_FORMAT_G12X4_B12X4R12X4_2PLANE_422_UNORM_3PACK16,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_444_UNORM_3PACK16_KHR = VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_444_UNORM_3PACK16,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_G16B16G16R16_422_UNORM_KHR = VK_FORMAT_G16B16G16R16_422_UNORM,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_B16G16R16G16_422_UNORM_KHR = VK_FORMAT_B16G16R16G16_422_UNORM,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_G16_B16_R16_3PLANE_420_UNORM_KHR = VK_FORMAT_G16_B16_R16_3PLANE_420_UNORM,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_G16_B16R16_2PLANE_420_UNORM_KHR = VK_FORMAT_G16_B16R16_2PLANE_420_UNORM,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_G16_B16_R16_3PLANE_422_UNORM_KHR = VK_FORMAT_G16_B16_R16_3PLANE_422_UNORM,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_G16_B16R16_2PLANE_422_UNORM_KHR = VK_FORMAT_G16_B16R16_2PLANE_422_UNORM,
+  // Provided by VK_KHR_sampler_ycbcr_conversion
+VK_FORMAT_G16_B16_R16_3PLANE_444_UNORM_KHR = VK_FORMAT_G16_B16_R16_3PLANE_444_UNORM,
+} VkFormat;
+</code></pre>
+<p>//
+// Copyright 2018 The ANGLE Project Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+//
+// FeaturesVk.h: Optional features for the Vulkan renderer.
+//</p>
+<h1 id="ifndef-angle_platform_featuresvk_h_">ifndef ANGLE_PLATFORM_FEATURESVK_H_</h1>
+<h1 id="define-angle_platform_featuresvk_h_">define ANGLE_PLATFORM_FEATURESVK_H_</h1>
+<h1 id="include-platformfeaturefeaturefeatureh">include "platform/FeatureFeatureFeature.h"</h1>
+<h1 id="include">include <array></h1>
+<p>namespace angle
+{</p>
+<p>struct FeaturesVk : FeatureSetBase
+{
+    FeaturesVk();
+    ~FeaturesVk();</p>
+<pre><code>// Line segment rasterization must follow OpenGL rules. This means using an algorithm similar
+// to Bresenham's. Vulkan uses a different algorithm. This feature enables the use of pixel
+// shader patching to implement OpenGL basic line rasterization rules. This feature will
+// normally always be enabled. Exposing it as an option enables performance testing.
+FeatureFeatureFeature basicGLLineRasterization = {
+    "basicGLLineRasterization", FeatureCategory::VulkanFeatures,
+    "Enable the use of pixel shader patching to implement OpenGL basic line "
+    "rasterization rules",
+    &amp;members};
+
+// If the VK_EXT_line_rasterization extension is available we'll use it to get
+// Bresenham line rasterization.
+FeatureFeatureFeature bresenhamLineRasterization = {
+    "bresenhamLineRasterization", FeatureCategory::VulkanFeatures,
+    "Enable Bresenham line rasterization via VK_EXT_line_rasterization extension", &amp;members};
+
+// If the VK_EXT_provoking_vertex extension is available, we'll use it to set
+// the provoking vertex mode
+FeatureFeatureFeature provokingVertex = {"provokingVertex", FeatureCategory::VulkanFeatures,
+                           "Enable provoking vertex mode via VK_EXT_provoking_vertex extension",
+                           &amp;members};
+
+// Add an extra copy region when using vkCmdCopyBuffer as the Windows Intel driver seems
+// to have a bug where the last region is ignored.
+FeatureFeatureFeature extraCopyBufferRegion = {
+    "extraCopyBufferRegion", FeatureCategory::VulkanWorkarounds,
+    "Some drivers seem to have a bug where the last copy region in vkCmdCopyBuffer is ignored",
+    &amp;members};
+
+// This flag is added for the sole purpose of end2end tests, to test the correctness
+// of various algorithms when a fallback format is used, such as using a packed format to
+// emulate a depth- or stencil-only format.
+FeatureFeatureFeature forceFallbackFormat = {"forceFallbackFormat", FeatureCategory::VulkanWorkarounds,
+                               "Force a fallback format for angle_end2end_tests", &amp;members};
+
+// On some NVIDIA drivers the point size range reported from the API is inconsistent with the
+// actual behavior. Clamp the point size to the value from the API to fix this.
+// Tracked in http://anglebug.com/2970.
+FeatureFeatureFeature clampPointSize = {
+    "clampPointSize", FeatureCategory::VulkanWorkarounds,
+    "The point size range reported from the API is inconsistent with the actual behavior",
+    &amp;members, "http://anglebug.com/2970"};
+
+// On some NVIDIA drivers the depth value is not clamped to [0,1] for floating point depth
+// buffers. This is NVIDIA bug 3171019, see http://anglebug.com/3970 for details.
+FeatureFeatureFeature depthClamping = {
+    "depth_clamping", FeatureCategory::VulkanWorkarounds,
+    "The depth value is not clamped to [0,1] for floating point depth buffers.", &amp;members,
+    "http://anglebug.com/3970"};
+
+// On some android devices, the memory barrier between the compute shader that converts vertex
+// attributes and the vertex shader that reads from it is ineffective.  Only known workaround is
+// to perform a flush after the conversion.  http://anglebug.com/3016
+FeatureFeatureFeature flushAfterVertexConversion = {
+    "flushAfterVertexConversion", FeatureCategory::VulkanWorkarounds,
+    "The memory barrier between the compute shader that converts vertex attributes and the "
+    "vertex shader that reads from it is ineffective",
+    &amp;members, "http://anglebug.com/3016"};
+
+FeatureFeatureFeature supportsRenderpass2 = {"supportsRenderpass2", FeatureCategory::VulkanFeatures,
+                               "VkDevice supports the VK_KHR_create_renderpass2 extension",
+                               &amp;members};
+
+// Whether the VkDevice supports the VK_KHR_incremental_present extension, on which the
+// EGL_KHR_swap_buffers_with_damage extension can be layered.
+FeatureFeatureFeature supportsIncrementalPresent = {
+    "supportsIncrementalPresent", FeatureCategory::VulkanFeatures,
+    "VkDevice supports the VK_KHR_incremental_present extension", &amp;members};
+
+// Whether texture copies on cube map targets should be done on GPU.  This is a workaround for
+// Intel drivers on windows that have an issue with creating single-layer views on cube map
+// textures.
+FeatureFeatureFeature forceCPUPathForCubeMapCopy = {
+    "forceCPUPathForCubeMapCopy", FeatureCategory::VulkanWorkarounds,
+    "Some drivers have an issue with creating single-layer views on cube map textures",
+    &amp;members};
+
+// Whether the VkDevice supports the VK_ANDROID_external_memory_android_hardware_buffer
+// extension, on which the EGL_ANDROID_image_native_buffer extension can be layered.
+FeatureFeatureFeature supportsAndroidHardwareBuffer = {
+    "supportsAndroidHardwareBuffer", FeatureCategory::VulkanFeatures,
+    "VkDevice supports the VK_ANDROID_external_memory_android_hardware_buffer extension",
+    &amp;members};
+
+// Whether the VkDevice supports the VK_GGP_frame_token extension, on which
+// the EGL_ANGLE_swap_with_frame_token extension can be layered.
+FeatureFeatureFeature supportsGGPFrameToken = {"supportsGGPFrameToken", FeatureCategory::VulkanFeatures,
+                                 "VkDevice supports the VK_GGP_frame_token extension",
+                                 &amp;members};
+
+// Whether the VkDevice supports the VK_KHR_external_memory_fd extension, on which the
+// GL_EXT_memory_object_fd extension can be layered.
+FeatureFeatureFeature supportsExternalMemoryFd = {"supportsExternalMemoryFd", FeatureCategory::VulkanFeatures,
+                                    "VkDevice supports the VK_KHR_external_memory_fd extension",
+                                    &amp;members};
+
+// Whether the VkDevice supports the VK_FUCHSIA_external_memory
+// extension, on which the GL_ANGLE_memory_object_fuchsia extension can be layered.
+FeatureFeatureFeature supportsExternalMemoryFuchsia = {
+    "supportsExternalMemoryFuchsia", FeatureCategory::VulkanFeatures,
+    "VkDevice supports the VK_FUCHSIA_external_memory extension", &amp;members};
+
+FeatureFeatureFeature supportsFilteringPrecision = {
+    "supportsFilteringPrecision", FeatureCategory::VulkanFeatures,
+    "VkDevice supports the VK_GOOGLE_sampler_filtering_precision extension", &amp;members};
+
+// Whether the VkDevice supports the VK_KHR_external_fence_capabilities extension.
+FeatureFeatureFeature supportsExternalFenceCapabilities = {
+    "supportsExternalFenceCapabilities", FeatureCategory::VulkanFeatures,
+    "VkDevice supports the VK_KHR_external_fence_capabilities extension", &amp;members};
+
+// Whether the VkDevice supports the VK_KHR_external_semaphore_capabilities extension.
+FeatureFeatureFeature supportsExternalSemaphoreCapabilities = {
+    "supportsExternalSemaphoreCapabilities", FeatureCategory::VulkanFeatures,
+    "VkDevice supports the VK_KHR_external_semaphore_capabilities extension", &amp;members};
+
+// Whether the VkDevice supports the VK_KHR_external_semaphore_fd extension, on which the
+// GL_EXT_semaphore_fd extension can be layered.
+FeatureFeatureFeature supportsExternalSemaphoreFd = {
+    "supportsExternalSemaphoreFd", FeatureCategory::VulkanFeatures,
+    "VkDevice supports the VK_KHR_external_semaphore_fd extension", &amp;members};
+
+// Whether the VkDevice supports the VK_FUCHSIA_external_semaphore
+// extension, on which the GL_ANGLE_semaphore_fuchsia extension can be layered.
+angle::Feature supportsExternalSemaphoreFuchsia = {
+    "supportsExternalSemaphoreFuchsia", FeatureCategory::VulkanFeatures,
+    "VkDevice supports the VK_FUCHSIA_external_semaphore extension", &amp;members};
+
+// Whether the VkDevice supports the VK_KHR_external_fence_fd extension, on which the
+// EGL_ANDROID_native_fence extension can be layered.
+FeatureFeatureFeature supportsExternalFenceFd = {"supportsExternalFenceFd", FeatureCategory::VulkanFeatures,
+                                   "VkDevice supports the VK_KHR_external_fence_fd extension",
+                                   &amp;members, "http://anglebug.com/2517"};
+
+// Whether the VkDevice can support EGL_ANDROID_native_fence_sync extension.
+FeatureFeatureFeature supportsAndroidNativeFenceSync = {
+    "supportsAndroidNativeFenceSync", FeatureCategory::VulkanFeatures,
+    "VkDevice supports the EGL_ANDROID_native_fence_sync extension", &amp;members,
+    "http://anglebug.com/2517"};
+
+// Whether the VkDevice can support imageCubeArray feature properly.
+FeatureFeatureFeature supportsImageCubeArray = {"supportsImageCubeArray", FeatureCategory::VulkanFeatures,
+                                  "VkDevice supports the imageCubeArray feature properly",
+                                  &amp;members, "http://anglebug.com/3584"};
+
+// Whether the VkDevice supports the VK_EXT_shader_stencil_export extension, which is used to
+// perform multisampled resolve of stencil buffer.  A multi-step workaround is used instead if
+// this extension is not available.
+FeatureFeatureFeature supportsShaderStencilExport = {
+    "supportsShaderStencilExport", FeatureCategory::VulkanFeatures,
+    "VkDevice supports the VK_EXT_shader_stencil_export extension", &amp;members};
+
+// Whether the VkDevice supports the VK_KHR_sampler_ycbcr_conversion extension, which is needed
+// to support Ycbcr conversion with external images.
+FeatureFeatureFeature supportsYUVSamplerConversion = {
+    "supportsYUVSamplerConversion", FeatureCategory::VulkanFeatures,
+    "VkDevice supports the VK_KHR_sampler_ycbcr_conversion extension", &amp;members};
+
+// Where VK_EXT_transform_feedback is not support, an emulation path is used.
+// http://anglebug.com/3205
+FeatureFeatureFeature emulateTransformFeedback = {
+    "emulateTransformFeedback", FeatureCategory::VulkanFeatures,
+    "Emulate transform feedback as the VK_EXT_transform_feedback is not present.", &amp;members,
+    "http://anglebug.com/3205"};
+
+// Where VK_EXT_transform_feedback is supported, it's preferred over an emulation path.
+// http://anglebug.com/3206
+FeatureFeatureFeature supportsTransformFeedbackExtension = {
+    "supportsTransformFeedbackExtension", FeatureCategory::VulkanFeatures,
+    "Transform feedback uses the VK_EXT_transform_feedback extension.", &amp;members,
+    "http://anglebug.com/3206"};
+
+// Whether the VkDevice supports the VK_EXT_index_type_uint8 extension
+// http://anglebug.com/4405
+FeatureFeatureFeature supportsIndexTypeUint8 = {"supportsIndexTypeUint8", FeatureCategory::VulkanFeatures,
+                                  "VkDevice supports the VK_EXT_index_type_uint8 extension",
+                                  &amp;members, "http://anglebug.com/4405"};
+
+// Whether the VkDevice supports the VK_KHR_depth_stencil_resolve extension with the
+// independentResolveNone feature.
+// http://anglebug.com/4836
+FeatureFeatureFeature supportsDepthStencilResolve = {"supportsDepthStencilResolve",
+                                       FeatureCategory::VulkanFeatures,
+                                       "VkDevice supports the VK_KHR_depth_stencil_resolve "
+                                       "extension with the independentResolveNone feature",
+                                       &amp;members, "http://anglebug.com/4836"};
+
+// VK_PRESENT_MODE_FIFO_KHR causes random timeouts on Linux Intel. http://anglebug.com/3153
+FeatureFeatureFeature disableFifoPresentMode = {"disableFifoPresentMode", FeatureCategory::VulkanWorkarounds,
+                                  "VK_PRESENT_MODE_FIFO_KHR causes random timeouts", &amp;members,
+                                  "http://anglebug.com/3153"};
+
+// On Qualcomm, gaps in bound descriptor set indices causes the post-gap sets to misbehave.
+// For example, binding only descriptor set 3 results in zero being read from a uniform buffer
+// object within that set.  This flag results in empty descriptor sets being bound for any
+// unused descriptor set to work around this issue.  http://anglebug.com/2727
+FeatureFeatureFeature bindEmptyForUnusedDescriptorSets = {
+    "bindEmptyForUnusedDescriptorSets", FeatureCategory::VulkanWorkarounds,
+    "Gaps in bound descriptor set indices causes the post-gap sets to misbehave", &amp;members,
+    "http://anglebug.com/2727"};
+
+// OES_depth_texture is a commonly expected feature on Android. However it
+// requires that D16_UNORM support texture filtering
+// (e.g. VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT) and some devices
+// do not. Work-around this by setting saying D16_UNORM supports filtering
+// anyway.
+FeatureFeatureFeature forceD16TexFilter = {
+    "forceD16TexFilter", FeatureCategory::VulkanWorkarounds,
+    "VK_FORMAT_D16_UNORM does not support VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT, "
+    "which prevents OES_depth_texture from being supported.",
+    &amp;members, "http://anglebug.com/3452"};
+
+// On some android devices, vkCmdBlitImage with flipped coordinates blits incorrectly.  This
+// workaround makes sure this path is avoided.  http://anglebug.com/3498
+FeatureFeatureFeature disableFlippingBlitWithCommand = {
+    "disableFlippingBlitWithCommand", FeatureCategory::VulkanWorkarounds,
+    "vkCmdBlitImage with flipped coordinates blits incorrectly.", &amp;members,
+    "http://anglebug.com/3498"};
+
+// On platform with Intel or AMD GPU, a window resizing would not trigger the vulkan driver to
+// return VK_ERROR_OUT_OF_DATE on swapchain present.  Work-around by query current window extent
+// every frame to detect a window resizing.
+// http://anglebug.com/3623, http://anglebug.com/3624, http://anglebug.com/3625
+FeatureFeatureFeature perFrameWindowSizeQuery = {
+    "perFrameWindowSizeQuery", FeatureCategory::VulkanWorkarounds,
+    "Vulkan swapchain is not returning VK_ERROR_OUT_OF_DATE when window resizing", &amp;members,
+    "http://anglebug.com/3623, http://anglebug.com/3624, http://anglebug.com/3625"};
+
+// Seamful cube map emulation misbehaves on the AMD windows driver, so it's disallowed.
+FeatureFeatureFeature disallowSeamfulCubeMapEmulation = {
+    "disallowSeamfulCubeMapEmulation", FeatureCategory::VulkanWorkarounds,
+    "Seamful cube map emulation misbehaves on some drivers, so it's disallowed", &amp;members,
+    "http://anglebug.com/3243"};
+
+// Qualcomm and SwiftShader shader compiler doesn't support sampler arrays as parameters, so
+// revert to old RewriteStructSamplers behavior, which produces fewer.
+FeatureFeatureFeature forceOldRewriteStructSamplers = {
+    "forceOldRewriteStructSamplers", FeatureCategory::VulkanWorkarounds,
+    "Some shader compilers don't support sampler arrays as parameters, so revert to old "
+    "RewriteStructSamplers behavior, which produces fewer.",
+    &amp;members, "http://anglebug.com/2703"};
+
+// Vulkan considers vertex attribute accesses to count up to the last multiple of the stride.
+// This additional access supports AMD's robust buffer access implementation.
+// AMDVLK in particular will return incorrect values when the vertex access extends into the
+// range that would be the stride padding and the buffer is too small.
+// This workaround limits GL_MAX_VERTEX_ATTRIB_STRIDE to a reasonable value and pads out
+// every buffer allocation size to be large enough to support a maximum vertex stride.
+// http://anglebug.com/4428
+FeatureFeatureFeature padBuffersToMaxVertexAttribStride = {
+    "padBuffersToMaxVertexAttribStride", FeatureCategory::VulkanWorkarounds,
+    "Vulkan considers vertex attribute accesses to count up to the last multiple of the "
+    "stride. This additional access supports AMD's robust buffer access implementation. "
+    "AMDVLK in particular will return incorrect values when the vertex access extends into "
+    "the range that would be the stride padding and the buffer is too small. "
+    "This workaround limits GL_MAX_VERTEX_ATTRIB_STRIDE to a maximum value and "
+    "pads up every buffer allocation size to be a multiple of the maximum stride.",
+    &amp;members, "http://anglebug.com/4428"};
+
+// Whether the VkDevice supports the VK_EXT_swapchain_colorspace extension
+// http://anglebug.com/2514
+FeatureFeatureFeature supportsSwapchainColorspace = {
+    "supportsSwapchainColorspace", FeatureCategory::VulkanFeatures,
+    "VkDevice supports the VK_EXT_swapchain_colorspace extension", &amp;members,
+    "http://anglebug.com/2514"};
+
+// Whether the VkDevice supports the VK_EXT_external_memory_host extension, on which the
+// ANGLE_iosurface_client_buffer extension can be layered.
+FeatureFeatureFeature supportsExternalMemoryHost = {
+    "supportsExternalMemoryHost", FeatureCategory::VulkanFeatures,
+    "VkDevice supports the VK_EXT_external_memory_host extension", &amp;members};
+
+// Whether to fill new buffers and textures with nonzero data to sanitize robust resource
+// initialization and flush out assumptions about zero init.
+FeatureFeatureFeature allocateNonZeroMemory = {
+    "allocateNonZeroMemory", FeatureCategory::VulkanFeatures,
+    "Fill new allocations with non-zero values to flush out errors.", &amp;members,
+    "http://anglebug.com/4384"};
+
+// Allocate a "shadow" buffer for GL buffer objects. For GPU-read only buffers
+// glMap* latency can be reduced by maintaining a copy of the buffer which is
+// writeable only by the CPU. We then return this shadow buffer on glMap* calls.
+FeatureFeatureFeature shadowBuffers = {
+    "shadowBuffers", FeatureCategory::VulkanFeatures,
+    "Allocate a shadow buffer for GL buffer objects to reduce glMap* latency.", &amp;members,
+    "http://anglebug.com/4339"};
+
+// Persistently map buffer memory until destroy, saves on map/unmap IOCTL overhead
+// for buffers that are updated frequently.
+FeatureFeatureFeature persistentlyMappedBuffers = {
+    "persistentlyMappedBuffers", FeatureCategory::VulkanFeatures,
+    "Persistently map buffer memory to reduce map/unmap IOCTL overhead.", &amp;members,
+    "http://anglebug.com/2162"};
+
+// Android needs to pre-rotate surfaces that are not oriented per the native device's
+// orientation (e.g. a landscape application on a Pixel phone).  This feature works for
+// full-screen applications. http://anglebug.com/3502
+FeatureFeatureFeature enablePreRotateSurfaces = {"enablePreRotateSurfaces", FeatureCategory::VulkanFeatures,
+                                   "Enable Android pre-rotation for landscape applications",
+                                   &amp;members, "http://anglebug.com/3502"};
+
+// Cache FramebufferVk objects. Currently hitting a bug on Apple: http://anglebug.com/4442
+FeatureFeatureFeature enableFramebufferVkCache = {"enableFramebufferVkCache", FeatureCategory::VulkanFeatures,
+                                    "Enable FramebufferVk objects to be cached", &amp;members,
+                                    "http://anglebug.com/4442"};
+
+// Enable precision qualifiers for shaders generated by Vulkan backend http://anglebug.com/3078
+FeatureFeatureFeature enablePrecisionQualifiers = {
+    "enablePrecisionQualifiers", FeatureCategory::VulkanFeatures,
+    "Enable precision qualifiers in shaders", &amp;members, "http://anglebug.com/3078"};
+
+// Desktop (at least NVIDIA) drivers prefer combining barriers into one vkCmdPipelineBarrier
+// call over issuing multiple barrier calls with fine grained dependency information to have
+// better performance. http://anglebug.com/4633
+FeatureFeatureFeature preferAggregateBarrierCalls = {
+    "preferAggregateBarrierCalls", FeatureCategory::VulkanWorkarounds,
+    "Single barrier call is preferred over multiple calls with "
+    "fine grained pipeline stage dependency information",
+    &amp;members, "http://anglebug.com/4633"};
+
+// Tell the Vulkan back-end to use the async command queue to dispatch work to the GPU. Command
+// buffer work will happened in a worker thread. Otherwise use Renderer::CommandQueue directly.
+FeatureFeatureFeature asyncCommandQueue = {"asyncCommandQueue", FeatureCategory::VulkanFeatures,
+                             "Use CommandQueue worker thread to dispatch work to GPU.",
+                             &amp;members, "http://anglebug.com/4324"};
+
+// Whether the VkDevice supports the VK_KHR_shader_float16_int8 extension and has the
+// shaderFloat16 feature.
+FeatureFeatureFeature supportsShaderFloat16 = {"supportsShaderFloat16", FeatureCategory::VulkanFeatures,
+                                 "VkDevice supports the VK_KHR_shader_float16_int8 extension "
+                                 "and has the shaderFloat16 feature",
+                                 &amp;members, "http://anglebug.com/4551"};
+
+// Some devices don't meet the limits required to perform mipmap generation using the built-in
+// compute shader.  On some other devices, VK_IMAGE_USAGE_STORAGE_BIT is detrimental to
+// performance, making this solution impractical.
+FeatureFeatureFeature allowGenerateMipmapWithCompute = {
+    "allowGenerateMipmapWithCompute", FeatureCategory::VulkanFeatures,
+    "Use the compute path to generate mipmaps on devices that meet the minimum requirements, "
+    "and the performance is better.",
+    &amp;members, "http://anglebug.com/4551"};
+
+// Whether the VkDevice supports the VK_QCOM_render_pass_store_ops extension
+// http://anglebug.com/5505
+FeatureFeatureFeature supportsRenderPassStoreOpNoneQCOM = {
+    "supportsRenderPassStoreOpNoneQCOM", FeatureCategory::VulkanFeatures,
+    "VkDevice supports VK_QCOM_render_pass_store_ops extension.", &amp;members,
+    "http://anglebug.com/5055"};
+
+// Force maxUniformBufferSize to 16K on Qualcomm's Adreno 540. Pixel2's Adreno540 reports
+// maxUniformBufferSize 64k but various tests failed with that size. For that specific
+// device, we set to 16k for now which is known to pass all tests.
+// https://issuetracker.google.com/161903006
+FeatureFeatureFeature forceMaxUniformBufferSize16KB = {
+    "forceMaxUniformBufferSize16KB", FeatureCategory::VulkanWorkarounds,
+    "Force max uniform buffer size to 16K on some device due to bug", &amp;members,
+    "https://issuetracker.google.com/161903006"};
+
+// Enable mutable bit by default for ICD's that support VK_KHR_image_format_list.
+// http://anglebug.com/5281
+FeatureFeatureFeature supportsImageFormatList = {
+    "supportsImageFormatList", FeatureCategory::VulkanFeatures,
+    "Enable VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT by default for ICDs "
+    "that support VK_KHR_image_format_list",
+    &amp;members, "http://anglebug.com/5281"};
+
+// Swiftshader on mac fails to initialize WebGL context when EXT_multisampled_render_to_texture
+// is used by Chromium.
+// http://anglebug.com/4937
+FeatureFeatureFeature enableMultisampledRenderToTexture = {
+    "enableMultisampledRenderToTexture", FeatureCategory::VulkanWorkarounds,
+    "Expose EXT_multisampled_render_to_texture", &amp;members, "http://anglebug.com/4937"};
+
+// Qualcomm fails some tests when reducing the preferred block size to 4M.
+// http://anglebug.com/4995
+FeatureFeatureFeature preferredLargeHeapBlockSize4MB = {
+    "preferredLargeHeapBlockSize4MB", FeatureCategory::VulkanWorkarounds,
+    "Use 4 MB preferred large heap block size with AMD allocator", &amp;members,
+    "http://anglebug.com/4995"};
+
+// Manhattan is calling glFlush in the middle of renderpass which breaks renderpass and hurts
+// performance on tile based GPU. When this is enabled, we will defer the glFlush call made in
+// the middle of renderpass to the end of renderpass.
+// https://issuetracker.google.com/issues/166475273
+FeatureFeatureFeature deferFlushUntilEndRenderPass = {
+    "deferFlushUntilEndRenderPass", FeatureCategory::VulkanWorkarounds,
+    "Allow glFlush to be deferred until renderpass ends", &amp;members,
+    "https://issuetracker.google.com/issues/166475273"};
+
+// Android mistakenly destroys oldSwapchain passed to vkCreateSwapchainKHR, causing crashes on
+// certain drivers.  http://anglebug.com/5061
+FeatureFeatureFeature waitIdleBeforeSwapchainRecreation = {
+    "waitIdleBeforeSwapchainRecreation", FeatureCategory::VulkanWorkarounds,
+    "Before passing an oldSwapchain to VkSwapchainCreateInfoKHR, wait for queue to be idle. "
+    "Works around a bug on platforms which destroy oldSwapchain in vkCreateSwapchainKHR.",
+    &amp;members, "http://anglebug.com/5061"};
+
+// Translate  non-nearest mip filtering modes to nearest mip for all samplers for performance
+// comparisons. ANGLE is non-conformant if this feature is enabled.
+FeatureFeatureFeature forceNearestMipFiltering = {"forceNearestMipFiltering",
+                                    FeatureCategory::VulkanWorkarounds,
+                                    "Force nearest mip filtering when sampling.", &amp;members};
+
+// Qualcomm missynchronizes vkCmdClearAttachments in the middle of render pass.
+// https://issuetracker.google.com/166809097
+FeatureFeatureFeature preferDrawClearOverVkCmdClearAttachments = {
+    "preferDrawClearOverVkCmdClearAttachments", FeatureCategory::VulkanWorkarounds,
+    "On some hardware, clear using a draw call instead of vkCmdClearAttachments in the middle "
+    "of render pass due to bugs",
+    &amp;members, "https://issuetracker.google.com/166809097"};
+
+// Whether prerotation is being emulated for testing.  90 degree rotation.
+FeatureFeatureFeature emulatedPrerotation90 = {"emulatedPrerotation90", FeatureCategory::VulkanFeatures,
+                                 "Emulate 90-degree prerotation.", &amp;members,
+                                 "http://anglebug.com/4901"};
+
+// Whether prerotation is being emulated for testing.  180 degree rotation.
+FeatureFeatureFeature emulatedPrerotation180 = {"emulatedPrerotation180", FeatureCategory::VulkanFeatures,
+                                  "Emulate 180-degree prerotation.", &amp;members,
+                                  "http://anglebug.com/4901"};
+
+// Whether prerotation is being emulated for testing.  270 degree rotation.
+FeatureFeatureFeature emulatedPrerotation270 = {"emulatedPrerotation270", FeatureCategory::VulkanFeatures,
+                                  "Emulate 270-degree prerotation.", &amp;members,
+                                  "http://anglebug.com/4901"};
+
+// Whether we should use driver uniforms over specialization constants for some shader
+// modifications like yflip and rotation.
+FeatureFeatureFeature forceDriverUniformOverSpecConst = {
+    "forceDriverUniformOverSpecConst", FeatureCategory::VulkanWorkarounds,
+    "Forces using driver uniforms instead of specialization constants.", &amp;members,
+    "http://issuetracker.google.com/173636783"};
+
+// Whether non-conformant configurations and extensions should be exposed.  When an extension is
+// in development, or a GLES version is not supported on a device, we may still want to expose
+// them for partial testing.  This feature is enabled by our test harness.
+FeatureFeatureFeature exposeNonConformantExtensionsAndVersions = {
+    "exposeNonConformantExtensionsAndVersions", FeatureCategory::VulkanWorkarounds,
+    "Expose GLES versions and extensions that are not conformant.", &amp;members,
+    "http://anglebug.com/5375"};
+</code></pre>
+<p>};</p>
+<p>inline FeaturesVk::FeaturesVk()  = default;
+inline FeaturesVk::~FeaturesVk() = default;</p>
+<p>}  // namespace angle</p>
+<h1 id="endif-angle_platform_featuresvk_h_">endif  // ANGLE_PLATFORM_FEATURESVK_H_</h1>
+<ul>
+<li></li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
