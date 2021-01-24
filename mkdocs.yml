@@ -1,6 +1,0 @@
-site_name: Wesley的轨迹
-nav:
-    - 首页: index.md
-    - OpenGL(ES): GLES\Framebuffer Object.md
-    - 'Vulkan':
-        -  '0.1. Vulkan 扩展': Vulkan\0.1. Vulkan 扩展.md

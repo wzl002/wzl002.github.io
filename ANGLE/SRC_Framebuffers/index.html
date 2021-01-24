@@ -6,147 +6,105 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
+        <meta name="author" content="Wesley Wang">
+        <link rel="canonical" href="https://wzl002.github.io/ANGLE/SRC_Framebuffers/">
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>SRC Framebuffers - Wesley的轨迹</title>
-        <link href="../../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../../css/font-awesome.min.css" rel="stylesheet">
-        <link href="../../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <title>SRC Framebuffers - Wesley的笔记</title>
+            <link href="../../css/bootstrap.min.css" rel="stylesheet">
+            <link href="../../css/font-awesome.min.css" rel="stylesheet">
+            <link href="../../css/base.css" rel="stylesheet">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+            <link href="../../css/extra.css" rel="stylesheet">
 
         <script src="../../js/jquery-1.10.2.min.js" defer></script>
         <script src="../../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'G-6TCC9MLW2F', 'wzl002.github.io');
+            ga('send', 'pageview');
+        </script> 
     </head>
 
     <body>
-        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
-            <div class="container">
-                <a class="navbar-brand" href="../..">Wesley的轨迹</a>
-                <!-- Expander button -->
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <!-- Expanded navigation -->
-                <div id="navbar-collapse" class="navbar-collapse collapse">
-                        <!-- Main navigation -->
-                        <ul class="nav navbar-nav">
-                            <li class="navitem">
-                                <a href="../.." class="nav-link">首页</a>
-                            </li>
-                            <li class="navitem">
-                                <a href="../../GLES/Framebuffer%20Object/" class="nav-link">OpenGL(ES)</a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Vulkan <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
+        <div class="navbar navbar-expand-lg navbar-default navbar-dark bg-primary" role="navigation">
+    <div class="container">
+
+        <!-- Main title -->
+        <a class="navbar-brand" href="../..">Wesley的笔记</a>
+        <!-- Expander button -->
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Expanded navigation -->
+        <div id="navbar-collapse" class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                <li class="navitem">
+                    <a href="../.." class="nav-link">首页</a>
+                </li>
+                <li class="navitem">
+                    <a href="../../GLES/Framebuffer%20Object/" class="nav-link">OpenGL(ES)</a>
+                </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Vulkan <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
 <li>
     <a href="../../Vulkan/0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/" class="dropdown-item">0.1. Vulkan 扩展</a>
 </li>
-                                </ul>
-                            </li>
                         </ul>
+                    </li>
+                </ul>
 
-                    <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right ml-auto">
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> 搜索
+                    </a>
+                </li>
+            </ul>
         </div>
+    </div>
+</div>
 
         <div class="container">
             <div class="row">
-                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
-            <span class="fa fa-angle-down"></span>
-        </button>
-    </div>
-
-    
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
-        <ul class="nav flex-column">
-            
-            <li class="nav-item" data-level="2"><a href="#framebuffer" class="nav-link">前端 Framebuffer</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="2"><a href="#framebuffervk" class="nav-link">后端 FramebufferVk</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="2"><a href="#api" class="nav-link">API 实现</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="2"><a href="#resourcemanager" class="nav-link">ResourceManager</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="2"><a href="#angle-api" class="nav-link">ANGLE 中 API 统计</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="2"><a href="#gl2" class="nav-link">gl2</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="2"><a href="#gl3" class="nav-link">gl3</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="2"><a href="#gl31" class="nav-link">gl31</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="2"><a href="#gl32" class="nav-link">gl32</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="2"><a href="#syncstate" class="nav-link">syncState</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="2"><a href="#framebuffers" class="nav-link">Framebuffers</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="2"><a href="#renderbuffers" class="nav-link">Renderbuffers</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="2"><a href="#texture" class="nav-link">Texture</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#dynamicbuffer" class="nav-link">DynamicBuffer</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-        </ul>
-    </div>
-</div></div>
-                    <div class="col-md-9" role="main">
+                <div class="col-md-2">
+                            <!-- Main navigation -->
+                            <ul class="list-group list-group-flush ">
+                                <li class="item-level-1 list-group-item">
+                                    <a href="../.." class="nav-link">首页</a>
+                                </li>
+                                <li class="item-level-1 list-group-item">
+                                    <a href="../../GLES/Framebuffer%20Object/" class="nav-link">OpenGL(ES)</a>
+                                </li>
+                                <li class="item-level-1 list-group-item">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="collapse" data-target="#coltarget-3" aria-expanded="false" aria-controls="coltarget-3">
+                                        <b class="caret"></b> Vulkan
+                                    </a>
+                                    <div class="list-group list-group-flush collapse" id="coltarget-3">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="item-level-2 list-group-item">
+                                            <a href="../.." class="nav-link">0.1. Vulkan 扩展</a>
+                                        </li>
+                                    </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                </div>
+                <!-- center -->
+                <div class="col-md-8" role="main">
 
 <h2 id="framebuffer">前端 Framebuffer</h2>
 <pre><code class="language-plantuml">@startuml
@@ -403,8 +361,8 @@ Context -&gt; State : setObjectDirty()
 
 @enduml
 </code></pre>
-<p>绑定后, 会设置如下 dirty状态
- - State : setObjectDirty()
+<p>绑定后, 会设置如下 dirty状态<br />
+ - State : setObjectDirty()<br />
     - framebuffer.mDirtyBits.set(DIRTY_BIT_COLOR_ATTACHMENT_0) </p>
 <pre><code>- state.mDirtyObjects.set(DIRTY_OBJECT_READ_FRAMEBUFFER);
 
@@ -543,8 +501,8 @@ ContextVk -&gt; GraphicsPipelineDesc : updatePipelineXXXX()
 <p>// color/depth/stencil masks make the clear ineffective we skip it altogether.</p>
 <pre><code>// If all color channels in all draw buffers are masked, don't attempt to clear color.
 </code></pre>
-<p>// If depth write is disabled, don't attempt to clear depth.</p>
-<p>// If all stencil bits are masked, don't attempt to clear stencil.</p>
+<p>// If depth write is disabled, don&rsquo;t attempt to clear depth.</p>
+<p>// If all stencil bits are masked, don&rsquo;t attempt to clear stencil.</p>
 <p>// Sync the draw framebuffer manually after the clear attachments.</p>
 <p>流程2</p>
 <pre><code class="language-plantuml">@startuml
@@ -602,12 +560,12 @@ void glGetFramebufferParameteriv (GLenum target, GLenum pname, GLint *params);
 <li></li>
 </ul>
 <h2 id="syncstate">syncState</h2>
-<p>// FramebufferVk::syncState signals that we should start a new command buffer.
-// But changing the binding can skip FramebufferVk::syncState if the Framebuffer
-// has no dirty bits. Thus we need to explicitly clear the current command
-// buffer to ensure we start a new one. We don't actually close the render pass here
-// as some optimizations in non-draw commands require the render pass to remain
-// open, such as invalidate or blit. Note that we always start a new command buffer
+<p>// FramebufferVk::syncState signals that we should start a new command buffer.<br />
+// But changing the binding can skip FramebufferVk::syncState if the Framebuffer<br />
+// has no dirty bits. Thus we need to explicitly clear the current command<br />
+// buffer to ensure we start a new one. We don&rsquo;t actually close the render pass here<br />
+// as some optimizations in non-draw commands require the render pass to remain<br />
+// open, such as invalidate or blit. Note that we always start a new command buffer<br />
 // because we currently can only support one open RenderPass at a time.</p>
 <ul>
 <li>onRenderPassFinished();</li>
@@ -649,21 +607,19 @@ void glGetFramebufferParameteriv (GLenum target, GLenum pname, GLint *params);
 </ul>
 </li>
 <li><strong>mGraphicsPipelineDesc</strong>-&gt;updateRenderPassDesc(&amp;mGraphicsPipelineTransition,  framebufferVk-&gt;getRenderPassDesc());</li>
-<li>
-<p><strong>mGraphicsPipelineDesc</strong>-&gt;updateDrawableSize(&amp;mGraphicsPipelineTransition, framebufferVk-&gt;getState().getDimensions().width,
-                                                  framebufferVk-&gt;getState().getDimensions().height);</p>
-</li>
-<li>
-<p><strong>mGraphicsPipelineDesc</strong>-&gt;<strong>updateSurfaceRotation</strong>(&amp;mGraphicsPipelineTransition, rotationAndFlip);</p>
-</li>
+<li><strong>mGraphicsPipelineDesc</strong>-&gt;updateDrawableSize(&amp;mGraphicsPipelineTransition, framebufferVk-&gt;getState().getDimensions().width,<br />
+                                                  framebufferVk-&gt;getState().getDimensions().height);</li>
+</ul>
+<ol>
+<li><strong>mGraphicsPipelineDesc</strong>-&gt;<strong>updateSurfaceRotation</strong>(&amp;mGraphicsPipelineTransition, rotationAndFlip);</li>
 <li><strong>mGraphicsPipelineDesc</strong>-&gt;<strong>updateDrawableSize</strong>(&amp;mGraphicsPipelineTransition, dimensions.width,  dimensions.height);</li>
 <li><strong>mGraphicsPipelineDesc-&gt;updateViewport()</strong></li>
 <li><strong>mGraphicsPipelineDesc-&gt;updateColorWriteMasks()</strong></li>
 <li><strong>mGraphicsPipelineDesc-&gt;updateRasterizationSamples</strong>(&amp;mGraphicsPipelineTransition, rasterizationSamples);</li>
-<li>updateSampleShadingWithRasterizationSamples(rasterizationSamples);</li>
-<li>mGraphicsPipelineDesc-&gt;<strong>updateSampleShading</strong></li>
-<li>updateSampleMaskWithRasterizationSamples(rasterizationSamples);</li>
-<li>mGraphicsPipelineDesc-&gt;<strong>updateSampleMask</strong></li>
+<li>updateSampleShadingWithRasterizationSamples(rasterizationSamples);<br />
+  - mGraphicsPipelineDesc-&gt;<strong>updateSampleShading</strong></li>
+<li>updateSampleMaskWithRasterizationSamples(rasterizationSamples);<br />
+  - mGraphicsPipelineDesc-&gt;<strong>updateSampleMask</strong></li>
 <li><strong>mGraphicsPipelineDesc-&gt;updateFrontFace</strong>(&amp;mGraphicsPipelineTransition,     glState.getRasterizerState(),   isViewportFlipEnabledForDrawFBO());</li>
 <li><strong>mGraphicsPipelineDesc-&gt;updateScissor</strong>()</li>
 <li><strong>mGraphicsPipelineDesc</strong>-&gt;<strong>updateDepthTestEnabled</strong>(&amp;mGraphicsPipelineTransition,  depthStencilState, drawFramebuffer);</li>
@@ -672,7 +628,7 @@ void glGetFramebufferParameteriv (GLenum target, GLenum pname, GLint *params);
 <li><strong>mGraphicsPipelineDesc</strong>-&gt;<strong>updateStencilFrontWriteMask</strong>(&amp;mGraphicsPipelineTransition, depthStencilState, drawFramebuffer);</li>
 <li><strong>mGraphicsPipelineDesc</strong>-&gt;<strong>updateStencilBackWriteMask</strong>(&amp;mGraphicsPipelineTransition, depthStencilState, drawFramebuffer);</li>
 <li><strong>mGraphicsPipelineDesc</strong>-&gt;<strong>updateRenderPassDesc</strong>(&amp;mGraphicsPipelineTransition,  framebufferVk-&gt;getRenderPassDesc());</li>
-</ul>
+</ol>
 <table>
 <thead>
 <tr>
@@ -745,25 +701,25 @@ void glGetFramebufferParameteriv (GLenum target, GLenum pname, GLint *params);
 </tr>
 <tr>
 <td>updateDepthWriteEnabled</td>
-<td>--</td>
+<td>&ndash;</td>
 <td>enable.depthWrite</td>
 <td></td>
 </tr>
 <tr>
 <td>updateStencilTestEnabled</td>
-<td>--</td>
+<td>&ndash;</td>
 <td>enable.stencilTest</td>
 <td></td>
 </tr>
 <tr>
 <td>updateStencilFrontWriteMask</td>
-<td>--</td>
+<td>&ndash;</td>
 <td>front.writeMask</td>
 <td></td>
 </tr>
 <tr>
 <td>updateStencilBackWriteMask</td>
-<td>--</td>
+<td>&ndash;</td>
 <td>back.writeMask</td>
 <td></td>
 </tr>
@@ -1058,36 +1014,135 @@ class DynamicBuffer : angle::NonCopyable
     BufferHelperPointerVector mBufferFreeList;
 };
 
-</code></pre></div>
+</code></pre>
+
+
+
+<div id="disqus_thread"></div>
+<script>
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://wesleywang-wang.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>请启用JavaScript以浏览<a href="https://disqus.com/?ref_noscript" rel="nofollow">Disqus评论</a></noscript></div>
+                <!-- right -->
+                <div class="col-md-2"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#framebuffer" class="nav-link">前端 Framebuffer</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#framebuffervk" class="nav-link">后端 FramebufferVk</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#api" class="nav-link">API 实现</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#resourcemanager" class="nav-link">ResourceManager</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#angle-api" class="nav-link">ANGLE 中 API 统计</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#gl2" class="nav-link">gl2</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#gl3" class="nav-link">gl3</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#gl31" class="nav-link">gl31</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#gl32" class="nav-link">gl32</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#syncstate" class="nav-link">syncState</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#framebuffers" class="nav-link">Framebuffers</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#renderbuffers" class="nav-link">Renderbuffers</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#texture" class="nav-link">Texture</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#dynamicbuffer" class="nav-link">DynamicBuffer</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
             </div>
         </div>
 
         <footer class="col-md-12">
-            <hr>
-            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
-        </footer>
+              <hr>
+                  <p>Copyright &copy; 2021 <a href="https://space.bilibili.com/293396">水曜晨星 Wesley</a>.</p>
+              <p>Powered by <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+          </footer>
         <script>
             var base_url = "../..",
-                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+                shortcuts = {"next": 39, "previous": 37, "search": 83};
         </script>
         <script src="../../js/base.js" defer></script>
+        <script src="../../js/custom.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML" defer></script>
         <script src="../../search/main.js" defer></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+      <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="searchModalLabel">Search</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="searchModalLabel" old-id="exampleModalLabel">搜索</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
             </div>
             <div class="modal-body">
                 <p>
-                    From here you can search these documents. Enter
-                    your search terms below.
+                    请在下面输入你要搜索的文本（仅支持英文）：
                 </p>
-                <form>
+                <form role="form">
                     <div class="form-group">
-                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="text" class="form-control" placeholder="搜索..." id="mkdocs-search-query" title="输入英文关键字">
                     </div>
                 </form>
                 <div id="mkdocs-search-results"></div>
@@ -1136,6 +1191,7 @@ class DynamicBuffer : angle::NonCopyable
         </div>
     </div>
 </div>
+
 
     </body>
 </html>

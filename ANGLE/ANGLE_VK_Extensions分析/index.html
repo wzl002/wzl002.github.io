@@ -6,196 +6,105 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
+        <meta name="author" content="Wesley Wang">
+        <link rel="canonical" href="https://wzl002.github.io/ANGLE/ANGLE_VK_Extensions%E5%88%86%E6%9E%90/">
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>总览 - Wesley的轨迹</title>
-        <link href="../../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../../css/font-awesome.min.css" rel="stylesheet">
-        <link href="../../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <title>总览 - Wesley的笔记</title>
+            <link href="../../css/bootstrap.min.css" rel="stylesheet">
+            <link href="../../css/font-awesome.min.css" rel="stylesheet">
+            <link href="../../css/base.css" rel="stylesheet">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+            <link href="../../css/extra.css" rel="stylesheet">
 
         <script src="../../js/jquery-1.10.2.min.js" defer></script>
         <script src="../../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'G-6TCC9MLW2F', 'wzl002.github.io');
+            ga('send', 'pageview');
+        </script> 
     </head>
 
     <body>
-        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
-            <div class="container">
-                <a class="navbar-brand" href="../..">Wesley的轨迹</a>
-                <!-- Expander button -->
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <!-- Expanded navigation -->
-                <div id="navbar-collapse" class="navbar-collapse collapse">
-                        <!-- Main navigation -->
-                        <ul class="nav navbar-nav">
-                            <li class="navitem">
-                                <a href="../.." class="nav-link">首页</a>
-                            </li>
-                            <li class="navitem">
-                                <a href="../../GLES/Framebuffer%20Object/" class="nav-link">OpenGL(ES)</a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Vulkan <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
+        <div class="navbar navbar-expand-lg navbar-default navbar-dark bg-primary" role="navigation">
+    <div class="container">
+
+        <!-- Main title -->
+        <a class="navbar-brand" href="../..">Wesley的笔记</a>
+        <!-- Expander button -->
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Expanded navigation -->
+        <div id="navbar-collapse" class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                <li class="navitem">
+                    <a href="../.." class="nav-link">首页</a>
+                </li>
+                <li class="navitem">
+                    <a href="../../GLES/Framebuffer%20Object/" class="nav-link">OpenGL(ES)</a>
+                </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Vulkan <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
 <li>
     <a href="../../Vulkan/0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/" class="dropdown-item">0.1. Vulkan 扩展</a>
 </li>
-                                </ul>
-                            </li>
                         </ul>
+                    </li>
+                </ul>
 
-                    <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right ml-auto">
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> 搜索
+                    </a>
+                </li>
+            </ul>
         </div>
+    </div>
+</div>
 
         <div class="container">
             <div class="row">
-                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
-            <span class="fa fa-angle-down"></span>
-        </button>
-    </div>
-
-    
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
-        <ul class="nav flex-column">
-            
-            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link">总览</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#vk-extensions" class="nav-link">Vk Extensions</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#vk-features" class="nav-link">Vk Features</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#limits" class="nav-link">Limits</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#angle-vk-extensions" class="nav-link">ANGLE : Vk Extensions</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#gles-core" class="nav-link">GLES Core</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#egl" class="nav-link">EGL</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#gles-ext" class="nav-link">GLES EXT</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#vulkan_8" class="nav-link">Vulkan 自用</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_2" class="nav-link">其他平台</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#v100-ext" class="nav-link">v100 已支持的Ext</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#angle-ext" class="nav-link">ANGLE 期望将来加入的 EXT</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#angle-vk-features" class="nav-link">ANGLE: Vk Features</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#angle-vk-limits" class="nav-link">ANGLE: Vk Limits</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#maxperstagedescriptorstoragebuffers" class="nav-link">maxPerStageDescriptorStorageBuffers</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#maxperstagedescriptoruniformbuffers" class="nav-link">maxPerStageDescriptorUniformBuffers</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#maxdescriptorsetuniformbuffers" class="nav-link">maxDescriptorSetUniformBuffers</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#maxvertexoutputcomponents-maxfragmentinputcomponents" class="nav-link">maxVertexOutputComponents 与 maxFragmentInputComponents</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#maxinterpolationoffset" class="nav-link">maxInterpolationOffset</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#gles-limits" class="nav-link">附表: GLES Limits 满足情况详情</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#properties" class="nav-link">其他 Properties</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#_3" class="nav-link">附录</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#v100-gles-extension" class="nav-link">v100 GLES Extension 支持情况</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#v100-egl-extension" class="nav-link">v100 EGL Extension</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#angle-vk-features_1" class="nav-link">ANGLE 中启用的 Vk Features</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#8-appendix" class="nav-link">8. Appendix</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#81-capability" class="nav-link">8.1. Capability</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#82-extension" class="nav-link">8.2. Extension</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-              </ul>
-            </li>
-        </ul>
-    </div>
-</div></div>
-                    <div class="col-md-9" role="main">
+                <div class="col-md-2">
+                            <!-- Main navigation -->
+                            <ul class="list-group list-group-flush ">
+                                <li class="item-level-1 list-group-item">
+                                    <a href="../.." class="nav-link">首页</a>
+                                </li>
+                                <li class="item-level-1 list-group-item">
+                                    <a href="../../GLES/Framebuffer%20Object/" class="nav-link">OpenGL(ES)</a>
+                                </li>
+                                <li class="item-level-1 list-group-item">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="collapse" data-target="#coltarget-3" aria-expanded="false" aria-controls="coltarget-3">
+                                        <b class="caret"></b> Vulkan
+                                    </a>
+                                    <div class="list-group list-group-flush collapse" id="coltarget-3">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="item-level-2 list-group-item">
+                                            <a href="../.." class="nav-link">0.1. Vulkan 扩展</a>
+                                        </li>
+                                    </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                </div>
+                <!-- center -->
+                <div class="col-md-8" role="main">
 
 <h1 id="_1">总览</h1>
 <h2 id="vk-extensions">Vk Extensions</h2>
@@ -569,7 +478,7 @@
 <p>*M 表示为Vulkan必须扩展, 但 v100 文档没有标出. 因此对于下面的 <code>VK_EXT_SWAPCHAIN_COLOR_SPACE</code> 是否已支持表示存疑.  有其他文档显示v100,v200均支持. </p>
 <p>*U 表示非必须: 其对应的 GLES / EGL Extension 不在 v100 的支持列表中.</p>
 <h3 id="vk-extensions_1">增加 Vk Extensions 的需求</h3>
-<p>将上表中的数据, 删去"'已支持的", "vk内部使用", 和"其他平台"的扩展, 剩下的即 v100 尚未支持的扩展需求表如下: </p>
+<p>将上表中的数据, 删去&ldquo;&lsquo;已支持的&rdquo;, &ldquo;vk内部使用&rdquo;, 和&rdquo;其他平台&rdquo;的扩展, 剩下的即 v100 尚未支持的扩展需求表如下: </p>
 <table>
 <thead>
 <tr>
@@ -583,14 +492,14 @@
 <tbody>
 <tr>
 <td>VK_EXT_SWAPCHAIN_COLOR_SPACE</td>
-<td>--</td>
+<td>&ndash;</td>
 <td>EGL</td>
 <td>✔</td>
 <td><strong>EGL_KHR_gl_colorspace</strong></td>
 </tr>
 <tr>
 <td>VK_ANDROID_EXTERNAL_MEMORY<br />_ANDROID_HARDWARE_BUFFER<br />VK_EXT_QUEUE_FAMILY_FOREIGN</td>
-<td>--</td>
+<td>&ndash;</td>
 <td>EGL</td>
 <td>✔</td>
 <td><strong>EGL_ANDROID_image_native_buffer</strong></td>
@@ -611,7 +520,7 @@
 </tr>
 <tr>
 <td>VK_EXT_SHADER_STENCIL_EXPORT</td>
-<td>--</td>
+<td>&ndash;</td>
 <td>es2.0</td>
 <td></td>
 <td></td>
@@ -639,28 +548,28 @@
 </tr>
 <tr>
 <td>VK_KHR_EXTERNAL_FENCE_FD</td>
-<td>--</td>
+<td>&ndash;</td>
 <td>EGL</td>
 <td>U</td>
 <td>EGL_ANDROID_native_fence</td>
 </tr>
 <tr>
 <td>VK_KHR_EXTERNAL_MEMORY_FD</td>
-<td>--</td>
+<td>&ndash;</td>
 <td>EXT</td>
 <td>U</td>
 <td>GL_EXT_memory_object_fd</td>
 </tr>
 <tr>
 <td>VK_KHR_EXTERNAL_SEMAPHORE_FD</td>
-<td>--</td>
+<td>&ndash;</td>
 <td>EXT</td>
 <td>U</td>
 <td>GL_EXT_semaphore_fd</td>
 </tr>
 <tr>
 <td>VK_KHR_INCREMENTAL_PRESENT</td>
-<td>--</td>
+<td>&ndash;</td>
 <td>EGL</td>
 <td>U</td>
 <td>EGL_KHR_swap_buffers_with_damage</td>
@@ -912,7 +821,7 @@
 <p>ANGLE 为 Vulkan 坐标系修改顶点着色器中的<code>gl_position.z</code>。因此，如果我们在XFB缓冲区中捕获“ gl_position”的值，则捕获的值将是错误的。</p>
 </li>
 <li>
-<p>为了解决这个问题，我们声明一个内部 position 变化量，然后复制'gl_position'的值。我们捕获了变换反馈操作(transform feedback)期间内部 position 变化量的变化。为简单起见，我们会对每个捕获的变化都进行此操作,  而没有用<code>gl_PerVertex</code>直接在SPIR-V中装饰结构体。</p>
+<p>为了解决这个问题，我们声明一个内部 position 变化量，然后复制&rsquo;gl_position&rsquo;的值。我们捕获了变换反馈操作(transform feedback)期间内部 position 变化量的变化。为简单起见，我们会对每个捕获的变化都进行此操作,  而没有用<code>gl_PerVertex</code>直接在SPIR-V中装饰结构体。</p>
 </li>
 </ul>
 <h5 id="transform-feedback-queries">Transform Feedback Queries</h5>
@@ -1015,19 +924,19 @@ typedef struct VkPhysicalDeviceTransformFeedbackFeaturesEXT {
 <li>
 <p>ContextVk()</p>
 <ul>
-<li>mGraphicsDirtyBitHandlers[DIRTY_BIT_TRANSFORM_FEEDBACK_BUFFERS] =
-              &amp;ContextVk::handleDirtyGraphicsTransformFeedbackBuffersExtension;
-          mGraphicsDirtyBitHandlers[DIRTY_BIT_TRANSFORM_FEEDBACK_STATE] =
-              &amp;ContextVk::handleDirtyGraphicsTransformFeedbackState;
-          mGraphicsDirtyBitHandlers[DIRTY_BIT_TRANSFORM_FEEDBACK_RESUME] =
+<li>mGraphicsDirtyBitHandlers[DIRTY_BIT_TRANSFORM_FEEDBACK_BUFFERS] =<br />
+              &amp;ContextVk::handleDirtyGraphicsTransformFeedbackBuffersExtension;<br />
+          mGraphicsDirtyBitHandlers[DIRTY_BIT_TRANSFORM_FEEDBACK_STATE] =<br />
+              &amp;ContextVk::handleDirtyGraphicsTransformFeedbackState;<br />
+          mGraphicsDirtyBitHandlers[DIRTY_BIT_TRANSFORM_FEEDBACK_RESUME] =<br />
               &amp;ContextVk::handleDirtyGraphicsTransformFeedbackResume;</li>
 </ul>
 </li>
 <li>
 <p>initialize</p>
 <ul>
-<li>mQueryPools[gl::QueryType::TransformFeedbackPrimitivesWritten].init(
-              this, VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT,
+<li>mQueryPools[gl::QueryType::TransformFeedbackPrimitivesWritten].init(<br />
+              this, VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT,<br />
               vk::kDefaultTransformFeedbackQueryPoolSize)</li>
 </ul>
 </li>
@@ -1469,7 +1378,7 @@ typedef enum VkLineRasterizationModeEXT {
 </code></pre>
 <ul>
 <li>
-<p>UtilsVk::stencilBlitResolveNoShaderExport
+<p>UtilsVk::stencilBlitResolveNoShaderExport<br />
   插件无效时的替代方法.</p>
 </li>
 <li>
@@ -1571,9 +1480,9 @@ VkBool32 vertexAttributeInstanceRateDivisor;
 VkBool32 vertexAttributeInstanceRateZeroDivisor;
 } VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT;
 </code></pre>
-<p>• <code>sType</code> is the type of this structure.
-• <code>pNext</code> is NULL or a pointer to a structure extending this structure.
-• <code>vertexAttributeInstanceRateDivisor</code> specifies whether vertex attribute fetching may be repeated in case of instanced rendering.
+<p>• <code>sType</code> is the type of this structure.<br />
+• <code>pNext</code> is NULL or a pointer to a structure extending this structure.<br />
+• <code>vertexAttributeInstanceRateDivisor</code> specifies whether vertex attribute fetching may be repeated in case of instanced rendering.<br />
 • <code>vertexAttributeInstanceRateZeroDivisor</code> specifies whether a zero value for VkVertexInputBindingDivisorDescriptionEXT::divisor is supported.</p>
 <p><strong>Limits</strong>:</p>
 <pre><code>VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT::maxVertexAttribDivisor
@@ -1847,7 +1756,7 @@ EGLImageKHR eglSrcImage =eglCreateImageKHR(eglDisplay, EGL_NO_CONTEXT, EGL_NATIV
 <h4 id="vulkan_7">Vulkan 定义</h4>
 <p><strong>1. VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER</strong> </p>
 <p>此扩展使应用程序可以将在Vulkan设备外部创建的Android AHardwareBuffer对象导入Vulkan内存对象，在其中可以将它们绑定到图像和缓冲区。 它还允许从Vulkan内存对象中导出AHardwareBuffer，以与其他操作系统对称。 但是，由于并非所有AHardwareBuffer用法和格式都具有Vulkan等效项，因此从Vulkan导出与提供外部AHardwareBuffer并导入相比，提供的功能要少得多。</p>
-<p>某些AHardwareBuffer映像具有实现定义的外部格式，这些格式可能与Vulkan格式不对应。 采样器Y'CBCR转换可用于从这些图像中采样并将它们转换为已知的色彩空间。</p>
+<p>某些AHardwareBuffer映像具有实现定义的外部格式，这些格式可能与Vulkan格式不对应。 采样器Y&rsquo;CBCR转换可用于从这些图像中采样并将它们转换为已知的色彩空间。</p>
 <p>扩展命令包括: </p>
 <ul>
 <li>vkGetAndroidHardwareBufferPropertiesANDROID</li>
@@ -1978,12 +1887,12 @@ EGLImageKHR eglSrcImage =eglCreateImageKHR(eglDisplay, EGL_NO_CONTEXT, EGL_NATIV
 <li>有则启用</li>
 <li>FeatureVk.depthClamping <ul>
 <li>启用 : <strong>isNvidia</strong> &amp;&amp; Features.depthClamp &amp;&amp; EXT</li>
-<li>The workaround requires the VK_EXT_depth_clip_enable extension and the 'depthClamp' physical
-  device feature. This workaround caused test failures on Quadro P400/driver 418.56/Linux.
+<li>The workaround requires the VK_EXT_depth_clip_enable extension and the &lsquo;depthClamp&rsquo; physical<br />
+  device feature. This workaround caused test failures on Quadro P400/driver 418.56/Linux.<br />
     Therefore, on Linux we require a major version &gt; 418.</li>
 <li>On some NVIDIA drivers the depth value is not clamped to [0,1] for floating point depth buffers. This is NVIDIA bug 3171019, see http://anglebug.com/3970 for details.</li>
-<li>When depth clamping is used, depth clipping is automatically disabled.
-  When the 'depthClamping' feature is enabled, we'll be using depth clamping to work around a driver issue, not as an alternative to depth clipping. Therefore we need to
+<li>When depth clamping is used, depth clipping is automatically disabled.<br />
+  When the &lsquo;depthClamping&rsquo; feature is enabled, we&rsquo;ll be using depth clamping to work around a driver issue, not as an alternative to depth clipping. Therefore we need to<br />
   explicitly re-enable depth clipping.</li>
 <li>对应 vk:  <code>VkPipelineRasterizationState.depthClampEnable</code></li>
 </ul>
@@ -2079,15 +1988,15 @@ EGLImageKHR eglSrcImage =eglCreateImageKHR(eglDisplay, EGL_NO_CONTEXT, EGL_NATIV
 <h3 id="gles_6">GLES</h3>
 <ul>
 <li>VK_KHR_DEPTH_STENCIL_RESOLVE</li>
-<li>启用 if supportsRenderpass2.enabled &amp;&amp;
+<li>启用 if supportsRenderpass2.enabled &amp;&amp;<br />
     mDepthStencilResolveProperties.independentResolveNone</li>
 <li>supportsDepthStencilResolve<ul>
 <li>http://anglebug.com/5065</li>
 <li>RenderbufferVk::setStorageImpl</li>
 <li>为 multisampled depth/stenci 启用 render render to texture</li>
 <li>可启用 VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT</li>
-<li>// If multisampled render to texture, an implicit multisampled image is created which is used as
-      // the color or depth/stencil attachment.  At the end of the render pass, this image is
+<li>// If multisampled render to texture, an implicit multisampled image is created which is used as<br />
+      // the color or depth/stencil attachment.  At the end of the render pass, this image is<br />
       // automatically resolved into |mImage| and its contents are discarded.</li>
 </ul>
 </li>
@@ -2102,7 +2011,7 @@ EGLImageKHR eglSrcImage =eglCreateImageKHR(eglDisplay, EGL_NO_CONTEXT, EGL_NATIV
 <li>
 <p>supportsAndroidNativeFenceSync</p>
 <ul>
-<li>(supportsExternalFenceCapabilities &amp;&amp; supportsExternalSemaphoreCapabilities ) || (supportsExternalFenceFd&amp;&amp;
+<li>(supportsExternalFenceCapabilities &amp;&amp; supportsExternalSemaphoreCapabilities ) || (supportsExternalFenceFd&amp;&amp;<br />
       supportsExternalSemaphoreFd)</li>
 </ul>
 </li>
@@ -2169,7 +2078,7 @@ EGLImageKHR eglSrcImage =eglCreateImageKHR(eglDisplay, EGL_NO_CONTEXT, EGL_NATIV
 <li>
 <p>VK_KHR_EXTERNAL_MEMORY</p>
 </li>
-<li>启用 if supportsAndroidHardwareBuffer || supportsExternalMemoryFd||
+<li>启用 if supportsAndroidHardwareBuffer || supportsExternalMemoryFd||<br />
     supportsExternalMemoryFuchsia</li>
 <li>可能为三者的前置:  无EXT支持检查, 条件满足直接启用.</li>
 <li>
@@ -2210,9 +2119,9 @@ EGLImageKHR eglSrcImage =eglCreateImageKHR(eglDisplay, EGL_NO_CONTEXT, EGL_NATIV
 <h3 id="inheritedqueries">inheritedQueries</h3>
 <ul>
 <li>3.0 必须</li>
-<li>// We use secondary command buffers almost everywhere and they require a feature to be
-      // able to execute in the presence of queries.  As a result, we won't support queries
-      // unless that feature is available.
+<li>// We use secondary command buffers almost everywhere and they require a feature to be<br />
+      // able to execute in the presence of queries.  As a result, we won&rsquo;t support queries<br />
+      // unless that feature is available.<br />
       mNativeExtensions.occlusionQueryBoolean =</li>
 </ul>
 <p>支持 GLES 功能: </p>
@@ -2225,12 +2134,12 @@ EGLImageKHR eglSrcImage =eglCreateImageKHR(eglDisplay, EGL_NO_CONTEXT, EGL_NATIV
 <pre><code>case QueryType::AnySamplesConservative:
 </code></pre>
 <p>GLES 扩展 <strong>GL_EXT_occlusion_query_boolean</strong></p>
-<p>glGenQueriesEXT
-glDeleteQueriesEXT
-glIsQueryEXT
-glBeginQueryEXT
-glEndQueryEXT
-glGetQueryivEXT
+<p>glGenQueriesEXT<br />
+glDeleteQueriesEXT<br />
+glIsQueryEXT<br />
+glBeginQueryEXT<br />
+glEndQueryEXT<br />
+glGetQueryivEXT<br />
 glGetQueryObjectuivEXT</p>
 <hr />
 <h3 id="vertexpipelinestoresandatomics">vertexPipelineStoresAndAtomics</h3>
@@ -2322,9 +2231,9 @@ glGetQueryObjectuivEXT</p>
 </tbody>
 </table>
 <p>为 kReservedDriverUniformBindingCount , kReservedDefaultUniformBindingCount 预留出1 + 3 = 4个.</p>
-<p>constexpr uint32_t kTotalReservedUniformBuffers =
+<p>constexpr uint32_t kTotalReservedUniformBuffers =<br />
     kReservedDriverUniformBindingCount + kReservedDefaultUniformBindingCount;</p>
-<p>const int32_t maxCombinedUniformBuffers =
+<p>const int32_t maxCombinedUniformBuffers =<br />
     LimitToInt(limitsVk.maxDescriptorSetUniformBuffers - kTotalReservedUniformBuffers);</p>
 <p>影响 GLES Limits:</p>
 <ul>
@@ -2358,29 +2267,29 @@ glGetQueryObjectuivEXT</p>
 <li>MAX_VARYING_COMPONENTS</li>
 <li>预留前 124 刚好满足.   (Vector * 4 = Components )</li>
 </ul>
-<p>// The max vertex output components should not include gl_Position.
-    // The gles2.0 section 2.10 states that "gl_Position is not a varying variable and does
-    // not count against this limit.", but the Vulkan spec has no such mention in its Built-in
-    // vars section. It is implicit that we need to actually reserve it for Vulkan in that case.
+<p>// The max vertex output components should not include gl_Position.<br />
+    // The gles2.0 section 2.10 states that &ldquo;gl_Position is not a varying variable and does<br />
+    // not count against this limit.&rdquo;, but the Vulkan spec has no such mention in its Built-in<br />
+    // vars section. It is implicit that we need to actually reserve it for Vulkan in that case.<br />
     GLint reservedVaryingVectorCount = 1;</p>
-<p>// reserve 1 extra for ANGLEPosition when GLLineRasterization is enabled
-constexpr GLint kRservedVaryingForGLLineRasterization = 1;
-// reserve 2 extra for builtin varables when feedback is enabled
-// possible capturable out varable: gl_Position, gl_PointSize
-// https://www.khronos.org/registry/OpenGL/specs/es/3.1/GLSL_ES_Specification_3.10.withchanges.pdf
-// page 105
+<p>// reserve 1 extra for ANGLEPosition when GLLineRasterization is enabled<br />
+constexpr GLint kRservedVaryingForGLLineRasterization = 1;<br />
+// reserve 2 extra for builtin varables when feedback is enabled<br />
+// possible capturable out varable: gl_Position, gl_PointSize<br />
+// https://www.khronos.org/registry/OpenGL/specs/es/3.1/GLSL_ES_Specification_3.10.withchanges.pdf<br />
+// page 105<br />
 constexpr GLint kReservedVaryingForTransformFeedbackExtension = 2;</p>
-<p>if (getFeatures().basicGLLineRasterization.enabled)
-{
-    reservedVaryingVectorCount += kRservedVaryingForGLLineRasterization;
-}
-if (getFeatures().supportsTransformFeedbackExtension.enabled)
-{
-    reservedVaryingVectorCount += kReservedVaryingForTransformFeedbackExtension;
+<p>if (getFeatures().basicGLLineRasterization.enabled)<br />
+{<br />
+    reservedVaryingVectorCount += kRservedVaryingForGLLineRasterization;<br />
+}<br />
+if (getFeatures().supportsTransformFeedbackExtension.enabled)<br />
+{<br />
+    reservedVaryingVectorCount += kReservedVaryingForTransformFeedbackExtension;<br />
 }</p>
-<p>const GLint maxVaryingCount =
-    std::min(limitsVk.maxVertexOutputComponents, limitsVk.maxFragmentInputComponents); // 128, 128
-mNativeCaps.maxVaryingVectors =
+<p>const GLint maxVaryingCount =<br />
+    std::min(limitsVk.maxVertexOutputComponents, limitsVk.maxFragmentInputComponents); // 128, 128<br />
+mNativeCaps.maxVaryingVectors =<br />
     LimitToInt((maxVaryingCount / kComponentsPerVector(4)) - reservedVaryingVectorCount);</p>
 <h2 id="maxinterpolationoffset">maxInterpolationOffset</h2>
 <table>
@@ -2647,14 +2556,14 @@ mNativeCaps.maxVaryingVectors =
 <td>LAST_VERTEX_CONVENTION</td>
 <td></td>
 <td>-</td>
-<td>--</td>
+<td>&ndash;</td>
 </tr>
 <tr>
 <td align="center">37</td>
 <td>PRIMITIVE_RESTART_FOR_PATCHES_SUPPORTED</td>
 <td>FALSE</td>
 <td>-</td>
-<td>--</td>
+<td>&ndash;</td>
 </tr>
 <tr>
 <td align="center">38</td>
@@ -2709,43 +2618,43 @@ mNativeCaps.maxVaryingVectors =
 <td align="center">45</td>
 <td>NUM_COMPRESSED_TEXTURE_FORMATS</td>
 <td>49</td>
-<td>--</td>
-<td>-- // size of Compressed Texture Formats</td>
+<td>&ndash;</td>
+<td>&ndash; // size of Compressed Texture Formats</td>
 </tr>
 <tr>
 <td align="center">46</td>
 <td>COMPRESSED_TEXTURE_FORMATS</td>
 <td></td>
-<td>--</td>
-<td>--</td>
+<td>&ndash;</td>
+<td>&ndash;</td>
 </tr>
 <tr>
 <td align="center">47</td>
 <td>NUM_PROGRAM_BINARY_FORMATS</td>
 <td>0</td>
-<td>--</td>
-<td>--</td>
+<td>&ndash;</td>
+<td>&ndash;</td>
 </tr>
 <tr>
 <td align="center">48</td>
 <td>PROGRAM_BINARY_FORMATS</td>
 <td></td>
-<td>--</td>
-<td>--</td>
+<td>&ndash;</td>
+<td>&ndash;</td>
 </tr>
 <tr>
 <td align="center">49</td>
 <td>NUM_SHADER_BINARY_FORMATS</td>
 <td>0</td>
-<td>--</td>
-<td>--</td>
+<td>&ndash;</td>
+<td>&ndash;</td>
 </tr>
 <tr>
 <td align="center">50</td>
 <td>SHADER_BINARY_FORMATS</td>
 <td></td>
-<td>--</td>
-<td>--</td>
+<td>&ndash;</td>
+<td>&ndash;</td>
 </tr>
 <tr>
 <td align="center">51</td>
@@ -2836,140 +2745,140 @@ mNativeCaps.maxVaryingVectors =
 <td>MAX_TESS_GEN_LEVEL</td>
 <td>64</td>
 <td></td>
-<td>--</td>
+<td>&ndash;</td>
 </tr>
 <tr>
 <td align="center">64</td>
 <td>MAX_PATCH_VERTICES</td>
 <td>32</td>
 <td></td>
-<td>--</td>
+<td>&ndash;</td>
 </tr>
 <tr>
 <td align="center">65</td>
 <td>MAX_TESS_CONTROL_UNIFORM_COMPONENTS</td>
 <td>1024</td>
 <td></td>
-<td>--</td>
+<td>&ndash;</td>
 </tr>
 <tr>
 <td align="center">66</td>
 <td>MAX_TESS_CONTROL_TEXTURE_IMAGE_UNITS</td>
 <td>16</td>
 <td></td>
-<td>--</td>
+<td>&ndash;</td>
 </tr>
 <tr>
 <td align="center">67</td>
 <td>MAX_TESS_CONTROL_OUTPUT_COMPONENTS</td>
 <td>128</td>
 <td></td>
-<td>--</td>
+<td>&ndash;</td>
 </tr>
 <tr>
 <td align="center">68</td>
 <td>MAX_TESS_PATCH_COMPONENTS</td>
 <td>120</td>
 <td></td>
-<td>--</td>
+<td>&ndash;</td>
 </tr>
 <tr>
 <td align="center">69</td>
 <td>MAX_TESS_CONTROL_TOTAL_OUTPUT_COMPONENTS</td>
 <td>4096</td>
 <td></td>
-<td>--</td>
+<td>&ndash;</td>
 </tr>
 <tr>
 <td align="center">70</td>
 <td>MAX_TESS_CONTROL_INPUT_COMPONENTS</td>
 <td>128</td>
 <td></td>
-<td>--</td>
+<td>&ndash;</td>
 </tr>
 <tr>
 <td align="center">71</td>
 <td>MAX_TESS_CONTROL_UNIFORM_BLOCKS</td>
 <td>12</td>
 <td></td>
-<td>--</td>
+<td>&ndash;</td>
 </tr>
 <tr>
 <td align="center">72</td>
 <td>MAX_TESS_CONTROL_ATOMIC_COUNTER_BUFFERS</td>
 <td>0</td>
 <td></td>
-<td>--</td>
+<td>&ndash;</td>
 </tr>
 <tr>
 <td align="center">73</td>
 <td>MAX_TESS_CONTROL_ATOMIC_COUNTERS</td>
 <td>0</td>
 <td></td>
-<td>--</td>
+<td>&ndash;</td>
 </tr>
 <tr>
 <td align="center">74</td>
 <td>MAX_TESS_CONTROL_SHADER_STORAGE_BLOCKS</td>
 <td>0</td>
 <td></td>
-<td>--</td>
+<td>&ndash;</td>
 </tr>
 <tr>
 <td align="center">75</td>
 <td>MAX_TESS_EVALUATION_UNIFORM_COMPONENTS</td>
 <td>1024</td>
 <td></td>
-<td>--</td>
+<td>&ndash;</td>
 </tr>
 <tr>
 <td align="center">76</td>
 <td>MAX_TESS_EVALUATION_TEXTURE_IMAGE_UNITS</td>
 <td>16</td>
 <td></td>
-<td>--</td>
+<td>&ndash;</td>
 </tr>
 <tr>
 <td align="center">77</td>
 <td>MAX_TESS_EVALUATION_OUTPUT_COMPONENTS</td>
 <td>128</td>
 <td></td>
-<td>--</td>
+<td>&ndash;</td>
 </tr>
 <tr>
 <td align="center">78</td>
 <td>MAX_TESS_EVALUATION_INPUT_COMPONENTS</td>
 <td>128</td>
 <td></td>
-<td>--</td>
+<td>&ndash;</td>
 </tr>
 <tr>
 <td align="center">79</td>
 <td>MAX_TESS_EVALUATION_UNIFORM_BLOCKS</td>
 <td>12</td>
 <td></td>
-<td>--</td>
+<td>&ndash;</td>
 </tr>
 <tr>
 <td align="center">80</td>
 <td>MAX_TESS_EVALUATION_ATOMIC_COUNTER_BUFFERS</td>
 <td>0</td>
 <td></td>
-<td>--</td>
+<td>&ndash;</td>
 </tr>
 <tr>
 <td align="center">81</td>
 <td>MAX_TESS_EVALUATION_ATOMIC_COUNTERS</td>
 <td>0</td>
 <td></td>
-<td>--</td>
+<td>&ndash;</td>
 </tr>
 <tr>
 <td align="center">82</td>
 <td>MAX_TESS_EVALUATION_SHADER_STORAGE_BLOCKS</td>
 <td>0</td>
 <td></td>
-<td>--</td>
+<td>&ndash;</td>
 </tr>
 <tr>
 <td align="center">83</td>
@@ -3277,14 +3186,14 @@ mNativeCaps.maxVaryingVectors =
 <td>MAX_COMBINED_TESS_CONTROL_UNIFORM_COMPONENTS</td>
 <td>50176</td>
 <td></td>
-<td>--</td>
+<td>&ndash;</td>
 </tr>
 <tr>
 <td align="center">127</td>
 <td>MAX_COMBINED_TESS_EVALUATION_UNIFORM_COMPONENTS</td>
 <td>50176</td>
 <td></td>
-<td>--</td>
+<td>&ndash;</td>
 </tr>
 <tr>
 <td align="center">128</td>
@@ -3381,15 +3290,15 @@ mNativeCaps.maxVaryingVectors =
 <td align="center">141</td>
 <td>MAX_TESS_CONTROL_IMAGE_UNIFORMS</td>
 <td>0</td>
-<td>--</td>
-<td>--</td>
+<td>&ndash;</td>
+<td>&ndash;</td>
 </tr>
 <tr>
 <td align="center">142</td>
 <td>MAX_TESS_EVALUATION_IMAGE_UNIFORMS</td>
 <td>0</td>
-<td>--</td>
-<td>--</td>
+<td>&ndash;</td>
+<td>&ndash;</td>
 </tr>
 <tr>
 <td align="center">143</td>
@@ -3486,7 +3395,7 @@ mNativeCaps.maxVaryingVectors =
 <td align="center">156</td>
 <td>MAX_SERVER_WAIT_TIMEOUT</td>
 <td>0</td>
-<td>--</td>
+<td>&ndash;</td>
 <td>UNIMPLEMENT</td>
 </tr>
 <tr>
@@ -6388,36 +6297,184 @@ VkPhysicalDeviceSamplerYcbcrConversionFeatures
 <li>Capital character means this is a main vulkan extension.</li>
 <li>O means current extension <strong>OPTIONALLY</strong> support.</li>
 <li>Details of Linear Formats, Optimal Formats and Buffer Formats are shown in <a href="#Format_constraint_table_1">Format_constraint_table_1</a> and <a href="#Format_constraint_table_2">Format_constraint_table_2</a>.</li>
-</ol></div>
+</ol>
+
+
+
+<div id="disqus_thread"></div>
+<script>
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://wesleywang-wang.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>请启用JavaScript以浏览<a href="https://disqus.com/?ref_noscript" rel="nofollow">Disqus评论</a></noscript></div>
+                <!-- right -->
+                <div class="col-md-2"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link">总览</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#vk-extensions" class="nav-link">Vk Extensions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#vk-features" class="nav-link">Vk Features</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#limits" class="nav-link">Limits</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#angle-vk-extensions" class="nav-link">ANGLE : Vk Extensions</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#gles-core" class="nav-link">GLES Core</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#egl" class="nav-link">EGL</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#gles-ext" class="nav-link">GLES EXT</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#vulkan_8" class="nav-link">Vulkan 自用</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_2" class="nav-link">其他平台</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#v100-ext" class="nav-link">v100 已支持的Ext</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#angle-ext" class="nav-link">ANGLE 期望将来加入的 EXT</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#angle-vk-features" class="nav-link">ANGLE: Vk Features</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#angle-vk-limits" class="nav-link">ANGLE: Vk Limits</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#maxperstagedescriptorstoragebuffers" class="nav-link">maxPerStageDescriptorStorageBuffers</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#maxperstagedescriptoruniformbuffers" class="nav-link">maxPerStageDescriptorUniformBuffers</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#maxdescriptorsetuniformbuffers" class="nav-link">maxDescriptorSetUniformBuffers</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#maxvertexoutputcomponents-maxfragmentinputcomponents" class="nav-link">maxVertexOutputComponents 与 maxFragmentInputComponents</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#maxinterpolationoffset" class="nav-link">maxInterpolationOffset</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#gles-limits" class="nav-link">附表: GLES Limits 满足情况详情</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#properties" class="nav-link">其他 Properties</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#_3" class="nav-link">附录</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#v100-gles-extension" class="nav-link">v100 GLES Extension 支持情况</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#v100-egl-extension" class="nav-link">v100 EGL Extension</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#angle-vk-features_1" class="nav-link">ANGLE 中启用的 Vk Features</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#8-appendix" class="nav-link">8. Appendix</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#81-capability" class="nav-link">8.1. Capability</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#82-extension" class="nav-link">8.2. Extension</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
             </div>
         </div>
 
         <footer class="col-md-12">
-            <hr>
-            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
-        </footer>
+              <hr>
+                  <p>Copyright &copy; 2021 <a href="https://space.bilibili.com/293396">水曜晨星 Wesley</a>.</p>
+              <p>Powered by <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+          </footer>
         <script>
             var base_url = "../..",
-                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+                shortcuts = {"next": 39, "previous": 37, "search": 83};
         </script>
         <script src="../../js/base.js" defer></script>
+        <script src="../../js/custom.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML" defer></script>
         <script src="../../search/main.js" defer></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+      <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="searchModalLabel">Search</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="searchModalLabel" old-id="exampleModalLabel">搜索</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
             </div>
             <div class="modal-body">
                 <p>
-                    From here you can search these documents. Enter
-                    your search terms below.
+                    请在下面输入你要搜索的文本（仅支持英文）：
                 </p>
-                <form>
+                <form role="form">
                     <div class="form-group">
-                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="text" class="form-control" placeholder="搜索..." id="mkdocs-search-query" title="输入英文关键字">
                     </div>
                 </form>
                 <div id="mkdocs-search-results"></div>
@@ -6466,6 +6523,7 @@ VkPhysicalDeviceSamplerYcbcrConversionFeatures
         </div>
     </div>
 </div>
+
 
     </body>
 </html>
