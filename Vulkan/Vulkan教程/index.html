@@ -35,7 +35,7 @@
 
     <body>
 
-        <div class="navbar navbar-expand-lg navbar-default navbar-dark bg-primary" role="navigation">
+        <div class="navbar navbar-expand-lg navbar-dark navbar-dark bg-dark" role="navigation">
     <div class="container">
 
         <!-- Main title -->
@@ -52,16 +52,54 @@
                 <li class="navitem">
                     <a href="../.." class="nav-link">首页</a>
                 </li>
-                <li class="navitem">
-                    <a href="../../GLES/Framebuffer%20Object/" class="nav-link">OpenGL(ES)</a>
-                </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">OpenGL(ES) <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+  <li class="dropdown-submenu">
+    <a href="#" tabindex="-1" class="dropdown-item">OpenGL基础</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/" class="dropdown-item">Framebuffer</a>
+</li>
+    </ul>
+  </li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#" tabindex="-1" class="dropdown-item">OpenGL应用</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../GLES/Framebuffer%20Object/" class="dropdown-item">多重采样</a>
+</li>
+    </ul>
+  </li>
+                        </ul>
+                    </li>
                     <li class="dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Vulkan <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             
+  <li class="dropdown-submenu">
+    <a href="#" tabindex="-1" class="dropdown-item">Vulkan基础教程</a>
+    <ul class="dropdown-menu">
+            
 <li>
-    <a href="../0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/" class="dropdown-item">0.1. Vulkan 扩展</a>
+    <a href="../0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/" class="dropdown-item">Vulkan教程一</a>
 </li>
+    </ul>
+  </li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#" tabindex="-1" class="dropdown-item">Vulkan专题</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../GLES/Framebuffer%20Object/" class="dropdown-item">Vulkan 扩展</a>
+</li>
+    </ul>
+  </li>
                         </ul>
                     </li>
                 </ul>
@@ -80,31 +118,13 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-3 doc-nav">
                             <!-- Main navigation -->
-                            <ul class="list-group list-group-flush ">
-                                <li class="item-level-1 list-group-item">
-                                    <a href="../.." class="nav-link">首页</a>
-                                </li>
-                                <li class="item-level-1 list-group-item">
-                                    <a href="../../GLES/Framebuffer%20Object/" class="nav-link">OpenGL(ES)</a>
-                                </li>
-                                <li class="item-level-1 list-group-item">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="collapse" data-target="#coltarget-3" aria-expanded="false" aria-controls="coltarget-3">
-                                        <b class="caret"></b> Vulkan
-                                    </a>
-                                    <div class="list-group list-group-flush collapse" id="coltarget-3">
-                                    <ul class="list-group list-group-flush">
-                                        <li class="item-level-2 list-group-item">
-                                            <a href="../.." class="nav-link">0.1. Vulkan 扩展</a>
-                                        </li>
-                                    </ul>
-                                    </div>
-                                </li>
+                            <ul class="list-group list-group-flush side">
                             </ul>
                 </div>
                 <!-- center -->
-                <div class="col-md-8" role="main">
+                <div class="col-md-9" role="main">
 
 <p>Vulkan 创建Vulkan实例<br />
 Vulkan 物理设备与队列簇<br />
@@ -2682,7 +2702,7 @@ vkQueueWaitIdle(presentQueue);
     })();
 </script>
 <noscript>请启用JavaScript以浏览<a href="https://disqus.com/?ref_noscript" rel="nofollow">Disqus评论</a></noscript></div>
-                <!-- right -->
+                <!-- right 
                 <div class="col-md-2"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
     <div class="navbar-header">
         <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
@@ -2691,410 +2711,413 @@ vkQueueWaitIdle(presentQueue);
     </div>
 
     
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+
+    <div id="toc-collapse" class="navbar-collapse collapse">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link">第一章</a>
+            <li class="nav-item" data-level="1"><a href="#_1" class="">第一章</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#vulkan-vulkan" class="nav-link">Vulkan 创建Vulkan实例</a>
+            <li class="nav-item" data-level="1"><a href="#vulkan-vulkan" class="">Vulkan 创建Vulkan实例</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#_2" class="nav-link">创建一个实例</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_3" class="nav-link">检查可选功能</a>
+            <li class="nav-item" data-level="2"><a href="#_2" class="">创建一个实例</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_4" class="nav-link">退出</a>
+            <li class="nav-item" data-level="2"><a href="#_3" class="">检查可选功能</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#vulkan" class="nav-link">Vulkan 物理设备与队列簇</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#_5" class="nav-link">选择物理设备</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_6" class="nav-link">设备需求检测</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_7" class="nav-link">队列族</a>
+            <li class="nav-item" data-level="2"><a href="#_4" class="">退出</a>
               <ul class="nav flex-column">
               </ul>
             </li>
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#vulkan_1" class="nav-link">Vulkan 应用程序框架原型</a>
+            <li class="nav-item" data-level="1"><a href="#vulkan" class="">Vulkan 物理设备与队列簇</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#_8" class="nav-link">总体结构</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_9" class="nav-link">资源管理</a>
+            <li class="nav-item" data-level="2"><a href="#_5" class="">选择物理设备</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#glfw" class="nav-link">整合GLFW</a>
+            <li class="nav-item" data-level="2"><a href="#_6" class="">设备需求检测</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#vulkan_2" class="nav-link">[Vulkan 验证层]</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#vulkan_3" class="nav-link">Vulkan 逻辑设备与队列</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#_10" class="nav-link">指定创建的队列</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_11" class="nav-link">指定使用的设备特性</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_12" class="nav-link">创建逻辑设备</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_13" class="nav-link">检索队列处理</a>
+            <li class="nav-item" data-level="2"><a href="#_7" class="">队列族</a>
               <ul class="nav flex-column">
               </ul>
             </li>
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#vulkan_4" class="nav-link">Vulkan 交换链</a>
+            <li class="nav-item" data-level="1"><a href="#vulkan_1" class="">Vulkan 应用程序框架原型</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#_14" class="nav-link">检查交换链支持</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_15" class="nav-link">查询交换链支持的详情</a>
+            <li class="nav-item" data-level="2"><a href="#_8" class="">总体结构</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_16" class="nav-link">为交换链选择正确的设置</a>
+            <li class="nav-item" data-level="2"><a href="#_9" class="">资源管理</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#surface" class="nav-link">Surface 格式</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_17" class="nav-link">演示模式</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_18" class="nav-link">交换范围</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_19" class="nav-link">创建交换链</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_20" class="nav-link">获取交换链图像</a>
+            <li class="nav-item" data-level="2"><a href="#glfw" class="">整合GLFW</a>
               <ul class="nav flex-column">
               </ul>
             </li>
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#vulkan-window-surface" class="nav-link">Vulkan Window Surface</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#window-surface" class="nav-link">创建 Window Surface</a>
+            <li class="nav-item" data-level="1"><a href="#vulkan_2" class="">[Vulkan 验证层]</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_21" class="nav-link">查询演示支持</a>
+            
+            <li class="nav-item" data-level="1"><a href="#vulkan_3" class="">Vulkan 逻辑设备与队列</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#_10" class="">指定创建的队列</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_22" class="nav-link">创建演示队列</a>
+            <li class="nav-item" data-level="2"><a href="#_11" class="">指定使用的设备特性</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_12" class="">创建逻辑设备</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_13" class="">检索队列处理</a>
               <ul class="nav flex-column">
               </ul>
             </li>
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#vulkan_5" class="nav-link">Vulkan 图形管线</a>
+            <li class="nav-item" data-level="1"><a href="#vulkan_4" class="">Vulkan 交换链</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#_14" class="">检查交换链支持</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-level="1"><a href="#vulkan_6" class="nav-link">Vulkan 图像与视图</a>
+            <li class="nav-item" data-level="2"><a href="#_15" class="">查询交换链支持的详情</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-level="1"><a href="#vulkan_7" class="nav-link">Vulkan 着色器模块</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#_23" class="nav-link">顶点着色器</a>
+            <li class="nav-item" data-level="2"><a href="#_16" class="">为交换链选择正确的设置</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_24" class="nav-link">片元着色器</a>
+            <li class="nav-item" data-level="2"><a href="#surface" class="">Surface 格式</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_25" class="nav-link">顶点颜色组</a>
+            <li class="nav-item" data-level="2"><a href="#_17" class="">演示模式</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_26" class="nav-link">编译着色器</a>
+            <li class="nav-item" data-level="2"><a href="#_18" class="">交换范围</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_27" class="nav-link">加载着色器</a>
+            <li class="nav-item" data-level="2"><a href="#_19" class="">创建交换链</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_28" class="nav-link">创建着色器模型</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_29" class="nav-link">着色器阶段创建</a>
+            <li class="nav-item" data-level="2"><a href="#_20" class="">获取交换链图像</a>
               <ul class="nav flex-column">
               </ul>
             </li>
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#vulkan_8" class="nav-link">Vulkan 固有功能</a>
+            <li class="nav-item" data-level="1"><a href="#vulkan-window-surface" class="">Vulkan Window Surface</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#_30" class="nav-link">顶点输入</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_31" class="nav-link">输入组件</a>
+            <li class="nav-item" data-level="2"><a href="#window-surface" class="">创建 Window Surface</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_32" class="nav-link">视窗和裁剪</a>
+            <li class="nav-item" data-level="2"><a href="#_21" class="">查询演示支持</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_33" class="nav-link">光栅化</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_34" class="nav-link">重采样</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_35" class="nav-link">深度和模板测试</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_36" class="nav-link">颜色混合</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_37" class="nav-link">动态修改</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_38" class="nav-link">管道布局</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_39" class="nav-link">结论</a>
+            <li class="nav-item" data-level="2"><a href="#_22" class="">创建演示队列</a>
               <ul class="nav flex-column">
               </ul>
             </li>
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#vulkan_9" class="nav-link">Vulkan 帧缓冲区</a>
+            <li class="nav-item" data-level="1"><a href="#vulkan_5" class="">Vulkan 图形管线</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#vulkan_10" class="nav-link">Vulkan 渲染通道</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#_40" class="nav-link">设置</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_41" class="nav-link">附件描述</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_42" class="nav-link">子通道和附件引用</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_43" class="nav-link">渲染通道</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#vulkan_11" class="nav-link">Vulkan 集成管线</a>
+            <li class="nav-item" data-level="1"><a href="#vulkan_6" class="">Vulkan 图像与视图</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#vulkan_12" class="nav-link">Vulkan 命令缓冲区</a>
+            <li class="nav-item" data-level="1"><a href="#vulkan_7" class="">Vulkan 着色器模块</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#_44" class="nav-link">命令池</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_45" class="nav-link">分配命令缓冲区</a>
+            <li class="nav-item" data-level="2"><a href="#_23" class="">顶点着色器</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_46" class="nav-link">启动命令缓冲记录</a>
+            <li class="nav-item" data-level="2"><a href="#_24" class="">片元着色器</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_47" class="nav-link">启动渲染通道</a>
+            <li class="nav-item" data-level="2"><a href="#_25" class="">顶点颜色组</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_48" class="nav-link">基本绘图命令</a>
+            <li class="nav-item" data-level="2"><a href="#_26" class="">编译着色器</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_49" class="nav-link">结束渲染</a>
+            <li class="nav-item" data-level="2"><a href="#_27" class="">加载着色器</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_28" class="">创建着色器模型</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_29" class="">着色器阶段创建</a>
               <ul class="nav flex-column">
               </ul>
             </li>
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#vulkan_13" class="nav-link">Vulkan 渲染和显示</a>
+            <li class="nav-item" data-level="1"><a href="#vulkan_8" class="">Vulkan 固有功能</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#_50" class="nav-link">信号量</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_51" class="nav-link">从交换链获取图像</a>
+            <li class="nav-item" data-level="2"><a href="#_30" class="">顶点输入</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_52" class="nav-link">提交命令缓冲区</a>
+            <li class="nav-item" data-level="2"><a href="#_31" class="">输入组件</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#subpass" class="nav-link">Subpass 依赖性</a>
+            <li class="nav-item" data-level="2"><a href="#_32" class="">视窗和裁剪</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_53" class="nav-link">呈现</a>
+            <li class="nav-item" data-level="2"><a href="#_33" class="">光栅化</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_54" class="nav-link">内存泄漏</a>
+            <li class="nav-item" data-level="2"><a href="#_34" class="">重采样</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_55" class="nav-link">结论</a>
+            <li class="nav-item" data-level="2"><a href="#_35" class="">深度和模板测试</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#vulkan_14" class="nav-link">Vulkan 重构交换链</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#_56" class="nav-link">重新创建交换链</a>
+            <li class="nav-item" data-level="2"><a href="#_36" class="">颜色混合</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_57" class="nav-link">窗口大小调整</a>
+            <li class="nav-item" data-level="2"><a href="#_37" class="">动态修改</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_58" class="nav-link">次优或过期的交换链</a>
+            <li class="nav-item" data-level="2"><a href="#_38" class="">管道布局</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_39" class="">结论</a>
               <ul class="nav flex-column">
               </ul>
             </li>
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#_59" class="nav-link">第二章</a>
+            <li class="nav-item" data-level="1"><a href="#vulkan_9" class="">Vulkan 帧缓冲区</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#vulkan_15" class="nav-link">Vulkan 顶点输入</a>
+            <li class="nav-item" data-level="1"><a href="#vulkan_10" class="">Vulkan 渲染通道</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#_40" class="">设置</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_41" class="">附件描述</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_42" class="">子通道和附件引用</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_43" class="">渲染通道</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#vulkan_11" class="">Vulkan 集成管线</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#vulkan_16" class="nav-link">Vulkan 创建顶点缓冲区</a>
+            <li class="nav-item" data-level="1"><a href="#vulkan_12" class="">Vulkan 命令缓冲区</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#_44" class="">命令池</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_45" class="">分配命令缓冲区</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_46" class="">启动命令缓冲记录</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_47" class="">启动渲染通道</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_48" class="">基本绘图命令</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_49" class="">结束渲染</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#vulkan_13" class="">Vulkan 渲染和显示</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#_50" class="">信号量</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_51" class="">从交换链获取图像</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_52" class="">提交命令缓冲区</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#subpass" class="">Subpass 依赖性</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_53" class="">呈现</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_54" class="">内存泄漏</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_55" class="">结论</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#vulkan_14" class="">Vulkan 重构交换链</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#_56" class="">重新创建交换链</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_57" class="">窗口大小调整</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_58" class="">次优或过期的交换链</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#_59" class="">第二章</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#vulkan_17" class="nav-link">Vulkan 临时缓冲区</a>
+            <li class="nav-item" data-level="1"><a href="#vulkan_15" class="">Vulkan 顶点输入</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#vulkan_18" class="nav-link">Vulkan 索引缓冲区</a>
+            <li class="nav-item" data-level="1"><a href="#vulkan_16" class="">Vulkan 创建顶点缓冲区</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#vulkan_19" class="nav-link">Vulkan 描述符布局和缓冲区</a>
+            <li class="nav-item" data-level="1"><a href="#vulkan_17" class="">Vulkan 临时缓冲区</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#vulkan_20" class="nav-link">Vulkan 描述符池和集合</a>
+            <li class="nav-item" data-level="1"><a href="#vulkan_18" class="">Vulkan 索引缓冲区</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#vulkan-images" class="nav-link">Vulkan 图像(Images)</a>
+            <li class="nav-item" data-level="1"><a href="#vulkan_19" class="">Vulkan 描述符布局和缓冲区</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#vulkan_21" class="nav-link">Vulkan 图像视图和采样器</a>
+            <li class="nav-item" data-level="1"><a href="#vulkan_20" class="">Vulkan 描述符池和集合</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#vulkan_22" class="nav-link">Vulkan 组合图像取样器</a>
+            <li class="nav-item" data-level="1"><a href="#vulkan-images" class="">Vulkan 图像(Images)</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#vulkan_23" class="nav-link">Vulkan 深度缓冲区</a>
+            <li class="nav-item" data-level="1"><a href="#vulkan_21" class="">Vulkan 图像视图和采样器</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#vulkan_24" class="nav-link">Vulkan 加载模型</a>
+            <li class="nav-item" data-level="1"><a href="#vulkan_22" class="">Vulkan 组合图像取样器</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#vulkan-mipmap" class="nav-link">Vulkan 生成贴图(mipmap)</a>
+            <li class="nav-item" data-level="1"><a href="#vulkan_23" class="">Vulkan 深度缓冲区</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#vulkan_24" class="">Vulkan 加载模型</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#vulkan-mipmap" class="">Vulkan 生成贴图(mipmap)</a>
               <ul class="nav flex-column">
               </ul>
             </li>
         </ul>
     </div>
+
 </div></div>
+                -->
             </div>
         </div>
 

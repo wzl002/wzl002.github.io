@@ -10,7 +10,7 @@
         <link rel="canonical" href="https://wzl002.github.io/GLES/Framebuffer%20Object/">
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>OpenGL(ES) - Wesley的笔记</title>
+        <title>Vulkan 扩展 - Wesley的笔记</title>
             <link href="../../css/bootstrap.min.css" rel="stylesheet">
             <link href="../../css/font-awesome.min.css" rel="stylesheet">
             <link href="../../css/base.css" rel="stylesheet">
@@ -35,7 +35,7 @@
 
     <body>
 
-        <div class="navbar navbar-expand-lg navbar-default navbar-dark bg-primary" role="navigation">
+        <div class="navbar navbar-expand-lg navbar-dark navbar-dark bg-dark" role="navigation">
     <div class="container">
 
         <!-- Main title -->
@@ -52,16 +52,54 @@
                 <li class="navitem">
                     <a href="../.." class="nav-link">首页</a>
                 </li>
-                <li class="navitem active">
-                    <a href="./" class="nav-link">OpenGL(ES)</a>
-                </li>
                     <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">OpenGL(ES) <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+  <li class="dropdown-submenu">
+    <a href="#" tabindex="-1" class="dropdown-item">OpenGL基础</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../Vulkan/0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/" class="dropdown-item">Framebuffer</a>
+</li>
+    </ul>
+  </li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#" tabindex="-1" class="dropdown-item">OpenGL应用</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="./" class="dropdown-item">多重采样</a>
+</li>
+    </ul>
+  </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown active">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Vulkan <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             
+  <li class="dropdown-submenu">
+    <a href="#" tabindex="-1" class="dropdown-item">Vulkan基础教程</a>
+    <ul class="dropdown-menu">
+            
 <li>
-    <a href="../../Vulkan/0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/" class="dropdown-item">0.1. Vulkan 扩展</a>
+    <a href="../../Vulkan/0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/" class="dropdown-item">Vulkan教程一</a>
 </li>
+    </ul>
+  </li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#" tabindex="-1" class="dropdown-item">Vulkan专题</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="./" class="dropdown-item active">Vulkan 扩展</a>
+</li>
+    </ul>
+  </li>
                         </ul>
                     </li>
                 </ul>
@@ -74,12 +112,12 @@
                     </a>
                 </li>
                     <li class="nav-item">
-                        <a rel="prev" href="../.." class="nav-link">
+                        <a rel="prev" href="../../Vulkan/0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/" class="nav-link">
                             <i class="fa fa-arrow-left"></i> 上一章
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a rel="next" href="../../Vulkan/0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/" class="nav-link">
+                        <a rel="next" class="nav-link disabled">
                             下一章 <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -90,31 +128,197 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-3 doc-nav">
                             <!-- Main navigation -->
-                            <ul class="list-group list-group-flush ">
-                                <li class="item-level-1 list-group-item">
-                                    <a href="../.." class="nav-link">首页</a>
-                                </li>
-                                <li class="item-level-1 list-group-item active">
-                                    <a href="./" class="nav-link">OpenGL(ES)</a>
-                                </li>
-                                <li class="item-level-1 list-group-item">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="collapse" data-target="#coltarget-3" aria-expanded="false" aria-controls="coltarget-3">
-                                        <b class="caret"></b> Vulkan
-                                    </a>
-                                    <div class="list-group list-group-flush collapse" id="coltarget-3">
-                                    <ul class="list-group list-group-flush">
-                                        <li class="item-level-2 list-group-item">
-                                            <a href="../.." class="nav-link">0.1. Vulkan 扩展</a>
+                            <ul class="list-group list-group-flush side"> <!-- dont show level 1-->
+                                        <li class="list-group-item">
+                                            <a href="#" class="nav-link  collapsed fa fa-angle-down" data-toggle="collapse" data-target="#coltarget-1" aria-expanded="false" aria-controls="coltarget-1">
+                                                Vulkan基础教程
+                                            </a>
+                                            <div class="list-group list-group-flush collapse " id="coltarget-1">
+                                            <ul class="list-group list-group-flush sub-side-page-list">
+                                                <li class="item-level-2 list-group-item">
+                                                    <a href="../../Vulkan/0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/" class="nav-link ">
+                                                        Vulkan教程一
+                                                    </a>
+                                                    <!-- toc -->
+                                                    
+                                                </li>
+                                            </ul>
+                                            </div>
                                         </li>
-                                    </ul>
-                                    </div>
-                                </li>
+                                        <li class="list-group-item active">
+                                            <a href="#" class="nav-link  fa fa-angle-down" data-toggle="collapse" data-target="#coltarget-2" aria-expanded="false" aria-controls="coltarget-2">
+                                                Vulkan专题
+                                            </a>
+                                            <div class="list-group list-group-flush collapse  show" id="coltarget-2">
+                                            <ul class="list-group list-group-flush sub-side-page-list">
+                                                <li class="item-level-2 list-group-item active">
+                                                    <a href="./" class="nav-link  active">
+                                                        Vulkan 扩展
+                                                    </a>
+                                                    <!-- toc -->
+                                                    
+                                                    <div class="toc-side">
+                                                        <div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+
+    <div id="toc-collapse" class="navbar-collapse collapse">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#gles-framebuffers" class="">GLES Framebuffers</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#_1" class="">定义</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_3" class="">相关定义</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_4" class="">使用流程</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_5" class="">创建帧缓冲</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_6" class="">纹理附着</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#renderbuffer" class="">Renderbuffer 附着</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#texture-vs-renderbuffer" class="">Texture VS. Renderbuffer</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_7" class="">示例: 场景滤镜</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#msaa" class="">离屏MSAA</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#framebuffer-api" class="">Framebuffer 相关 API 汇总</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#gl2" class="">gl2</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#gl3" class="">gl3</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#gl31" class="">gl31</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#gl32" class="">gl32</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#ext" class="">EXT</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#glexth" class="">glext.h</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#gl2ext" class="">gl2Ext</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#gl2ext_angle" class="">gl2Ext_ANGLE</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#summary" class="">Summary</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#bind-points" class="">Bind points</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#colorspace" class="">Colorspace:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#read" class="">Read</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#draw" class="">Draw</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#framebuffer" class="">Framebuffer</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#bind-points_1" class="">Bind points</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#colorspace_1" class="">Colorspace</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#read-color-buffer" class="">Read color buffer</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#draw-color-buffers" class="">Draw color buffers</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#buffer-clearing" class="">Buffer clearing</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#buffer-reading" class="">Buffer reading</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#invalidation" class="">Invalidation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#blitting" class="">Blitting</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+
+</div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            </div>
+                                        </li>
                             </ul>
                 </div>
                 <!-- center -->
-                <div class="col-md-8" role="main">
+                <div class="col-md-9" role="main">
 
 <h1 id="gles-framebuffers">GLES Framebuffers</h1>
 <p><a href="https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/05%20Framebuffers/">learnopengl</a></p>
@@ -836,7 +1040,7 @@ void glGetFramebufferParameterivRobustANGLE (GLenum target, GLenum pname, GLsize
     })();
 </script>
 <noscript>请启用JavaScript以浏览<a href="https://disqus.com/?ref_noscript" rel="nofollow">Disqus评论</a></noscript></div>
-                <!-- right -->
+                <!-- right 
                 <div class="col-md-2"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
     <div class="navbar-header">
         <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
@@ -845,138 +1049,139 @@ void glGetFramebufferParameterivRobustANGLE (GLenum target, GLenum pname, GLsize
     </div>
 
     
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+
+    <div id="toc-collapse" class="navbar-collapse collapse">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#gles-framebuffers" class="nav-link">GLES Framebuffers</a>
+            <li class="nav-item" data-level="1"><a href="#gles-framebuffers" class="">GLES Framebuffers</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#_1" class="nav-link">定义</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_3" class="nav-link">相关定义</a>
+            <li class="nav-item" data-level="2"><a href="#_1" class="">定义</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_4" class="nav-link">使用流程</a>
+            <li class="nav-item" data-level="2"><a href="#_3" class="">相关定义</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_5" class="nav-link">创建帧缓冲</a>
+            <li class="nav-item" data-level="2"><a href="#_4" class="">使用流程</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_6" class="nav-link">纹理附着</a>
+            <li class="nav-item" data-level="2"><a href="#_5" class="">创建帧缓冲</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#renderbuffer" class="nav-link">Renderbuffer 附着</a>
+            <li class="nav-item" data-level="2"><a href="#_6" class="">纹理附着</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#texture-vs-renderbuffer" class="nav-link">Texture VS. Renderbuffer</a>
+            <li class="nav-item" data-level="2"><a href="#renderbuffer" class="">Renderbuffer 附着</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_7" class="nav-link">示例: 场景滤镜</a>
+            <li class="nav-item" data-level="2"><a href="#texture-vs-renderbuffer" class="">Texture VS. Renderbuffer</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#msaa" class="nav-link">离屏MSAA</a>
+            <li class="nav-item" data-level="2"><a href="#_7" class="">示例: 场景滤镜</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#framebuffer-api" class="nav-link">Framebuffer 相关 API 汇总</a>
+            <li class="nav-item" data-level="2"><a href="#msaa" class="">离屏MSAA</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#gl2" class="nav-link">gl2</a>
+            <li class="nav-item" data-level="2"><a href="#framebuffer-api" class="">Framebuffer 相关 API 汇总</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#gl3" class="nav-link">gl3</a>
+            <li class="nav-item" data-level="2"><a href="#gl2" class="">gl2</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#gl31" class="nav-link">gl31</a>
+            <li class="nav-item" data-level="2"><a href="#gl3" class="">gl3</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#gl32" class="nav-link">gl32</a>
+            <li class="nav-item" data-level="2"><a href="#gl31" class="">gl31</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#ext" class="nav-link">EXT</a>
+            <li class="nav-item" data-level="2"><a href="#gl32" class="">gl32</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#glexth" class="nav-link">glext.h</a>
+            <li class="nav-item" data-level="2"><a href="#ext" class="">EXT</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#gl2ext" class="nav-link">gl2Ext</a>
+            <li class="nav-item" data-level="2"><a href="#glexth" class="">glext.h</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#gl2ext_angle" class="nav-link">gl2Ext_ANGLE</a>
+            <li class="nav-item" data-level="2"><a href="#gl2ext" class="">gl2Ext</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#summary" class="nav-link">Summary</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#bind-points" class="nav-link">Bind points</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#colorspace" class="nav-link">Colorspace:</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#read" class="nav-link">Read</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#draw" class="nav-link">Draw</a>
+            <li class="nav-item" data-level="2"><a href="#gl2ext_angle" class="">gl2Ext_ANGLE</a>
               <ul class="nav flex-column">
               </ul>
             </li>
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#framebuffer" class="nav-link">Framebuffer</a>
+            <li class="nav-item" data-level="1"><a href="#summary" class="">Summary</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#bind-points_1" class="nav-link">Bind points</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#colorspace_1" class="nav-link">Colorspace</a>
+            <li class="nav-item" data-level="2"><a href="#bind-points" class="">Bind points</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#read-color-buffer" class="nav-link">Read color buffer</a>
+            <li class="nav-item" data-level="2"><a href="#colorspace" class="">Colorspace:</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#draw-color-buffers" class="nav-link">Draw color buffers</a>
+            <li class="nav-item" data-level="2"><a href="#read" class="">Read</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#buffer-clearing" class="nav-link">Buffer clearing</a>
+            <li class="nav-item" data-level="2"><a href="#draw" class="">Draw</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#buffer-reading" class="nav-link">Buffer reading</a>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#framebuffer" class="">Framebuffer</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#bind-points_1" class="">Bind points</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#invalidation" class="nav-link">Invalidation</a>
+            <li class="nav-item" data-level="2"><a href="#colorspace_1" class="">Colorspace</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#blitting" class="nav-link">Blitting</a>
+            <li class="nav-item" data-level="2"><a href="#read-color-buffer" class="">Read color buffer</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#draw-color-buffers" class="">Draw color buffers</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#buffer-clearing" class="">Buffer clearing</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#buffer-reading" class="">Buffer reading</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#invalidation" class="">Invalidation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#blitting" class="">Blitting</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -984,7 +1189,9 @@ void glGetFramebufferParameterivRobustANGLE (GLenum target, GLenum pname, GLsize
             </li>
         </ul>
     </div>
+
 </div></div>
+                -->
             </div>
         </div>
 

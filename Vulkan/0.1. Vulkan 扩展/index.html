@@ -10,7 +10,7 @@
         <link rel="canonical" href="https://wzl002.github.io/Vulkan/0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/">
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>0.1. Vulkan 扩展 - Wesley的笔记</title>
+        <title>Vulkan教程一 - Wesley的笔记</title>
             <link href="../../css/bootstrap.min.css" rel="stylesheet">
             <link href="../../css/font-awesome.min.css" rel="stylesheet">
             <link href="../../css/base.css" rel="stylesheet">
@@ -35,7 +35,7 @@
 
     <body>
 
-        <div class="navbar navbar-expand-lg navbar-default navbar-dark bg-primary" role="navigation">
+        <div class="navbar navbar-expand-lg navbar-dark navbar-dark bg-dark" role="navigation">
     <div class="container">
 
         <!-- Main title -->
@@ -52,16 +52,54 @@
                 <li class="navitem">
                     <a href="../.." class="nav-link">首页</a>
                 </li>
-                <li class="navitem">
-                    <a href="../../GLES/Framebuffer%20Object/" class="nav-link">OpenGL(ES)</a>
-                </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">OpenGL(ES) <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+  <li class="dropdown-submenu">
+    <a href="#" tabindex="-1" class="dropdown-item">OpenGL基础</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="./" class="dropdown-item">Framebuffer</a>
+</li>
+    </ul>
+  </li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#" tabindex="-1" class="dropdown-item">OpenGL应用</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../GLES/Framebuffer%20Object/" class="dropdown-item">多重采样</a>
+</li>
+    </ul>
+  </li>
+                        </ul>
+                    </li>
                     <li class="dropdown active">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Vulkan <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             
+  <li class="dropdown-submenu">
+    <a href="#" tabindex="-1" class="dropdown-item">Vulkan基础教程</a>
+    <ul class="dropdown-menu">
+            
 <li>
-    <a href="./" class="dropdown-item active">0.1. Vulkan 扩展</a>
+    <a href="./" class="dropdown-item active">Vulkan教程一</a>
 </li>
+    </ul>
+  </li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#" tabindex="-1" class="dropdown-item">Vulkan专题</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../GLES/Framebuffer%20Object/" class="dropdown-item">Vulkan 扩展</a>
+</li>
+    </ul>
+  </li>
                         </ul>
                     </li>
                 </ul>
@@ -79,7 +117,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a rel="next" class="nav-link disabled">
+                        <a rel="next" href="../../GLES/Framebuffer%20Object/" class="nav-link">
                             下一章 <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -90,31 +128,107 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-3 doc-nav">
                             <!-- Main navigation -->
-                            <ul class="list-group list-group-flush ">
-                                <li class="item-level-1 list-group-item">
-                                    <a href="../.." class="nav-link">首页</a>
-                                </li>
-                                <li class="item-level-1 list-group-item">
-                                    <a href="../../GLES/Framebuffer%20Object/" class="nav-link">OpenGL(ES)</a>
-                                </li>
-                                <li class="item-level-1 list-group-item active">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="collapse" data-target="#coltarget-3" aria-expanded="false" aria-controls="coltarget-3">
-                                        <b class="caret"></b> Vulkan
-                                    </a>
-                                    <div class="list-group list-group-flush collapse" id="coltarget-3">
-                                    <ul class="list-group list-group-flush">
-                                        <li class="item-level-2 list-group-item active">
-                                            <a href="../.." class="nav-link">0.1. Vulkan 扩展</a>
+                            <ul class="list-group list-group-flush side"> <!-- dont show level 1-->
+                                        <li class="list-group-item active">
+                                            <a href="#" class="nav-link  fa fa-angle-down" data-toggle="collapse" data-target="#coltarget-1" aria-expanded="false" aria-controls="coltarget-1">
+                                                Vulkan基础教程
+                                            </a>
+                                            <div class="list-group list-group-flush collapse  show" id="coltarget-1">
+                                            <ul class="list-group list-group-flush sub-side-page-list">
+                                                <li class="item-level-2 list-group-item active">
+                                                    <a href="./" class="nav-link  active">
+                                                        Vulkan教程一
+                                                    </a>
+                                                    <!-- toc -->
+                                                    
+                                                    <div class="toc-side">
+                                                        <div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+
+    <div id="toc-collapse" class="navbar-collapse collapse">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#vulkan" class="">Vulkan 扩展</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#vulkan_1" class="">Vulkan 初始化流程</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#extensions" class="">Extensions: 扩展</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#features" class="">Features: 功能</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#limitations" class="">Limitations</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#formats" class="">Formats</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#39-extending-vulkan" class="">39. Extending Vulkan</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#40-features" class="">40. Features</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#41-limits" class="">41. Limits</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#42-formats" class="">42. Formats</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#43-additional-capabilities" class="">43. Additional Capabilities</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+
+</div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            </div>
                                         </li>
-                                    </ul>
-                                    </div>
-                                </li>
+                                        <li class="list-group-item">
+                                            <a href="#" class="nav-link  collapsed fa fa-angle-down" data-toggle="collapse" data-target="#coltarget-2" aria-expanded="false" aria-controls="coltarget-2">
+                                                Vulkan专题
+                                            </a>
+                                            <div class="list-group list-group-flush collapse " id="coltarget-2">
+                                            <ul class="list-group list-group-flush sub-side-page-list">
+                                                <li class="item-level-2 list-group-item">
+                                                    <a href="../../GLES/Framebuffer%20Object/" class="nav-link ">
+                                                        Vulkan 扩展
+                                                    </a>
+                                                    <!-- toc -->
+                                                    
+                                                </li>
+                                            </ul>
+                                            </div>
+                                        </li>
                             </ul>
                 </div>
                 <!-- center -->
-                <div class="col-md-8" role="main">
+                <div class="col-md-9" role="main">
 
 <h1 id="vulkan">Vulkan 扩展</h1>
 <p>(本章文本内容的更多细节, 参见 <a href="https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html">Vulkan Specification 1.1</a>,  代码为示例用伪码)</p>
@@ -586,7 +700,7 @@ typedef enum VkFormat {
     })();
 </script>
 <noscript>请启用JavaScript以浏览<a href="https://disqus.com/?ref_noscript" rel="nofollow">Disqus评论</a></noscript></div>
-                <!-- right -->
+                <!-- right 
                 <div class="col-md-2"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
     <div class="navbar-header">
         <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
@@ -595,48 +709,49 @@ typedef enum VkFormat {
     </div>
 
     
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+
+    <div id="toc-collapse" class="navbar-collapse collapse">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#vulkan" class="nav-link">Vulkan 扩展</a>
+            <li class="nav-item" data-level="1"><a href="#vulkan" class="">Vulkan 扩展</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#vulkan_1" class="nav-link">Vulkan 初始化流程</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#extensions" class="nav-link">Extensions: 扩展</a>
+            <li class="nav-item" data-level="2"><a href="#vulkan_1" class="">Vulkan 初始化流程</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#features" class="nav-link">Features: 功能</a>
+            <li class="nav-item" data-level="2"><a href="#extensions" class="">Extensions: 扩展</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#limitations" class="nav-link">Limitations</a>
+            <li class="nav-item" data-level="2"><a href="#features" class="">Features: 功能</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#formats" class="nav-link">Formats</a>
+            <li class="nav-item" data-level="2"><a href="#limitations" class="">Limitations</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#39-extending-vulkan" class="nav-link">39. Extending Vulkan</a>
+            <li class="nav-item" data-level="2"><a href="#formats" class="">Formats</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#40-features" class="nav-link">40. Features</a>
+            <li class="nav-item" data-level="2"><a href="#39-extending-vulkan" class="">39. Extending Vulkan</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#41-limits" class="nav-link">41. Limits</a>
+            <li class="nav-item" data-level="2"><a href="#40-features" class="">40. Features</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#42-formats" class="nav-link">42. Formats</a>
+            <li class="nav-item" data-level="2"><a href="#41-limits" class="">41. Limits</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#43-additional-capabilities" class="nav-link">43. Additional Capabilities</a>
+            <li class="nav-item" data-level="2"><a href="#42-formats" class="">42. Formats</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#43-additional-capabilities" class="">43. Additional Capabilities</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -644,7 +759,9 @@ typedef enum VkFormat {
             </li>
         </ul>
     </div>
+
 </div></div>
+                -->
             </div>
         </div>
 

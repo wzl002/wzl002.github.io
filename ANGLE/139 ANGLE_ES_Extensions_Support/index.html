@@ -35,7 +35,7 @@
 
     <body>
 
-        <div class="navbar navbar-expand-lg navbar-default navbar-dark bg-primary" role="navigation">
+        <div class="navbar navbar-expand-lg navbar-dark navbar-dark bg-dark" role="navigation">
     <div class="container">
 
         <!-- Main title -->
@@ -52,16 +52,54 @@
                 <li class="navitem">
                     <a href="../.." class="nav-link">首页</a>
                 </li>
-                <li class="navitem">
-                    <a href="../../GLES/Framebuffer%20Object/" class="nav-link">OpenGL(ES)</a>
-                </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">OpenGL(ES) <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+  <li class="dropdown-submenu">
+    <a href="#" tabindex="-1" class="dropdown-item">OpenGL基础</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../Vulkan/0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/" class="dropdown-item">Framebuffer</a>
+</li>
+    </ul>
+  </li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#" tabindex="-1" class="dropdown-item">OpenGL应用</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../GLES/Framebuffer%20Object/" class="dropdown-item">多重采样</a>
+</li>
+    </ul>
+  </li>
+                        </ul>
+                    </li>
                     <li class="dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Vulkan <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             
+  <li class="dropdown-submenu">
+    <a href="#" tabindex="-1" class="dropdown-item">Vulkan基础教程</a>
+    <ul class="dropdown-menu">
+            
 <li>
-    <a href="../../Vulkan/0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/" class="dropdown-item">0.1. Vulkan 扩展</a>
+    <a href="../../Vulkan/0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/" class="dropdown-item">Vulkan教程一</a>
 </li>
+    </ul>
+  </li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#" tabindex="-1" class="dropdown-item">Vulkan专题</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../GLES/Framebuffer%20Object/" class="dropdown-item">Vulkan 扩展</a>
+</li>
+    </ul>
+  </li>
                         </ul>
                     </li>
                 </ul>
@@ -80,31 +118,13 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-3 doc-nav">
                             <!-- Main navigation -->
-                            <ul class="list-group list-group-flush ">
-                                <li class="item-level-1 list-group-item">
-                                    <a href="../.." class="nav-link">首页</a>
-                                </li>
-                                <li class="item-level-1 list-group-item">
-                                    <a href="../../GLES/Framebuffer%20Object/" class="nav-link">OpenGL(ES)</a>
-                                </li>
-                                <li class="item-level-1 list-group-item">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="collapse" data-target="#coltarget-3" aria-expanded="false" aria-controls="coltarget-3">
-                                        <b class="caret"></b> Vulkan
-                                    </a>
-                                    <div class="list-group list-group-flush collapse" id="coltarget-3">
-                                    <ul class="list-group list-group-flush">
-                                        <li class="item-level-2 list-group-item">
-                                            <a href="../.." class="nav-link">0.1. Vulkan 扩展</a>
-                                        </li>
-                                    </ul>
-                                    </div>
-                                </li>
+                            <ul class="list-group list-group-flush side">
                             </ul>
                 </div>
                 <!-- center -->
-                <div class="col-md-8" role="main">
+                <div class="col-md-9" role="main">
 
 <div class="toc">
 <ul>
@@ -1985,7 +2005,7 @@ VkPhysicalDeviceSamplerYcbcrConversionFeatures
     })();
 </script>
 <noscript>请启用JavaScript以浏览<a href="https://disqus.com/?ref_noscript" rel="nofollow">Disqus评论</a></noscript></div>
-                <!-- right -->
+                <!-- right 
                 <div class="col-md-2"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
     <div class="navbar-header">
         <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
@@ -1994,139 +2014,142 @@ VkPhysicalDeviceSamplerYcbcrConversionFeatures
     </div>
 
     
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+
+    <div id="toc-collapse" class="navbar-collapse collapse">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#1-angle-vk" class="nav-link">1. ANGLE: Vk扩展的使用与支持</a>
+            <li class="nav-item" data-level="1"><a href="#1-angle-vk" class="">1. ANGLE: Vk扩展的使用与支持</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#2-vulkan" class="nav-link">2. Vulkan 扩展</a>
+            <li class="nav-item" data-level="1"><a href="#2-vulkan" class="">2. Vulkan 扩展</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#21-vulkan" class="nav-link">2.1. Vulkan 初始化流程</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#22-extensions" class="nav-link">2.2. Extensions: 扩展</a>
+            <li class="nav-item" data-level="2"><a href="#21-vulkan" class="">2.1. Vulkan 初始化流程</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#23-features" class="nav-link">2.3. Features: 功能</a>
+            <li class="nav-item" data-level="2"><a href="#22-extensions" class="">2.2. Extensions: 扩展</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#24-limitations" class="nav-link">2.4. Limitations</a>
+            <li class="nav-item" data-level="2"><a href="#23-features" class="">2.3. Features: 功能</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#25-formats" class="nav-link">2.5. Formats</a>
+            <li class="nav-item" data-level="2"><a href="#24-limitations" class="">2.4. Limitations</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#3-angle-vk" class="nav-link">3. ANGLE 中 Vk 扩展</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#31-angle-vkdevice" class="nav-link">3.1. ANGLE 初始化 VkDevice</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#32-angle-vk-extensions" class="nav-link">3.2. ANGLE 中的 Vk Extensions</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#33-angle-featuresvk" class="nav-link">3.3. ANGLE FeaturesVk</a>
+            <li class="nav-item" data-level="2"><a href="#25-formats" class="">2.5. Formats</a>
               <ul class="nav flex-column">
               </ul>
             </li>
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#4-angle-gles-extensions" class="nav-link">4. ANGLE 中的 GLES Extensions</a>
+            <li class="nav-item" data-level="1"><a href="#3-angle-vk" class="">3. ANGLE 中 Vk 扩展</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#41-angle-gles" class="nav-link">4.1. ANGLE 添加的 GLES 扩展</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#5-es-vk-ext" class="nav-link">5. ES 与 Vk 的 Ext 对应流程</a>
+            <li class="nav-item" data-level="2"><a href="#31-angle-vkdevice" class="">3.1. ANGLE 初始化 VkDevice</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-level="1"><a href="#6-gles" class="nav-link">6. GLES 版本选择</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#61-gles-32" class="nav-link">6.1. GLES 3.2 (未启用)</a>
+            <li class="nav-item" data-level="2"><a href="#32-angle-vk-extensions" class="">3.2. ANGLE 中的 Vk Extensions</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#62-gles-31" class="nav-link">6.2. GLES 3.1</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#63-gles-30" class="nav-link">6.3. GLES 3.0</a>
+            <li class="nav-item" data-level="2"><a href="#33-angle-featuresvk" class="">3.3. ANGLE FeaturesVk</a>
               <ul class="nav flex-column">
               </ul>
             </li>
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#7-gles-extensions" class="nav-link">7. GLES Extensions 支持</a>
+            <li class="nav-item" data-level="1"><a href="#4-angle-gles-extensions" class="">4. ANGLE 中的 GLES Extensions</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#71-extensions" class="nav-link">7.1. 默认支持的 Extensions</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#72-extensions" class="nav-link">7.2. 有条件的支持的 Extensions</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#73-gles-extensions" class="nav-link">7.3. 不支持的 GLES Extensions</a>
+            <li class="nav-item" data-level="2"><a href="#41-angle-gles" class="">4.1. ANGLE 添加的 GLES 扩展</a>
               <ul class="nav flex-column">
               </ul>
             </li>
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#8" class="nav-link">8. 参考列表</a>
+            <li class="nav-item" data-level="1"><a href="#5-es-vk-ext" class="">5. ES 与 Vk 的 Ext 对应流程</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#9-1-angle-khr" class="nav-link">9. 附表1: ANGLE 向 KHR 特出的特性需求:</a>
+            <li class="nav-item" data-level="1"><a href="#6-gles" class="">6. GLES 版本选择</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#61-gles-32" class="">6.1. GLES 3.2 (未启用)</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-level="1"><a href="#10-2-angle-vk-extensions" class="nav-link">10. 附表2: ANGLE 中出现的 Vk Extensions</a>
+            <li class="nav-item" data-level="2"><a href="#62-gles-31" class="">6.2. GLES 3.1</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-level="1"><a href="#11-3-angle-vk-features" class="nav-link">11. 附表3: ANGLE 中启用的 Vk Features</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#vulkan_1_0-features" class="nav-link">Vulkan_1_0 Features:</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#extension-features" class="nav-link">Extension Features:</a>
+            <li class="nav-item" data-level="2"><a href="#63-gles-30" class="">6.3. GLES 3.0</a>
               <ul class="nav flex-column">
               </ul>
             </li>
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#12-4-angle-featuresvk" class="nav-link">12. 附表4: ANGLE 自定义 FeaturesVk</a>
+            <li class="nav-item" data-level="1"><a href="#7-gles-extensions" class="">7. GLES Extensions 支持</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#71-extensions" class="">7.1. 默认支持的 Extensions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#72-extensions" class="">7.2. 有条件的支持的 Extensions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#73-gles-extensions" class="">7.3. 不支持的 GLES Extensions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#8" class="">8. 参考列表</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#9-1-angle-khr" class="">9. 附表1: ANGLE 向 KHR 特出的特性需求:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#10-2-angle-vk-extensions" class="">10. 附表2: ANGLE 中出现的 Vk Extensions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#11-3-angle-vk-features" class="">11. 附表3: ANGLE 中启用的 Vk Features</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#vulkan_1_0-features" class="">Vulkan_1_0 Features:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#extension-features" class="">Extension Features:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#12-4-angle-featuresvk" class="">12. 附表4: ANGLE 自定义 FeaturesVk</a>
               <ul class="nav flex-column">
               </ul>
             </li>
         </ul>
     </div>
+
 </div></div>
+                -->
             </div>
         </div>
 

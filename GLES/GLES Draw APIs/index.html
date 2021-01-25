@@ -35,7 +35,7 @@
 
     <body>
 
-        <div class="navbar navbar-expand-lg navbar-default navbar-dark bg-primary" role="navigation">
+        <div class="navbar navbar-expand-lg navbar-dark navbar-dark bg-dark" role="navigation">
     <div class="container">
 
         <!-- Main title -->
@@ -52,16 +52,54 @@
                 <li class="navitem">
                     <a href="../.." class="nav-link">首页</a>
                 </li>
-                <li class="navitem">
-                    <a href="../Framebuffer%20Object/" class="nav-link">OpenGL(ES)</a>
-                </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">OpenGL(ES) <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+  <li class="dropdown-submenu">
+    <a href="#" tabindex="-1" class="dropdown-item">OpenGL基础</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../Vulkan/0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/" class="dropdown-item">Framebuffer</a>
+</li>
+    </ul>
+  </li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#" tabindex="-1" class="dropdown-item">OpenGL应用</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../Framebuffer%20Object/" class="dropdown-item">多重采样</a>
+</li>
+    </ul>
+  </li>
+                        </ul>
+                    </li>
                     <li class="dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Vulkan <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             
+  <li class="dropdown-submenu">
+    <a href="#" tabindex="-1" class="dropdown-item">Vulkan基础教程</a>
+    <ul class="dropdown-menu">
+            
 <li>
-    <a href="../../Vulkan/0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/" class="dropdown-item">0.1. Vulkan 扩展</a>
+    <a href="../../Vulkan/0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/" class="dropdown-item">Vulkan教程一</a>
 </li>
+    </ul>
+  </li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#" tabindex="-1" class="dropdown-item">Vulkan专题</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../Framebuffer%20Object/" class="dropdown-item">Vulkan 扩展</a>
+</li>
+    </ul>
+  </li>
                         </ul>
                     </li>
                 </ul>
@@ -80,31 +118,13 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-3 doc-nav">
                             <!-- Main navigation -->
-                            <ul class="list-group list-group-flush ">
-                                <li class="item-level-1 list-group-item">
-                                    <a href="../.." class="nav-link">首页</a>
-                                </li>
-                                <li class="item-level-1 list-group-item">
-                                    <a href="../Framebuffer%20Object/" class="nav-link">OpenGL(ES)</a>
-                                </li>
-                                <li class="item-level-1 list-group-item">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="collapse" data-target="#coltarget-3" aria-expanded="false" aria-controls="coltarget-3">
-                                        <b class="caret"></b> Vulkan
-                                    </a>
-                                    <div class="list-group list-group-flush collapse" id="coltarget-3">
-                                    <ul class="list-group list-group-flush">
-                                        <li class="item-level-2 list-group-item">
-                                            <a href="../.." class="nav-link">0.1. Vulkan 扩展</a>
-                                        </li>
-                                    </ul>
-                                    </div>
-                                </li>
+                            <ul class="list-group list-group-flush side">
                             </ul>
                 </div>
                 <!-- center -->
-                <div class="col-md-8" role="main">
+                <div class="col-md-9" role="main">
 
 <h1 id="drawing-commands">Drawing Commands</h1>
 <p>For all the functions in this section:</p>
@@ -624,7 +644,7 @@ for(unsigned int i = 0; i &lt; rock.meshes.size(); i++)
     })();
 </script>
 <noscript>请启用JavaScript以浏览<a href="https://disqus.com/?ref_noscript" rel="nofollow">Disqus评论</a></noscript></div>
-                <!-- right -->
+                <!-- right 
                 <div class="col-md-2"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
     <div class="navbar-header">
         <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
@@ -633,90 +653,93 @@ for(unsigned int i = 0; i &lt; rock.meshes.size(); i++)
     </div>
 
     
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+
+    <div id="toc-collapse" class="navbar-collapse collapse">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#drawing-commands" class="nav-link">Drawing Commands</a>
+            <li class="nav-item" data-level="1"><a href="#drawing-commands" class="">Drawing Commands</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#mode" class="nav-link">Mode</a>
+            <li class="nav-item" data-level="1"><a href="#mode" class="">Mode</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#1" class="nav-link">1. 点</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#2" class="nav-link">2. 直线</a>
+            <li class="nav-item" data-level="2"><a href="#1" class="">1. 点</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#3" class="nav-link">3. 三角形</a>
+            <li class="nav-item" data-level="2"><a href="#2" class="">2. 直线</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#4-32-adjacent-mode" class="nav-link">4. 3.2 新增 Adjacent Mode</a>
+            <li class="nav-item" data-level="2"><a href="#3" class="">3. 三角形</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#indextype" class="nav-link">IndexType</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#20" class="nav-link">2.0 基础绘制</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#30-instanced" class="nav-link">3.0 新增的绘制接口: Instanced 多实例渲染</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#1-gldrawrangeelements" class="nav-link">1. glDrawRangeElements</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#gldrawelementsinstanced-gldrawarraysinstanced" class="nav-link">glDrawElementsInstanced 和 glDrawArraysInstanced</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_3" class="nav-link">变量控制</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#3_1" class="nav-link">3. 多实例渲染顶点属性控制</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#4" class="nav-link">4. 代码实例</a>
+            <li class="nav-item" data-level="2"><a href="#4-32-adjacent-mode" class="">4. 3.2 新增 Adjacent Mode</a>
               <ul class="nav flex-column">
               </ul>
             </li>
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#31-indirect" class="nav-link">3.1 新增的绘制接口: Indirect</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#drawarraysindirect-drawelementsindirect" class="nav-link">DrawArraysIndirect   和 DrawElementsIndirect</a>
+            <li class="nav-item" data-level="1"><a href="#indextype" class="">IndexType</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_5" class="nav-link"></a>
+            
+            <li class="nav-item" data-level="1"><a href="#20" class="">2.0 基础绘制</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#30-instanced" class="">3.0 新增的绘制接口: Instanced 多实例渲染</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#1-gldrawrangeelements" class="">1. glDrawRangeElements</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#gldrawelementsinstanced-gldrawarraysinstanced" class="">glDrawElementsInstanced 和 glDrawArraysInstanced</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_3" class="">变量控制</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#3_1" class="">3. 多实例渲染顶点属性控制</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#4" class="">4. 代码实例</a>
               <ul class="nav flex-column">
               </ul>
             </li>
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#32-basevertex" class="nav-link">3.2 新增的绘制接口: BaseVertex</a>
+            <li class="nav-item" data-level="1"><a href="#31-indirect" class="">3.1 新增的绘制接口: Indirect</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#drawarraysindirect-drawelementsindirect" class="">DrawArraysIndirect   和 DrawElementsIndirect</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_5" class=""></a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#32-basevertex" class="">3.2 新增的绘制接口: BaseVertex</a>
               <ul class="nav flex-column">
               </ul>
             </li>
         </ul>
     </div>
+
 </div></div>
+                -->
             </div>
         </div>
 

@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
      <loc>https://wzl002.github.io/</loc>
-     <lastmod>2021-01-24</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://wzl002.github.io/GLES/Framebuffer%20Object/</loc>
-     <lastmod>2021-01-24</lastmod>
+     <lastmod>2021-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://wzl002.github.io/Vulkan/0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/</loc>
-     <lastmod>2021-01-24</lastmod>
+     <lastmod>2021-01-25</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://wzl002.github.io/GLES/Framebuffer%20Object/</loc>
+     <lastmod>2021-01-25</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://wzl002.github.io/Vulkan/0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/</loc>
+     <lastmod>2021-01-25</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://wzl002.github.io/GLES/Framebuffer%20Object/</loc>
+     <lastmod>2021-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>

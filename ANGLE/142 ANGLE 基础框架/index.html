@@ -35,7 +35,7 @@
 
     <body>
 
-        <div class="navbar navbar-expand-lg navbar-default navbar-dark bg-primary" role="navigation">
+        <div class="navbar navbar-expand-lg navbar-dark navbar-dark bg-dark" role="navigation">
     <div class="container">
 
         <!-- Main title -->
@@ -52,16 +52,54 @@
                 <li class="navitem">
                     <a href="../.." class="nav-link">首页</a>
                 </li>
-                <li class="navitem">
-                    <a href="../../GLES/Framebuffer%20Object/" class="nav-link">OpenGL(ES)</a>
-                </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">OpenGL(ES) <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+  <li class="dropdown-submenu">
+    <a href="#" tabindex="-1" class="dropdown-item">OpenGL基础</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../Vulkan/0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/" class="dropdown-item">Framebuffer</a>
+</li>
+    </ul>
+  </li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#" tabindex="-1" class="dropdown-item">OpenGL应用</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../GLES/Framebuffer%20Object/" class="dropdown-item">多重采样</a>
+</li>
+    </ul>
+  </li>
+                        </ul>
+                    </li>
                     <li class="dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Vulkan <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             
+  <li class="dropdown-submenu">
+    <a href="#" tabindex="-1" class="dropdown-item">Vulkan基础教程</a>
+    <ul class="dropdown-menu">
+            
 <li>
-    <a href="../../Vulkan/0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/" class="dropdown-item">0.1. Vulkan 扩展</a>
+    <a href="../../Vulkan/0.1.%20Vulkan%20%E6%89%A9%E5%B1%95/" class="dropdown-item">Vulkan教程一</a>
 </li>
+    </ul>
+  </li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#" tabindex="-1" class="dropdown-item">Vulkan专题</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../GLES/Framebuffer%20Object/" class="dropdown-item">Vulkan 扩展</a>
+</li>
+    </ul>
+  </li>
                         </ul>
                     </li>
                 </ul>
@@ -80,31 +118,13 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-3 doc-nav">
                             <!-- Main navigation -->
-                            <ul class="list-group list-group-flush ">
-                                <li class="item-level-1 list-group-item">
-                                    <a href="../.." class="nav-link">首页</a>
-                                </li>
-                                <li class="item-level-1 list-group-item">
-                                    <a href="../../GLES/Framebuffer%20Object/" class="nav-link">OpenGL(ES)</a>
-                                </li>
-                                <li class="item-level-1 list-group-item">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="collapse" data-target="#coltarget-3" aria-expanded="false" aria-controls="coltarget-3">
-                                        <b class="caret"></b> Vulkan
-                                    </a>
-                                    <div class="list-group list-group-flush collapse" id="coltarget-3">
-                                    <ul class="list-group list-group-flush">
-                                        <li class="item-level-2 list-group-item">
-                                            <a href="../.." class="nav-link">0.1. Vulkan 扩展</a>
-                                        </li>
-                                    </ul>
-                                    </div>
-                                </li>
+                            <ul class="list-group list-group-flush side">
                             </ul>
                 </div>
                 <!-- center -->
-                <div class="col-md-8" role="main">
+                <div class="col-md-9" role="main">
 
 <h1 id="1-angle">1. Angle 背景介绍</h1>
 <h2 id="angle-almost-native-graphics-layer-engine"><strong>ANGLE</strong> (<em>Almost Native Graphics Layer Engine</em>)</h2>
@@ -914,7 +934,7 @@ SecondaryCommandBuffer --&gt; SecondaryCommandBuffer : CommandID::\nDrawIndexed
     })();
 </script>
 <noscript>请启用JavaScript以浏览<a href="https://disqus.com/?ref_noscript" rel="nofollow">Disqus评论</a></noscript></div>
-                <!-- right -->
+                <!-- right 
                 <div class="col-md-2"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
     <div class="navbar-header">
         <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
@@ -923,86 +943,89 @@ SecondaryCommandBuffer --&gt; SecondaryCommandBuffer : CommandID::\nDrawIndexed
     </div>
 
     
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+
+    <div id="toc-collapse" class="navbar-collapse collapse">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#1-angle" class="nav-link">1. Angle 背景介绍</a>
+            <li class="nav-item" data-level="1"><a href="#1-angle" class="">1. Angle 背景介绍</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#angle-almost-native-graphics-layer-engine" class="nav-link">ANGLE (Almost Native Graphics Layer Engine)</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_1" class="nav-link">支持的转换</a>
+            <li class="nav-item" data-level="2"><a href="#angle-almost-native-graphics-layer-engine" class="">ANGLE (Almost Native Graphics Layer Engine)</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_3" class="nav-link">发展时间线</a>
+            <li class="nav-item" data-level="2"><a href="#_1" class="">支持的转换</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_4" class="nav-link">应用</a>
+            <li class="nav-item" data-level="2"><a href="#_3" class="">发展时间线</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#2" class="nav-link">2. 开发与调试</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#_5" class="nav-link">源码构建</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#angle-gles" class="nav-link">使用 ANGLE 开发 GLES 应用</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#deqp" class="nav-link">dEQP 测试</a>
+            <li class="nav-item" data-level="2"><a href="#_4" class="">应用</a>
               <ul class="nav flex-column">
               </ul>
             </li>
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#3" class="nav-link">3. 源码结构</a>
+            <li class="nav-item" data-level="1"><a href="#2" class="">2. 开发与调试</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#_7" class="nav-link">源码目录结构</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_8" class="nav-link">类关系:</a>
+            <li class="nav-item" data-level="2"><a href="#_5" class="">源码构建</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#4-drawelements" class="nav-link">4. 流程示例 DrawElements</a>
+            <li class="nav-item" data-level="2"><a href="#angle-gles" class="">使用 ANGLE 开发 GLES 应用</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-level="1"><a href="#3_1" class="nav-link">3. 配置</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#_9" class="nav-link">参数</a>
+            <li class="nav-item" data-level="2"><a href="#deqp" class="">dEQP 测试</a>
               <ul class="nav flex-column">
               </ul>
             </li>
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#_10" class="nav-link">总结</a>
+            <li class="nav-item" data-level="1"><a href="#3" class="">3. 源码结构</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#_7" class="">源码目录结构</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_8" class="">类关系:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#4-drawelements" class="">4. 流程示例 DrawElements</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#_11" class="nav-link">其他参考资料</a>
+            <li class="nav-item" data-level="1"><a href="#3_1" class="">3. 配置</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#_9" class="">参数</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#_10" class="">总结</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#_11" class="">其他参考资料</a>
               <ul class="nav flex-column">
               </ul>
             </li>
         </ul>
     </div>
+
 </div></div>
+                -->
             </div>
         </div>
 
